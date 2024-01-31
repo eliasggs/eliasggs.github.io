@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Herramientas de planillas</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f5f5f5;
+      /* Light pastel color for the background */
+    }
+
+    .container {
+      display: flex;
+      justify-content: space-around;
+      width: 80%;
+    }
+
+    .square {
+      flex: 1;
+      /* Each square occupies equal space */
+      margin: 10px;
+      /* Added margin for spacing */
+      background-color: #b2d8d8;
+      /* Light pastel color for the squares */
+      border-radius: 20px;
+      padding: 20px;
+      box-sizing: border-box;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      /* Subtle shadow effect */
+      display: inline-block;
+      /* Display squares side-by-side */
+    }
+
+    .form-container {
+      flex: 1;
+      /* Each square occupies equal space */
+      margin: 10px;
+      /* Added margin for spacing */
+      background-color: #b2d8d8;
+      /* Light pastel color for the squares */
+      border-radius: 20px;
+      padding: 20px;
+      box-sizing: border-box;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      /* Subtle shadow effect */
+    }
+
+    label {
+      display: block;
+    }
+
+    input,
+    select {
+      width: calc(100% - 6px);
+      padding: 1px;
+      box-sizing: border-box;
+    }
+
+    button {
+      background-color: #4caf50;
+      color: white;
+      padding: 6px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    #outputTextArea {
+      width: calc(100% - 6px);
+      height: 250px;
+      /* Adjust the height as needed */
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="form-container">
+      <select id="formSelector" onchange="showForm()">
+        <!-- Dynamically generate options based on the forms object -->
+        <option value="form1">Error de agenda</option>
+        <option value="form2">Adelanto de Agenda</option>
+        <option value="form3">Aseguramiento de Cita</option>
+        <option value="form4">Suspensión por Mora sin Deuda</option>
+        <!-- ... Add other options as needed -->
+      </select>
+
+      <!-- Dynamically generate forms based on the forms object -->
+      <script>
+        const forms = {
+          form1: {
+            title: "Error de agenda",
+            fields: [
+              { label: "Usuario afectado U:", type: "text", name: "U", required: true },
+              { label: "N° de cuenta:", type: "text", name: "N° de cuenta", required: true },
+              { label: "Localidad:", type: "text", name: "Localidad", required: true },
+              { label: "Partido:", type: "text", name: "Partido", required: true },
+              { label: "Dirección:", type: "text", name: "Dirección", required: true },
+              { label: "N° de caso:", type: "text", name: "N° de caso", required: true },
+              { label: "OT:", type: "text", name: "OT", required: true },
+              // Add other fields as needed
+            ]
+          },
+          form2: {
+            title: "Adelanto de Agenda.",
+            fields: [
+              { label: "Usuario afectado U:", type: "text", name: "Usuario afectado", required: true },
+              {
+                label: "Tipo de CL:", type: "select", name: "Tipo de Cliente", required: true, options: [
+                  { value: "Residencial", label: "Residencial" },
+                  { value: "VIP", label: "VIP" },
+                  { value: "Corredor Norte", label: "Corredor Norte" },
+                  { value: "Corp", label: "Corp" }
+                ]
+              },
+              {
+                label: "CRM:", type: "select", name: "CRM", required: true, options: [
+                  { value: "FAN", label: "FAN" },
+                  { value: "OPEN", label: "OPEN" },
+                  { value: "SIEBEL", label: "SIEBEL" }
+                ]
+              },
+              { label: "Localidad:", type: "text", name: "Localidad", required: true },
+              { label: "OT:", type: "text", name: "OT", required: true },
+              { label: "N° de cuenta:", type: "text", name: "N° de cuenta", required: true },
+              { label: "N° de Ticket ICD:", type: "text", name: "N° de Ticket ICD", required: true },
+              { label: "DNI:", type: "text", name: "DNI", required: true },
+              { label: "NODO:", type: "text", name: "NODO", required: true },
+              { label: "Teléfono de contacto:", type: "text", name: "Teléfono de contacto", required: true },
+              {
+                label: "Tecnología:", type: "select", name: "Tecnología", required: true, options: [
+                  { value: "FTTH", label: "FTTH" },
+                  { value: "HFC", label: "HFC" },
+                  { value: "Cobre", label: "Cobre" }
+                ]
+              },
+              { label: "Fecha de cita original:", type: "date", name: "Fecha de cita original", required: true },
+              {
+                label: "Hypercare:", type: "select", name: "Hypercare", required: true, options: [
+                  { value: "NO", label: "NO" },
+                  { value: "SI", label: "SI" }
+                ]
+              },
+              {
+                label: "Reiterado:", type: "select", name: "Reiterado", required: true, options: [
+                  { value: "NO", label: "NO" },
+                  { value: "SI", label: "SI" }
+                ]
+              },
+              {
+                label: "Disponibilidad horaria:", type: "select", name: "Disponibilidad horaria", required: true, options: [
+                  { value: "MAÑANA", label: "MAÑANA" },
+                  { value: "TARDE", label: "TARDE" }
+                ]
+              },
+              // Add other fields as needed
+            ]
+          },
+          form3: {
+            title: "Error de agenda",
+            fields: [
+              { label: "Usuario afectado U:", type: "text", name: "U", required: true },
+              {
+                label: "Opciones:", type: "select", name: "opciones", required: true, options: [
+                  { value: "a", label: "Option A" },
+                  { value: "b", label: "Option B" },
+                  { value: "c", label: "Option C" }
+                ]
+              },
+              { label: "Fecha:", type: "date", name: "fecha", required: true }
+              // Add other fields as needed
+            ]
+          },
+        };
+
+
+        function generateForm(formId, formInfo) {
+          const formElement = document.createElement("form");
+          formElement.id = formId;
+
+          formInfo.fields.forEach(field => {
+            const label = document.createElement("label");
+            label.textContent = field.label;
+
+            const input = document.createElement(field.type === "select" ? "select" : "input");
+            input.type = field.type;
+            input.name = field.name;
+            input.required = field.required;
+
+            if (field.type === "select") {
+              field.options.forEach(option => {
+                const optionElement = document.createElement("option");
+                optionElement.value = option.value;
+                optionElement.textContent = option.label;
+                input.appendChild(optionElement);
+              });
+            }
+
+            formElement.appendChild(label);
+            formElement.appendChild(input);
+          });
+
+          const copyButton = document.createElement("button");
+          copyButton.type = "button";
+          copyButton.textContent = "Copiar Planilla";
+          copyButton.onclick = function () {
+            copyToClipboard(formId);
+          };
+
+          const resetButton = document.createElement("button");
+          resetButton.type = "button";
+          resetButton.textContent = "Reiniciar";
+          resetButton.onclick = function () {
+            resetForm(formId);
+          };
+
+          formElement.appendChild(copyButton);
+          formElement.appendChild(resetButton);
+
+          document.querySelector(".form-container").appendChild(formElement);
+        }
+
+        // Dynamically generate forms based on the forms object
+        Object.entries(forms).forEach(([formId, formInfo]) => {
+          generateForm(formId, formInfo);
+        });
+      </script>
+    </div>
+
+    <div class="square">
+      <h2>Tu planilla</h2>
+      <!-- Output textarea next to the form elements -->
+      <textarea id="outputTextArea"></textarea>
+    </div>
+  </div>
+
+  <script>
+    function showForm() {
+      var formSelector = document.getElementById("formSelector");
+      var selectedForm = formSelector.value;
+
+      // Hide all forms
+      var forms = document.querySelectorAll('.form-container form');
+      forms.forEach(function (form) {
+        form.style.display = 'none';
+      });
+
+      // Show the selected form
+      document.getElementById(selectedForm).style.display = 'grid';
+    }
+
+    function resetForm(formId) {
+      var form = document.getElementById(formId);
+      form.reset();
+      var outputTextArea = document.getElementById("outputTextArea");
+      outputTextArea.value = '';
+    }
+
+    function copyToClipboard(formId) {
+      var form = document.getElementById(formId);
+      var formData = Array.from(form.elements)
+        .filter(el => el.type !== "button")
+        .map(el => el.name + ": " + el.value)
+        .join("\n");
+
+      // get the Form Selector Text
+      var formSelectorText = document.getElementById("formSelector").options[document.getElementById("formSelector").selectedIndex].text;
+      var outputTextArea = document.getElementById("outputTextArea");
+
+      // Fill the output Text Area
+      outputTextArea.value = formSelectorText + "\n" + formData;
+
+      // Copy it
+      outputTextArea.select();
+      document.execCommand("copy");
+    }
+
+    showForm();
+  </script>
+</body>
+
+</html>
