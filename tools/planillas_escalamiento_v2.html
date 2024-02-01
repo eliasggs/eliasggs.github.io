@@ -88,6 +88,7 @@
 <body>
   <div class="container">
     <div class="form-container">
+      <h3>Seleccione una plantilla y rellene</h3>
       <select id="formSelector" onchange="showForm()">
         <!-- Dynamically generate options based on the forms object -->
         <option value="form1">Error de agenda</option>
@@ -99,7 +100,8 @@
         <option value="form7">Error en Vista 360</option>
         <option value="form8">Flow App - Falla de Señal en Vivo.</option>
         <option value="form9">Flow App - Falla de Señal VOD</option>
-
+        <option value="form10">Flow App - Flow App Inactiva en Minerva</option>
+        
         <!-- ... Add other options as needed -->
       </select>
 
@@ -240,7 +242,7 @@
                 type: "textarea",
                 name: "Detalle y chequeos realizados",
                 required: true,
-                rows: 5 // Adjust the number of visible rows as needed
+                rows: 3 // Adjust the number of visible rows as needed
               },
               { label: "Teléfono de contacto:", type: "text", name: "Teléfono de contacto", required: true },
               { label: "Mail de contacto:", type: "text", name: "Mail de contacto", required: true },
@@ -260,9 +262,9 @@
               { label: "Usuario afectado U:", type: "text", name: "U", required: true },
               { label: "Nombre y Apellido:", type: "text", name: "Nombre y Apellido", required: true },
               { label: "DNI:", type: "text", name: "DNI", required: true },
-              { label: "N de Cuenta:", type: "text", name: "N de Cuenta", required: true },
+              { label: "N° de Cuenta:", type: "text", name: "N° de Cuenta", required: true },
               { label: "Mail:", type: "text", name: "Mail", required: true },
-              { label: "N de Contacto:", type: "text", name: "N de Contacto", required: true },
+              { label: "N° de Contacto:", type: "text", name: "N° de Contacto", required: true },
               { label: "Detalle y Chequeos realizados:", type: "textarea", name: "Detalle y Chequeos realizados", required: true, rows: 5 },
               {
                 label: "Accede a Mi Personal con las mismas credenciales:", type: "select", name: "Accede a Mi Personal con las mismas credenciales",
@@ -276,23 +278,23 @@
             title: "Inconvenientes con TOIP.",
             fields: [
               { label: "Usuario afectado U:", type: "text", name: "U", required: true },
-              { label: "N de Cuenta:", type: "text", name: "N de Cuenta", required: true },
+              { label: "N° de Cuenta:", type: "text", name: "N° de Cuenta", required: true },
               { label: "Línea Afectada:", type: "text", name: "Línea Afectada", required: true },
-              { label: "N de Caso:", type: "text", name: "N de Caso", required: true },
+              { label: "N° de Caso:", type: "text", name: "N° de Caso", required: true },
               { label: "Detalle y Chequeos realizados:", type: "textarea", name: "Detalle y Chequeos realizados", required: true, rows: 5 },
               { label: "Mail:", type: "text", name: "Mail", required: true },
-              { label: "N de Contacto:", type: "text", name: "N de Contacto", required: true },
+              { label: "N° de Contacto:", type: "text", name: "N° de Contacto", required: true },
             ]
           },
           form7: {
             title: "Error en V360.",
             fields: [
-              { label: "U:", type: "text", name: "U", required: true },
-              { label: "N de Cuenta:", type: "text", name: "N de Cuenta", required: true },
-              { label: "N de Caso:", type: "text", name: "N de Caso", required: true },
+              { label: "Usuario afectado U:", type: "text", name: "U", required: true },
+              { label: "N° de Cuenta:", type: "text", name: "N° de Cuenta", required: true },
+              { label: "N° de Caso:", type: "text", name: "N° de Caso", required: true },
               { label: "Detalle y Chequeos realizados:", type: "textarea", name: "Detalle y Chequeos realizados", required: true, rows: 5 },
               { label: "Mail:", type: "text", name: "Mail", required: true },
-              { label: "N de Contacto:", type: "text", name: "N de Contacto", required: true },
+              { label: "N° de Contacto:", type: "text", name: "N° de Contacto", required: true },
             ]
           },
           form8: {
@@ -346,6 +348,20 @@
               },
               { label: "Contenido VOD con falla:", type: "text", name: "Contenido VOD con falla", required: true },
               { label: "DNI:", type: "text", name: "DNI", required: true },
+              { label: "Observaciones:", type: "textarea", name: "Observaciones", required: true, rows: 5 }
+            ]
+          },
+          form10: {
+            title: "Flow App - Flow App Inactiva en Minerva.",
+            fields: [
+              {
+                label: "¿Se envió Recálculo?:", type: "select", name: "Se envió Recálculo", required: true, options: [
+                  { value: "yes", label: "Sí" },
+                  { value: "no", label: "No" }
+                ]
+              },
+              { label: "DNI:", type: "text", name: "DNI", required: true },
+              { label: "Nro Cuenta:", type: "text", name: "Nro Cuenta", required: true },
               { label: "Observaciones:", type: "textarea", name: "Observaciones", required: true, rows: 5 }
             ]
           }
