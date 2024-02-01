@@ -78,7 +78,7 @@
 
     #outputTextArea {
       width: calc(100% - 6px);
-      height: 250px;
+      height: 350px;
       /* Adjust the height as needed */
       margin-top: 10px;
     }
@@ -101,7 +101,20 @@
         <option value="form8">Flow App - Falla de Señal en Vivo.</option>
         <option value="form9">Flow App - Falla de Señal VOD</option>
         <option value="form10">Flow App - Flow App Inactiva en Minerva</option>
-        
+        <option value="form11">Flow App - No funciona RestartTV/ReverseEPG.</option>
+        <option value="form12">Flow App - Error A15/A16 Al ingresar.</option>
+        <option value="form13">Flow App - Error A308 al ingresar.</option>
+        <option value="form14">Flow App - Error de Acceso Flow APP en Dispositivo Particular.</option>
+        <option value="form15">Flow App - Flow con Grilla asignada incorrecta. No ve canales locales.</option>
+        <option value="form16">Flow App - Problema: Pack faltante en Minerva Flow APP.</option>
+        <option value="form17">Flow Box - Placa de Validación.</option>
+        <option value="form18">Flow Box - Box Saltea Canales</option>
+        <option value="form19">Flow Box - Placa de Activación.</option>
+        <option value="form20">Flow Box - Placa activación S1039 / Deco NO enlistado.</option>
+        <option value="form21">Flow Box - Pantalla en negro en Vivo.</option>
+        <option value="form22">Flow Box - Pantalla en negro en VOD.</option>
+        <option value="form23">Flow Box - Falla en Audio en contenido en Vivo.</option>
+        <option value="form24">Flow Box - Falla en Audio en contenido VOD.</option>
         <!-- ... Add other options as needed -->
       </select>
 
@@ -265,7 +278,7 @@
               { label: "N° de Cuenta:", type: "text", name: "N° de Cuenta", required: true },
               { label: "Mail:", type: "text", name: "Mail", required: true },
               { label: "N° de Contacto:", type: "text", name: "N° de Contacto", required: true },
-              { label: "Detalle y Chequeos realizados:", type: "textarea", name: "Detalle y Chequeos realizados", required: true, rows: 5 },
+              { label: "Detalle y Chequeos realizados:", type: "textarea", name: "Detalle y Chequeos realizados", required: true, rows: 3 },
               {
                 label: "Accede a Mi Personal con las mismas credenciales:", type: "select", name: "Accede a Mi Personal con las mismas credenciales",
                 required: true, options: [{ value: "yes", label: "Yes" }, { value: "no", label: "No" }]
@@ -364,7 +377,218 @@
               { label: "Nro Cuenta:", type: "text", name: "Nro Cuenta", required: true },
               { label: "Observaciones:", type: "textarea", name: "Observaciones", required: true, rows: 5 }
             ]
+          },
+          form11: {
+            title: "Flow App - No funciona RestartTV/ReverseEPG.",
+            fields: [
+              { label: "DNI:", type: "text", name: "DNI", required: true },
+              { label: "Nro Cuenta:", type: "text", name: "Nro Cuenta", required: true },
+              { label: "ID dispositivo:", type: "text", name: "ID dispositivo", required: true },
+              { label: "Usuario Mail:", type: "text", name: "Usuario Mail", required: true },
+              { label: "Marca/Modelo del dispositivo:", type: "text", name: "Marca/Modelo del dispositivo", required: true },
+              { label: "SO:", type: "text", name: "SO", required: true },
+              { label: "APP Versión:", type: "text", name: "APP Versión", required: true },
+              { label: "Reinstaló la APP:", type: "text", name: "Reinstaló la APP", required: true },
+              { label: "Contenido/Lugar/Canal donde arroja error:", type: "text", name: "Contenido/Lugar/Canal", required: true },
+              {
+                label: "Se envió Recálculo? (SI/ERROR):", type: "select", name: "Se envió Recálculo", required: true, options: [
+                  { value: "Si", label: "Si" },
+                  { value: "Error", label: "Error" }
+                ]
+              },
+              {
+                label: "Se eliminó dispositivo desde CODI? (SI/ERROR):", type: "select", name: "Se eliminó dispositivo desde CODI", required: true, options: [
+                  { value: "Si", label: "Si" },
+                  { value: "Error", label: "Error" }
+                ]
+              },
+              {
+                label: "Tiene otro dispositivo? (STB/OTT):", type: "select", name: "Tiene otro dispositivo", required: true, options: [
+                  { value: "Si", label: "Si" },
+                  { value: "No", label: "No" }
+                ]
+              },
+              {
+                label: "Otro dispositivo con el mismo error?:", type: "select", name: "Otro dispositivo con el mismo error", required: true, options: [
+                  { value: "Si", label: "Si" },
+                  { value: "No", label: "No" }
+                ]
+              },
+              { label: "Observaciones:", type: "textarea", name: "Observaciones", required: true, rows: 5 }
+            ]
+          },
+          form12: {
+            title: "Flow App - Error A15/A16 Al ingresar.",
+            fields: [
+              { label: "DNI:", type: "text", name: "DNI", required: true },
+              { label: "Nr° de Cuenta:", type: "text", name: "Nr° de Cuenta", required: true },
+              { label: "Usuario Flow:", type: "text", name: "Usuario Flow", required: true },
+              { label: "Clave Flow:", type: "text", name: "Clave Flow", required: true },
+              { label: "Observaciones:", type: "textarea", name: "Observaciones", required: true, rows: 5 }
+            ]
+          },
+          form13: {
+            title: "Flow App - Error A308 al ingresar.",
+            fields: [
+              { label: "DNI:", type: "text", name: "DNI", required: true },
+              { label: "ID de Dispositivo:", type: "text", name: "ID de Dispositivo", required: true },
+              { label: "Marca:", type: "text", name: "Marca", required: true },
+              { label: "Modelo:", type: "text", name: "Modelo", required: true },
+              { label: "S.O.:", type: "text", name: "S.O.", required: true },
+              { label: "Usuario Flow:", type: "text", name: "Usuario Flow", required: true },
+              { label: "Clave Flow:", type: "text", name: "Clave Flow", required: true },
+              { label: "Observaciones:", type: "textarea", name: "Observaciones", required: true, rows: 5 }
+            ]
+          },
+          form14: {
+            title: "Flow App - Error de Acceso Flow APP en Dispositivo Particular.",
+            fields: [
+              { label: "Descripción del error:", type: "textarea", name: "Descripción del error", required: true, rows: 3 },
+              { label: "ID dispositivo:", type: "text", name: "ID dispositivo", required: true },
+              { label: "Marca/Modelo del dispositivo:", type: "text", name: "Marca/Modelo del dispositivo", required: true },
+              { label: "SO:", type: "text", name: "SO", required: true },
+              { label: "APP Versión:", type: "text", name: "APP Versión", required: true },
+              { label: "Reinstaló la APP:", type: "select", name: "Reinstaló la APP", required: true, options: [{ value: "Si", label: "Si" }, { value: "No", label: "No" }] },
+              { label: "Usuario Mail:", type: "text", name: "Usuario Mail", required: true },
+              { label: "Inicia Sesión en Mi Personal-Flow?", type: "select", name: "Inicia Sesión en Mi Personal-Flow?", required: true, options: [{ value: "Si", label: "Si" }, { value: "Error", label: "Error" }] },
+              { label: "Figura dispositivo enlistado?", type: "select", name: "Figura dispositivo enlistado?", required: true, options: [{ value: "SI", label: "SI" }, { value: "NO", label: "NO" }] },
+              { label: "Se eliminó dispositivo enlistado?", type: "select", name: "Se eliminó dispositivo enlistado?", required: true, options: [{ value: "SI", label: "SI" }, { value: "NO", label: "NO" }] },
+              { label: "Tiene otro dispositivo? (STB/OTT):", type: "select", name: "Tiene otro dispositivo? (STB/OTT)", required: true, options: [{ value: "SI", label: "SI" }, { value: "NO", label: "NO" }] },
+              { label: "Otro dispositivo con el mismo error?", type: "select", name: "Otro dispositivo con el mismo error?", required: true, options: [{ value: "SI", label: "SI" }, { value: "NO", label: "NO" }] },
+              { label: "DNI:", type: "text", name: "DNI", required: true },
+              { label: "Observaciones:", type: "textarea", name: "Observaciones", required: true, rows: 3 }
+            ]
+          },
+          form15: {
+            title: "Flow App - Flow con Grilla asignada incorrecta. (No ve canales locales.)",
+            fields: [
+              { label: "DNI:", type: "text", name: "DNI", required: true },
+              { label: "Nro Cuenta:", type: "text", name: "Nro Cuenta", required: true },
+              { label: "¿Se envió Recálculo?", type: "select", name: "¿Se envió Recálculo?", required: true, options: [{ value: "Si", label: "Si" }, { value: "No", label: "No" }] },
+              { label: "Localidad:", type: "text", name: "Localidad", required: true },
+              { label: "Region ID Actual:", type: "text", name: "Region ID Actual", required: true },
+              { label: "Region ID Correspondiente:", type: "text", name: "Region ID Correspondiente", required: true },
+              { label: "Observaciones:", type: "textarea", name: "Observaciones", required: true, rows: 3 }
+            ]
+          },
+          form16: {
+            title: "Flow App - Problema: Pack faltante en Minerva Flow APP.",
+            fields: [
+              { label: "Pack Faltante:", type: "text", name: "Pack Faltante", required: true },
+              { label: "¿Se envió Recálculo?", type: "select", name: "¿Se envió Recálculo?", required: true, options: [{ value: "Si", label: "Si" }, { value: "No", label: "No" }] },
+              { label: "Observaciones:", type: "textarea", name: "Observaciones", required: true, rows: 3 }
+            ]
+          },
+          form17: {
+            title: "Flow Box - Placa de Validación.",
+            fields: [
+              { label: "Nro Cuenta:", type: "text", name: "Nro Cuenta", required: true },
+              { label: "DNI:", type: "text", name: "DNI", required: true },
+              { label: "Deco SN:", type: "text", name: "Deco SN", required: true },
+              { label: "Valida Conexion", type: "select", name: "Valida Conexion", required: true, options: [{ value: "Si", label: "Si" }, { value: "No", label: "No" }] },
+              { label: "Valida Internet", type: "select", name: "Valida Internet", required: true, options: [{ value: "Si", label: "Si" }, { value: "No", label: "No" }] },
+              { label: "Valida Fecha y hora", type: "select", name: "Valida Fecha y hora", required: true, options: [{ value: "Si", label: "Si" }, { value: "No", label: "No" }] },
+              { label: "¿Tiene otro deco?", type: "select", name: "¿Tiene otro deco?", required: true, options: [{ value: "Si", label: "Si" }, { value: "No", label: "No" }] },
+              { label: "¿Otro deco con el mismo error?", type: "select", name: "¿Otro deco con el mismo error?", required: true, options: [{ value: "Si", label: "Si" }, { value: "No", label: "No" }] },
+              { label: "Observaciones:", type: "textarea", name: "Observaciones", required: true, rows: 3 }
+            ]
+          },
+          form18: {
+            title: "Flow Box - Box Saltea Canales",
+            fields: [
+              { label: "Nro Cuenta:", type: "text", name: "Nro Cuenta", required: true },
+              { label: "DNI:", type: "text", name: "DNI", required: true },
+              { label: "Deco SN:", type: "text", name: "Deco SN", required: true },
+              { label: "Canales afectados:", type: "text", name: "Canales afectados", required: true },
+              { label: "¿Se envió Recálculo?", type: "select", name: "¿Se envió Recálculo?", required: true, options: [{ value: "Si", label: "Si" }, { value: "No", label: "No" }] },
+              { label: "Falla en algún dispositivo (Smartphone, tablet, web, etc) SI/NO", type: "select", name: "Falla en algún dispositivo", required: true, options: [{ value: "Si", label: "Si" }, { value: "No", label: "No" }] },
+              { label: "¿Tiene otro dispositivo?", type: "select", name: "¿Tiene otro dispositivo?", required: true, options: [{ value: "Si", label: "Si" }, { value: "No", label: "No" }] },
+              { label: "¿Otro dispositivo con el mismo error?", type: "select", name: "¿Otro dispositivo con el mismo error?", required: true, options: [{ value: "Si", label: "Si" }, { value: "No", label: "No" }] },
+              { label: "Error y descripción:", type: "textarea", name: "Error y descripción", required: true, rows: 3 },
+              { label: "Observaciones:", type: "textarea", name: "Observaciones", required: true, rows: 3 }
+            ]
+          },
+          form19: {
+            title: "Flow Box - Placa de Activación",
+            fields: [
+              { label: "Nro Cuenta:", type: "text", name: "Nro Cuenta", required: true },
+              { label: "DNI:", type: "text", name: "DNI", required: true },
+              { label: "Deco SN:", type: "text", name: "Deco SN", required: true },
+              { label: "¿El Deco está enlistado?", type: "select", name: "¿El Deco está enlistado?", required: true, options: [{ value: "Si", label: "Si" }, { value: "No", label: "No" }] },
+              { label: "Estado Flow App CODI:", type: "select", name: "Estado Flow App CODI", required: true, options: [{ value: "ACTIVO", label: "ACTIVO" }, { value: "INACTIVO", label: "INACTIVO" }] },
+              { label: "Observaciones:", type: "textarea", name: "Observaciones", required: true, rows: 3 }
+            ]
+          },
+          form20: {
+            title: "Flow Box - Placa activación S1039 / Deco NO enlistado",
+            fields: [
+              { label: "DNI:", type: "text", name: "DNI", required: true },
+              { label: "Nro Cuenta:", type: "text", name: "Nro Cuenta", required: true },
+              { label: "Estado Flow App en CODI:", type: "select", name: "Estado Flow App en CODI", required: true, options: [{ value: "ACTIVO", label: "ACTIVO" }, { value: "INACTIVO", label: "INACTIVO" }] },
+              { label: "SN Deco:", type: "text", name: "SN Deco", required: true },
+              { label: "¿Se encuentra enlistado?", type: "select", name: "¿Se encuentra enlistado?", required: true, options: [{ value: "Si", label: "Si" }, { value: "No", label: "No" }] },
+              { label: "¿Se envió Recálculo?", type: "select", name: "¿Se envió Recálculo?", required: true, options: [{ value: "Si", label: "Si" }, { value: "No", label: "No" }] },
+              { label: "Observaciones:", type: "textarea", name: "Observaciones", required: true, rows: 3 }
+            ]
+          },
+          form21: {
+            title: "Flow Box - Pantalla en negro en Vivo",
+            fields: [
+              { label: "Nro Cuenta:", type: "text", name: "Nro Cuenta", required: true },
+              { label: "DNI:", type: "text", name: "DNI", required: true },
+              { label: "Deco SN:", type: "text", name: "Deco SN", required: true },
+              { label: "Falla en algún dispositivo (Smartphone, tablet, web, etc):", type: "select", name: "Falla en algún dispositivo", required: true, options: [{ value: "SI", label: "SI" }, { value: "NO", label: "NO" }] },
+              { label: "¿Tiene otro dispositivo?", type: "select", name: "¿Tiene otro dispositivo?", required: true, options: [{ value: "SI", label: "SI" }, { value: "NO", label: "NO" }] },
+              { label: "¿Otro dispositivo con el mismo error?", type: "select", name: "¿Otro dispositivo con el mismo error?", required: true, options: [{ value: "SI", label: "SI" }, { value: "NO", label: "NO" }] },
+              { label: "Canal afectado:", type: "text", name: "Canal afectado", required: true },
+              { label: "Observaciones:", type: "textarea", name: "Observaciones", required: true, rows: 3 }
+            ]
+          },
+          form22: {
+            title: "Flow Box - Pantalla en negro en VOD",
+            fields: [
+              { label: "Nro Cuenta:", type: "text", name: "Nro Cuenta", required: true },
+              { label: "DNI:", type: "text", name: "DNI", required: true },
+              { label: "Deco SN:", type: "text", name: "Deco SN", required: true },
+              { label: "Falla en algún dispositivo (Smartphone, tablet, web, etc):", type: "select", name: "Falla en algún dispositivo", required: true, options: [{ value: "SI", label: "SI" }, { value: "NO", label: "NO" }] },
+              { label: "¿Tiene otro dispositivo?", type: "select", name: "¿Tiene otro dispositivo?", required: true, options: [{ value: "SI", label: "SI" }, { value: "NO", label: "NO" }] },
+              { label: "¿Otro dispositivo con el mismo error?", type: "select", name: "¿Otro dispositivo con el mismo error?", required: true, options: [{ value: "SI", label: "SI" }, { value: "NO", label: "NO" }] },
+              { label: "Contenido que arroja error:", type: "text", name: "Contenido que arroja error", required: true },
+              { label: "Observaciones:", type: "textarea", name: "Observaciones", required: true, rows: 3 }
+            ]
+          },
+          form23: {
+            title: "Flow Box - Falla en Audio en contenido en Vivo",
+            fields: [
+              { label: "Nro Cuenta:", type: "text", name: "Nro Cuenta", required: true },
+              { label: "DNI:", type: "text", name: "DNI", required: true },
+              { label: "Deco SN:", type: "text", name: "Deco SN", required: true },
+              { label: "Falla en algún dispositivo (Smartphone, tablet, web, etc):", type: "select", name: "Falla en algún dispositivo", required: true, options: [{ value: "SI", label: "SI" }, { value: "NO", label: "NO" }] },
+              { label: "¿Tiene otro dispositivo?", type: "select", name: "¿Tiene otro dispositivo?", required: true, options: [{ value: "SI", label: "SI" }, { value: "NO", label: "NO" }] },
+              { label: "¿Otro dispositivo con el mismo error?", type: "select", name: "¿Otro dispositivo con el mismo error?", required: true, options: [{ value: "SI", label: "SI" }, { value: "NO", label: "NO" }] },
+              { label: "Error y descripción:", type: "textarea", name: "Error y descripción", required: true, rows: 3 },
+              { label: "Canal Afectado:", type: "text", name: "Canal Afectado", required: true },
+              { label: "Formato de Audio:", type: "select", name: "Formato de Audio", required: true, options: [{ value: "Auto", label: "Auto" }, { value: "Stereo", label: "Stereo" }] },
+              { label: "Estado Audio Passthrough:", type: "select", name: "Estado Audio Passthrough", required: true, options: [{ value: "activado", label: "activado" }, { value: "desactivado", label: "desactivado" }] },
+              { label: "Observaciones:", type: "textarea", name: "Observaciones", required: true, rows: 3 }
+            ]
+          },
+          form24: {
+            title: "Flow Box - Falla en Audio en contenido VOD",
+            fields: [
+              { label: "Nro Cuenta:", type: "text", name: "Nro Cuenta", required: true },
+              { label: "DNI:", type: "text", name: "DNI", required: true },
+              { label: "Deco SN:", type: "text", name: "Deco SN", required: true },
+              { label: "Falla en algún dispositivo (Smartphone, tablet, web, etc):", type: "select", name: "Falla en algún dispositivo", required: true, options: [{ value: "SI", label: "SI" }, { value: "NO", label: "NO" }] },
+              { label: "¿Tiene otro dispositivo?", type: "select", name: "¿Tiene otro dispositivo?", required: true, options: [{ value: "SI", label: "SI" }, { value: "NO", label: "NO" }] },
+              { label: "¿Otro dispositivo con el mismo error?", type: "select", name: "¿Otro dispositivo con el mismo error?", required: true, options: [{ value: "SI", label: "SI" }, { value: "NO", label: "NO" }] },
+              { label: "Error y descripción:", type: "textarea", name: "Error y descripción", required: true, rows: 3 },
+              { label: "Contenido que arroja error:", type: "text", name: "Contenido que arroja error", required: true },
+              { label: "Detalle de falla percibida:", type: "textarea", name: "Detalle de falla percibida", required: true, rows: 2 },
+              { label: "Observaciones:", type: "textarea", name: "Observaciones", required: true, rows: 3 }
+            ]
           }
+
         };
 
 
