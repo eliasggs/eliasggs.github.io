@@ -18,8 +18,8 @@
 
     .container {
       display: flex;
-      justify-content: space-around;
-      width: 80%;
+      justify-content: center;
+      width: 100%;
     }
 
     #scrollableContainer {
@@ -94,6 +94,7 @@
 </head>
 
 <body>
+    <div id="scrollableContainer">
   <div class="container">
     <div class="form-container">
       <h3>Seleccione una plantilla y rellene</h3>
@@ -838,6 +839,7 @@
       <!-- Output textarea next to the form elements -->
       <textarea id="outputTextArea"></textarea>
     </div>
+</div>
   </div>
   <script>
     function showForm() {
