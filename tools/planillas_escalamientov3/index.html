@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Herramientas de planillas</title>
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@2"></script>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f5f5f5;
+      /* Light pastel color for the background */
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+
+    #scrollableContainer {
+      overflow-y: auto;
+      /* Add this to enable vertical scrolling */
+      max-height: 100vh;
+      /* Limit the maximum height to the viewport height */
+      width: 100%;
+    }
+
+    .square {
+      flex: 1;
+      /* Each square occupies equal space */
+      margin: 10px;
+      /* Added margin for spacing */
+      background-color: #b2d8d8;
+      /* Light pastel color for the squares */
+      border-radius: 20px;
+      padding: 20px;
+      box-sizing: border-box;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      /* Subtle shadow effect */
+      display: inline-block;
+      /* Display squares side-by-side */
+    }
+
+    .form-container {
+      flex: 1;
+      /* Each square occupies equal space */
+      margin: 10px;
+      /* Added margin for spacing */
+      background-color: #b2d8d8;
+      /* Light pastel color for the squares */
+      border-radius: 20px;
+      padding: 20px;
+      box-sizing: border-box;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      /* Subtle shadow effect */
+    }
+
+    label {
+      display: block;
+    }
+
+    input,
+    select {
+      width: calc(100% - 6px);
+      padding: 1px;
+      box-sizing: border-box;
+    }
+
+    button {
+      background-color: #4caf50;
+      color: white;
+      padding: 6px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    #outputTextArea {
+      width: calc(100% - 6px);
+      height: 350px;
+      /* Adjust the height as needed */
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <body x-data="{ selectedForm: 'form1' }">
+    <div id="scrollableContainer">
+      <div class="container">
+        <div class="form-container" x-show="selectedForm !== ''">
+          <h3>Seleccione una plantilla y rellene</h3>
+          <select id="formSelector" x-model="selectedForm">
+            <!-- Your existing template options here -->
+            <option value="form1">Error de agenda</option>
+            <option value="form2">Adelanto de Agenda</option>
+            <option value="form3">Aseguramiento de Cita</option>
+            <option value="form4">Suspensión por Mora sin Deuda</option>
+            <option value="form4">Suspensión voluntaria</option>
+            <option value="form69">Cierre/Legalización de OT.</option>
+            <option value="form5">Inconvenientes con Flow App</option>
+            <option value="form6">Inconvenientes con TOIP</option>
+            <option value="form78">Regularizar Serializable.</option>
+            <option value="form7">Error en Vista 360</option>
+            <option value="form8">Flow App - Falla de Señal en Vivo.</option>
+            <option value="form9">Flow App - Falla de Señal VOD</option>
+            <option value="form10">Flow App - Flow App Inactiva en Minerva</option>
+            <option value="form11">Flow App - No funciona RestartTV/ReverseEPG.</option>
+            <option value="form12">Flow App - Error A15/A16 Al ingresar.</option>
+            <option value="form13">Flow App - Error A308 al ingresar.</option>
+            <option value="form14">Flow App - Error de Acceso Flow APP en Dispositivo Particular.</option>
+            <option value="form15">Flow App - Flow con Grilla asignada incorrecta. No ve canales locales.</option>
+            <option value="form16">Flow App - Problema: Pack faltante en Minerva Flow APP.</option>
+            <option value="form17">Flow Box - Placa de Validación.</option>
+            <option value="form18">Flow Box - Box Saltea Canales</option>
+            <option value="form19">Flow Box - Placa de Activación.</option>
+            <option value="form20">Flow Box - Placa activación S1039 / Deco NO enlistado.</option>
+            <option value="form21">Flow Box - Pantalla en negro en Vivo.</option>
+            <option value="form22">Flow Box - Pantalla en negro en VOD.</option>
+            <option value="form23">Flow Box - Falla en Audio en contenido en Vivo.</option>
+            <option value="form24">Flow Box - Falla en Audio en contenido VOD.</option>
+            <option value="form25">Flow Box - Falla Subtitulos en contenido en Vivo.</option>
+            <option value="form26">Flow Box - Falla Subtitulos en contenido VOD.</option>
+            <option value="form27">Flow Box - Imagen Pixela en contenido en vivo.</option>
+            <option value="form28">Flow Box - Imagen Pixela en contenido VOD.</option>
+            <option value="form29">Flow Box - Placa carga datos fija X/18.</option>
+            <option value="form30">Flow Box - Error en RestartTV/ReverseEPG/Grabaciones.</option>
+            <option value="form31">Flow Box - Problemas con la Guía.</option>
+            <option value="form32">Flow Box- Deco se reinicia (CMTS CBR8).</option>
+            <option value="form33">Flow Box - Placa "Oh oh...tenemos un problema (S917)".</option>
+            <option value="form34">Flow Box - Problemas con APP.</option>
+            <option value="form35">Flow Box - Flow con Grilla asignada incorrecta. No ve canales locales.</option>
+            <option value="form36">Flow Full IP - Flow con Grilla asignada incorrecta. No ve canales locales.</option>
+            <!-- ... Add other options as needed -->
+          </select>
+
+          <!-- Dynamically generate forms based on the forms object -->
+          <script src="planillas.js"></script>
+        </div>
+
+
+        <div class="square" x-show="selectedForm !== ''">
+          <h2>Tu planilla</h2>
+          <!-- Output textarea next to the form elements -->
+          <textarea id="outputTextArea" x-model="outputText" readonly></textarea>
+        </div>
+      </div>
+      <script>
+        function showForm() {
+          var formSelector = document.getElementById("formSelector");
+          var selectedForm = formSelector.value;
+
+          // Hide all forms
+          var forms = document.querySelectorAll('.form-container form');
+          forms.forEach(function (form) {
+            form.style.display = 'none';
+          });
+
+          // Show the selected form
+          document.getElementById(selectedForm).style.display = 'grid';
+        }
+
+        function resetForm(formId) {
+          var form = document.getElementById(formId);
+          form.reset();
+          var outputTextArea = document.getElementById("outputTextArea");
+          outputTextArea.value = '';
+        }
+
+        function copyToClipboard(formId) {
+          var form = document.getElementById(formId);
+          var formData = Array.from(form.elements)
+            .filter(el => el.type !== "button")
+            .map(el => el.name + ": " + el.value)
+            .join("\n");
+
+          // get the Form Selector Text
+          var formSelectorText = document.getElementById("formSelector").options[document.getElementById("formSelector").selectedIndex].text;
+          var outputTextArea = document.getElementById("outputTextArea");
+
+          // Fill the output Text Area
+          outputTextArea.value = formSelectorText + "\n" + formData;
+
+          // Copy it
+          outputTextArea.select();
+          document.execCommand("copy");
+        }
+
+        showForm();
+      </script>
+  </body>
+
+</html>
