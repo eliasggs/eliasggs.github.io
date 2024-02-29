@@ -4,6 +4,8 @@ const forms = {
         fields: [
             { label: "Usuario afectado U:", type: "text", name: "U", required: true },
             { label: "N° de cuenta:", type: "text", name: "N° de cuenta", required: true },
+            { label: "DNI:", type: "text", name: "DNI", required: true },
+            { label: "Teléfono de contacto:", type: "text", name: "Teléfono de contacto", required: true },
             { label: "Localidad:", type: "text", name: "Localidad", required: true },
             { label: "Partido:", type: "text", name: "Partido", required: true },
             { label: "Dirección:", type: "text", name: "Dirección", required: true },
