@@ -146,7 +146,7 @@
         <!-- Dynamically generate forms based on the forms object -->
         <script src="planillas.js"></script>
         <script>
-          
+
           function generateForm(formId, formInfo) {
             const formElement = document.createElement("form");
             formElement.id = formId;
@@ -180,7 +180,7 @@
 
             const copyButton = document.createElement("button");
             copyButton.type = "button";
-            copyButton.textContent = "Copiar Planilla";
+            copyButton.textContent = "Copiar Planilla al portapapeles";
             copyButton.onclick = function () {
               copyToClipboard(formId);
             };
@@ -207,7 +207,7 @@
 
 
       <div class="square">
-        <h2>Tu planilla</h2>
+        <h2>Tu planilla recién copiada</h2>
         <!-- Output textarea next to the form elements -->
         <textarea id="outputTextArea"></textarea>
       </div>
