@@ -1,6 +1,6 @@
 const forms = {
     form1: {
-        title: "Error de agenda",
+
         fields: [
             { label: "Usuario afectado U:", type: "text", name: "U", required: true },
             { label: "N° de cuenta:", type: "text", name: "N° de cuenta", required: true },
@@ -9,6 +9,14 @@ const forms = {
             { label: "Dirección:", type: "text", name: "Dirección", required: true },
             { label: "N° de caso:", type: "text", name: "N° de caso", required: true },
             { label: "OT:", type: "text", name: "OT", required: true },
+            {
+                label: "Detalle y chequeos realizados",
+                type: "textarea",
+                name: "Detalle y chequeos realizados",
+                required: true,
+                rows: 3 // Adjust the number of visible rows as needed
+            },
+            { label: "Mail de contacto:", type: "text", name: "Mail de contacto", required: true },
             // Add other fields as needed
         ]
     },
