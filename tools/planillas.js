@@ -4,13 +4,15 @@ const forms = {
         fields: [
             { label: "Usuario afectado U:", type: "text", name: "U", required: true },
             { label: "N° de cuenta:", type: "text", name: "N° de cuenta", required: true },
-            { label: "DNI:", type: "text", name: "DNI", required: true },
-            { label: "Teléfono de contacto:", type: "text", name: "Teléfono de contacto", required: true },
-            { label: "Localidad:", type: "text", name: "Localidad", required: true },
-            { label: "Partido:", type: "text", name: "Partido", required: true },
-            { label: "Dirección:", type: "text", name: "Dirección", required: true },
             { label: "N° de caso:", type: "text", name: "N° de caso", required: true },
             { label: "OT:", type: "text", name: "OT", required: true },
+            { label: "Dirección:", type: "text", name: "Dirección", required: true },
+            { label: "Localidad:", type: "text", name: "Localidad", required: true },
+            { label: "Provincia:", type: "text", name: "Provincia", required: true },
+            { label: "Partido:", type: "text", name: "Partido", required: true },
+            { label: "Mail de contacto:", type: "text", name: "Mail de contacto", required: true },
+            { label: "Teléfono de contacto:", type: "text", name: "Teléfono de contacto", required: true },
+            { label: "Detalle y Chequeos realizados:", type: "textarea", name: "Detalle y Chequeos realizados", required: true, rows: 3 },
             // Add other fields as needed
         ]
     },
