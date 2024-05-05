@@ -676,6 +676,27 @@ const forms = {
             { label: "Observaciones:", type: "textarea", name: "Observaciones", required: true, rows: 3 }
         ]
     },
+    form70: {
+        title: "Error Asistencia Técnica TÉCNICO (FAN)",
+        fields: [
+            { label: "Usuario afectado U:", type: "text", name: "U", required: true },
+            { label: "Estado de Caso:", type: "select", name: "Estado de caso", required: true, options: [{ value: "Anulado", label: "Anulado" }, { value: "Pendiente", label: "Pendiente" }, { value: "Derivado", label: "Derivado" }] },
+            { label: "Afecta Servicio?:", type: "select", name: "Afecta Servicio?:", required: true, options: [{ value: "Si", label: "Si" }, { value: "No", label: "No" }] },
+            { label: "N° de Cuenta:", type: "text", name: "Nro Cuenta", required: true },
+            { label: "DNI:", type: "text", name: "DNI", required: true },
+            { label: "NODO:", type: "text", name: "NODO", required: true },
+            { label: "N° de Caso:", type: "text", name: "N° de Caso", required: true },
+            { label: "Mail de contacto:", type: "text", name: "Mail de contacto", required: true },
+            { label: "N° de Contacto:", type: "text", name: "N° de Contacto", required: true },
+            { label: "Localidad:", type: "text", name: "Localidad", required: true },
+            {
+                label: "Detalle:",
+                type: "textarea",
+                name: "Detalle",
+                required: true,
+                rows: 3 // Adjust the number of visible rows as needed
+            },        ]
+    },
 
 
 };
