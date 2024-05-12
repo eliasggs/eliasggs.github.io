@@ -1,6 +1,6 @@
 const forms = {
     form1: {
-        title: "[IT] Error de agenda",
+        title: "Error de agenda",
         fields: [
             { label: "Usuario afectado U:", type: "text", name: "U", required: true },
             { label: "N° de cuenta:", type: "text", name: "N° de cuenta", required: true },
@@ -17,7 +17,7 @@ const forms = {
         ]
     },
     form2: {
-        title: "[IT] Adelanto de Agenda.",
+        title: "Adelanto de Agenda.",
         fields: [
             { label: "Usuario afectado U:", type: "text", name: "Usuario afectado", required: true },
             {
@@ -72,7 +72,7 @@ const forms = {
         ]
     },
     form3: {
-        title: "[IT] Aseguramiento de Cita",
+        title: "Aseguramiento de Cita",
         fields: [
             { label: "Usuario afectado U:", type: "text", name: "U", required: true },
             {
