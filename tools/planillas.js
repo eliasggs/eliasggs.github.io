@@ -1,6 +1,6 @@
 const forms = {
     form1: {
-        title: "Error de agenda",
+        title: "[IT] Error de agenda",
         fields: [
             { label: "Usuario afectado U:", type: "text", name: "U", required: true },
             { label: "N° de cuenta:", type: "text", name: "N° de cuenta", required: true },
