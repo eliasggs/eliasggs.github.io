@@ -79,15 +79,18 @@
       border: none;
       border-radius: 8px;
       cursor: pointer;
+      display: inline-block;
     }
 
-    .reiniciar {
+    .reset-button {
       background-color: rgb(235, 91, 91);
     }
 
     button:hover {
       background-color: #45a049;
     }
+
+
 
     #outputTextArea {
       width: calc(100% - 6px);
@@ -195,7 +198,7 @@
 
             const resetButton = document.createElement("button");
             resetButton.type = "button";
-            resetButton.className="reiniciar";
+            resetButton.className="reset-button";
             resetButton.textContent = "Reiniciar";
             resetButton.onclick = function () {
               resetForm(formId);
