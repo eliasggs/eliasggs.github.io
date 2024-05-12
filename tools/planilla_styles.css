@@ -1,0 +1,95 @@
+    body {
+      font-family: 'Helvetica', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f5f5f5;
+      /* Light pastel color for the background */
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+
+    #scrollableContainer {
+      overflow-y: auto;
+      /* Add this to enable vertical scrolling */
+      max-height: 100vh;
+      /* Limit the maximum height to the viewport height */
+      width: 100%;
+    }
+
+    .square {
+      flex: 1;
+      /* Each square occupies equal space */
+      margin: 10px;
+      /* Added margin for spacing */
+      background-color: #b2d8d8;
+      /* Light pastel color for the squares */
+      border-radius: 20px;
+      padding: 20px;
+      box-sizing: border-box;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      /* Subtle shadow effect */
+      display: inline-block;
+      /* Display squares side-by-side */
+    }
+
+    .form-container {
+      flex: 1;
+      /* Each square occupies equal space */
+      margin: 10px;
+      /* Added margin for spacing */
+      background-color: #b2d8d8;
+      /* Light pastel color for the squares */
+      border-radius: 20px;
+      padding: 20px;
+      box-sizing: border-box;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      /* Subtle shadow effect */
+    }
+
+    label {
+      display: block;
+    }
+
+    input,
+    select {
+      width: calc(100% - 6px);
+      padding: 1px;
+      box-sizing: border-box;
+    }
+
+    button {
+      background-color: #4caf50;
+      color: white;
+      padding: 6px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      display: inline-block;
+    }
+
+    .reset-button {
+      background-color: rgb(235, 91, 91);
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+
+
+    #outputTextArea {
+      width: calc(100% - 6px);
+      height: 350px;
+      /* Adjust the height as needed */
+      background-image: url;
+      background-size: cover;
+      background-position: center;
+      margin-top: 10px;
+    }
