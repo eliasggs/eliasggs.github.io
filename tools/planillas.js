@@ -17,7 +17,7 @@ const forms = {
         ]
     },
     form2: {
-        title: "Adelanto de Agenda.",
+        title: "[IT] Adelanto de Agenda.",
         fields: [
             { label: "Usuario afectado U:", type: "text", name: "Usuario afectado", required: true },
             {
@@ -72,7 +72,7 @@ const forms = {
         ]
     },
     form3: {
-        title: "Aseguramiento de Cita",
+        title: "[IT] Aseguramiento de Cita",
         fields: [
             { label: "Usuario afectado U:", type: "text", name: "U", required: true },
             {
