@@ -1,99 +1,111 @@
-    body {
-      font-family: 'Helvetica', sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-      background-color: #f5f5f5;
-      /* Light pastel color for the background */
-    }
+body {
+  font-family: 'Helvetica', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: #f5f5f5;
+  /* Light pastel color for the background */
+}
 
-    .container {
-      display: flex;
-      justify-content: center;
-      width: 100%;
-    }
+.container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
 
-    #scrollableContainer {
-      overflow-y: auto;
-      /* Add this to enable vertical scrolling */
-      max-height: 100vh;
-      /* Limit the maximum height to the viewport height */
-      width: 100%;
-    }
+#scrollableContainer {
+  overflow-y: auto;
+  /* Add this to enable vertical scrolling */
+  max-height: 100vh;
+  /* Limit the maximum height to the viewport height */
+  width: 100%;
+}
 
-    .square {
-      flex: 1;
-      /* Each square occupies equal space */
-      margin: 10px;
-      /* Added margin for spacing */
-      background-color: #b2d8d8;
-      /* Light pastel color for the squares */
-      border-radius: 20px;
-      padding: 20px;
-      box-sizing: border-box;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      /* Subtle shadow effect */
-      display: inline-block;
-      /* Display squares side-by-side */
-    }
+.square {
+  flex: 1;
+  /* Each square occupies equal space */
+  margin: 10px;
+  /* Added margin for spacing */
+  background-color: #b2d8d8;
+  /* Light pastel color for the squares */
+  border-radius: 20px;
+  padding: 20px;
+  box-sizing: border-box;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* Subtle shadow effect */
+  display: inline-block;
+  /* Display squares side-by-side */
+}
 
-    .form-container {
-      flex: 1;
-      /* Each square occupies equal space */
-      margin: 10px;
-      /* Added margin for spacing */
-      background-color: #b2d8d8;
-      /* Light pastel color for the squares */
-      border-radius: 20px;
-      padding: 20px;
-      box-sizing: border-box;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      /* Subtle shadow effect */
-    }
+.form-container {
+  flex: 1;
+  /* Each square occupies equal space */
+  margin: 10px;
+  /* Added margin for spacing */
+  background-color: #b2d8d8;
+  /* Light pastel color for the squares */
+  border-radius: 20px;
+  padding: 20px;
+  box-sizing: border-box;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* Subtle shadow effect */
+}
 
-    label {
-      display: block;
-    }
+label {
+  display: block;
+  padding-top: 2px;
+}
+h1, h2, h3 {
+  text-align: center;
+}
+input,
+select, .text-input {
+  width: calc(100% - 6px);
+  padding: 1px;
+  box-sizing: border-box;
+}
+.en-linea{
+  display: inline-block;
+}
 
-    input,
-    select {
-      width: calc(100% - 6px);
-      padding: 1px;
-      box-sizing: border-box;
-    }
+.copy-button, .reset-button {
+  color: white;
+  padding: 1%;
+  border: none;
+  width: 69%;
+  border-radius: 8px;
+  cursor: pointer;
+  display: inline-block;
+  text-shadow: 0px 0px 4px rgba(0, 0, 0, 1);
+}
 
-    button {
-      background-color: #4caf50;
-      color: white;
-      padding: 6px;
-      border: none;
-      width: 70%;
-      border-radius: 8px;
-      cursor: pointer;
-      display: inline-block;
-    }
+.copy-button{
+  background-color: #4caf50;
+}
 
-    .reset-button {
-      background-color: rgb(235, 91, 91);
-      width: 29%;
-    }
+.reset-button {
+  background-color: rgb(235, 91, 91);
+  width: 29%;
+  display: inline-block;
+}
 
-    button:hover {
-      background-color: #45a049;
-    }
+.copy-button:hover {
+  background-color: #00ad09;
+}
 
-    .reset-button:hover {
-        background-color: rgb(184, 0, 0);
-      }
+.reset-button:hover {
+    background-color: rgb(184, 0, 0);
+  }
 
-    #outputTextArea {
-      width: calc(100% - 6px);
-      height: 350px;
-      /* Adjust the height as needed */
-      background-image: url;
-      background-size: cover;
-      background-position: center;
-      margin-top: 10px;
-    }
+#outputTextArea {
+  width: calc(100% - 6px);
+  height: 350px;
+  /* Adjust the height as needed */
+  background-image: url;
+  background-size: cover;
+  background-position: center;
+  margin-top: 10px;
+  padding: 10px;
+}

@@ -7,12 +7,12 @@
   <title>Herramientas de planillas</title>
   <link rel="stylesheet" type="text/css" href="planilla_styles.css">
 </head>
-<!--------                   ----------->
+<!--------                  ----------->
 <body>
   <div id="scrollableContainer">
     <div class="container">
       <div class="form-container">
-        <h3>Seleccione una plantilla y rellene</h3>
+        <h2>Seleccione una plantilla y rellene</h2>
         <select id="formSelector" onchange="showForm()">
           <!-- Dynamically generate options based on the forms object -->
           <option value="form1">[IT] Error de agenda</option>
@@ -57,7 +57,6 @@
           <option value="form36">Flow Full IP - Flow con Grilla asignada incorrecta. No ve canales locales.</option>
           <!-- ... Add other options as needed -->
         </select>
-
         <!-- Dynamically generate forms based on the forms object -->
         <script src="planillas.js"></script>
         <script>
@@ -86,31 +85,35 @@
 
               if (field.type === "textarea") {
                 input.rows = field.rows || 2; // Set default rows to 2 if not specified
+                input.className = "text-input";
               }
 
               formElement.appendChild(label);
               formElement.appendChild(input);
             });
 
-
+              /*
             const copyButton = document.createElement("button");
             copyButton.type = "button";
+            copyButton.className = "copy-button"
             copyButton.textContent = "Copiar Planilla al portapapeles";
+            copyButton.style.display = "inline-block";
             copyButton.onclick = function () {
               copyToClipboard(formId);
             };
 
             const resetButton = document.createElement("button");
             resetButton.type = "button";
-            resetButton.className="reset-button";
+            resetButton.className = "reset-button";
             resetButton.textContent = "Reiniciar";
+            resetButton.style.display = "inline-block";
             resetButton.onclick = function () {
               resetForm(formId);
             };
 
             formElement.appendChild(copyButton);
             formElement.appendChild(resetButton);
-
+                          */
             document.querySelector(".form-container").appendChild(formElement);
           }
 
@@ -119,7 +122,10 @@
             generateForm(formId, formInfo);
           });
         </script>
+        <input type="button" title="Copiar al portapapeles" value="Copiar al portapapeles" class="copy-button" onclick="copyToClipboard()">
+        <input type="button" title="Reiniciar" value="Reiniciar" class="reset-button" onclick="resetForm()">
       </div>
+
 
 
       <div class="square">
@@ -141,17 +147,19 @@
       });
 
       // Show the selected form
-      document.getElementById(selectedForm).style.display = 'grid';
+      document.getElementById(selectedForm).style.display = 'inline';
     }
 
-    function resetForm(formId) {
+    function resetForm() {
+      var formId = formSelector.value
       var form = document.getElementById(formId);
       form.reset();
       var outputTextArea = document.getElementById("outputTextArea");
       outputTextArea.value = '';
     }
 
-    function copyToClipboard(formId) {
+    function copyToClipboard() {
+      var formId = formSelector.value
       var form = document.getElementById(formId);
       var formData = Array.from(form.elements)
         .filter(el => el.type !== "button")
