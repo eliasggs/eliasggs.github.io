@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="es-AR">
-
+<!--
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Herramientas de planillas</title>
   <link rel="stylesheet" type="text/css" href="planilla_styles.css">
 </head>
-<!--------                  ----------->
+
 <body>
   <div id="scrollableContainer">
     <div class="container">
       <div class="form-container">
         <h2>Seleccione una plantilla y rellene</h2>
         <select id="formSelector" onchange="showForm()">
-          <!-- Dynamically generate options based on the forms object -->
+           Dynamically generate options based on the forms object 
           <option value="form1">[IT] Error de agenda</option>
           <option value="form2">[IT] Adelanto de Agenda</option>
           <option value="form3">[IT] Aseguramiento de Cita</option>
@@ -55,9 +55,9 @@
           <option value="form34">Flow Box - Problemas con APP.</option>
           <option value="form35">Flow Box - Flow con Grilla asignada incorrecta. No ve canales locales.</option>
           <option value="form36">Flow Full IP - Flow con Grilla asignada incorrecta. No ve canales locales.</option>
-          <!-- ... Add other options as needed -->
+           ... Add other options as needed 
         </select>
-        <!-- Dynamically generate forms based on the forms object -->
+         Dynamically generate forms based on the forms object 
         <script src="planillas.js"></script>
         <script>
 
@@ -130,11 +130,12 @@
 
       <div class="square">
         <h2>Tu planilla recién copiada</h2>
-        <!-- Output textarea next to the form elements -->
+        <!-- Output textarea next to the form elements 
         <textarea id="outputTextArea"></textarea>
       </div>
     </div>
   </div>
+  
   <script>
     function showForm() {
       var formSelector = document.getElementById("formSelector");
@@ -149,7 +150,6 @@
       // Show the selected form
       document.getElementById(selectedForm).style.display = 'inline';
     }
-
     function resetForm() {
       var formId = formSelector.value
       var form = document.getElementById(formId);
@@ -157,7 +157,6 @@
       var outputTextArea = document.getElementById("outputTextArea");
       outputTextArea.value = '';
     }
-
     function copyToClipboard() {
       var formId = formSelector.value
       var form = document.getElementById(formId);
@@ -177,9 +176,8 @@
       outputTextArea.select();
       document.execCommand("copy");
     }
-
     showForm();
   </script>
 </body>
-
+-->
 </html>
