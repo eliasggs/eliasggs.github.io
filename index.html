@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Firebase Firestore Web App</title>
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.1.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.1.3/firebase-firestore.js"></script>
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 1px solid black;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>Employee Data</h1>
+  <input type="text" id="filterInput" placeholder="Search...">
+  <table id="dataTable">
+    <thead>
+      <tr>
+        <th>DNI</th>
+        <th>Name</th>
+        <th>Team</th>
+        <th>Log-in time</th>
+        <th>Segment</th>
+        <th>Saturday status</th>
+        <th>Sunday status</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+  <script>
+    // Your Firebase configuration object
+    const firebaseConfig = {
+      apiKey: "YOUR_API_KEY",
+      authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+      projectId: "YOUR_PROJECT_ID",
+      storageBucket: "YOUR_PROJECT_ID.appspot.com",
+      messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+      appId: "YOUR_APP_ID"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
+    document.addEventListener('DOMContentLoaded', function() {
+      loadTable();
+
+      const filterInput = document.getElementById('filterInput');
+      filterInput.addEventListener('input', filterTable);
+
+      function loadTable() {
+        db.collection("employees").get().then((querySnapshot) => {
+          const data = querySnapshot.docs.map(doc => doc.data());
+          buildTable(data);
+        });
+      }
+
+      function buildTable(data) {
+        const table = document.getElementById('dataTable').getElementsByTagName('tbody')[0];
+        table.innerHTML = '';
+        data.forEach(row => {
+          const tr = document.createElement('tr');
+          for (const key in row) {
+            const td = document.createElement('td');
+            td.textContent = row[key];
+            tr.appendChild(td);
+          }
+          table.appendChild(tr);
+        });
+
+        // Add sorting functionality to table headers
+        const headers = document.querySelectorAll('th');
+        headers.forEach((header, index) => {
+          header.addEventListener('click', () => sortTable(index));
+        });
+      }
+
+      function filterTable() {
+        const filterValue = filterInput.value.toLowerCase();
+        const rows = document.querySelectorAll('#dataTable tbody tr');
+        rows.forEach(row => {
+          const cells = Array.from(row.children);
+          const matches = cells.some(cell => cell.textContent.toLowerCase().includes(filterValue));
+          row.style.display = matches ? '' : 'none';
+        });
+      }
+
+      function sortTable(colIndex) {
+        const table = document.getElementById('dataTable').getElementsByTagName('tbody')[0];
+        const rows = Array.from(table.rows);
+        const sortedRows = rows.sort((a, b) => {
+          const aText = a.cells[colIndex].textContent.trim();
+          const bText = b.cells[colIndex].textContent.trim();
+          return aText.localeCompare(bText, undefined, { numeric: true });
+        });
+
+        sortedRows.forEach(row => table.appendChild(row));
+      }
+    });
+  </script>
+</body>
+</html>
