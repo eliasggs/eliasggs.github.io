@@ -14,19 +14,9 @@
   
     // Your web app's Firebase configuration
     // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-    const firebaseConfig = {
-      apiKey: "AIzaSyBLX-VVm9DPjlZOcgHPuLmeqeAboPI8rcI",
-      authDomain: "programacion-finde.firebaseapp.com",
-      projectId: "programacion-finde",
-      storageBucket: "programacion-finde.appspot.com",
-      messagingSenderId: "1069021621887",
-      appId: "1:1069021621887:web:d9724e2a5f811b8b84d94a",
-      measurementId: "G-1NWMGXQ11R"
-    };
+
   
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-    const analytics = getAnalytics(app);
+
   </script>
   <style>
     table {
@@ -63,15 +53,19 @@
   <script>
     // Your Firebase configuration object
     const firebaseConfig = {
-      apiKey: "YOUR_API_KEY",
-      authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-      projectId: "YOUR_PROJECT_ID",
-      storageBucket: "YOUR_PROJECT_ID.appspot.com",
-      messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-      appId: "YOUR_APP_ID"
+      apiKey: "AIzaSyBLX-VVm9DPjlZOcgHPuLmeqeAboPI8rcI",
+      authDomain: "programacion-finde.firebaseapp.com",
+      projectId: "programacion-finde",
+      storageBucket: "programacion-finde.appspot.com",
+      messagingSenderId: "1069021621887",
+      appId: "1:1069021621887:web:d9724e2a5f811b8b84d94a",
+      measurementId: "G-1NWMGXQ11R"
     };
 
     // Initialize Firebase
+        // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
     firebase.initializeApp(firebaseConfig);
     const db = firebase.firestore();
 
