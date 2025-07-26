@@ -1,127 +1,83 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Firebase Firestore Web App</title>
-  <!-- Firebase SDK -->
-  <script type="module">
-    // Import the functions you need from the SDKs you need
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-app.js";
-    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-analytics.js";
-    // TODO: Add SDKs for Firebase products that you want to use
-    // https://firebase.google.com/docs/web/setup#available-libraries
-  
-    // Your web app's Firebase configuration
-    // For Firebase JS SDK v7.20.0 and later, measurementId is optional 
-
-  </script>
+  <title>Bienvenido a mi terminal</title>
   <style>
-    table {
-      width: 100%;
-      border-collapse: collapse;
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: 'Courier New', Courier, monospace;
+      margin: 0;
+      padding: 20px;
     }
-    th, td {
-      border: 1px solid black;
-      padding: 8px;
-      text-align: left;
+
+    .terminal-line {
+      margin: 10px 0;
     }
-    th {
-      cursor: pointer;
+
+    .prompt {
+      color: #00ff00;
+    }
+
+    .command {
+      color: #00ffff;
+    }
+
+    .output {
+      color: #ffffff;
+    }
+
+    .project {
+      margin: 20px 0;
+      padding: 10px;
+      border-left: 3px solid #555;
+    }
+
+    .project img {
+      max-width: 100%;
+      height: auto;
+      border: 1px solid #333;
+      margin-bottom: 10px;
+    }
+
+    .project-title {
+      color: #ffcc00;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .description {
+      color: #ccc;
     }
   </style>
 </head>
 <body>
-  <h1>Employee Data</h1>
-  <input type="text" id="filterInput" placeholder="Search...">
-  <table id="dataTable">
-    <thead>
-      <tr>
-        <th>DNI</th>
-        <th>Name</th>
-        <th>Team</th>
-        <th>Log-in time</th>
-        <th>Segment</th>
-        <th>Saturday status</th>
-        <th>Sunday status</th>
-      </tr>
-    </thead>
-    <tbody></tbody>
-  </table>
-  <script>
-    // Your Firebase configuration object
-    const firebaseConfig = {
-      apiKey: "AIzaSyBLX-VVm9DPjlZOcgHPuLmeqeAboPI8rcI",
-      authDomain: "programacion-finde.firebaseapp.com",
-      projectId: "programacion-finde",
-      storageBucket: "programacion-finde.appspot.com",
-      messagingSenderId: "1069021621887",
-      appId: "1:1069021621887:web:d9724e2a5f811b8b84d94a",
-      measurementId: "G-1NWMGXQ11R"
-    };
 
-    // Initialize Firebase
-        // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-    const analytics = getAnalytics(app);
-    firebase.initializeApp(firebaseConfig);
-    const db = firebase.firestore();
+  <div class="terminal-line"><span class="prompt">usuario@github.io:</span><span class="command">~</span>$ Bienvenido</div>
+  <div class="terminal-line output">Hola! Este es mi espacio estilo terminal donde muestro algunos proyectos personales.</div>
 
-    document.addEventListener('DOMContentLoaded', function() {
-      loadTable();
+  <div class="terminal-line"><span class="prompt">usuario@github.io:</span><span class="command">~/proyectos</span>$ ls</div>
 
-      const filterInput = document.getElementById('filterInput');
-      filterInput.addEventListener('input', filterTable);
+  <div class="project">
+    <div class="project-title">Proyecto 1: Portafolio</div>
+    <img src="ruta/a/imagen1.jpg" alt="Proyecto 1">
+    <p class="description">Un sitio web interactivo para mostrar mi experiencia y trabajos recientes.</p>
+  </div>
 
-      function loadTable() {
-        db.collection("employees").get().then((querySnapshot) => {
-          const data = querySnapshot.docs.map(doc => doc.data());
-          buildTable(data);
-        });
-      }
+  <div class="project">
+    <div class="project-title">Proyecto 2: Juego en JS</div>
+    <img src="ruta/a/imagen2.jpg" alt="Proyecto 2">
+    <p class="description">Un juego simple desarrollado en JavaScript para aprender sobre animaciones y lógica de juego.</p>
+  </div>
 
-      function buildTable(data) {
-        const table = document.getElementById('dataTable').getElementsByTagName('tbody')[0];
-        table.innerHTML = '';
-        data.forEach(row => {
-          const tr = document.createElement('tr');
-          for (const key in row) {
-            const td = document.createElement('td');
-            td.textContent = row[key];
-            tr.appendChild(td);
-          }
-          table.appendChild(tr);
-        });
+  <div class="project">
+    <div class="project-title">Proyecto 3: API REST</div>
+    <img src="ruta/a/imagen3.jpg" alt="Proyecto 3">
+    <p class="description">Una API creada con Node.js para gestionar tareas y usuarios.</p>
+  </div>
 
-        // Add sorting functionality to table headers
-        const headers = document.querySelectorAll('th');
-        headers.forEach((header, index) => {
-          header.addEventListener('click', () => sortTable(index));
-        });
-      }
+  <div class="terminal-line"><span class="prompt">usuario@github.io:</span><span class="command">~</span>$ _</div>
 
-      function filterTable() {
-        const filterValue = filterInput.value.toLowerCase();
-        const rows = document.querySelectorAll('#dataTable tbody tr');
-        rows.forEach(row => {
-          const cells = Array.from(row.children);
-          const matches = cells.some(cell => cell.textContent.toLowerCase().includes(filterValue));
-          row.style.display = matches ? '' : 'none';
-        });
-      }
-
-      function sortTable(colIndex) {
-        const table = document.getElementById('dataTable').getElementsByTagName('tbody')[0];
-        const rows = Array.from(table.rows);
-        const sortedRows = rows.sort((a, b) => {
-          const aText = a.cells[colIndex].textContent.trim();
-          const bText = b.cells[colIndex].textContent.trim();
-          return aText.localeCompare(bText, undefined, { numeric: true });
-        });
-
-        sortedRows.forEach(row => table.appendChild(row));
-      }
-    });
-  </script>
 </body>
 </html>
