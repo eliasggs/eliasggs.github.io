@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Bienvenido a mi terminal</title>
+  <title>Mi Espacio Retro</title>
 
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-RXDDGD0F3Q"></script>
@@ -16,78 +16,144 @@
   <style>
     body {
       background-color: #000;
-      color: #fff;
+      color: #0f0;
       font-family: 'Courier New', Courier, monospace;
       margin: 0;
       padding: 20px;
     }
 
-    .terminal-line {
-      margin: 10px 0;
-    }
-
-    .prompt {
-      color: #00ff00;
-    }
-
-    .command {
-      color: #00ffff;
-    }
-
-    .output {
-      color: #ffffff;
-    }
-
-    .project {
-      margin: 20px 0;
+    .window {
+      border: 2px solid #0f0;
+      margin: 20px auto;
       padding: 10px;
-      border-left: 3px solid #555;
+      max-width: 800px;
+      background-color: #000;
+      box-shadow: 0 0 10px #0f0;
     }
+
+    .window-title {
+    display: block;
+    border: 2px solid #0f0;
+    background-color: #000;
+    padding: 4px 10px;
+    margin-bottom: 10px;
+    color: #ff0;
+    font-weight: bold;
+    text-align: left;
+    box-shadow: 0 0 5px #0f0;
+    }
+
 
     .project img {
       max-width: 100%;
       height: auto;
-      border: 1px solid #333;
-      margin-bottom: 10px;
-    }
-
-    .project-title {
-      color: #ffcc00;
-      font-weight: bold;
-      font-size: 18px;
+      border: 1px solid #0f0;
+      margin-top: 10px;
     }
 
     .description {
       color: #ccc;
+      margin-top: 5px;
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 10px;
+      background-color: #0f0;
+      animation: blink 1s step-start infinite;
+      height: 1em;
+      vertical-align: bottom;
+    }
+
+    @keyframes blink {
+      50% { background: transparent; }
+    }
+    .thumb {
+    max-height: 250px;
+    height: auto;
+    width: auto;
+    }
+
+    .lang-switch {
+      position: fixed;
+      top: 10px;
+      right: 20px;
+      color: #0f0;
+      background: #000;
+      border: 1px solid #0f0;
+      padding: 5px 10px;
+      font-family: 'Courier New', Courier, monospace;
+      cursor: pointer;
+      z-index: 1000;
+      transition: background 0.3s;
+    }
+
+    .lang-switch:hover {
+      background: #0f0;
+      color: #000;
     }
   </style>
 </head>
 <body>
 
-  <div class="terminal-line"><span class="prompt">usuario@github.io:</span><span class="command">~</span>$ Bienvenido</div>
-  <div class="terminal-line output">Hola! Este es mi espacio estilo terminal donde muestro algunos proyectos personales.</div>
+  <!-- Botón de cambio de idioma -->
+  <div class="lang-switch" onclick="toggleLanguage()">EN ⇄ ES</div>
 
-  <div class="terminal-line"><span class="prompt">usuario@github.io:</span><span class="command">~/proyectos</span>$ ls</div>
+  <!-- Ventana de bienvenida -->
+  <div class="window">
+    <div class="window-title" data-lang="es">Eliasggs - mis proyectos</div>
+    <div class="window-title" data-lang="en" style="display:none;">Eliasggs - my projects</div>
 
-  <div class="project">
-    <div class="project-title">Proyecto 1: Portafolio</div>
-    <img src="ruta/a/imagen1.jpg" alt="Proyecto 1">
-    <p class="description">Un sitio web interactivo para mostrar mi experiencia y trabajos recientes.</p>
+    <p data-lang="es">¡Hola! Soy Elías Gonzalez Saez (A.K.A. Eliasggs en linea). Realizo pequeños proyectos de electrónica, programación e impresión 3d desde Villa Mercedes, San Luis, Argentina.</p>
+    <p data-lang="en" style="display: none;">Hi! I'm Elías Gonzalez Saez (A.k.A. Eliasggs online). I like to make small electronic, programming and 3D printing projects. I'm currently living in Villa Mercedes, San Luis, Argeninta.</p>
+
+    <p data-lang="es">Armé esta pequeña página web para compartirles algunos de ellos. Algunos de ellos no los he visto en otros lados, y parte de esta info tampoco. ¡Espero les sea útil o entretenido!.</p>
+    <p data-lang="en" style="display:none;">I put together this little web page to share some of them with you. Some of them I haven't seen elsewhere, and parts of this info either. I hope you find it useful or entertaining!</p>
+
+    <p><span class="cursor"></span></p>
   </div>
 
-  <div class="project">
-    <div class="project-title">Proyecto 2: Juego en JS</div>
-    <img src="ruta/a/imagen2.jpg" alt="Proyecto 2">
-    <p class="description">Un juego simple desarrollado en JavaScript para aprender sobre animaciones y lógica de juego.</p>
+  <!-- MXW01 -->
+ <div class="window">
+  <div class="window-title" data-lang="es">Dentro de una MXW01</div>
+  <div class="window-title" data-lang="en" style="display:none;">Inside an MXW01</div>
+
+    <div class="project">
+      <p class="description" data-lang="es">🟡 Siempre quise jugar con una impresora térmica, y vi que estas estan bastante baratas. Hay proyectos y software opensource para ellas, pero no para este nuevo modelo. Les comparto los chips principales que la hacen funcionar.</p>
+      <p class="description" data-lang="en" style="display:none;">🟡 I always wanted to play around with a thermal printer, and I saw that these are pretty cheap. There are open-source projects and software for them, but not for this new model. I'm sharing the main chips that make it work.</p>
+      <img src="resources\cat_printer_thumb.png" alt="MXW01 imprimiendo" class="thumb"><img src="resources\Chip1.png" alt="Primer Chip"  class="thumb"><img src="resources\Chip2.png" alt="Tercer Chip"  class="thumb"><img src="resources\Chip3.png" alt="Segundo Chip" class="thumb">
+    </div>
   </div>
 
-  <div class="project">
-    <div class="project-title">Proyecto 3: API REST</div>
-    <img src="ruta/a/imagen3.jpg" alt="Proyecto 3">
-    <p class="description">Una API creada con Node.js para gestionar tareas y usuarios.</p>
+  <!-- Traducción al español de soft impresora -->
+  <div class="window">
+    <div class="window-title" data-lang="es">En proceso</div>
+    <div class="window-title" data-lang="en" style="display:none;">Working on it</div>
+
+    <div class="project">
+      <p class="description" data-lang="es">🔵 Estoy armando esta parte.</p>
+      <p class="description" data-lang="en" style="display: none;">🔵 This is under construction.</p>
+      <img src="ruta/a/imagen2.jpg" alt="Proyecto 2">
+    </div>
   </div>
 
-  <div class="terminal-line"><span class="prompt">usuario@github.io:</span><span class="command">~</span>$ _</div>
+  <!-- Script de idioma -->
+  <script>
+    let currentLang = 'es';
+
+    function toggleLanguage() {
+      currentLang = currentLang === 'es' ? 'en' : 'es';
+
+      const allLangElems = document.querySelectorAll('[data-lang]');
+      allLangElems.forEach(el => {
+        if (el.dataset.lang === currentLang) {
+          el.style.display = '';
+        } else {
+          el.style.display = 'none';
+        }
+      });
+    }
+  </script>
 
 </body>
 </html>
