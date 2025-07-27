@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <title>Eliasggs's space</title>
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RXDDGD0F3Q"></script>
-    <script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RXDDGD0F3Q"></script>
+  <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
 
     gtag('config', 'G-RXDDGD0F3Q');
-    </script>
+  </script>
 
   <style>
     body {
@@ -33,15 +34,15 @@
     }
 
     .window-title {
-    display: block;
-    border: 2px solid #0f0;
-    background-color: #000;
-    padding: 4px 10px;
-    margin-bottom: 10px;
-    color: #ff0;
-    font-weight: bold;
-    text-align: left;
-    box-shadow: 0 0 5px #0f0;
+      display: block;
+      border: 2px solid #0f0;
+      background-color: #000;
+      padding: 4px 10px;
+      margin-bottom: 10px;
+      color: #ff0;
+      font-weight: bold;
+      text-align: left;
+      box-shadow: 0 0 5px #0f0;
     }
 
 
@@ -67,12 +68,15 @@
     }
 
     @keyframes blink {
-      50% { background: transparent; }
+      50% {
+        background: transparent;
+      }
     }
+
     .thumb {
-    max-height: 250px;
-    height: auto;
-    width: auto;
+      max-height: 250px;
+      height: auto;
+      width: auto;
     }
 
     .lang-switch {
@@ -95,6 +99,7 @@
     }
   </style>
 </head>
+
 <body>
 
   <!-- Botón de cambio de idioma -->
@@ -105,29 +110,53 @@
     <div class="window-title" data-lang="es">Eliasggs - mis proyectos</div>
     <div class="window-title" data-lang="en" style="display:none;">Eliasggs - my projects</div>
 
-    <p data-lang="es">¡Hola! Soy Elías Gonzalez Saez (A.K.A. Eliasggs en linea). Realizo pequeños proyectos de electrónica, programación e impresión 3d desde Villa Mercedes, San Luis, Argentina.</p>
-    <p data-lang="en" style="display: none;">Hi! I'm Elías Gonzalez Saez (A.k.A. Eliasggs online). I like to make small electronic, programming and 3D printing projects. I'm currently living in Villa Mercedes, San Luis, Argeninta.</p>
+    <p data-lang="es">¡Hola! Soy Elías Gonzalez Saez (A.K.A. Eliasggs en linea). Realizo pequeños proyectos de
+      electrónica, programación e impresión 3d desde Villa Mercedes, San Luis, Argentina.</p>
+    <p data-lang="en" style="display: none;">Hi! I'm Elías Gonzalez Saez (A.k.A. Eliasggs online). I like to make small
+      electronic, programming and 3D printing projects. I'm currently living in Villa Mercedes, San Luis, Argeninta.</p>
 
-    <p data-lang="es">Armé esta pequeña página web para compartirles algunos de ellos. Algunos de ellos no los he visto en otros lados, y parte de esta info tampoco. ¡Espero les sea útil o entretenido!.</p>
-    <p data-lang="en" style="display:none;">I put together this little web page to share some of them with you. Some of them I haven't seen elsewhere, and parts of this info either. I hope you find it useful or entertaining!</p>
+    <p data-lang="es">Armé esta pequeña página web para compartirles algunos de ellos. Algunos de ellos no los he visto
+      en otros lados, y parte de esta info tampoco. ¡Espero les sea útil o entretenido!.</p>
+    <p data-lang="en" style="display:none;">I put together this little web page to share some of them with you. Some of
+      them I haven't seen elsewhere, and parts of this info either. I hope you find it useful or entertaining!</p>
 
     <p><span class="cursor"></span></p>
   </div>
 
   <!-- MXW01 -->
- <div class="window">
-  <div class="window-title" data-lang="es">Dentro de una MXW01</div>
-  <div class="window-title" data-lang="en" style="display:none;">Inside an MXW01</div>
+  <div class="window">
+    <div class="window-title" data-lang="es">Dentro de una MXW01</div>
+    <div class="window-title" data-lang="en" style="display:none;">Inside an MXW01</div>
 
     <div class="project">
-      <p class="description" data-lang="es">🟡 Siempre quise jugar con una impresora térmica, y vi que estas estan bastante baratas. Hay proyectos y software opensource para ellas, pero no para este nuevo modelo. Les comparto los chips principales que la hacen funcionar.</p>
-      <p class="description" data-lang="es">◼ No hay mucho para ver, encontramos solo 3 chips para el funcionamiento de la impresora y 1 batería de litio 18650 de supuestos 1200mah.</p>
-      <p class="description" data-lang="es">◼ Controlador de carga TP4056 para cargar la batería.</p>
-      <p class="description" data-lang="es">◼ Doble inversor en puente H SA8833 para controlar el motor.</p>
-      <p class="description" data-lang="es">❔ Micro controlador misterioso con la escritura BP2A669.</p>
+      <p class="description" data-lang="es">🟡 Siempre quise jugar con una impresora térmica, y vi que estas están
+        bastante baratas. Hay proyectos y software open source para algunas, pero no para este modelo nuevo. Comparto
+        los principales chips que la hacen funcionar.</p>
+      <p class="description" data-lang="es">No hay mucho para ver: solo tres chips que manejan el funcionamiento de la
+        impresora.</p>
 
-      <p class="description" data-lang="en" style="display:none;">🟡 I always wanted to play around with a thermal printer, and I saw that these are pretty cheap. There are open-source projects and software for them, but not for this new model. I'm sharing the main chips that make it work.</p>
-      <img src="resources\cat_printer_thumb.png" alt="MXW01 imprimiendo" class="thumb"><img src="resources\Chip1.png" alt="Primer Chip"  class="thumb"><img src="resources\Chip2.png" alt="Tercer Chip"  class="thumb"><img src="resources\Chip3.png" alt="Segundo Chip" class="thumb">
+      <ul data-lang="es" class="description">
+        <li><strong>Batería de litio 18650</strong> rotulada como 1200mAh.</li>
+        <li><strong>TP4056</strong>: Controlador de carga para la batería.</li>
+        <li><strong>SA8833</strong>: Doble inversor en puente H para controlar el motor.</li>
+        <li><strong>BP2A669</strong>: Microcontrolador misterioso que también maneja el Bluetooth.</li>
+      </ul>
+
+      <p class="description" data-lang="en" style="display:none;">🟡 I always wanted to play around with a thermal
+        printer, and I saw that these are pretty cheap. There are open-source projects and software for them, but not
+        for this new model. I'm sharing the main chips that make it work.</p>
+      <p class="description" data-lang="en" style="display:none;">There’s not much to see—just three chips running the
+        printer.</p>
+
+      <ul data-lang="en" style="display:none;" class="description">
+        <li><strong>18650 lithium battery</strong> labeled as 1200mAh.</li>
+        <li><strong>TP4056</strong>: Charging controller for the battery.</li>
+        <li><strong>SA8833</strong>: Dual H-bridge inverter to control the motor.</li>
+        <li><strong>BP2A669</strong>: A mysterious microcontroller that also handles Bluetooth.</li>
+      </ul>
+      <img src="resources\cat_printer_thumb.png" alt="MXW01 imprimiendo" class="thumb"><img src="resources\Chip1.png"
+        alt="Primer Chip" class="thumb"><img src="resources\Chip2.png" alt="Tercer Chip" class="thumb"><img
+        src="resources\Chip3.png" alt="Segundo Chip" class="thumb">
     </div>
   </div>
 
@@ -162,4 +191,5 @@
   </script>
 
 </body>
+
 </html>
