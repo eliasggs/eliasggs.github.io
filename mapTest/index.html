@@ -40,40 +40,51 @@
   header {
     background: var(--verde-cartel);
     color: var(--crema);
-    padding: 28px 32px 22px;
-    border-bottom: 6px solid var(--terracota);
+    padding: 12px 20px;
+    border-bottom: 4px solid var(--terracota);
     position: relative;
     overflow: hidden;
     flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: 14px;
   }
 
   header::before {
     content: "";
     position: absolute;
-    top: -40px;
-    right: -40px;
-    width: 180px;
-    height: 180px;
-    border: 2px solid rgba(243,239,230,0.12);
+    top: -50px;
+    right: -30px;
+    width: 110px;
+    height: 110px;
+    border: 2px solid rgba(243,239,230,0.1);
     border-radius: 50%;
+  }
+
+  .titulo-grupo {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    flex-wrap: wrap;
   }
 
   .eyebrow {
     font-family: 'Space Mono', monospace;
-    font-size: 12px;
-    letter-spacing: 0.14em;
+    font-size: 10px;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--terracota-suave);
-    margin-bottom: 6px;
+    white-space: nowrap;
   }
 
   h1 {
     font-family: 'Fraunces', serif;
     font-weight: 600;
-    font-size: clamp(28px, 4vw, 42px);
+    font-size: 19px;
     margin: 0;
-    line-height: 1.05;
+    line-height: 1.1;
     letter-spacing: -0.01em;
+    white-space: nowrap;
   }
 
   h1 em {
@@ -82,39 +93,92 @@
   }
 
   .subt {
-    font-size: 14.5px;
-    max-width: 560px;
-    margin-top: 10px;
-    color: rgba(243,239,230,0.82);
-    line-height: 1.5;
+    display: none;
+  }
+
+  @media (max-width: 640px) {
+    .eyebrow { display: none; }
+    h1 { font-size: 16px; }
   }
 
   /* ---------- Layout principal ---------- */
   .app {
-    display: grid;
-    grid-template-columns: 320px 1fr;
+    display: flex;
     flex: 1 1 auto;
     min-height: 0;
+    position: relative;
   }
 
   .mapa-contenedor {
     height: 100%;
     min-height: 0;
+    flex: 1 1 auto;
   }
 
-  @media (max-width: 860px) {
-    .app {
-      grid-template-columns: 1fr;
-      grid-template-rows: minmax(0, 40%) 1fr;
-    }
-  }
-
-  /* ---------- Panel lateral ---------- */
-  .panel {
+  /* ---------- Panel lateral (sidebar fijo, colapsable) ---------- */
+  .panel-envoltorio {
+    flex-shrink: 0;
+    width: 300px;
+    height: 100%;
     background: var(--blanco);
     border-right: 1px solid var(--linea);
-    padding: 22px 20px 30px;
+    position: relative;
+    overflow: hidden;
+    transition: width 0.22s ease;
+  }
+
+  .panel-envoltorio.colapsado {
+    width: 0;
+  }
+
+  .panel {
+    width: 300px;
+    height: 100%;
+    padding: 16px 16px 24px;
     overflow-y: auto;
+  }
+
+  .boton-colapsar {
+    position: absolute;
+    top: 14px;
+    left: 286px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--verde-cartel);
+    color: var(--crema);
+    border: 2px solid var(--blanco);
+    box-shadow: 0 2px 8px rgba(27,27,23,0.25);
+    cursor: pointer;
+    z-index: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    transition: left 0.22s ease, transform 0.22s ease, background 0.15s;
+  }
+
+  .boton-colapsar:hover { background: var(--verde-claro); }
+
+  .app.colapsado .boton-colapsar {
+    left: 0px;
+    transform: rotate(180deg);
+  }
+
+  /* En mobile, el panel se convierte en overlay deslizante sobre el mapa */
+  @media (max-width: 860px) {
+    .panel-envoltorio {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 550;
+      box-shadow: 4px 0 18px rgba(27,27,23,0.18);
+    }
+
+    .panel-envoltorio.colapsado {
+      width: 0;
+      box-shadow: none;
+    }
   }
 
   .panel-titulo {
@@ -129,23 +193,44 @@
   }
 
   .grupo-filtro {
-    margin-bottom: 22px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid var(--linea);
+    padding-bottom: 8px;
   }
 
-  .grupo-filtro h3 {
-    font-family: 'Fraunces', serif;
-    font-size: 16px;
-    font-weight: 600;
-    margin: 0 0 10px;
-    color: var(--verde-cartel);
+  /* Fila de categoría principal (Educativas / Culturales) */
+  .fila-categoria {
     display: flex;
     align-items: center;
     gap: 8px;
+    padding: 6px 2px;
+  }
+
+  .fila-categoria h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 15px;
+    font-weight: 600;
+    margin: 0;
+    color: var(--verde-cartel);
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    flex: 1;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .fila-categoria input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--verde-cartel);
+    cursor: pointer;
+    flex-shrink: 0;
   }
 
   .punto {
-    width: 10px;
-    height: 10px;
+    width: 9px;
+    height: 9px;
     border-radius: 50%;
     display: inline-block;
     flex-shrink: 0;
@@ -154,12 +239,66 @@
   .punto.educativa { background: var(--verde-claro); }
   .punto.cultural { background: var(--terracota); }
 
+  /* Botón expandir/colapsar (signo +) */
+  .btn-expandir {
+    width: 22px;
+    height: 22px;
+    border-radius: 5px;
+    border: 1px solid var(--linea);
+    background: var(--crema);
+    color: var(--verde-cartel);
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: background 0.15s, transform 0.15s;
+  }
+
+  .btn-expandir:hover { background: var(--linea); }
+
+  .btn-expandir.abierto { transform: rotate(45deg); }
+
+  /* Subniveles (anidado nivel 1: primario/secundario/adultos) */
+  .subniveles {
+    display: none;
+    padding-left: 16px;
+    margin-top: 2px;
+  }
+
+  .subniveles.abierto { display: block; }
+
+  .fila-nivel {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 2px;
+  }
+
+  .fila-nivel label.chk {
+    flex: 1;
+    padding: 4px;
+    margin: 0;
+  }
+
+  /* Subniveles anidado nivel 2: turnos dentro de cada nivel */
+  .subturnos {
+    display: none;
+    padding-left: 18px;
+    margin-bottom: 4px;
+  }
+
+  .subturnos.abierto { display: block; }
+
   label.chk {
     display: flex;
     align-items: center;
-    gap: 9px;
-    font-size: 14px;
-    padding: 7px 4px;
+    gap: 8px;
+    font-size: 13.5px;
+    padding: 5px 4px;
     cursor: pointer;
     border-radius: 6px;
     transition: background 0.15s;
@@ -169,22 +308,18 @@
   label.chk:hover { background: var(--crema); }
 
   label.chk input {
-    width: 16px;
-    height: 16px;
+    width: 15px;
+    height: 15px;
     accent-color: var(--verde-cartel);
     cursor: pointer;
+    flex-shrink: 0;
   }
 
-  .contador {
-    margin-left: auto;
-    font-family: 'Space Mono', monospace;
-    font-size: 11px;
-    color: #8a8473;
-  }
+  label.chk.turno { font-size: 13px; color: #5c5648; }
 
   .resultados-info {
-    margin-top: 24px;
-    padding-top: 16px;
+    margin-top: 18px;
+    padding-top: 14px;
     border-top: 1px solid var(--linea);
     font-family: 'Space Mono', monospace;
     font-size: 12px;
@@ -358,35 +493,88 @@
 <body>
 
 <header>
-  <div class="eyebrow">Municipalidad de Villa Mercedes · Guía pública</div>
-  <h1>Educación <em>&amp;</em> Cultura en el mapa</h1>
-  <p class="subt">Buscá escuelas, jardines y centros culturales de la ciudad. Filtrá por nivel, turno o modalidad para adultos, y tocá un punto para ver el detalle.</p>
+  <div class="titulo-grupo">
+    <span class="eyebrow">Municipalidad de Villa Mercedes</span>
+    <h1>Educación <em>&amp;</em> Cultura en el mapa</h1>
+  </div>
 </header>
 
-<div class="app">
-  <aside class="panel">
-    <div class="panel-titulo">Filtros</div>
+<div class="app" id="app">
+  <button class="boton-colapsar" id="boton-colapsar" aria-label="Colapsar panel de filtros" title="Colapsar panel de filtros">‹</button>
 
-    <div class="grupo-filtro">
-      <h3><span class="punto educativa"></span>Instituciones educativas</h3>
-      <label class="chk"><input type="checkbox" class="filtro" data-filtro="primario" checked> Nivel primario</label>
-      <label class="chk"><input type="checkbox" class="filtro" data-filtro="secundario" checked> Nivel secundario</label>
-      <label class="chk"><input type="checkbox" class="filtro" data-filtro="adultos" checked> Educación para adultos</label>
-      <label class="chk"><input type="checkbox" class="filtro" data-filtro="turno_manana" checked> Turno mañana</label>
-      <label class="chk"><input type="checkbox" class="filtro" data-filtro="turno_tarde" checked> Turno tarde</label>
-      <label class="chk"><input type="checkbox" class="filtro" data-filtro="turno_noche" checked> Turno noche</label>
-    </div>
+  <div class="panel-envoltorio" id="panel-envoltorio">
+    <aside class="panel">
+      <div class="panel-titulo">Filtros</div>
 
-    <div class="grupo-filtro">
-      <h3><span class="punto cultural"></span>Instituciones culturales</h3>
-      <label class="chk"><input type="checkbox" id="mostrar-cultural" checked> Mostrar centros culturales</label>
-    </div>
+      <!-- ===== Categoría: Educativas ===== -->
+      <div class="grupo-filtro">
+        <div class="fila-categoria">
+          <input type="checkbox" id="cat-educativa" checked>
+          <h3 id="titulo-educativa"><span class="punto educativa"></span>Educativas</h3>
+          <button class="btn-expandir" data-target="niveles-educativa">+</button>
+        </div>
 
-    <div class="resultados-info">
-      <strong id="contador-resultados">0</strong>
-      instituciones visibles en el mapa
-    </div>
-  </aside>
+        <div class="subniveles" id="niveles-educativa">
+
+          <!-- Nivel: Primario -->
+          <div class="fila-nivel">
+            <label class="chk">
+              <input type="checkbox" class="nivel" data-nivel="primario" checked>
+              Primario
+            </label>
+            <button class="btn-expandir" data-target="turnos-primario">+</button>
+          </div>
+          <div class="subturnos" id="turnos-primario">
+            <label class="chk turno"><input type="checkbox" class="turno-chk" data-nivel="primario" data-turno="turno_manana" checked> ☀️ Mañana</label>
+            <label class="chk turno"><input type="checkbox" class="turno-chk" data-nivel="primario" data-turno="turno_tarde" checked> 🌤️ Tarde</label>
+            <label class="chk turno"><input type="checkbox" class="turno-chk" data-nivel="primario" data-turno="turno_noche" checked> 🌙 Noche</label>
+          </div>
+
+          <!-- Nivel: Secundario -->
+          <div class="fila-nivel">
+            <label class="chk">
+              <input type="checkbox" class="nivel" data-nivel="secundario" checked>
+              Secundario
+            </label>
+            <button class="btn-expandir" data-target="turnos-secundario">+</button>
+          </div>
+          <div class="subturnos" id="turnos-secundario">
+            <label class="chk turno"><input type="checkbox" class="turno-chk" data-nivel="secundario" data-turno="turno_manana" checked> ☀️ Mañana</label>
+            <label class="chk turno"><input type="checkbox" class="turno-chk" data-nivel="secundario" data-turno="turno_tarde" checked> 🌤️ Tarde</label>
+            <label class="chk turno"><input type="checkbox" class="turno-chk" data-nivel="secundario" data-turno="turno_noche" checked> 🌙 Noche</label>
+          </div>
+
+          <!-- Nivel: Adultos -->
+          <div class="fila-nivel">
+            <label class="chk">
+              <input type="checkbox" class="nivel" data-nivel="adultos" checked>
+              Educación para adultos
+            </label>
+            <button class="btn-expandir" data-target="turnos-adultos">+</button>
+          </div>
+          <div class="subturnos" id="turnos-adultos">
+            <label class="chk turno"><input type="checkbox" class="turno-chk" data-nivel="adultos" data-turno="turno_manana" checked> ☀️ Mañana</label>
+            <label class="chk turno"><input type="checkbox" class="turno-chk" data-nivel="adultos" data-turno="turno_tarde" checked> 🌤️ Tarde</label>
+            <label class="chk turno"><input type="checkbox" class="turno-chk" data-nivel="adultos" data-turno="turno_noche" checked> 🌙 Noche</label>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ===== Categoría: Culturales ===== -->
+      <div class="grupo-filtro">
+        <div class="fila-categoria">
+          <input type="checkbox" id="cat-cultural" checked>
+          <h3><span class="punto cultural"></span>Culturales</h3>
+        </div>
+      </div>
+
+      <div class="resultados-info">
+        <strong id="contador-resultados">0</strong>
+        instituciones visibles en el mapa
+      </div>
+    </aside>
+  </div>
 
   <div class="mapa-contenedor" style="position: relative;">
     <div id="mapa"></div>
@@ -457,22 +645,6 @@
     });
   }
 
-  function etiquetaTurno(inst) {
-    const turnos = [];
-    if (inst.turno_manana) turnos.push('Mañana');
-    if (inst.turno_tarde) turnos.push('Tarde');
-    if (inst.turno_noche) turnos.push('Noche');
-    return turnos.join(' / ') || 'Sin datos de turno';
-  }
-
-  function nivelesTexto(inst) {
-    const niveles = [];
-    if (inst.primario) niveles.push('Primario');
-    if (inst.secundario) niveles.push('Secundario');
-    if (inst.adultos) niveles.push('Adultos');
-    return niveles.join(' · ') || 'Sin datos de nivel';
-  }
-
   function construirPopupEducativa(inst) {
     let etiquetas = '';
     if (inst.primario) etiquetas += `<span class="pop-etiqueta">Primario</span>`;
@@ -504,33 +676,49 @@
     `;
   }
 
+  // ---------- Filtros jerárquicos: Categoría > Nivel > Turno ----------
+  const nivelesEducativos = ['primario', 'secundario', 'adultos'];
+  const turnosPosibles = ['turno_manana', 'turno_tarde', 'turno_noche'];
+
+  function estadoNivel(nivel) {
+    // Devuelve true si, para ese nivel, hay al menos un turno tildado
+    const turnosDelNivel = document.querySelectorAll(`.turno-chk[data-nivel="${nivel}"]`);
+    return Array.from(turnosDelNivel).some(t => t.checked);
+  }
+
+  function institucionVisible(inst) {
+    if (inst.tipo === 'cultural') {
+      return document.getElementById('cat-cultural').checked;
+    }
+
+    // Educativa: visible si la categoría general está activa,
+    // Y al menos uno de sus niveles está activo (checkbox de nivel tildado
+    // Y la institución tiene ese nivel),
+    // Y para ese nivel, al menos uno de los turnos tildados coincide con un turno real de la institución.
+    if (!document.getElementById('cat-educativa').checked) return false;
+
+    return nivelesEducativos.some(nivel => {
+      if (!inst[nivel]) return false; // la institución no tiene ese nivel
+      const chkNivel = document.querySelector(`.nivel[data-nivel="${nivel}"]`);
+      if (!chkNivel || !chkNivel.checked) return false; // el nivel está desactivado
+
+      // turnos tildados para este nivel en la UI
+      const turnosActivosUI = Array.from(document.querySelectorAll(`.turno-chk[data-nivel="${nivel}"]:checked`))
+        .map(t => t.dataset.turno);
+
+      // la institución debe tener al menos uno de esos turnos activos
+      return turnosActivosUI.some(turno => inst[turno]);
+    });
+  }
+
   function renderizarMarcadores() {
     marcadores.forEach(m => mapa.removeLayer(m));
     marcadores = [];
 
-    const filtrosActivos = Array.from(document.querySelectorAll('.filtro:checked')).map(f => f.dataset.filtro);
-    const mostrarCultural = document.getElementById('mostrar-cultural').checked;
-
     let visibles = 0;
 
     instituciones.forEach(inst => {
-      let mostrar = false;
-
-      if (inst.tipo === 'educativa') {
-        // Se muestra si cumple con AL MENOS uno de los filtros de nivel marcados,
-        // y al menos uno de los filtros de turno marcados (si tiene datos de turno).
-        const filtrosNivel = ['primario', 'secundario', 'adultos'];
-        const filtrosTurno = ['turno_manana', 'turno_tarde', 'turno_noche'];
-
-        const nivelOk = filtrosNivel.some(f => filtrosActivos.includes(f) && inst[f]);
-        const turnoOk = filtrosTurno.some(f => filtrosActivos.includes(f) && inst[f]);
-
-        mostrar = nivelOk && turnoOk;
-      } else if (inst.tipo === 'cultural') {
-        mostrar = mostrarCultural;
-      }
-
-      if (mostrar) {
+      if (institucionVisible(inst)) {
         visibles++;
         const marcador = L.marker([inst.lat, inst.lng], { icon: crearIcono(inst.tipo) });
         const contenido = inst.tipo === 'educativa'
@@ -557,11 +745,69 @@
       document.getElementById('contador-resultados').textContent = '0';
     });
 
-  // ---------- Listeners de filtros ----------
-  document.querySelectorAll('.filtro').forEach(el => {
-    el.addEventListener('change', renderizarMarcadores);
+  // ---------- Checkbox de categoría educativa: prende/apaga todos los niveles y turnos hijos ----------
+  document.getElementById('cat-educativa').addEventListener('change', (e) => {
+    const activo = e.target.checked;
+    document.querySelectorAll('.nivel, .turno-chk').forEach(chk => chk.checked = activo);
+    renderizarMarcadores();
   });
-  document.getElementById('mostrar-cultural').addEventListener('change', renderizarMarcadores);
+
+  document.getElementById('cat-cultural').addEventListener('change', renderizarMarcadores);
+
+  // ---------- Checkbox de nivel: prende/apaga sus turnos hijos, y al revés actualiza el padre ----------
+  document.querySelectorAll('.nivel').forEach(chkNivel => {
+    chkNivel.addEventListener('change', () => {
+      const nivel = chkNivel.dataset.nivel;
+      document.querySelectorAll(`.turno-chk[data-nivel="${nivel}"]`).forEach(t => t.checked = chkNivel.checked);
+      actualizarCheckboxCategoria();
+      renderizarMarcadores();
+    });
+  });
+
+  // ---------- Checkbox de turno: si se apagan todos los turnos de un nivel, apaga el nivel; si se prende uno, prende el nivel ----------
+  document.querySelectorAll('.turno-chk').forEach(chkTurno => {
+    chkTurno.addEventListener('change', () => {
+      const nivel = chkTurno.dataset.nivel;
+      const chkNivel = document.querySelector(`.nivel[data-nivel="${nivel}"]`);
+      chkNivel.checked = estadoNivel(nivel);
+      actualizarCheckboxCategoria();
+      renderizarMarcadores();
+    });
+  });
+
+  // Mantiene el checkbox de categoría "Educativas" coherente: tildado si algún nivel está activo
+  function actualizarCheckboxCategoria() {
+    const algunNivelActivo = Array.from(document.querySelectorAll('.nivel')).some(n => n.checked);
+    document.getElementById('cat-educativa').checked = algunNivelActivo;
+  }
+
+  // ---------- Botones expandir/colapsar (signo +) ----------
+  document.querySelectorAll('.btn-expandir').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const destino = document.getElementById(btn.dataset.target);
+      const abrir = !destino.classList.contains('abierto');
+      destino.classList.toggle('abierto', abrir);
+      btn.classList.toggle('abierto', abrir);
+    });
+  });
+
+  // Clic en el título "Educativas" también expande/colapsa sus niveles
+  document.getElementById('titulo-educativa').addEventListener('click', () => {
+    const btn = document.querySelector('.btn-expandir[data-target="niveles-educativa"]');
+    btn.click();
+  });
+
+  // ---------- Colapsar / expandir el panel lateral completo ----------
+  const appEl = document.getElementById('app');
+  const panelEnvoltorio = document.getElementById('panel-envoltorio');
+  const botonColapsar = document.getElementById('boton-colapsar');
+
+  botonColapsar.addEventListener('click', () => {
+    appEl.classList.toggle('colapsado');
+    panelEnvoltorio.classList.toggle('colapsado');
+    setTimeout(() => mapa.invalidateSize(), 230); // espera a que termine la transición CSS
+  });
 </script>
 
 </body>
