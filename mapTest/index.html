@@ -22,11 +22,18 @@
 
   * { box-sizing: border-box; }
 
-  body {
+  html, body {
     margin: 0;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  body {
     font-family: 'Archivo', sans-serif;
     background: var(--crema);
     color: var(--tinta);
+    display: flex;
+    flex-direction: column;
   }
 
   /* ---------- Encabezado ---------- */
@@ -37,6 +44,7 @@
     border-bottom: 6px solid var(--terracota);
     position: relative;
     overflow: hidden;
+    flex-shrink: 0;
   }
 
   header::before {
@@ -85,16 +93,20 @@
   .app {
     display: grid;
     grid-template-columns: 320px 1fr;
-    min-height: calc(100vh - 130px);
+    flex: 1 1 auto;
+    min-height: 0;
   }
 
   .mapa-contenedor {
-    height: calc(100vh - 130px);
+    height: 100%;
+    min-height: 0;
   }
 
   @media (max-width: 860px) {
-    .app { grid-template-columns: 1fr; }
-    .mapa-contenedor { height: 60vh; }
+    .app {
+      grid-template-columns: 1fr;
+      grid-template-rows: minmax(0, 40%) 1fr;
+    }
   }
 
   /* ---------- Panel lateral ---------- */
@@ -335,6 +347,7 @@
     text-align: center;
     padding: 10px;
     letter-spacing: 0.04em;
+    flex-shrink: 0;
   }
 
   /* Scrollbar discreta */
@@ -391,6 +404,11 @@
 <script>
   // ---------- Inicialización del mapa ----------
   const mapa = L.map('mapa', { zoomControl: true }).setView([-33.6755, -65.4540], 14);
+
+  // Asegura que Leaflet recalcule su tamaño tras el primer render del layout
+  // (importante porque ahora el alto del mapa depende de flex/grid, no de un vh fijo)
+  setTimeout(() => mapa.invalidateSize(), 0);
+  window.addEventListener('resize', () => mapa.invalidateSize());
 
   const capasEstilo = {
     claro: L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
