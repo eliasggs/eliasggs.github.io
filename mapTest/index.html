@@ -140,7 +140,7 @@
 
   .boton-colapsar {
     position: absolute;
-    top: 40%;
+    top: 45%;
     left: 286px;
     width: 28px;
     height: 28px;
@@ -483,6 +483,33 @@
     border-radius: 6px;
   }
 
+  .pop-boton-llegar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    margin-top: 12px;
+    padding: 9px 10px;
+    background: var(--terracota);
+    color: var(--blanco);
+    font-family: 'Archivo', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    text-decoration: none;
+    border-radius: 7px;
+    transition: background 0.15s;
+  }
+
+  .pop-boton-llegar:hover {
+    background: #A4502F;
+  }
+
+  .pop-boton-llegar svg {
+    width: 15px;
+    height: 15px;
+    flex-shrink: 0;
+  }
+
   /* ---------- Marcadores personalizados ---------- */
   .marcador-icono {
     width: 30px;
@@ -689,6 +716,19 @@
     turno_noche: '🌙 Noche'
   };
 
+  // Botón "Cómo llegar": abre Google Maps con navegación directa a las
+  // coordenadas de la institución. En celular abre la app de Maps; en
+  // computadora abre Google Maps en el navegador.
+  function botonComoLlegar(inst) {
+    const url = `https://www.google.com/maps/dir/?api=1&destination=${inst.lat},${inst.lng}`;
+    return `
+      <a class="pop-boton-llegar" href="${url}" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"></polygon></svg>
+        Cómo llegar
+      </a>
+    `;
+  }
+
   function construirPopupEducativa(inst) {
     if (inst.datos_pendientes) {
       return `
@@ -697,6 +737,7 @@
         <div class="pop-fila"><b>Dirección:</b> ${inst.direccion || '—'}</div>
         <div class="pop-fila"><b>Teléfono:</b> ${inst.telefono || '—'}</div>
         <div class="pop-pendiente">📋 Datos pendientes de completar</div>
+        ${botonComoLlegar(inst)}
       `;
     }
 
@@ -728,6 +769,7 @@
       <div class="pop-fila"><b>Dirección:</b> ${inst.direccion || '—'}</div>
       <div class="pop-fila"><b>Teléfono:</b> ${inst.telefono || '—'}</div>
       ${bloquesNivel}
+      ${botonComoLlegar(inst)}
     `;
   }
 
@@ -741,6 +783,7 @@
       <div class="pop-fila"><b>Edades:</b> ${inst.edades || '—'}</div>
       <div class="pop-fila"><b>Horarios:</b> ${inst.horarios || '—'}</div>
       <div class="pop-fila"><b>Actividades:</b> ${inst.actividades || '—'}</div>
+      ${botonComoLlegar(inst)}
     `;
   }
 
