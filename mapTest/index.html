@@ -140,7 +140,7 @@
 
   .boton-colapsar {
     position: absolute;
-    top: 40%;
+    top: 14px;
     left: 286px;
     width: 28px;
     height: 28px;
@@ -392,7 +392,7 @@
 
   .leaflet-popup-content {
     margin: 16px 18px;
-    width: 260px !important;
+    width: 280px !important;
     font-family: 'Archivo', sans-serif;
   }
 
@@ -449,6 +449,38 @@
     background: #2B2B22;
     color: #F3EFE6;
     border-color: #2B2B22;
+  }
+
+  .pop-nivel {
+    margin-top: 9px;
+    padding-top: 8px;
+    border-top: 1px solid var(--linea);
+  }
+
+  .pop-nivel:first-of-type {
+    margin-top: 10px;
+  }
+
+  .pop-turnos {
+    font-size: 12.5px;
+    color: #4a4640;
+    margin-top: 4px;
+    line-height: 1.5;
+  }
+
+  .pop-turnos-sin-dato {
+    color: #a39c87;
+    font-style: italic;
+  }
+
+  .pop-pendiente {
+    margin-top: 10px;
+    font-size: 12.5px;
+    font-family: 'Space Mono', monospace;
+    color: #8C4324;
+    background: #F6E3D8;
+    padding: 7px 9px;
+    border-radius: 6px;
   }
 
   /* ---------- Marcadores personalizados ---------- */
@@ -645,21 +677,57 @@
     });
   }
 
+  const NOMBRES_NIVEL = {
+    primario: 'Primario',
+    secundario: 'Secundario',
+    adultos: 'Educación para adultos'
+  };
+
+  const NOMBRES_TURNO = {
+    turno_manana: '☀️ Mañana',
+    turno_tarde: '🌤️ Tarde',
+    turno_noche: '🌙 Noche'
+  };
+
   function construirPopupEducativa(inst) {
-    let etiquetas = '';
-    if (inst.primario) etiquetas += `<span class="pop-etiqueta">Primario</span>`;
-    if (inst.secundario) etiquetas += `<span class="pop-etiqueta">Secundario</span>`;
-    if (inst.adultos) etiquetas += `<span class="pop-etiqueta">Educ. adultos</span>`;
-    if (inst.turno_manana) etiquetas += `<span class="pop-etiqueta">☀️ Mañana</span>`;
-    if (inst.turno_tarde) etiquetas += `<span class="pop-etiqueta">🌤️ Tarde</span>`;
-    if (inst.turno_noche) etiquetas += `<span class="pop-etiqueta activa-noche">🌙 Noche</span>`;
+    if (inst.datos_pendientes) {
+      return `
+        <div class="pop-tipo educativa">Institución educativa</div>
+        <p class="pop-nombre">${inst.nombre}</p>
+        <div class="pop-fila"><b>Dirección:</b> ${inst.direccion || '—'}</div>
+        <div class="pop-fila"><b>Teléfono:</b> ${inst.telefono || '—'}</div>
+        <div class="pop-pendiente">📋 Datos pendientes de completar</div>
+      `;
+    }
+
+    let bloquesNivel = '';
+    for (const [nivel, datosNivel] of Object.entries(inst.niveles || {})) {
+      if (!datosNivel) continue; // null = no tiene ese nivel
+
+      const turnosTexto = Object.entries(datosNivel)
+        .filter(([, t]) => t.activo)
+        .map(([clave, t]) => `${NOMBRES_TURNO[clave] || clave}${t.horario ? ` (${t.horario})` : ''}`);
+
+      bloquesNivel += `
+        <div class="pop-nivel">
+          <span class="pop-etiqueta">${NOMBRES_NIVEL[nivel] || nivel}</span>
+          ${turnosTexto.length
+            ? `<div class="pop-turnos">${turnosTexto.join(' · ')}</div>`
+            : `<div class="pop-turnos pop-turnos-sin-dato">Turnos a confirmar</div>`}
+        </div>
+      `;
+    }
+
+    if (!bloquesNivel) {
+      bloquesNivel = `<div class="pop-pendiente">📋 Datos pendientes de completar</div>`;
+    }
 
     return `
       <div class="pop-tipo educativa">Institución educativa</div>
       <p class="pop-nombre">${inst.nombre}</p>
       <div class="pop-fila"><b>Dirección:</b> ${inst.direccion || '—'}</div>
       <div class="pop-fila"><b>Teléfono:</b> ${inst.telefono || '—'}</div>
-      <div class="pop-etiquetas">${etiquetas}</div>
+      ${bloquesNivel}
     `;
   }
 
@@ -678,7 +746,6 @@
 
   // ---------- Filtros jerárquicos: Categoría > Nivel > Turno ----------
   const nivelesEducativos = ['primario', 'secundario', 'adultos'];
-  const turnosPosibles = ['turno_manana', 'turno_tarde', 'turno_noche'];
 
   function estadoNivel(nivel) {
     // Devuelve true si, para ese nivel, hay al menos un turno tildado
@@ -691,23 +758,33 @@
       return document.getElementById('cat-cultural').checked;
     }
 
-    // Educativa: visible si la categoría general está activa,
-    // Y al menos uno de sus niveles está activo (checkbox de nivel tildado
-    // Y la institución tiene ese nivel),
-    // Y para ese nivel, al menos uno de los turnos tildados coincide con un turno real de la institución.
     if (!document.getElementById('cat-educativa').checked) return false;
 
+    // Las instituciones con datos pendientes siempre se muestran si la
+    // categoría general "Educativas" está activa, sin importar los
+    // sub-filtros de nivel/turno (todavía no tienen esos datos para filtrar).
+    if (inst.datos_pendientes) return true;
+
     return nivelesEducativos.some(nivel => {
-      if (!inst[nivel]) return false; // la institución no tiene ese nivel
+      const datosNivel = inst.niveles && inst.niveles[nivel];
+      if (!datosNivel) return false; // la institución no tiene ese nivel (null)
+
       const chkNivel = document.querySelector(`.nivel[data-nivel="${nivel}"]`);
-      if (!chkNivel || !chkNivel.checked) return false; // el nivel está desactivado
+      if (!chkNivel || !chkNivel.checked) return false; // el nivel está desactivado en la UI
+
+      const clavesTurno = Object.keys(datosNivel);
+      if (clavesTurno.length === 0) {
+        // La institución tiene el nivel pero todavía no completó turnos:
+        // se muestra igual mientras el nivel esté tildado.
+        return true;
+      }
 
       // turnos tildados para este nivel en la UI
       const turnosActivosUI = Array.from(document.querySelectorAll(`.turno-chk[data-nivel="${nivel}"]:checked`))
         .map(t => t.dataset.turno);
 
-      // la institución debe tener al menos uno de esos turnos activos
-      return turnosActivosUI.some(turno => inst[turno]);
+      // la institución debe tener al menos uno de esos turnos activo en los datos
+      return turnosActivosUI.some(turno => datosNivel[turno] && datosNivel[turno].activo);
     });
   }
 
