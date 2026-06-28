@@ -1,131 +1,589 @@
 {
   "instituciones": [
     {
-      "id": "edu-001",
-      "nombre": "Escuela N° 1 \"Juan Pascual Pringles\"",
-      "tipo": "educativa",
-      "lat": -33.6796,
-      "lng": -65.4565,
-      "direccion": "San Martín 650, Villa Mercedes",
-      "telefono": "02657-420123",
-      "primario": true,
-      "secundario": false,
-      "adultos": false,
-      "turno_manana": true,
-      "turno_tarde": true,
-      "turno_noche": false
-    },
-    {
       "id": "edu-002",
-      "nombre": "IPEM N° 12 \"Libertador San Martín\"",
       "tipo": "educativa",
-      "lat": -33.6735,
-      "lng": -65.4602,
-      "direccion": "Av. Mitre 1230, Villa Mercedes",
-      "telefono": "02657-421456",
-      "primario": false,
-      "secundario": true,
-      "adultos": true,
-      "turno_manana": true,
-      "turno_tarde": false,
-      "turno_noche": true
+      "nombre": "Iglesia Nuestra Señora Del Carmen",
+      "lat": -33.6841015,
+      "lng": -65.472725,
+      "descripcion": "Institución de gestión privada muy reconocida en la ciudad por brindar una educación católica integral. Se enfoca en transmitir sólidos valores cristianos, disciplina, y ofrece un acompañamiento cercano para los alumnos y sus familias.",
+      "direccion": "Almafuerte 371",
+      "email": null,
+      "telefono": "02657-424612 o 2657 66-7363",
+      "cant_alumnos": 8,
+      "niveles": {
+        "primario": {
+          "turno_manana": {
+            "activo": true,
+            "horario": "Horario a confirmar"
+          },
+          "turno_tarde": {
+            "activo": true,
+            "horario": "Horario a confirmar"
+          }
+        },
+        "secundario": {
+          "turno_manana": {
+            "activo": true,
+            "horario": "Horario a confirmar"
+          },
+          "turno_tarde": {
+            "activo": true,
+            "horario": "Horario a confirmar"
+          }
+        },
+        "adultos": {
+          "turno_tarde": {
+            "activo": true,
+            "horario": "Horario a confirmar"
+          },
+          "turno_noche": {
+            "activo": false,
+            "horario": "Horario a confirmar"
+          }
+        }
+      },
+      "datos_pendientes": false
     },
     {
       "id": "edu-003",
-      "nombre": "Escuela Normal \"Paula D. de Bazán\"",
       "tipo": "educativa",
-      "lat": -33.6712,
-      "lng": -65.4521,
-      "direccion": "9 de Julio 845, Villa Mercedes",
-      "telefono": "02657-422789",
-      "primario": true,
-      "secundario": true,
-      "adultos": false,
-      "turno_manana": true,
-      "turno_tarde": true,
-      "turno_noche": false
+      "nombre": "Escuela N° 106 Profesor Tomás Ferrari",
+      "lat": -33.6690917,
+      "lng": -65.4741745,
+      "descripcion": "Es una institución educativa de gestión pública que concentra su labor en la formación integral de niñas y niños de nivel primario, combinando aprendizajes académicos con el desarrollo de valores y la participación en la comunidad escolar. Como muchas escuelas estatales argentinas, funciona como espacio de referencia para las familias del barrio, ofreciendo contención, socialización y oportunidades de aprendizaje que van más allá de lo estrictamente curricular.",
+      "direccion": "Gral. Paunero 1149",
+      "email": null,
+      "telefono": null,
+      "cant_alumnos": 500,
+      "niveles": {
+        "primario": null,
+        "secundario": null,
+        "adultos": null
+      },
+      "datos_pendientes": true
     },
     {
       "id": "edu-004",
-      "nombre": "CENMA Villa Mercedes (Centro Educativo de Nivel Medio para Adultos)",
       "tipo": "educativa",
-      "lat": -33.6770,
-      "lng": -65.4480,
-      "direccion": "Belgrano 410, Villa Mercedes",
-      "telefono": "02657-423012",
-      "primario": false,
-      "secundario": true,
-      "adultos": true,
-      "turno_manana": false,
-      "turno_tarde": false,
-      "turno_noche": true
+      "nombre": "Escuela Tecnica N° 15 Ing Agustin Mercau",
+      "lat": -33.6677102,
+      "lng": -65.4676616,
+      "descripcion": "Institución educativa pública de gestión estatal ubicada en Villa Mercedes, San Luis. Se especializa en educación técnica, ofreciendo ciclos secundarios orientados a la electromecánica y brindando una sólida formación que combina teoría en el aula y práctica en talleres",
+      "direccion": "Intendente Leyes 260",
+      "email": null,
+      "telefono": "02657 42-3171",
+      "cant_alumnos": 300,
+      "niveles": {
+        "primario": null,
+        "secundario": {
+          "turno_manana": {
+            "activo": true,
+            "horario": "Horario a confirmar"
+          },
+          "turno_tarde": {
+            "activo": true,
+            "horario": "Horario a confirmar"
+          }
+        },
+        "adultos": {
+          "turno_tarde": {
+            "activo": false,
+            "horario": "Horario a confirmar"
+          },
+          "turno_noche": {
+            "activo": true,
+            "horario": "20 a 00hs"
+          }
+        }
+      },
+      "datos_pendientes": false
     },
     {
       "id": "edu-005",
-      "nombre": "Jardín de Infantes N° 3",
       "tipo": "educativa",
-      "lat": -33.6820,
-      "lng": -65.4615,
-      "direccion": "Pedernera 320, Villa Mercedes",
-      "telefono": "02657-424567",
-      "primario": true,
-      "secundario": false,
-      "adultos": false,
-      "turno_manana": true,
-      "turno_tarde": true,
-      "turno_noche": false
+      "nombre": "Escuela Tecnica N 18",
+      "lat": -33.6675378,
+      "lng": -65.4683619,
+      "descripcion": null,
+      "direccion": null,
+      "email": null,
+      "telefono": null,
+      "cant_alumnos": 533,
+      "niveles": {
+        "primario": null,
+        "secundario": null,
+        "adultos": null
+      },
+      "datos_pendientes": true
     },
     {
-      "id": "cul-001",
-      "nombre": "Centro Cultural Municipal",
-      "tipo": "cultural",
-      "lat": -33.6745,
-      "lng": -65.4540,
-      "direccion": "Av. Illia 560, Villa Mercedes",
-      "telefono": "02657-430111",
-      "email": "culturamercedes@villamercedes.gob.ar",
-      "edades": "Todas las edades",
-      "horarios": "Lunes a viernes 9:00-21:00, sábados 9:00-13:00",
-      "actividades": "Talleres de teatro, música, artes visuales, biblioteca pública"
+      "id": "edu-006",
+      "tipo": "educativa",
+      "nombre": "Instituto San Buenaventura",
+      "lat": -33.6620737,
+      "lng": -65.4546152,
+      "descripcion": null,
+      "direccion": null,
+      "email": null,
+      "telefono": null,
+      "cant_alumnos": 456,
+      "niveles": {
+        "primario": null,
+        "secundario": null,
+        "adultos": null
+      },
+      "datos_pendientes": true
     },
     {
-      "id": "cul-002",
-      "nombre": "Casa de la Cultura \"Manuel Antonio Sáenz\"",
-      "tipo": "cultural",
-      "lat": -33.6701,
-      "lng": -65.4490,
-      "direccion": "Constitución 712, Villa Mercedes",
-      "telefono": "02657-431222",
-      "email": "casacultura@villamercedes.gob.ar",
-      "edades": "A partir de 6 años",
-      "horarios": "Martes a sábado 10:00-20:00",
-      "actividades": "Talleres de danza, pintura, exposiciones temporales"
+      "id": "edu-007",
+      "tipo": "educativa",
+      "nombre": "Instituto Nacional De Informatica",
+      "lat": -33.6639146,
+      "lng": -65.4589316,
+      "descripcion": null,
+      "direccion": null,
+      "email": null,
+      "telefono": null,
+      "cant_alumnos": 123,
+      "niveles": {
+        "primario": null,
+        "secundario": null,
+        "adultos": null
+      },
+      "datos_pendientes": true
     },
     {
-      "id": "cul-003",
-      "nombre": "Biblioteca Popular \"Mariano Moreno\"",
-      "tipo": "cultural",
-      "lat": -33.6788,
-      "lng": -65.4498,
-      "direccion": "Mitre 980, Villa Mercedes",
-      "telefono": "02657-432333",
-      "email": "bibliotecamoreno@gmail.com",
-      "edades": "Todas las edades",
-      "horarios": "Lunes a viernes 8:00-19:00",
-      "actividades": "Préstamo de libros, sala de lectura, club de lectura infantil"
+      "id": "edu-008",
+      "tipo": "educativa",
+      "nombre": "Colegio N 2 J.E.P.",
+      "lat": -33.677327,
+      "lng": -65.4626446,
+      "descripcion": null,
+      "direccion": null,
+      "email": null,
+      "telefono": null,
+      "cant_alumnos": 500,
+      "niveles": {
+        "primario": null,
+        "secundario": null,
+        "adultos": null
+      },
+      "datos_pendientes": true
     },
     {
-      "id": "cul-004",
-      "nombre": "Conservatorio de Música \"Carlos Guastavino\"",
-      "tipo": "cultural",
-      "lat": -33.6755,
-      "lng": -65.4615,
-      "direccion": "Lavalle 230, Villa Mercedes",
-      "telefono": "02657-433444",
-      "email": "conservatorio@villamercedes.gob.ar",
-      "edades": "Desde 8 años",
-      "horarios": "Lunes a viernes 14:00-21:00",
-      "actividades": "Clases de instrumentos, coro, teoría musical"
+      "id": "edu-009",
+      "tipo": "educativa",
+      "nombre": "CENTRO EDUCATIVO N°10 \"Ramiro Podetti\"",
+      "lat": -33.698659,
+      "lng": -65.4404276,
+      "descripcion": null,
+      "direccion": null,
+      "email": null,
+      "telefono": null,
+      "cant_alumnos": 300,
+      "niveles": {
+        "primario": null,
+        "secundario": null,
+        "adultos": null
+      },
+      "datos_pendientes": true
+    },
+    {
+      "id": "edu-010",
+      "tipo": "educativa",
+      "nombre": "Escuela Generativa Ecológica Ambiental \"GEA\"",
+      "lat": -33.7003806,
+      "lng": -65.4348533,
+      "descripcion": null,
+      "direccion": null,
+      "email": null,
+      "telefono": null,
+      "cant_alumnos": 533,
+      "niveles": {
+        "primario": null,
+        "secundario": null,
+        "adultos": null
+      },
+      "datos_pendientes": true
+    },
+    {
+      "id": "edu-011",
+      "tipo": "educativa",
+      "nombre": "Escuela Nº 431 \"Prof. Nelly Chenau de Vecino\"",
+      "lat": -33.7039813,
+      "lng": -65.4341901,
+      "descripcion": null,
+      "direccion": null,
+      "email": null,
+      "telefono": null,
+      "cant_alumnos": 456,
+      "niveles": {
+        "primario": null,
+        "secundario": null,
+        "adultos": null
+      },
+      "datos_pendientes": true
+    },
+    {
+      "id": "edu-012",
+      "tipo": "educativa",
+      "nombre": "Escuela REMEDIOS ESCALADA DE SAN MARTÍN",
+      "lat": -33.6803328,
+      "lng": -65.4644515,
+      "descripcion": null,
+      "direccion": null,
+      "email": null,
+      "telefono": null,
+      "cant_alumnos": 123,
+      "niveles": {
+        "primario": null,
+        "secundario": null,
+        "adultos": null
+      },
+      "datos_pendientes": true
+    },
+    {
+      "id": "edu-013",
+      "tipo": "educativa",
+      "nombre": "Centro Educativo N 9 Escuela Normal",
+      "lat": -33.6833638,
+      "lng": -65.4628568,
+      "descripcion": null,
+      "direccion": null,
+      "email": null,
+      "telefono": null,
+      "cant_alumnos": 203,
+      "niveles": {
+        "primario": null,
+        "secundario": null,
+        "adultos": null
+      },
+      "datos_pendientes": true
+    },
+    {
+      "id": "edu-014",
+      "tipo": "educativa",
+      "nombre": "Escuela Generativa Terra Mater",
+      "lat": -33.6852166,
+      "lng": -65.495266,
+      "descripcion": null,
+      "direccion": null,
+      "email": null,
+      "telefono": null,
+      "cant_alumnos": 143,
+      "niveles": {
+        "primario": null,
+        "secundario": null,
+        "adultos": null
+      },
+      "datos_pendientes": true
+    },
+    {
+      "id": "edu-015",
+      "tipo": "educativa",
+      "nombre": "Escuela Generativa Estación Recrear",
+      "lat": -33.6618751,
+      "lng": -65.4532139,
+      "descripcion": null,
+      "direccion": null,
+      "email": null,
+      "telefono": null,
+      "cant_alumnos": 85,
+      "niveles": {
+        "primario": null,
+        "secundario": null,
+        "adultos": null
+      },
+      "datos_pendientes": true
+    },
+    {
+      "id": "edu-016",
+      "tipo": "educativa",
+      "nombre": "Escuela Tecnica N⁰ 14 Agraria",
+      "lat": -33.6776009,
+      "lng": -65.5042172,
+      "descripcion": null,
+      "direccion": null,
+      "email": null,
+      "telefono": null,
+      "cant_alumnos": 24,
+      "niveles": {
+        "primario": null,
+        "secundario": null,
+        "adultos": null
+      },
+      "datos_pendientes": true
+    },
+    {
+      "id": "edu-017",
+      "tipo": "educativa",
+      "nombre": "E.P.A N°10 \"Maestro Escultor Vicente Lucero\" Edificio Edmundo Tello Cornejo",
+      "lat": -33.6846268,
+      "lng": -65.5016479,
+      "descripcion": null,
+      "direccion": null,
+      "email": null,
+      "telefono": null,
+      "cant_alumnos": 300,
+      "niveles": {
+        "primario": null,
+        "secundario": null,
+        "adultos": null
+      },
+      "datos_pendientes": true
+    },
+    {
+      "id": "edu-018",
+      "tipo": "educativa",
+      "nombre": "Escuela Publica Bilingüe Digital Mahatma Gandhi",
+      "lat": -33.7016074,
+      "lng": -65.4983154,
+      "descripcion": null,
+      "direccion": null,
+      "email": null,
+      "telefono": null,
+      "cant_alumnos": 533,
+      "niveles": {
+        "primario": null,
+        "secundario": null,
+        "adultos": null
+      },
+      "datos_pendientes": true
+    },
+    {
+      "id": "edu-019",
+      "tipo": "educativa",
+      "nombre": "Escuela Técnica N°20 Antonio Berni - Orientación Informática",
+      "lat": -33.6729994,
+      "lng": -65.4765986,
+      "descripcion": null,
+      "direccion": null,
+      "email": null,
+      "telefono": null,
+      "cant_alumnos": 456,
+      "niveles": {
+        "primario": null,
+        "secundario": null,
+        "adultos": null
+      },
+      "datos_pendientes": true
+    },
+    {
+      "id": "edu-020",
+      "tipo": "educativa",
+      "nombre": "Escuela Mariano Moreno",
+      "lat": -33.6869024,
+      "lng": -65.4653793,
+      "descripcion": null,
+      "direccion": null,
+      "email": null,
+      "telefono": null,
+      "cant_alumnos": 123,
+      "niveles": {
+        "primario": null,
+        "secundario": null,
+        "adultos": null
+      },
+      "datos_pendientes": true
+    },
+    {
+      "id": "edu-021",
+      "tipo": "educativa",
+      "nombre": "Instituto Cultural Argentino",
+      "lat": -33.6767371,
+      "lng": -65.4720293,
+      "descripcion": null,
+      "direccion": null,
+      "email": null,
+      "telefono": null,
+      "cant_alumnos": 500,
+      "niveles": {
+        "primario": null,
+        "secundario": null,
+        "adultos": null
+      },
+      "datos_pendientes": true
+    },
+    {
+      "id": "edu-022",
+      "tipo": "educativa",
+      "nombre": "Escuela Generativa Alberdi",
+      "lat": -33.6746907,
+      "lng": -65.4653237,
+      "descripcion": null,
+      "direccion": null,
+      "email": null,
+      "telefono": null,
+      "cant_alumnos": 300,
+      "niveles": {
+        "primario": null,
+        "secundario": null,
+        "adultos": null
+      },
+      "datos_pendientes": true
+    },
+    {
+      "id": "edu-023",
+      "tipo": "educativa",
+      "nombre": "Centro Cultural Gaspar di Gennaro",
+      "lat": -33.6628261,
+      "lng": -65.4499066,
+      "descripcion": null,
+      "direccion": null,
+      "email": null,
+      "telefono": null,
+      "cant_alumnos": 533,
+      "niveles": {
+        "primario": null,
+        "secundario": null,
+        "adultos": null
+      },
+      "datos_pendientes": true
+    },
+    {
+      "id": "edu-024",
+      "tipo": "educativa",
+      "nombre": "Escuela Pública Autogestionada N°7 \"EDUARDO GALEANO\"",
+      "lat": -33.6700558,
+      "lng": -65.4831615,
+      "descripcion": null,
+      "direccion": null,
+      "email": null,
+      "telefono": null,
+      "cant_alumnos": 456,
+      "niveles": {
+        "primario": null,
+        "secundario": null,
+        "adultos": null
+      },
+      "datos_pendientes": true
+    },
+    {
+      "id": "edu-025",
+      "tipo": "educativa",
+      "nombre": "Escuela Tecnica N° 19",
+      "lat": -33.6700426,
+      "lng": -65.4833233,
+      "descripcion": null,
+      "direccion": null,
+      "email": null,
+      "telefono": null,
+      "cant_alumnos": 300,
+      "niveles": {
+        "primario": null,
+        "secundario": null,
+        "adultos": null
+      },
+      "datos_pendientes": true
+    },
+    {
+      "id": "edu-026",
+      "tipo": "educativa",
+      "nombre": "Escuela Generativa Gen Z",
+      "lat": -33.6854019,
+      "lng": -65.4945983,
+      "descripcion": null,
+      "direccion": null,
+      "email": null,
+      "telefono": null,
+      "cant_alumnos": 533,
+      "niveles": {
+        "primario": null,
+        "secundario": null,
+        "adultos": null
+      },
+      "datos_pendientes": true
+    },
+    {
+      "id": "edu-027",
+      "tipo": "educativa",
+      "nombre": "Escuela N° 176 “Maestra Nélida Esther Pérez de Ferrer”",
+      "lat": -33.6815929,
+      "lng": -65.4733694,
+      "descripcion": null,
+      "direccion": null,
+      "email": null,
+      "telefono": null,
+      "cant_alumnos": 456,
+      "niveles": {
+        "primario": null,
+        "secundario": null,
+        "adultos": null
+      },
+      "datos_pendientes": true
+    },
+    {
+      "id": "edu-028",
+      "tipo": "educativa",
+      "nombre": "Escuela Leonardo Da Vinci",
+      "lat": -33.6804086,
+      "lng": -65.4378069,
+      "descripcion": null,
+      "direccion": null,
+      "email": null,
+      "telefono": null,
+      "cant_alumnos": 123,
+      "niveles": {
+        "primario": null,
+        "secundario": null,
+        "adultos": null
+      },
+      "datos_pendientes": true
+    },
+    {
+      "id": "edu-029",
+      "tipo": "educativa",
+      "nombre": "Escuela Digital Pedernera Adultos",
+      "lat": -33.6895504,
+      "lng": -65.4671824,
+      "descripcion": null,
+      "direccion": null,
+      "email": null,
+      "telefono": null,
+      "cant_alumnos": 500,
+      "niveles": {
+        "primario": null,
+        "secundario": null,
+        "adultos": {}
+      },
+      "datos_pendientes": true
+    },
+    {
+      "id": "edu-030",
+      "tipo": "educativa",
+      "nombre": "CENS N°1",
+      "lat": -33.68972,
+      "lng": -65.4692261,
+      "descripcion": null,
+      "direccion": null,
+      "email": null,
+      "telefono": null,
+      "cant_alumnos": 300,
+      "niveles": {
+        "primario": null,
+        "secundario": null,
+        "adultos": {}
+      },
+      "datos_pendientes": true
+    },
+    {
+      "id": "edu-031",
+      "tipo": "educativa",
+      "nombre": "Escuela Pública Digital Adultos Nº 80 Sociedad de Fomento Sarmiento",
+      "lat": -33.6899726,
+      "lng": -65.4742746,
+      "descripcion": null,
+      "direccion": null,
+      "email": null,
+      "telefono": null,
+      "cant_alumnos": 533,
+      "niveles": {
+        "primario": null,
+        "secundario": null,
+        "adultos": {}
+      },
+      "datos_pendientes": true
     }
   ]
 }
