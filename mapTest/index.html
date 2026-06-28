@@ -650,7 +650,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
 <script>
   // ---------- Inicialización del mapa ----------
-  const mapa = L.map('mapa', { zoomControl: true }).setView([-33.6755, -65.4540], 14);
+  const mapa = L.map('mapa', { zoomControl: false }).setView([-33.6755, -65.4540], 14);
 
   // Asegura que Leaflet recalcule su tamaño tras el primer render del layout
   // (importante porque ahora el alto del mapa depende de flex/grid, no de un vh fijo)
