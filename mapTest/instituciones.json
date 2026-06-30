@@ -3,14 +3,14 @@
     {
       "id": "edu-002",
       "tipo": "educativa",
-      "nombre": "Iglesia Nuestra Señora Del Carmen",
+      "nombre": "NUESTRA SEÑORA DEL CARMEN",
       "lat": -33.6841015,
       "lng": -65.472725,
       "descripcion": "Institución de gestión privada muy reconocida en la ciudad por brindar una educación católica integral. Se enfoca en transmitir sólidos valores cristianos, disciplina, y ofrece un acompañamiento cercano para los alumnos y sus familias.",
       "direccion": "Almafuerte 371",
       "email": null,
-      "telefono": "02657-424612 o 2657 66-7363",
-      "cant_alumnos": 8,
+      "telefono": "02657-424612 // 2657 66-7363",
+      "cant_alumnos": null,
       "niveles": {
         "primario": {
           "turno_manana": {
@@ -29,17 +29,17 @@
           },
           "turno_tarde": {
             "activo": true,
-            "horario": "Horario a confirmar"
+            "horario": null
           }
         },
         "adultos": {
           "turno_tarde": {
             "activo": true,
-            "horario": "Horario a confirmar"
+            "horario": null
           },
           "turno_noche": {
             "activo": false,
-            "horario": "Horario a confirmar"
+            "horario": null
           }
         }
       },
@@ -48,14 +48,14 @@
     {
       "id": "edu-003",
       "tipo": "educativa",
-      "nombre": "Escuela N° 106 Profesor Tomás Ferrari",
+      "nombre": "PROFESOR TOMAS FERRARI",
       "lat": -33.6690917,
       "lng": -65.4741745,
       "descripcion": "Es una institución educativa de gestión pública que concentra su labor en la formación integral de niñas y niños de nivel primario, combinando aprendizajes académicos con el desarrollo de valores y la participación en la comunidad escolar. Como muchas escuelas estatales argentinas, funciona como espacio de referencia para las familias del barrio, ofreciendo contención, socialización y oportunidades de aprendizaje que van más allá de lo estrictamente curricular.",
       "direccion": "Gral. Paunero 1149",
       "email": null,
       "telefono": null,
-      "cant_alumnos": 500,
+      "cant_alumnos": null,
       "niveles": {
         "primario": null,
         "secundario": null,
@@ -66,14 +66,14 @@
     {
       "id": "edu-004",
       "tipo": "educativa",
-      "nombre": "Escuela Tecnica N° 15 Ing Agustin Mercau",
+      "nombre": "INGENIERO AGUSTIN MERCAU",
       "lat": -33.6677102,
       "lng": -65.4676616,
       "descripcion": "Institución educativa pública de gestión estatal ubicada en Villa Mercedes, San Luis. Se especializa en educación técnica, ofreciendo ciclos secundarios orientados a la electromecánica y brindando una sólida formación que combina teoría en el aula y práctica en talleres",
       "direccion": "Intendente Leyes 260",
       "email": null,
       "telefono": "02657 42-3171",
-      "cant_alumnos": 300,
+      "cant_alumnos": null,
       "niveles": {
         "primario": null,
         "secundario": {
@@ -83,17 +83,17 @@
           },
           "turno_tarde": {
             "activo": true,
-            "horario": "Horario a confirmar"
+            "horario": null
           }
         },
         "adultos": {
           "turno_tarde": {
             "activo": false,
-            "horario": "Horario a confirmar"
+            "horario": null
           },
           "turno_noche": {
             "activo": true,
-            "horario": "20 a 00hs"
+            "horario": null
           }
         }
       },
@@ -102,14 +102,14 @@
     {
       "id": "edu-005",
       "tipo": "educativa",
-      "nombre": "Escuela Tecnica N 18",
+      "nombre": "NICOLASA BERRONDO DE QUIROGA",
       "lat": -33.6675378,
       "lng": -65.4683619,
       "descripcion": null,
       "direccion": null,
       "email": null,
       "telefono": null,
-      "cant_alumnos": 533,
+      "cant_alumnos": null,
       "niveles": {
         "primario": null,
         "secundario": null,
@@ -120,14 +120,14 @@
     {
       "id": "edu-006",
       "tipo": "educativa",
-      "nombre": "Instituto San Buenaventura",
+      "nombre": "SAN BUENAVENTURA",
       "lat": -33.6620737,
       "lng": -65.4546152,
       "descripcion": null,
       "direccion": null,
       "email": null,
       "telefono": null,
-      "cant_alumnos": 456,
+      "cant_alumnos": null,
       "niveles": {
         "primario": null,
         "secundario": null,
@@ -138,14 +138,14 @@
     {
       "id": "edu-007",
       "tipo": "educativa",
-      "nombre": "Instituto Nacional De Informatica",
+      "nombre": "INSTITUTO NACIONAL DE INFORMATICA (I.N.D.I)",
       "lat": -33.6639146,
       "lng": -65.4589316,
       "descripcion": null,
       "direccion": null,
       "email": null,
       "telefono": null,
-      "cant_alumnos": 123,
+      "cant_alumnos": null,
       "niveles": {
         "primario": null,
         "secundario": null,
@@ -156,14 +156,14 @@
     {
       "id": "edu-008",
       "tipo": "educativa",
-      "nombre": "Colegio N 2 J.E.P.",
+      "nombre": "JUAN ESTEBAN PEDERNERA",
       "lat": -33.677327,
       "lng": -65.4626446,
       "descripcion": null,
       "direccion": null,
       "email": null,
       "telefono": null,
-      "cant_alumnos": 500,
+      "cant_alumnos": null,
       "niveles": {
         "primario": null,
         "secundario": null,
@@ -174,14 +174,14 @@
     {
       "id": "edu-009",
       "tipo": "educativa",
-      "nombre": "CENTRO EDUCATIVO N°10 \"Ramiro Podetti\"",
+      "nombre": "RAMIRO PODETTI",
       "lat": -33.698659,
       "lng": -65.4404276,
       "descripcion": null,
       "direccion": null,
       "email": null,
       "telefono": null,
-      "cant_alumnos": 300,
+      "cant_alumnos": null,
       "niveles": {
         "primario": null,
         "secundario": null,
@@ -192,14 +192,14 @@
     {
       "id": "edu-010",
       "tipo": "educativa",
-      "nombre": "Escuela Generativa Ecológica Ambiental \"GEA\"",
+      "nombre": "GEA",
       "lat": -33.7003806,
       "lng": -65.4348533,
       "descripcion": null,
       "direccion": null,
       "email": null,
       "telefono": null,
-      "cant_alumnos": 533,
+      "cant_alumnos": null,
       "niveles": {
         "primario": null,
         "secundario": null,
@@ -210,14 +210,14 @@
     {
       "id": "edu-011",
       "tipo": "educativa",
-      "nombre": "Escuela Nº 431 \"Prof. Nelly Chenau de Vecino\"",
+      "nombre": "ANGELA NELLY CHENAU DE VECINO",
       "lat": -33.7039813,
       "lng": -65.4341901,
       "descripcion": null,
       "direccion": null,
       "email": null,
       "telefono": null,
-      "cant_alumnos": 456,
+      "cant_alumnos": null,
       "niveles": {
         "primario": null,
         "secundario": null,
@@ -228,14 +228,14 @@
     {
       "id": "edu-012",
       "tipo": "educativa",
-      "nombre": "Escuela REMEDIOS ESCALADA DE SAN MARTÍN",
+      "nombre": "REMEDIOS ESCALADA DE SAN MARTIN",
       "lat": -33.6803328,
       "lng": -65.4644515,
       "descripcion": null,
       "direccion": null,
       "email": null,
       "telefono": null,
-      "cant_alumnos": 123,
+      "cant_alumnos": null,
       "niveles": {
         "primario": null,
         "secundario": null,
@@ -246,14 +246,14 @@
     {
       "id": "edu-013",
       "tipo": "educativa",
-      "nombre": "Centro Educativo N 9 Escuela Normal",
+      "nombre": "DOCTOR JUAN LLERENA",
       "lat": -33.6833638,
       "lng": -65.4628568,
       "descripcion": null,
       "direccion": null,
       "email": null,
       "telefono": null,
-      "cant_alumnos": 203,
+      "cant_alumnos": null,
       "niveles": {
         "primario": null,
         "secundario": null,
@@ -264,14 +264,14 @@
     {
       "id": "edu-014",
       "tipo": "educativa",
-      "nombre": "Escuela Generativa Terra Mater",
+      "nombre": "TERRA MATER",
       "lat": -33.6852166,
       "lng": -65.495266,
       "descripcion": null,
       "direccion": null,
       "email": null,
       "telefono": null,
-      "cant_alumnos": 143,
+      "cant_alumnos": null,
       "niveles": {
         "primario": null,
         "secundario": null,
@@ -282,14 +282,14 @@
     {
       "id": "edu-015",
       "tipo": "educativa",
-      "nombre": "Escuela Generativa Estación Recrear",
+      "nombre": "ESTACIÓN RECREAR",
       "lat": -33.6618751,
       "lng": -65.4532139,
       "descripcion": null,
       "direccion": null,
       "email": null,
       "telefono": null,
-      "cant_alumnos": 85,
+      "cant_alumnos": null,
       "niveles": {
         "primario": null,
         "secundario": null,
@@ -300,14 +300,14 @@
     {
       "id": "edu-016",
       "tipo": "educativa",
-      "nombre": "Escuela Tecnica N⁰ 14 Agraria",
+      "nombre": "MINISTRO DEL SUP TRIB DE JUST DR LUIS ANGEL LUCO",
       "lat": -33.6776009,
       "lng": -65.5042172,
       "descripcion": null,
       "direccion": null,
       "email": null,
       "telefono": null,
-      "cant_alumnos": 24,
+      "cant_alumnos": null,
       "niveles": {
         "primario": null,
         "secundario": null,
@@ -318,14 +318,14 @@
     {
       "id": "edu-017",
       "tipo": "educativa",
-      "nombre": "E.P.A N°10 \"Maestro Escultor Vicente Lucero\" Edificio Edmundo Tello Cornejo",
+      "nombre": "MAESTRO ESCULTOR VICENTE LUCERO",
       "lat": -33.6846268,
       "lng": -65.5016479,
       "descripcion": null,
       "direccion": null,
       "email": null,
       "telefono": null,
-      "cant_alumnos": 300,
+      "cant_alumnos": null,
       "niveles": {
         "primario": null,
         "secundario": null,
@@ -336,14 +336,14 @@
     {
       "id": "edu-018",
       "tipo": "educativa",
-      "nombre": "Escuela Publica Bilingüe Digital Mahatma Gandhi",
+      "nombre": "ESCUELA PÚBLICA DIGITAL BILINGÜE - MAHATMA GANDHI",
       "lat": -33.7016074,
       "lng": -65.4983154,
       "descripcion": null,
       "direccion": null,
       "email": null,
       "telefono": null,
-      "cant_alumnos": 533,
+      "cant_alumnos": null,
       "niveles": {
         "primario": null,
         "secundario": null,
@@ -354,14 +354,14 @@
     {
       "id": "edu-019",
       "tipo": "educativa",
-      "nombre": "Escuela Técnica N°20 Antonio Berni - Orientación Informática",
+      "nombre": "ANTONIO BERNI",
       "lat": -33.6729994,
       "lng": -65.4765986,
       "descripcion": null,
       "direccion": null,
       "email": null,
       "telefono": null,
-      "cant_alumnos": 456,
+      "cant_alumnos": null,
       "niveles": {
         "primario": null,
         "secundario": null,
@@ -372,14 +372,14 @@
     {
       "id": "edu-020",
       "tipo": "educativa",
-      "nombre": "Escuela Mariano Moreno",
+      "nombre": "MARIANO MORENO",
       "lat": -33.6869024,
       "lng": -65.4653793,
       "descripcion": null,
       "direccion": null,
       "email": null,
       "telefono": null,
-      "cant_alumnos": 123,
+      "cant_alumnos": null,
       "niveles": {
         "primario": null,
         "secundario": null,
@@ -390,14 +390,14 @@
     {
       "id": "edu-021",
       "tipo": "educativa",
-      "nombre": "Instituto Cultural Argentino",
+      "nombre": "INSTITUTO CULTURAL ARGENTINO",
       "lat": -33.6767371,
       "lng": -65.4720293,
       "descripcion": null,
       "direccion": null,
       "email": null,
       "telefono": null,
-      "cant_alumnos": 500,
+      "cant_alumnos": null,
       "niveles": {
         "primario": null,
         "secundario": null,
@@ -408,14 +408,14 @@
     {
       "id": "edu-022",
       "tipo": "educativa",
-      "nombre": "Escuela Generativa Alberdi",
+      "nombre": "ALBERDI CLUB",
       "lat": -33.6746907,
       "lng": -65.4653237,
       "descripcion": null,
       "direccion": null,
       "email": null,
       "telefono": null,
-      "cant_alumnos": 300,
+      "cant_alumnos": null,
       "niveles": {
         "primario": null,
         "secundario": null,
@@ -426,14 +426,14 @@
     {
       "id": "edu-023",
       "tipo": "educativa",
-      "nombre": "Centro Cultural Gaspar di Gennaro",
+      "nombre": "PROFESOR GASPAR DIGENNARO",
       "lat": -33.6628261,
       "lng": -65.4499066,
       "descripcion": null,
       "direccion": null,
       "email": null,
       "telefono": null,
-      "cant_alumnos": 533,
+      "cant_alumnos": null,
       "niveles": {
         "primario": null,
         "secundario": null,
@@ -444,14 +444,14 @@
     {
       "id": "edu-024",
       "tipo": "educativa",
-      "nombre": "Escuela Pública Autogestionada N°7 \"EDUARDO GALEANO\"",
+      "nombre": "EDUARDO GALEANO",
       "lat": -33.6700558,
       "lng": -65.4831615,
       "descripcion": null,
       "direccion": null,
       "email": null,
       "telefono": null,
-      "cant_alumnos": 456,
+      "cant_alumnos": null,
       "niveles": {
         "primario": null,
         "secundario": null,
@@ -462,14 +462,14 @@
     {
       "id": "edu-025",
       "tipo": "educativa",
-      "nombre": "Escuela Tecnica N° 19",
+      "nombre": "BERNARDINO RIVADAVIA",
       "lat": -33.6700426,
       "lng": -65.4833233,
       "descripcion": null,
       "direccion": null,
       "email": null,
       "telefono": null,
-      "cant_alumnos": 300,
+      "cant_alumnos": null,
       "niveles": {
         "primario": null,
         "secundario": null,
@@ -480,14 +480,14 @@
     {
       "id": "edu-026",
       "tipo": "educativa",
-      "nombre": "Escuela Generativa Gen Z",
+      "nombre": "GEN Z",
       "lat": -33.6854019,
       "lng": -65.4945983,
       "descripcion": null,
       "direccion": null,
       "email": null,
       "telefono": null,
-      "cant_alumnos": 533,
+      "cant_alumnos": null,
       "niveles": {
         "primario": null,
         "secundario": null,
@@ -498,14 +498,14 @@
     {
       "id": "edu-027",
       "tipo": "educativa",
-      "nombre": "Escuela N° 176 “Maestra Nélida Esther Pérez de Ferrer”",
+      "nombre": "MAESTRA NELIDA ESTHER PEREZ DE FERRER",
       "lat": -33.6815929,
       "lng": -65.4733694,
       "descripcion": null,
       "direccion": null,
       "email": null,
       "telefono": null,
-      "cant_alumnos": 456,
+      "cant_alumnos": null,
       "niveles": {
         "primario": null,
         "secundario": null,
@@ -516,14 +516,14 @@
     {
       "id": "edu-028",
       "tipo": "educativa",
-      "nombre": "Escuela Leonardo Da Vinci",
+      "nombre": "LEONARDO DA VINCI",
       "lat": -33.6804086,
       "lng": -65.4378069,
       "descripcion": null,
       "direccion": null,
       "email": null,
       "telefono": null,
-      "cant_alumnos": 123,
+      "cant_alumnos": null,
       "niveles": {
         "primario": null,
         "secundario": null,
@@ -534,56 +534,713 @@
     {
       "id": "edu-029",
       "tipo": "educativa",
-      "nombre": "Escuela Digital Pedernera Adultos",
+      "nombre": "EPDA Nº 58 VILLA MERCEDES",
       "lat": -33.6895504,
       "lng": -65.4671824,
       "descripcion": null,
       "direccion": null,
       "email": null,
       "telefono": null,
-      "cant_alumnos": 500,
+      "cant_alumnos": null,
       "niveles": {
         "primario": null,
         "secundario": null,
-        "adultos": {}
+        "adultos": {
+          "turno_tarde": {
+            "activo": true,
+            "horario": null
+          },
+          "turno_noche": {
+            "activo": true,
+            "horario": null
+          }
+        }
       },
-      "datos_pendientes": true
+      "datos_pendientes": false
     },
     {
       "id": "edu-030",
       "tipo": "educativa",
-      "nombre": "CENS N°1",
+      "nombre": "CENTRO EDUCATIVO NIVEL SECUNDARIO Nº1",
       "lat": -33.68972,
       "lng": -65.4692261,
       "descripcion": null,
       "direccion": null,
       "email": null,
       "telefono": null,
-      "cant_alumnos": 300,
+      "cant_alumnos": null,
       "niveles": {
         "primario": null,
         "secundario": null,
-        "adultos": {}
+        "adultos": {
+          "turno_tarde": {
+            "activo": true,
+            "horario": null
+          },
+          "turno_noche": {
+            "activo": true,
+            "horario": null
+          }
+        }
       },
-      "datos_pendientes": true
+      "datos_pendientes": false
     },
     {
       "id": "edu-031",
       "tipo": "educativa",
-      "nombre": "Escuela Pública Digital Adultos Nº 80 Sociedad de Fomento Sarmiento",
-      "lat": -33.6899726,
-      "lng": -65.4742746,
+      "nombre": "GOBERNADOR LEON GUILLET",
+      "lat": -33.6853056311811,
+      "lng": -65.4760805641088,
       "descripcion": null,
       "direccion": null,
       "email": null,
       "telefono": null,
-      "cant_alumnos": 533,
+      "cant_alumnos": null,
       "niveles": {
         "primario": null,
         "secundario": null,
-        "adultos": {}
+        "adultos": null
       },
       "datos_pendientes": true
+    },
+    {
+      "id": "edu-032",
+      "tipo": "educativa",
+      "nombre": "DOCTORA MARIA MONTESSORI",
+      "lat": -33.67616846272273,
+      "lng": -65.45594016909926,
+      "descripcion": null,
+      "direccion": null,
+      "email": null,
+      "telefono": null,
+      "cant_alumnos": null,
+      "niveles": {
+        "primario": null,
+        "secundario": null,
+        "adultos": null
+      },
+      "datos_pendientes": true
+    },
+    {
+      "id": "edu-033",
+      "tipo": "educativa",
+      "nombre": "JUAN BAUTISTA ALBERDI",
+      "lat": -33.66594248872239,
+      "lng": -65.44740121463641,
+      "descripcion": null,
+      "direccion": null,
+      "email": null,
+      "telefono": null,
+      "cant_alumnos": null,
+      "niveles": {
+        "primario": null,
+        "secundario": null,
+        "adultos": null
+      },
+      "datos_pendientes": true
+    },
+    {
+      "id": "edu-034",
+      "tipo": "educativa",
+      "nombre": "PROVINCIA DE CHUBUT",
+      "lat": -33.700077435145815,
+      "lng": -65.42823247408934,
+      "descripcion": null,
+      "direccion": null,
+      "email": null,
+      "telefono": null,
+      "cant_alumnos": null,
+      "niveles": {
+        "primario": null,
+        "secundario": null,
+        "adultos": null
+      },
+      "datos_pendientes": true
+    },
+    {
+      "id": "edu-035",
+      "tipo": "educativa",
+      "nombre": "SARGENTO EDUARDO ROMERO",
+      "lat": -33.694384,
+      "lng": -65.456061,
+      "descripcion": null,
+      "direccion": null,
+      "email": null,
+      "telefono": null,
+      "cant_alumnos": null,
+      "niveles": {
+        "primario": null,
+        "secundario": null,
+        "adultos": null
+      },
+      "datos_pendientes": true
+    },
+    {
+      "id": "edu-036",
+      "tipo": "educativa",
+      "nombre": "JUSTO DARACT",
+      "lat": -33.689693,
+      "lng": -65.460811,
+      "descripcion": null,
+      "direccion": null,
+      "email": null,
+      "telefono": null,
+      "cant_alumnos": null,
+      "niveles": {
+        "primario": null,
+        "secundario": null,
+        "adultos": null
+      },
+      "datos_pendientes": true
+    },
+    {
+      "id": "edu-037",
+      "tipo": "educativa",
+      "nombre": "PROVINCIA DE CORRIENTES",
+      "lat": -33.66506872427785,
+      "lng": -65.46227539750072,
+      "descripcion": null,
+      "direccion": null,
+      "email": null,
+      "telefono": null,
+      "cant_alumnos": null,
+      "niveles": {
+        "primario": null,
+        "secundario": null,
+        "adultos": null
+      },
+      "datos_pendientes": true
+    },
+    {
+      "id": "edu-038",
+      "tipo": "educativa",
+      "nombre": "PROVINCIA DE SANTA FE",
+      "lat": -33.668999,
+      "lng": -65.478833,
+      "descripcion": null,
+      "direccion": "Colón 748",
+      "email": null,
+      "telefono": null,
+      "cant_alumnos": null,
+      "niveles": {
+        "primario": null,
+        "secundario": null,
+        "adultos": null
+      },
+      "datos_pendientes": true
+    },
+    {
+      "id": "edu-039",
+      "tipo": "educativa",
+      "nombre": "SOY FELIZ- BLANDINA VARETTO DE FERRARI",
+      "lat": -33.666815,
+      "lng": -65.459749,
+      "descripcion": null,
+      "direccion": "Av Bartolomé Mitre 1434",
+      "email": null,
+      "telefono": null,
+      "cant_alumnos": null,
+      "niveles": {
+        "primario": null,
+        "secundario": null,
+        "adultos": null
+      },
+      "datos_pendientes": true
+    },
+    {
+      "id": "edu-040",
+      "tipo": "educativa",
+      "nombre": "GENERAL PEDERNERA",
+      "lat": -33.68955,
+      "lng": -65.467182,
+      "descripcion": null,
+      "direccion": "Pedernera 175",
+      "email": null,
+      "telefono": null,
+      "cant_alumnos": null,
+      "niveles": {
+        "primario": null,
+        "secundario": null,
+        "adultos": null
+      },
+      "datos_pendientes": true
+    },
+    {
+      "id": "edu-041",
+      "tipo": "educativa",
+      "nombre": "JOSE HERNANDEZ",
+      "lat": -33.680124,
+      "lng": -65.471534,
+      "descripcion": null,
+      "direccion": "Av 25 de Mayo y San Martín",
+      "email": null,
+      "telefono": null,
+      "cant_alumnos": null,
+      "niveles": {
+        "primario": null,
+        "secundario": null,
+        "adultos": null
+      },
+      "datos_pendientes": true
+    },
+    {
+      "id": "edu-042",
+      "tipo": "educativa",
+      "nombre": "2026-04-02 00:00:00",
+      "lat": -33.659871,
+      "lng": -65.458921,
+      "descripcion": null,
+      "direccion": "Barrio ATE II, Av Jorge Newbery",
+      "email": null,
+      "telefono": null,
+      "cant_alumnos": null,
+      "niveles": {
+        "primario": null,
+        "secundario": null,
+        "adultos": null
+      },
+      "datos_pendientes": true
+    },
+    {
+      "id": "edu-043",
+      "tipo": "educativa",
+      "nombre": "RAUL BASILIO DIAZ",
+      "lat": -33.673412,
+      "lng": -65.465811,
+      "descripcion": null,
+      "direccion": "Almafuerte 351",
+      "email": null,
+      "telefono": null,
+      "cant_alumnos": null,
+      "niveles": {
+        "primario": null,
+        "secundario": null,
+        "adultos": null
+      },
+      "datos_pendientes": true
+    },
+    {
+      "id": "edu-044",
+      "tipo": "educativa",
+      "nombre": "DOCTOR RICARDO ROJAS",
+      "lat": -33.681123,
+      "lng": -65.461932,
+      "descripcion": null,
+      "direccion": "Av Los Álamos y Belgrano",
+      "email": null,
+      "telefono": null,
+      "cant_alumnos": null,
+      "niveles": {
+        "primario": null,
+        "secundario": null,
+        "adultos": null
+      },
+      "datos_pendientes": true
+    },
+    {
+      "id": "edu-045",
+      "tipo": "educativa",
+      "nombre": "DOCTOR LUIS ROBERTO BARROSO",
+      "lat": -33.66030656645345,
+      "lng": -65.43723885789346,
+      "descripcion": null,
+      "direccion": "Min. Berrondo 925, D5732 Villa Mercedes, San Luis",
+      "email": null,
+      "telefono": null,
+      "cant_alumnos": null,
+      "niveles": {
+        "primario": null,
+        "secundario": null,
+        "adultos": null
+      },
+      "datos_pendientes": true
+    },
+    {
+      "id": "edu-046",
+      "tipo": "educativa",
+      "nombre": "PROVINCIA DE MENDOZA",
+      "lat": -33.658269541897326,
+      "lng": -65.45104573494838,
+      "descripcion": null,
+      "direccion": "Italia 2009",
+      "email": null,
+      "telefono": null,
+      "cant_alumnos": null,
+      "niveles": {
+        "primario": null,
+        "secundario": null,
+        "adultos": null
+      },
+      "datos_pendientes": true
+    },
+    {
+      "id": "edu-047",
+      "tipo": "educativa",
+      "nombre": "VICENTE DUPUY",
+      "lat": -33.66426523399769,
+      "lng": -65.45544891480318,
+      "descripcion": null,
+      "direccion": "Zavala Ortiz 185",
+      "email": null,
+      "telefono": null,
+      "cant_alumnos": null,
+      "niveles": {
+        "primario": null,
+        "secundario": null,
+        "adultos": null
+      },
+      "datos_pendientes": true
+    },
+    {
+      "id": "edu-048",
+      "tipo": "educativa",
+      "nombre": "DOCTOR TOMAS JOFRE",
+      "lat": -33.6721,
+      "lng": -65.454222,
+      "descripcion": null,
+      "direccion": "Tucumán y 9 de Julio",
+      "email": null,
+      "telefono": null,
+      "cant_alumnos": null,
+      "niveles": {
+        "primario": null,
+        "secundario": null,
+        "adultos": null
+      },
+      "datos_pendientes": true
+    },
+    {
+      "id": "edu-049",
+      "tipo": "educativa",
+      "nombre": "GOBERNADOR DOCTOR CARLOS ALRIC",
+      "lat": -33.697075419614244,
+      "lng": -65.4520706536661,
+      "descripcion": null,
+      "direccion": "Venezuela 775",
+      "email": null,
+      "telefono": null,
+      "cant_alumnos": null,
+      "niveles": {
+        "primario": null,
+        "secundario": null,
+        "adultos": null
+      },
+      "datos_pendientes": true
+    },
+    {
+      "id": "edu-050",
+      "tipo": "educativa",
+      "nombre": "SAGRADO CORAZON",
+      "lat": -33.673891,
+      "lng": -65.465111,
+      "descripcion": null,
+      "direccion": "Balcarce 454",
+      "email": null,
+      "telefono": null,
+      "cant_alumnos": null,
+      "niveles": {
+        "primario": null,
+        "secundario": null,
+        "adultos": null
+      },
+      "datos_pendientes": true
+    },
+    {
+      "id": "edu-051",
+      "tipo": "educativa",
+      "nombre": "ALAS ARGENTINAS",
+      "lat": -33.654211,
+      "lng": -65.461233,
+      "descripcion": null,
+      "direccion": "Córdoba 551-599",
+      "email": null,
+      "telefono": null,
+      "cant_alumnos": null,
+      "niveles": {
+        "primario": null,
+        "secundario": null,
+        "adultos": null
+      },
+      "datos_pendientes": true
+    },
+    {
+      "id": "edu-052",
+      "tipo": "educativa",
+      "nombre": "MAESTRA OLGA ESTER SARDEN",
+      "lat": -33.68283234607774,
+      "lng": -65.45238368163574,
+      "descripcion": null,
+      "direccion": "Barrio San José",
+      "email": null,
+      "telefono": null,
+      "cant_alumnos": null,
+      "niveles": {
+        "primario": null,
+        "secundario": null,
+        "adultos": null
+      },
+      "datos_pendientes": true
+    },
+    {
+      "id": "edu-053",
+      "tipo": "educativa",
+      "nombre": "CLUB JORGE NEWBERY",
+      "lat": -33.672522,
+      "lng": -65.468133,
+      "descripcion": null,
+      "direccion": "Suipacha 351 (Instalaciones del Club)",
+      "email": null,
+      "telefono": null,
+      "cant_alumnos": null,
+      "niveles": {
+        "primario": null,
+        "secundario": null,
+        "adultos": null
+      },
+      "datos_pendientes": true
+    },
+    {
+      "id": "edu-054",
+      "tipo": "educativa",
+      "nombre": "ISABEL LA CATOLICA",
+      "lat": -33.674121,
+      "lng": -65.466533,
+      "descripcion": null,
+      "direccion": "Pringles 551",
+      "email": null,
+      "telefono": null,
+      "cant_alumnos": null,
+      "niveles": {
+        "primario": null,
+        "secundario": null,
+        "adultos": null
+      },
+      "datos_pendientes": true
+    },
+    {
+      "id": "edu-055",
+      "tipo": "educativa",
+      "nombre": "TOMASA GARRAZA DE QUIROGA \"Maestras Mercedinas\"",
+      "lat": -33.67523070154636,
+      "lng": -65.47381274265021,
+      "descripcion": null,
+      "direccion": "Justo Daract y San Luis",
+      "email": null,
+      "telefono": null,
+      "cant_alumnos": null,
+      "niveles": {
+        "primario": null,
+        "secundario": null,
+        "adultos": null
+      },
+      "datos_pendientes": true
+    },
+    {
+      "id": "edu-056",
+      "tipo": "educativa",
+      "nombre": "MODELO BILINGUE SAN MARCOS",
+      "lat": -33.677511,
+      "lng": -65.474133,
+      "descripcion": null,
+      "direccion": "Betbeder 215",
+      "email": null,
+      "telefono": null,
+      "cant_alumnos": null,
+      "niveles": {
+        "primario": null,
+        "secundario": null,
+        "adultos": null
+      },
+      "datos_pendientes": true
+    },
+    {
+      "id": "edu-057",
+      "tipo": "educativa",
+      "nombre": "SAN VALENTIN",
+      "lat": -33.671322,
+      "lng": -65.451233,
+      "descripcion": null,
+      "direccion": "Av Presidente Perón y Edison",
+      "email": null,
+      "telefono": null,
+      "cant_alumnos": null,
+      "niveles": {
+        "primario": null,
+        "secundario": null,
+        "adultos": null
+      },
+      "datos_pendientes": true
+    },
+    {
+      "id": "edu-058",
+      "tipo": "educativa",
+      "nombre": "MARIA EVA DUARTE DE PERON",
+      "lat": -3.3674739948748e+16,
+      "lng": -65.45798351590177,
+      "descripcion": null,
+      "direccion": "9 de July 1050",
+      "email": null,
+      "telefono": null,
+      "cant_alumnos": null,
+      "niveles": {
+        "primario": null,
+        "secundario": null,
+        "adultos": null
+      },
+      "datos_pendientes": true
+    },
+    {
+      "id": "edu-059",
+      "tipo": "educativa",
+      "nombre": "RIO QUINTO",
+      "lat": -33.68292640669986,
+      "lng": -65.42624722468749,
+      "descripcion": null,
+      "direccion": "Domicilio: Maipú 1712 esq. Ramón Moyano",
+      "email": null,
+      "telefono": null,
+      "cant_alumnos": null,
+      "niveles": {
+        "primario": null,
+        "secundario": null,
+        "adultos": null
+      },
+      "datos_pendientes": true
+    },
+    {
+      "id": "edu-060",
+      "tipo": "educativa",
+      "nombre": "MARIA EVA DUARTE DE PERON \"CONSTRUYENDO INFANCIAS\"",
+      "lat": -3.36593379295996e+16,
+      "lng": -65.42978712930812,
+      "descripcion": null,
+      "direccion": "Granaderos Puntanos y Principal Pereyra",
+      "email": null,
+      "telefono": null,
+      "cant_alumnos": null,
+      "niveles": {
+        "primario": null,
+        "secundario": null,
+        "adultos": null
+      },
+      "datos_pendientes": true
+    },
+    {
+      "id": "edu-061",
+      "tipo": "educativa",
+      "nombre": "JUAN WENCESLAO GEZ",
+      "lat": -33.671842,
+      "lng": -65.462311,
+      "descripcion": null,
+      "direccion": "Av Bartolomé Mitre 634",
+      "email": null,
+      "telefono": null,
+      "cant_alumnos": null,
+      "niveles": {
+        "primario": null,
+        "secundario": null,
+        "adultos": null
+      },
+      "datos_pendientes": true
+    },
+    {
+      "id": "edu-062",
+      "tipo": "educativa",
+      "nombre": "BENITO JUAREZ",
+      "lat": -33.682133,
+      "lng": -65.471133,
+      "descripcion": null,
+      "direccion": "Av 25 de Mayo 850",
+      "email": null,
+      "telefono": null,
+      "cant_alumnos": null,
+      "niveles": {
+        "primario": null,
+        "secundario": null,
+        "adultos": null
+      },
+      "datos_pendientes": true
+    },
+    {
+      "id": "edu-063",
+      "tipo": "educativa",
+      "nombre": "EVA DUARTE DE PERON",
+      "lat": -33.664522,
+      "lng": -65.461144,
+      "descripcion": null,
+      "direccion": "Calle Europa y 3 de Febrero",
+      "email": null,
+      "telefono": null,
+      "cant_alumnos": null,
+      "niveles": {
+        "primario": null,
+        "secundario": null,
+        "adultos": null
+      },
+      "datos_pendientes": true
+    },
+    {
+      "id": "edu-064",
+      "tipo": "educativa",
+      "nombre": "2026-04-02 00:00:00",
+      "lat": -33.640682217225525,
+      "lng": -65.47542560796954,
+      "descripcion": null,
+      "direccion": "Colectora Norte (Ruta Nacional) Nº 7 Km 697",
+      "email": null,
+      "telefono": null,
+      "cant_alumnos": null,
+      "niveles": {
+        "primario": null,
+        "secundario": null,
+        "adultos": null
+      },
+      "datos_pendientes": true
+    },
+    {
+      "id": "edu-065",
+      "tipo": "educativa",
+      "nombre": "LIBERTAD",
+      "lat": -33.68519099964429,
+      "lng": -65.45045011752963,
+      "descripcion": null,
+      "direccion": "690 Rafael Cortez",
+      "email": null,
+      "telefono": null,
+      "cant_alumnos": null,
+      "niveles": {
+        "primario": null,
+        "secundario": null,
+        "adultos": null
+      },
+      "datos_pendientes": true
+    },
+    {
+      "id": "edu-066",
+      "tipo": "educativa",
+      "nombre": "V BRIGADA AÉREA",
+      "lat": -33.729133,
+      "lng": -65.385511,
+      "descripcion": null,
+      "direccion": "Base Aérea, Villa Reynolds",
+      "email": null,
+      "telefono": null,
+      "cant_alumnos": null,
+      "niveles": {
+        "primario": null,
+        "secundario": null,
+        "adultos": {
+          "turno_tarde": {
+            "activo": true,
+            "horario": null
+          },
+          "turno_noche": {
+            "activo": true,
+            "horario": null
+          }
+        }
+      },
+      "datos_pendientes": false
     }
   ]
 }
