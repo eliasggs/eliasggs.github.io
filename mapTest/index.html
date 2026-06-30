@@ -53,10 +53,8 @@
   header::before {
     content: "";
     position: absolute;
-    top: -50px;
-    right: -30px;
-    width: 110px;
-    height: 110px;
+    top: -50px; right: -30px;
+    width: 110px; height: 110px;
     border: 2px solid rgba(243,239,230,0.1);
     border-radius: 50%;
   }
@@ -87,14 +85,7 @@
     white-space: nowrap;
   }
 
-  h1 em {
-    font-style: italic;
-    color: var(--terracota-suave);
-  }
-
-  .subt {
-    display: none;
-  }
+  h1 em { font-style: italic; color: var(--terracota-suave); }
 
   @media (max-width: 640px) {
     .eyebrow { display: none; }
@@ -115,7 +106,7 @@
     flex: 1 1 auto;
   }
 
-  /* ---------- Panel lateral (sidebar fijo, colapsable) ---------- */
+  /* ---------- Panel lateral ---------- */
   .panel-envoltorio {
     flex-shrink: 0;
     width: 300px;
@@ -127,23 +118,23 @@
     transition: width 0.22s ease;
   }
 
-  .panel-envoltorio.colapsado {
-    width: 0;
-  }
+  .panel-envoltorio.colapsado { width: 0; }
 
   .panel {
     width: 300px;
     height: 100%;
     padding: 16px 16px 24px;
     overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
   }
 
   .boton-colapsar {
     position: absolute;
     top: 45%;
     left: 286px;
-    width: 28px;
-    height: 28px;
+    width: 28px; height: 28px;
     border-radius: 50%;
     background: var(--verde-cartel);
     color: var(--crema);
@@ -165,22 +156,91 @@
     transform: rotate(180deg);
   }
 
-  /* En mobile, el panel se convierte en overlay deslizante sobre el mapa */
   @media (max-width: 860px) {
     .panel-envoltorio {
       position: absolute;
-      top: 0;
-      left: 0;
+      top: 0; left: 0;
       z-index: 550;
       box-shadow: 4px 0 18px rgba(27,27,23,0.18);
     }
-
-    .panel-envoltorio.colapsado {
-      width: 0;
-      box-shadow: none;
-    }
+    .panel-envoltorio.colapsado { width: 0; box-shadow: none; }
   }
 
+  /* ---------- Buscador ---------- */
+  .buscador-wrap {
+    margin-bottom: 14px;
+  }
+
+  .buscador-input {
+    width: 100%;
+    padding: 8px 12px 8px 34px;
+    border: 1.5px solid var(--linea);
+    border-radius: 8px;
+    font-family: 'Archivo', sans-serif;
+    font-size: 13.5px;
+    color: var(--tinta);
+    background: var(--crema);
+    outline: none;
+    transition: border-color 0.15s;
+    position: relative;
+  }
+
+  .buscador-input:focus { border-color: var(--verde-claro); background: var(--blanco); }
+  .buscador-input::placeholder { color: #a39c87; }
+
+  .buscador-icon {
+    position: absolute;
+    left: 24px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #a39c87;
+    pointer-events: none;
+    font-size: 14px;
+  }
+
+  .buscador-contenedor {
+    position: relative;
+  }
+
+  .buscador-resultados {
+    display: none;
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0; right: 0;
+    background: var(--blanco);
+    border: 1.5px solid var(--linea);
+    border-radius: 8px;
+    box-shadow: 0 6px 20px rgba(27,27,23,0.14);
+    z-index: 700;
+    max-height: 220px;
+    overflow-y: auto;
+  }
+
+  .buscador-resultados.visible { display: block; }
+
+  .buscador-item {
+    padding: 9px 12px;
+    font-size: 13px;
+    cursor: pointer;
+    border-bottom: 1px solid var(--linea);
+    color: var(--tinta);
+    transition: background 0.12s;
+  }
+
+  .buscador-item:last-child { border-bottom: none; }
+  .buscador-item:hover { background: var(--crema); }
+
+  .buscador-item-nombre { font-weight: 500; }
+  .buscador-item-sub { font-size: 11px; color: #8a8473; margin-top: 1px; }
+
+  .buscador-vacio {
+    padding: 12px;
+    font-size: 13px;
+    color: #a39c87;
+    font-style: italic;
+  }
+
+  /* ---------- Filtros ---------- */
   .panel-titulo {
     font-family: 'Space Mono', monospace;
     font-size: 11px;
@@ -189,7 +249,7 @@
     color: var(--verde-claro);
     border-bottom: 2px solid var(--linea);
     padding-bottom: 8px;
-    margin-bottom: 16px;
+    margin-bottom: 14px;
   }
 
   .grupo-filtro {
@@ -198,7 +258,6 @@
     padding-bottom: 8px;
   }
 
-  /* Fila de categoría principal (Educativas / Culturales) */
   .fila-categoria {
     display: flex;
     align-items: center;
@@ -221,16 +280,14 @@
   }
 
   .fila-categoria input[type="checkbox"] {
-    width: 16px;
-    height: 16px;
+    width: 16px; height: 16px;
     accent-color: var(--verde-cartel);
     cursor: pointer;
     flex-shrink: 0;
   }
 
   .punto {
-    width: 9px;
-    height: 9px;
+    width: 9px; height: 9px;
     border-radius: 50%;
     display: inline-block;
     flex-shrink: 0;
@@ -239,10 +296,8 @@
   .punto.educativa { background: var(--verde-claro); }
   .punto.cultural { background: var(--terracota); }
 
-  /* Botón expandir/colapsar (signo +) */
   .btn-expandir {
-    width: 22px;
-    height: 22px;
+    width: 22px; height: 22px;
     border-radius: 5px;
     border: 1px solid var(--linea);
     background: var(--crema);
@@ -259,38 +314,30 @@
   }
 
   .btn-expandir:hover { background: var(--linea); }
-
   .btn-expandir.abierto { transform: rotate(45deg); }
 
-  /* Subniveles (anidado nivel 1: primario/secundario/adultos) */
-  .subniveles {
-    display: none;
-    padding-left: 16px;
-    margin-top: 2px;
-  }
-
+  /* Subniveles */
+  .subniveles { display: none; padding-left: 16px; margin-top: 2px; }
   .subniveles.abierto { display: block; }
 
-  .fila-nivel {
+  /* Subcat nivel (escuelas, universidades, etc.) */
+  .fila-subcat {
     display: flex;
     align-items: center;
     gap: 8px;
     padding: 5px 2px;
   }
 
-  .fila-nivel label.chk {
+  .fila-subcat label.chk {
     flex: 1;
     padding: 4px;
     margin: 0;
+    font-weight: 500;
+    color: var(--tinta);
   }
 
-  /* Subniveles anidado nivel 2: turnos dentro de cada nivel */
-  .subturnos {
-    display: none;
-    padding-left: 18px;
-    margin-bottom: 4px;
-  }
-
+  /* Subniveles nivel 2: modalidades/turnos */
+  .subturnos { display: none; padding-left: 18px; margin-bottom: 4px; }
   .subturnos.abierto { display: block; }
 
   label.chk {
@@ -308,8 +355,7 @@
   label.chk:hover { background: var(--crema); }
 
   label.chk input {
-    width: 15px;
-    height: 15px;
+    width: 15px; height: 15px;
     accent-color: var(--verde-cartel);
     cursor: pointer;
     flex-shrink: 0;
@@ -318,7 +364,7 @@
   label.chk.turno { font-size: 13px; color: #5c5648; }
 
   .resultados-info {
-    margin-top: 18px;
+    margin-top: auto;
     padding-top: 14px;
     border-top: 1px solid var(--linea);
     font-family: 'Space Mono', monospace;
@@ -340,7 +386,7 @@
     background: var(--linea);
   }
 
-  /* ---------- Selector de estilo de mapa ---------- */
+  /* ---------- Selector de estilo ---------- */
   .selector-estilo {
     position: absolute;
     bottom: 24px;
@@ -370,14 +416,8 @@
     white-space: nowrap;
   }
 
-  .selector-estilo button:hover {
-    color: var(--verde-cartel);
-  }
-
-  .selector-estilo button.activo {
-    background: var(--verde-cartel);
-    color: var(--crema);
-  }
+  .selector-estilo button:hover { color: var(--verde-cartel); }
+  .selector-estilo button.activo { background: var(--verde-cartel); color: var(--crema); }
 
   @media (max-width: 480px) {
     .selector-estilo { bottom: 14px; }
@@ -392,7 +432,7 @@
 
   .leaflet-popup-content {
     margin: 16px 18px;
-    width: 280px !important;
+    width: 290px !important;
     font-family: 'Archivo', sans-serif;
   }
 
@@ -413,26 +453,38 @@
   .pop-nombre {
     font-family: 'Fraunces', serif;
     font-weight: 600;
-    font-size: 16.5px;
+    font-size: 16px;
     line-height: 1.25;
-    margin: 0 0 8px;
+    margin: 0 0 10px;
     color: var(--tinta);
   }
 
   .pop-fila {
     font-size: 13px;
     line-height: 1.5;
-    margin-bottom: 4px;
+    margin-bottom: 5px;
     color: #4a4640;
   }
 
   .pop-fila b { color: var(--tinta); }
+
+  .pop-orientacion {
+    font-size: 13px;
+    color: #4a4640;
+    font-style: italic;
+    margin-bottom: 5px;
+    padding: 6px 8px;
+    border-left: 3px solid var(--verde-claro);
+    background: #f0f6f2;
+    border-radius: 0 5px 5px 0;
+  }
 
   .pop-etiquetas {
     display: flex;
     flex-wrap: wrap;
     gap: 5px;
     margin-top: 10px;
+    margin-bottom: 8px;
   }
 
   .pop-etiqueta {
@@ -445,33 +497,43 @@
     color: #5c5648;
   }
 
-  .pop-etiqueta.activa-noche {
-    background: #2B2B22;
-    color: #F3EFE6;
-    border-color: #2B2B22;
-  }
+  .pop-etiqueta.gestion-estatal { background: #e8f0ed; border-color: #b0cdc2; color: var(--verde-cartel); }
+  .pop-etiqueta.gestion-privado { background: #fdf0e8; border-color: #e8c4a0; color: #7a4010; }
+  .pop-etiqueta.gestion-autogestionada { background: #f0eafa; border-color: #c9ade0; color: #4a1f7a; }
+  .pop-etiqueta.gestion-generativa { background: #e6f4e6; border-color: #9ecf9e; color: #1a5c1a; }
 
-  .pop-nivel {
-    margin-top: 9px;
+  .pop-turnos-bloque {
+    margin-top: 10px;
     padding-top: 8px;
     border-top: 1px solid var(--linea);
   }
 
-  .pop-nivel:first-of-type {
-    margin-top: 10px;
+  .pop-turnos-titulo {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--verde-claro);
+    margin-bottom: 5px;
   }
 
-  .pop-turnos {
-    font-size: 12.5px;
+  .pop-turnos-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .pop-turno-chip {
+    font-size: 12px;
+    padding: 3px 8px;
+    border-radius: 12px;
+    border: 1px solid var(--linea);
     color: #4a4640;
-    margin-top: 4px;
-    line-height: 1.5;
+    background: var(--crema);
   }
 
-  .pop-turnos-sin-dato {
-    color: #a39c87;
-    font-style: italic;
-  }
+  .pop-turno-chip.noche { background: #2B2B22; color: #F3EFE6; border-color: #2B2B22; }
+  .pop-turno-chip.doble_turno, .pop-turno-chip.jornada_completa { background: #1F4D3D; color: #F3EFE6; border-color: #1F4D3D; }
 
   .pop-pendiente {
     margin-top: 10px;
@@ -483,12 +545,19 @@
     border-radius: 6px;
   }
 
+  /* Botones de acción en el popup */
+  .pop-acciones {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    margin-top: 12px;
+  }
+
   .pop-boton-llegar {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 7px;
-    margin-top: 12px;
     padding: 9px 10px;
     background: var(--terracota);
     color: var(--blanco) !important;
@@ -500,20 +569,32 @@
     transition: background 0.15s;
   }
 
-  .pop-boton-llegar:hover {
-    background: #A4502F;
+  .pop-boton-llegar:hover { background: #A4502F; }
+  .pop-boton-llegar svg { width: 15px; height: 15px; flex-shrink: 0; }
+
+  .pop-boton-llamar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    padding: 8px 10px;
+    background: var(--blanco);
+    color: var(--verde-cartel) !important;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    text-decoration: none;
+    border-radius: 7px;
+    border: 2px solid var(--verde-cartel);
+    transition: background 0.15s, color 0.15s;
   }
 
-  .pop-boton-llegar svg {
-    width: 15px;
-    height: 15px;
-    flex-shrink: 0;
-  }
+  .pop-boton-llamar:hover { background: var(--verde-cartel); color: var(--blanco) !important; }
+  .pop-boton-llamar svg { width: 15px; height: 15px; flex-shrink: 0; }
 
   /* ---------- Marcadores personalizados ---------- */
   .marcador-icono {
-    width: 30px;
-    height: 30px;
+    width: 30px; height: 30px;
     border-radius: 50% 50% 50% 0;
     transform: rotate(-45deg);
     border: 2px solid var(--blanco);
@@ -523,12 +604,7 @@
     justify-content: center;
   }
 
-  .marcador-icono span {
-    transform: rotate(45deg);
-    font-size: 13px;
-    line-height: 1;
-  }
-
+  .marcador-icono span { transform: rotate(45deg); font-size: 13px; line-height: 1; }
   .marcador-icono.educativa { background: var(--verde-claro); }
   .marcador-icono.cultural { background: var(--terracota); }
 
@@ -544,7 +620,6 @@
     flex-shrink: 0;
   }
 
-  /* Scrollbar discreta */
   .panel::-webkit-scrollbar { width: 6px; }
   .panel::-webkit-scrollbar-thumb { background: var(--linea); border-radius: 3px; }
 </style>
@@ -559,10 +634,26 @@
 </header>
 
 <div class="app" id="app">
-  <button class="boton-colapsar" id="boton-colapsar" aria-label="Colapsar panel de filtros" title="Colapsar panel de filtros">‹</button>
+  <button class="boton-colapsar" id="boton-colapsar" aria-label="Colapsar panel de filtros">‹</button>
 
   <div class="panel-envoltorio" id="panel-envoltorio">
     <aside class="panel">
+
+      <!-- ===== Buscador ===== -->
+      <div class="buscador-wrap">
+        <div class="buscador-contenedor">
+          <span class="buscador-icon">🔍</span>
+          <input
+            type="text"
+            id="buscador"
+            class="buscador-input"
+            placeholder="Buscar institución..."
+            autocomplete="off"
+          >
+          <div class="buscador-resultados" id="buscador-resultados"></div>
+        </div>
+      </div>
+
       <div class="panel-titulo">Filtros</div>
 
       <!-- ===== Categoría: Educativas ===== -->
@@ -570,51 +661,50 @@
         <div class="fila-categoria">
           <input type="checkbox" id="cat-educativa" checked>
           <h3 id="titulo-educativa"><span class="punto educativa"></span>Educativas</h3>
-          <button class="btn-expandir" data-target="niveles-educativa">+</button>
+          <button class="btn-expandir" data-target="subcats-educativa">+</button>
         </div>
 
-        <div class="subniveles" id="niveles-educativa">
+        <div class="subniveles" id="subcats-educativa">
 
-          <!-- Nivel: Primario -->
-          <div class="fila-nivel">
+          <!-- Subcategoría: Escuelas -->
+          <div class="fila-subcat">
             <label class="chk">
-              <input type="checkbox" class="nivel" data-nivel="primario" checked>
-              Primario
+              <input type="checkbox" class="subcat-chk" data-subcat="escuela" checked>
+              🏫 Escuelas
             </label>
-            <button class="btn-expandir" data-target="turnos-primario">+</button>
+            <button class="btn-expandir" data-target="turnos-escuela">+</button>
           </div>
-          <div class="subturnos" id="turnos-primario">
-            <label class="chk turno"><input type="checkbox" class="turno-chk" data-nivel="primario" data-turno="turno_manana" checked> ☀️ Mañana</label>
-            <label class="chk turno"><input type="checkbox" class="turno-chk" data-nivel="primario" data-turno="turno_tarde" checked> 🌤️ Tarde</label>
-            <label class="chk turno"><input type="checkbox" class="turno-chk" data-nivel="primario" data-turno="turno_noche" checked> 🌙 Noche</label>
-          </div>
-
-          <!-- Nivel: Secundario -->
-          <div class="fila-nivel">
-            <label class="chk">
-              <input type="checkbox" class="nivel" data-nivel="secundario" checked>
-              Secundario
-            </label>
-            <button class="btn-expandir" data-target="turnos-secundario">+</button>
-          </div>
-          <div class="subturnos" id="turnos-secundario">
-            <label class="chk turno"><input type="checkbox" class="turno-chk" data-nivel="secundario" data-turno="turno_manana" checked> ☀️ Mañana</label>
-            <label class="chk turno"><input type="checkbox" class="turno-chk" data-nivel="secundario" data-turno="turno_tarde" checked> 🌤️ Tarde</label>
-            <label class="chk turno"><input type="checkbox" class="turno-chk" data-nivel="secundario" data-turno="turno_noche" checked> 🌙 Noche</label>
+          <div class="subturnos" id="turnos-escuela">
+            <label class="chk turno"><input type="checkbox" class="turno-chk" data-subcat="escuela" data-turno="manana" checked> ☀️ Mañana</label>
+            <label class="chk turno"><input type="checkbox" class="turno-chk" data-subcat="escuela" data-turno="tarde" checked> 🌤️ Tarde</label>
+            <label class="chk turno"><input type="checkbox" class="turno-chk" data-subcat="escuela" data-turno="noche" checked> 🌙 Noche</label>
+            <label class="chk turno"><input type="checkbox" class="turno-chk" data-subcat="escuela" data-turno="doble_turno" checked> ⏰ Doble turno</label>
+            <label class="chk turno"><input type="checkbox" class="turno-chk" data-subcat="escuela" data-turno="jornada_completa" checked> 📅 Jornada completa</label>
+            <label class="chk turno"><input type="checkbox" class="turno-chk" data-subcat="escuela" data-turno="vespertino" checked> 🌅 Vespertino</label>
           </div>
 
-          <!-- Nivel: Adultos -->
-          <div class="fila-nivel">
+          <!-- Subcategoría: Universidades -->
+          <div class="fila-subcat">
             <label class="chk">
-              <input type="checkbox" class="nivel" data-nivel="adultos" checked>
-              Educación para adultos
+              <input type="checkbox" class="subcat-chk" data-subcat="universidad" checked>
+              🎓 Universidades
             </label>
-            <button class="btn-expandir" data-target="turnos-adultos">+</button>
           </div>
-          <div class="subturnos" id="turnos-adultos">
-            <label class="chk turno"><input type="checkbox" class="turno-chk" data-nivel="adultos" data-turno="turno_manana" checked> ☀️ Mañana</label>
-            <label class="chk turno"><input type="checkbox" class="turno-chk" data-nivel="adultos" data-turno="turno_tarde" checked> 🌤️ Tarde</label>
-            <label class="chk turno"><input type="checkbox" class="turno-chk" data-nivel="adultos" data-turno="turno_noche" checked> 🌙 Noche</label>
+
+          <!-- Subcategoría: IFD -->
+          <div class="fila-subcat">
+            <label class="chk">
+              <input type="checkbox" class="subcat-chk" data-subcat="ifd" checked>
+              📚 Inst. de Formación Docente
+            </label>
+          </div>
+
+          <!-- Subcategoría: Formación Profesional -->
+          <div class="fila-subcat">
+            <label class="chk">
+              <input type="checkbox" class="subcat-chk" data-subcat="formacion_profesional" checked>
+              🔧 Inst. de Formación Profesional
+            </label>
           </div>
 
         </div>
@@ -645,32 +735,26 @@
   </div>
 </div>
 
-<footer>Datos de ejemplo — Villa Mercedes, San Luis · Actualizar en instituciones.json</footer>
+<footer>Datos de Villa Mercedes, San Luis · Actualizar en instituciones.json</footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
 <script>
-  // ---------- Inicialización del mapa ----------
+  // ---------- Mapa ----------
   const mapa = L.map('mapa', { zoomControl: false }).setView([-33.6755, -65.4540], 14);
-
-  // Asegura que Leaflet recalcule su tamaño tras el primer render del layout
-  // (importante porque ahora el alto del mapa depende de flex/grid, no de un vh fijo)
   setTimeout(() => mapa.invalidateSize(), 0);
   window.addEventListener('resize', () => mapa.invalidateSize());
 
   const capasEstilo = {
     claro: L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
-      maxZoom: 20,
-      subdomains: 'abcd'
+      maxZoom: 20, subdomains: 'abcd'
     }),
     calco: L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/light_all/{z}/{x}/{y}{r}.png', {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
-      maxZoom: 20,
-      subdomains: 'abcd'
+      maxZoom: 20, subdomains: 'abcd'
     }),
     satelital: L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-      attribution: 'Tiles &copy; Esri &mdash; Source: Esri, Maxar, Earthstar Geographics',
-      maxZoom: 19
+      attribution: 'Tiles &copy; Esri', maxZoom: 19
     })
   };
 
@@ -680,7 +764,6 @@
     if (capasEstilo[estilo] === capaActual) return;
     mapa.removeLayer(capaActual);
     capaActual = capasEstilo[estilo].addTo(mapa);
-
     document.querySelectorAll('.selector-estilo button').forEach(btn => {
       btn.classList.toggle('activo', btn.dataset.estilo === estilo);
     });
@@ -692,6 +775,7 @@
 
   let instituciones = [];
   let marcadores = [];
+  let marcadorDestacado = null;
 
   function crearIcono(tipo) {
     const emoji = tipo === 'educativa' ? '🏫' : '🎭';
@@ -704,72 +788,119 @@
     });
   }
 
-  const NOMBRES_NIVEL = {
-    primario: 'Primario',
-    secundario: 'Secundario',
-    adultos: 'Educación para adultos'
-  };
-
+  // ---------- Nombres de turnos ----------
   const NOMBRES_TURNO = {
-    turno_manana: '☀️ Mañana',
-    turno_tarde: '🌤️ Tarde',
-    turno_noche: '🌙 Noche'
+    manana: '☀️ Mañana',
+    tarde: '🌤️ Tarde',
+    noche: '🌙 Noche',
+    doble_turno: '⏰ Doble turno',
+    jornada_completa: '📅 Jornada completa',
+    vespertino: '🌅 Vespertino',
   };
 
-  // Botón "Cómo llegar": abre Google Maps con navegación directa a las
-  // coordenadas de la institución. En celular abre la app de Maps; en
-  // computadora abre Google Maps en el navegador.
+  // ---------- Etiqueta de gestión ----------
+  function claseGestion(gestion) {
+    if (!gestion) return '';
+    const g = gestion.toUpperCase();
+    if (g.includes('ESTATAL')) return 'gestion-estatal';
+    if (g.includes('PRIVADO')) return 'gestion-privado';
+    if (g.includes('AUTOGESTIONADA') || g.includes('AUTOGESTION')) return 'gestion-autogestionada';
+    if (g.includes('GENERATIVA')) return 'gestion-generativa';
+    return '';
+  }
+
+  function labelGestion(gestion) {
+    if (!gestion) return null;
+    const g = gestion.toUpperCase();
+    if (g.includes('ESTATAL')) return '🏛️ Estatal';
+    if (g.includes('PRIVADO')) return '🏢 Privada';
+    if (g.includes('AUTOGESTIONADA')) return '🤝 Pública autogestionada';
+    if (g.includes('GENERATIVA')) return '🌱 Generativa';
+    return gestion;
+  }
+
+  // ---------- Botones de acción ----------
   function botonComoLlegar(inst) {
     const url = `https://www.google.com/maps/dir/?api=1&destination=${inst.lat},${inst.lng}`;
     return `
       <a class="pop-boton-llegar" href="${url}" target="_blank" rel="noopener noreferrer">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"></polygon></svg>
         Cómo llegar
-      </a>
-    `;
+      </a>`;
   }
 
-  function construirPopupEducativa(inst) {
-    if (inst.datos_pendientes) {
+  function botonesLlamar(telefonos) {
+    if (!telefonos || telefonos.length === 0) return '';
+    return telefonos.map(tel => {
+      const telLimpio = tel.replace(/[\s\-]/g, '');
+      const href = `tel:${telLimpio}`;
       return `
-        <div class="pop-tipo educativa">Institución educativa</div>
-        <p class="pop-nombre">${inst.nombre}</p>
-        <div class="pop-fila"><b>Dirección:</b> ${inst.direccion || '—'}</div>
-        <div class="pop-fila"><b>Teléfono:</b> ${inst.telefono || '—'}</div>
-        <div class="pop-pendiente">📋 Datos pendientes de completar</div>
-        ${botonComoLlegar(inst)}
-      `;
+        <a class="pop-boton-llamar" href="${href}">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.44 2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.84a16 16 0 0 0 6.29 6.29l.93-.93a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          Llamar · ${tel}
+        </a>`;
+    }).join('');
+  }
+
+  // ---------- Popup educativa ----------
+  function construirPopupEducativa(inst) {
+    const subcatLabel = {
+      escuela: 'Escuela',
+      universidad: 'Universidad',
+      ifd: 'Inst. Formación Docente',
+      formacion_profesional: 'Inst. Formación Profesional',
+    }[inst.subcategoria] || 'Institución educativa';
+
+    const gestLabel = labelGestion(inst.tipo_gestion);
+    const gestClass = claseGestion(inst.tipo_gestion);
+
+    let etiquetasHtml = '<div class="pop-etiquetas">';
+    if (gestLabel) etiquetasHtml += `<span class="pop-etiqueta ${gestClass}">${gestLabel}</span>`;
+    if (inst.modalidad) etiquetasHtml += `<span class="pop-etiqueta">${inst.modalidad}</span>`;
+    etiquetasHtml += '</div>';
+
+    let orientacionHtml = '';
+    if (inst.orientacion && inst.orientacion.toLowerCase() !== 'orientación' && inst.orientacion.trim()) {
+      orientacionHtml = `<div class="pop-orientacion">📐 ${inst.orientacion}</div>`;
     }
 
-    let bloquesNivel = '';
-    for (const [nivel, datosNivel] of Object.entries(inst.niveles || {})) {
-      if (!datosNivel) continue; // null = no tiene ese nivel
-
-      const turnosTexto = Object.entries(datosNivel)
-        .filter(([, t]) => t.activo)
-        .map(([clave, t]) => `${NOMBRES_TURNO[clave] || clave}${t.horario ? ` (${t.horario})` : ''}`);
-
-      bloquesNivel += `
-        <div class="pop-nivel">
-          <span class="pop-etiqueta">${NOMBRES_NIVEL[nivel] || nivel}</span>
-          ${turnosTexto.length
-            ? `<div class="pop-turnos">${turnosTexto.join(' · ')}</div>`
-            : `<div class="pop-turnos pop-turnos-sin-dato">Turnos a confirmar</div>`}
-        </div>
-      `;
+    let descripcionHtml = '';
+    if (inst.descripcion) {
+      descripcionHtml = `<div class="pop-fila" style="margin-top:6px;font-size:12.5px;color:#6a6258;">${inst.descripcion}</div>`;
     }
 
-    if (!bloquesNivel) {
-      bloquesNivel = `<div class="pop-pendiente">📋 Datos pendientes de completar</div>`;
+    let turnosHtml = '';
+    if (inst.turnos && inst.turnos.length > 0) {
+      const chips = inst.turnos.map(t =>
+        `<span class="pop-turno-chip ${t}">${NOMBRES_TURNO[t] || t}</span>`
+      ).join('');
+      turnosHtml = `
+        <div class="pop-turnos-bloque">
+          <div class="pop-turnos-titulo">Turnos</div>
+          <div class="pop-turnos-chips">${chips}</div>
+        </div>`;
     }
+
+    const telefonoTexto = inst.telefonos && inst.telefonos.length > 0
+      ? inst.telefonos.join(' · ')
+      : (inst.telefono || null);
 
     return `
-      <div class="pop-tipo educativa">Institución educativa</div>
+      <div class="pop-tipo educativa">${subcatLabel}</div>
       <p class="pop-nombre">${inst.nombre}</p>
-      <div class="pop-fila"><b>Dirección:</b> ${inst.direccion || '—'}</div>
-      <div class="pop-fila"><b>Teléfono:</b> ${inst.telefono || '—'}</div>
-      ${bloquesNivel}
-      ${botonComoLlegar(inst)}
+      ${etiquetasHtml}
+      ${orientacionHtml}
+      ${inst.direccion ? `<div class="pop-fila"><b>Dirección:</b> ${inst.direccion}</div>` : ''}
+      ${telefonoTexto ? `<div class="pop-fila"><b>Teléfono:</b> ${telefonoTexto}</div>` : ''}
+      ${inst.email ? `<div class="pop-fila"><b>Email:</b> ${inst.email}</div>` : ''}
+      ${turnosHtml}
+      ${inst.niveles_str ? `<div class="pop-fila" style="margin-top:8px;"><b>Niveles:</b> ${inst.niveles_str}</div>` : ''}
+      ${descripcionHtml}
+      ${inst.datos_pendientes ? '<div class="pop-pendiente">📋 Datos pendientes de completar</div>' : ''}
+      <div class="pop-acciones">
+        ${botonComoLlegar(inst)}
+        ${botonesLlamar(inst.telefonos)}
+      </div>
     `;
   }
 
@@ -780,20 +911,24 @@
       <div class="pop-fila"><b>Dirección:</b> ${inst.direccion || '—'}</div>
       <div class="pop-fila"><b>Teléfono:</b> ${inst.telefono || '—'}</div>
       <div class="pop-fila"><b>Email:</b> ${inst.email || '—'}</div>
-      <div class="pop-fila"><b>Edades:</b> ${inst.edades || '—'}</div>
       <div class="pop-fila"><b>Horarios:</b> ${inst.horarios || '—'}</div>
       <div class="pop-fila"><b>Actividades:</b> ${inst.actividades || '—'}</div>
-      ${botonComoLlegar(inst)}
+      <div class="pop-acciones">
+        ${botonComoLlegar(inst)}
+        ${botonesLlamar(inst.telefonos || [])}
+      </div>
     `;
   }
 
-  // ---------- Filtros jerárquicos: Categoría > Nivel > Turno ----------
-  const nivelesEducativos = ['primario', 'secundario', 'adultos'];
+  // ---------- Lógica de filtros ----------
+  function subcatVisible(subcat) {
+    const chk = document.querySelector(`.subcat-chk[data-subcat="${subcat}"]`);
+    return chk ? chk.checked : true;
+  }
 
-  function estadoNivel(nivel) {
-    // Devuelve true si, para ese nivel, hay al menos un turno tildado
-    const turnosDelNivel = document.querySelectorAll(`.turno-chk[data-nivel="${nivel}"]`);
-    return Array.from(turnosDelNivel).some(t => t.checked);
+  function turnosActivosDeSubcat(subcat) {
+    return Array.from(document.querySelectorAll(`.turno-chk[data-subcat="${subcat}"]:checked`))
+      .map(t => t.dataset.turno);
   }
 
   function institucionVisible(inst) {
@@ -802,56 +937,104 @@
     }
 
     if (!document.getElementById('cat-educativa').checked) return false;
+    if (!subcatVisible(inst.subcategoria || 'escuela')) return false;
 
-    // Las instituciones con datos pendientes siempre se muestran si la
-    // categoría general "Educativas" está activa, sin importar los
-    // sub-filtros de nivel/turno (todavía no tienen esos datos para filtrar).
-    if (inst.datos_pendientes) return true;
+    // Si no hay turnos en los datos, mostrar siempre que la subcat esté activa
+    if (!inst.turnos || inst.turnos.length === 0) return true;
 
-    return nivelesEducativos.some(nivel => {
-      const datosNivel = inst.niveles && inst.niveles[nivel];
-      if (!datosNivel) return false; // la institución no tiene ese nivel (null)
+    // Verificar si al menos un turno de la institución está activo en el filtro
+    const turnosActivos = turnosActivosDeSubcat(inst.subcategoria || 'escuela');
+    // Si la subcat no tiene filtros de turno, mostrar siempre
+    if (turnosActivos.length === 0 && !document.querySelector(`.turno-chk[data-subcat="${inst.subcategoria}"]`)) return true;
 
-      const chkNivel = document.querySelector(`.nivel[data-nivel="${nivel}"]`);
-      if (!chkNivel || !chkNivel.checked) return false; // el nivel está desactivado en la UI
-
-      const clavesTurno = Object.keys(datosNivel);
-      if (clavesTurno.length === 0) {
-        // La institución tiene el nivel pero todavía no completó turnos:
-        // se muestra igual mientras el nivel esté tildado.
-        return true;
-      }
-
-      // turnos tildados para este nivel en la UI
-      const turnosActivosUI = Array.from(document.querySelectorAll(`.turno-chk[data-nivel="${nivel}"]:checked`))
-        .map(t => t.dataset.turno);
-
-      // la institución debe tener al menos uno de esos turnos activo en los datos
-      return turnosActivosUI.some(turno => datosNivel[turno] && datosNivel[turno].activo);
-    });
+    return inst.turnos.some(t => turnosActivos.includes(t));
   }
 
   function renderizarMarcadores() {
-    marcadores.forEach(m => mapa.removeLayer(m));
+    marcadores.forEach(m => mapa.removeLayer(m.marcador));
     marcadores = [];
 
     let visibles = 0;
 
     instituciones.forEach(inst => {
+      if (!inst.lat || !inst.lng) return;
       if (institucionVisible(inst)) {
         visibles++;
         const marcador = L.marker([inst.lat, inst.lng], { icon: crearIcono(inst.tipo) });
         const contenido = inst.tipo === 'educativa'
           ? construirPopupEducativa(inst)
           : construirPopupCultural(inst);
-        marcador.bindPopup(contenido);
+        marcador.bindPopup(contenido, { maxWidth: 320 });
         marcador.addTo(mapa);
-        marcadores.push(marcador);
+        marcadores.push({ marcador, inst });
       }
     });
 
     document.getElementById('contador-resultados').textContent = visibles;
   }
+
+  // ---------- Buscador ----------
+  const inputBuscador = document.getElementById('buscador');
+  const divResultados = document.getElementById('buscador-resultados');
+
+  function normalizarTexto(t) {
+    return t.toLowerCase()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '');
+  }
+
+  function mostrarResultadosBusqueda(query) {
+    divResultados.innerHTML = '';
+    if (!query || query.length < 2) {
+      divResultados.classList.remove('visible');
+      return;
+    }
+
+    const q = normalizarTexto(query);
+    const encontrados = instituciones.filter(inst =>
+      inst.lat && inst.lng && normalizarTexto(inst.nombre).includes(q)
+    ).slice(0, 8);
+
+    if (encontrados.length === 0) {
+      divResultados.innerHTML = '<div class="buscador-vacio">Sin resultados</div>';
+      divResultados.classList.add('visible');
+      return;
+    }
+
+    encontrados.forEach(inst => {
+      const div = document.createElement('div');
+      div.className = 'buscador-item';
+      const subcatLabel = {
+        escuela: 'Escuela',
+        universidad: 'Universidad',
+        ifd: 'Inst. Formación Docente',
+        formacion_profesional: 'Inst. Formación Profesional',
+      }[inst.subcategoria] || 'Educativa';
+      div.innerHTML = `
+        <div class="buscador-item-nombre">${inst.nombre}</div>
+        <div class="buscador-item-sub">${subcatLabel}${inst.direccion ? ' · ' + inst.direccion : ''}</div>
+      `;
+      div.addEventListener('click', () => {
+        mapa.setView([inst.lat, inst.lng], 16);
+        // Buscar y abrir popup del marcador
+        const entry = marcadores.find(m => m.inst.id === inst.id);
+        if (entry) entry.marcador.openPopup();
+        divResultados.classList.remove('visible');
+        inputBuscador.value = inst.nombre;
+      });
+      divResultados.appendChild(div);
+    });
+
+    divResultados.classList.add('visible');
+  }
+
+  inputBuscador.addEventListener('input', e => mostrarResultadosBusqueda(e.target.value));
+  inputBuscador.addEventListener('focus', e => mostrarResultadosBusqueda(e.target.value));
+  document.addEventListener('click', e => {
+    if (!e.target.closest('.buscador-contenedor')) {
+      divResultados.classList.remove('visible');
+    }
+  });
 
   // ---------- Carga de datos ----------
   fetch('instituciones.json')
@@ -865,43 +1048,48 @@
       document.getElementById('contador-resultados').textContent = '0';
     });
 
-  // ---------- Checkbox de categoría educativa: prende/apaga todos los niveles y turnos hijos ----------
+  // ---------- Evento: categoría educativa madre ----------
   document.getElementById('cat-educativa').addEventListener('change', (e) => {
     const activo = e.target.checked;
-    document.querySelectorAll('.nivel, .turno-chk').forEach(chk => chk.checked = activo);
+    document.querySelectorAll('.subcat-chk, .turno-chk').forEach(chk => chk.checked = activo);
     renderizarMarcadores();
   });
 
   document.getElementById('cat-cultural').addEventListener('change', renderizarMarcadores);
 
-  // ---------- Checkbox de nivel: prende/apaga sus turnos hijos, y al revés actualiza el padre ----------
-  document.querySelectorAll('.nivel').forEach(chkNivel => {
-    chkNivel.addEventListener('change', () => {
-      const nivel = chkNivel.dataset.nivel;
-      document.querySelectorAll(`.turno-chk[data-nivel="${nivel}"]`).forEach(t => t.checked = chkNivel.checked);
-      actualizarCheckboxCategoria();
+  // ---------- Evento: subcategorías ----------
+  document.querySelectorAll('.subcat-chk').forEach(chkSubcat => {
+    chkSubcat.addEventListener('change', () => {
+      const subcat = chkSubcat.dataset.subcat;
+      // Propagar a turnos hijos si los hay
+      document.querySelectorAll(`.turno-chk[data-subcat="${subcat}"]`).forEach(t => {
+        t.checked = chkSubcat.checked;
+      });
+      actualizarCheckboxCategoriaEducativa();
       renderizarMarcadores();
     });
   });
 
-  // ---------- Checkbox de turno: si se apagan todos los turnos de un nivel, apaga el nivel; si se prende uno, prende el nivel ----------
+  // ---------- Evento: turnos ----------
   document.querySelectorAll('.turno-chk').forEach(chkTurno => {
     chkTurno.addEventListener('change', () => {
-      const nivel = chkTurno.dataset.nivel;
-      const chkNivel = document.querySelector(`.nivel[data-nivel="${nivel}"]`);
-      chkNivel.checked = estadoNivel(nivel);
-      actualizarCheckboxCategoria();
+      const subcat = chkTurno.dataset.subcat;
+      // Si se apagan todos los turnos de una subcat, apagar la subcat
+      const turnosDeSubcat = document.querySelectorAll(`.turno-chk[data-subcat="${subcat}"]`);
+      const hayAlguno = Array.from(turnosDeSubcat).some(t => t.checked);
+      const chkSubcat = document.querySelector(`.subcat-chk[data-subcat="${subcat}"]`);
+      if (chkSubcat) chkSubcat.checked = hayAlguno;
+      actualizarCheckboxCategoriaEducativa();
       renderizarMarcadores();
     });
   });
 
-  // Mantiene el checkbox de categoría "Educativas" coherente: tildado si algún nivel está activo
-  function actualizarCheckboxCategoria() {
-    const algunNivelActivo = Array.from(document.querySelectorAll('.nivel')).some(n => n.checked);
-    document.getElementById('cat-educativa').checked = algunNivelActivo;
+  function actualizarCheckboxCategoriaEducativa() {
+    const algunaSubcatActiva = Array.from(document.querySelectorAll('.subcat-chk')).some(s => s.checked);
+    document.getElementById('cat-educativa').checked = algunaSubcatActiva;
   }
 
-  // ---------- Botones expandir/colapsar (signo +) ----------
+  // ---------- Botones expandir/colapsar ----------
   document.querySelectorAll('.btn-expandir').forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
@@ -912,13 +1100,12 @@
     });
   });
 
-  // Clic en el título "Educativas" también expande/colapsa sus niveles
   document.getElementById('titulo-educativa').addEventListener('click', () => {
-    const btn = document.querySelector('.btn-expandir[data-target="niveles-educativa"]');
+    const btn = document.querySelector('.btn-expandir[data-target="subcats-educativa"]');
     btn.click();
   });
 
-  // ---------- Colapsar / expandir el panel lateral completo ----------
+  // ---------- Colapsar panel lateral ----------
   const appEl = document.getElementById('app');
   const panelEnvoltorio = document.getElementById('panel-envoltorio');
   const botonColapsar = document.getElementById('boton-colapsar');
@@ -926,7 +1113,7 @@
   botonColapsar.addEventListener('click', () => {
     appEl.classList.toggle('colapsado');
     panelEnvoltorio.classList.toggle('colapsado');
-    setTimeout(() => mapa.invalidateSize(), 230); // espera a que termine la transición CSS
+    setTimeout(() => mapa.invalidateSize(), 230);
   });
 </script>
 
