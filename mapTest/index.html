@@ -950,24 +950,40 @@
     return inst.turnos.some(t => turnosActivos.includes(t));
   }
 
-  function renderizarMarcadores() {
-    marcadores.forEach(m => mapa.removeLayer(m.marcador));
-    marcadores = [];
-
-    let visibles = 0;
-
+  // Los marcadores se crean UNA SOLA VEZ al cargar los datos. Después, al cambiar
+  // un filtro, solo se agregan/quitan del mapa los que correspondan — no se
+  // reconstruyen desde cero. Esto evita rehacer 65+ marcadores con cada click
+  // en un checkbox.
+  function crearTodosLosMarcadores() {
     instituciones.forEach(inst => {
       if (!inst.lat || !inst.lng) return;
-      if (institucionVisible(inst)) {
-        visibles++;
-        const marcador = L.marker([inst.lat, inst.lng], { icon: crearIcono(inst.tipo) });
+      const marcador = L.marker([inst.lat, inst.lng], { icon: crearIcono(inst.tipo) });
+      // Popup perezoso: el HTML se construye solo al abrirlo, no al crear el marcador.
+      marcador.bindPopup('', { maxWidth: 320 });
+      marcador.on('popupopen', () => {
         const contenido = inst.tipo === 'educativa'
           ? construirPopupEducativa(inst)
           : construirPopupCultural(inst);
-        marcador.bindPopup(contenido, { maxWidth: 320 });
-        marcador.addTo(mapa);
-        marcadores.push({ marcador, inst });
+        marcador.setPopupContent(contenido);
+      });
+      marcadores.push({ marcador, inst });
+    });
+  }
+
+  function renderizarMarcadores() {
+    let visibles = 0;
+
+    marcadores.forEach(m => {
+      const debeEstarVisible = institucionVisible(m.inst);
+      const estaEnElMapa = mapa.hasLayer(m.marcador);
+
+      if (debeEstarVisible && !estaEnElMapa) {
+        m.marcador.addTo(mapa);
+      } else if (!debeEstarVisible && estaEnElMapa) {
+        mapa.removeLayer(m.marcador);
       }
+
+      if (debeEstarVisible) visibles++;
     });
 
     document.getElementById('contador-resultados').textContent = visibles;
@@ -1041,6 +1057,7 @@
     .then(res => res.json())
     .then(data => {
       instituciones = data.instituciones;
+      crearTodosLosMarcadores();
       renderizarMarcadores();
     })
     .catch(err => {
