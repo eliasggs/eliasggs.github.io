@@ -753,6 +753,7 @@
     <div class="selector-estilo" id="selector-estilo">
       <button data-estilo="claro" class="activo">Claro</button>
       <button data-estilo="calco">Calco</button>
+      <button data-estilo="osm">OSM</button>
       <button data-estilo="satelital">Satélite</button>
     </div>
   </div>
@@ -776,6 +777,10 @@
     calco: L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/light_all/{z}/{x}/{y}{r}.png', {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
       maxZoom: 20, subdomains: 'abcd'
+    }),
+    osm: L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      maxZoom: 19, subdomains: 'abc'
     }),
     satelital: L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
       attribution: 'Tiles &copy; Esri', maxZoom: 19
