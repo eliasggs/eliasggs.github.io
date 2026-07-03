@@ -751,9 +751,9 @@
   <div class="mapa-contenedor" style="position: relative;">
     <div id="mapa"></div>
     <div class="selector-estilo" id="selector-estilo">
-      <button data-estilo="osm">OSM</button>
       <button data-estilo="claro" class="activo">Claro</button>
       <button data-estilo="calco">Calco</button>
+      <button data-estilo="osm">OSM</button>
       <button data-estilo="satelital">Satélite</button>
     </div>
   </div>
@@ -780,10 +780,10 @@
     }),
     osm: L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-      maxZoom: 20, subdomains: 'abc'
+      maxZoom: 19, subdomains: 'abc'
     }),
     satelital: L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-      attribution: 'Tiles &copy; Esri', maxZoom: 16
+      attribution: 'Tiles &copy; Esri', maxZoom: 19
     })
   };
 
