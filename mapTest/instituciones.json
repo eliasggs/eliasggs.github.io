@@ -3,13 +3,13 @@
     {
       "id": "edu-002",
       "tipo": "educativa",
-      "nombre": "INSTITUTO Nuestra Señora Del Carmen",
+      "nombre": "Instituto Nuestra Señora Del Carmen",
       "lat": -33.6841015,
       "lng": -65.472725,
       "descripcion": "Institución de gestión privada muy reconocida en la ciudad por brindar una educación católica integral. Se enfoca en transmitir sólidos valores cristianos, disciplina, y ofrece un acompañamiento cercano para los alumnos y sus familias.",
       "direccion": "Almafuerte 371",
       "emails": [
-        "instituto.del.carmen@hotmail.com",
+        "Instituto.del.carmen@hotmail.com",
         "nivelsecundarioinsc@gmail.com"
       ],
       "telefonos": [
@@ -19,7 +19,7 @@
       "cant_alumnos": 8,
       "subcategoria": "escuela",
       "modalidad": null,
-      "tipo_gestion": "PRIVADO",
+      "tipo_gestion": "Privado",
       "orientacion": "católica y humanística",
       "turnos": [
         "manana",
@@ -31,20 +31,20 @@
     {
       "id": "edu-003",
       "tipo": "educativa",
-      "nombre": "ESCUELA N°106 Profesor Tomas Ferrari",
+      "nombre": "Escuela N°106 Profesor Tomas Ferrari",
       "lat": -33.6690917,
       "lng": -65.4741745,
-      "descripcion": "Es una institución educativa de gestión pública que concentra su labor en la formación integral de niñas y niños de nivel primario, combinando aprendizajes académicos con el desarrollo de valores y la participación en la comunidad escolar. Como muchas escuelas estatales argentinas, funciona como espacio de referencia para las familias del barrio, ofreciendo contención, socialización y oportunidades de aprendizaje que van más allá de lo estrictamente curricular.",
+      "descripcion": "Es una institución educativa de gestión pública que concentra su labor en la formación integral de niñas y niños de nivel primario, combinando aprendizajes académicos con el desarrollo de valores y la participación en la comunidad escolar. Como muchas Escuelas Estatales argentinas, funciona como espacio de referencia para las familias del barrio, ofreciendo contención, socialización y oportunidades de aprendizaje que van más allá de lo estrictamente curricular.",
       "direccion": "Gral. Paunero 1149",
       "emails": [
-        "escuela106@sanluis.gov.ar",
-        "escuela106tomasferrari@gmail.com"
+        "Escuela106@sanluis.gov.ar",
+        "Escuela106tomasferrari@gmail.com"
       ],
       "telefonos": [],
       "cant_alumnos": 500,
       "subcategoria": "escuela",
       "modalidad": null,
-      "tipo_gestion": "ESTATAL",
+      "tipo_gestion": "Estatal",
       "orientacion": "Arte con especialidad en Artes Visuales",
       "turnos": [
         "manana",
@@ -56,10 +56,10 @@
     {
       "id": "edu-004",
       "tipo": "educativa",
-      "nombre": "ESCUELA TÉCNICA N°15 Ingeniero Agustin Mercau",
+      "nombre": "Escuela Técnica N°15 Ingeniero Agustin Mercau",
       "lat": -33.6677102,
       "lng": -65.4676616,
-      "descripcion": "Institución educativa pública de gestión estatal ubicada en Villa Mercedes, San Luis. Se especializa en educación técnica, ofreciendo ciclos secundarios orientados a la electromecánica y brindando una sólida formación que combina teoría en el aula y práctica en talleres",
+      "descripcion": "Institución educativa pública de gestión Estatal ubicada en Villa Mercedes, San Luis. Se especializa en educación Técnica, ofreciendo ciclos secundarios orientados a la electromecánica y brindando una sólida formación que combina teoría en el aula y práctica en talleres",
       "direccion": "Intendente Leyes 260",
       "emails": [
         "et15sanluis@gmail.com"
@@ -70,7 +70,7 @@
       "cant_alumnos": 300,
       "subcategoria": "escuela",
       "modalidad": "Escuela Técnica",
-      "tipo_gestion": "ESTATAL",
+      "tipo_gestion": "Estatal",
       "orientacion": "Mantenimiento Electromecánico",
       "turnos": [
         "manana",
@@ -82,7 +82,7 @@
     {
       "id": "edu-005",
       "tipo": "educativa",
-      "nombre": "ESCUELA TÉCNICA N°18 Nicolasa Berrondo De Quiroga",
+      "nombre": "Escuela Técnica N°18 Nicolasa Berrondo De Quiroga",
       "lat": -33.6675378,
       "lng": -65.4683619,
       "descripcion": null,
@@ -94,7 +94,7 @@
       "cant_alumnos": 533,
       "subcategoria": "escuela",
       "modalidad": "Escuela Técnica",
-      "tipo_gestion": "ESTATAL",
+      "tipo_gestion": "Estatal",
       "orientacion": "Técnico en Gestión y Administración de las Organizaciones",
       "turnos": [
         "manana",
@@ -107,7 +107,7 @@
     {
       "id": "edu-006",
       "tipo": "educativa",
-      "nombre": "INSTITUTO San Buenaventura",
+      "nombre": "Instituto San Buenaventura",
       "lat": -33.6620737,
       "lng": -65.4546152,
       "descripcion": null,
@@ -120,7 +120,7 @@
       "cant_alumnos": 456,
       "subcategoria": "escuela",
       "modalidad": null,
-      "tipo_gestion": "PRIVADO",
+      "tipo_gestion": "Privado",
       "orientacion": null,
       "turnos": [
         "tarde",
@@ -132,31 +132,31 @@
     {
       "id": "edu-007",
       "tipo": "educativa",
-      "nombre": "INSTITUTO Instituto Nacional De Informatica (I.N.D.I)",
-      "lat": -33.6639146,
-      "lng": -65.4589316,
+      "nombre": "Instituto Instituto Nacional De Informatica (I.N.D.I)",
+      "lat": -33.663865,
+      "lng": -65.456699,
       "descripcion": null,
-      "direccion": null,
+      "direccion": "Doctor Carlos Zabala Ortiz 137",
       "emails": [
-        "indi_escuela@hotmail.com"
+        "indi_Escuela@hotmail.com"
       ],
       "telefonos": [],
       "cant_alumnos": 123,
       "subcategoria": "escuela",
       "modalidad": null,
-      "tipo_gestion": "PRIVADO",
+      "tipo_gestion": "Privado",
       "orientacion": null,
       "turnos": [
         "manana",
         "vespertino"
       ],
       "niveles_str": "SECUNDARIO",
-      "datos_pendientes": true
+      "datos_pendientes": false
     },
     {
       "id": "edu-008",
       "tipo": "educativa",
-      "nombre": "COLEGIO N°2 Juan Esteban Pedernera",
+      "nombre": "Colegio N°2 Juan Esteban Pedernera",
       "lat": -33.677327,
       "lng": -65.4626446,
       "descripcion": null,
@@ -168,7 +168,7 @@
       "cant_alumnos": 500,
       "subcategoria": "escuela",
       "modalidad": null,
-      "tipo_gestion": "ESTATAL",
+      "tipo_gestion": "Estatal",
       "orientacion": null,
       "turnos": [
         "manana",
@@ -181,7 +181,7 @@
     {
       "id": "edu-009",
       "tipo": "educativa",
-      "nombre": "CENTRO EDUCATIVO N°10 Ramiro Podetti",
+      "nombre": "Centro Educativo N°10 Ramiro Podetti",
       "lat": -33.698659,
       "lng": -65.4404276,
       "descripcion": null,
@@ -193,7 +193,7 @@
       "cant_alumnos": 300,
       "subcategoria": "escuela",
       "modalidad": null,
-      "tipo_gestion": "ESTATAL",
+      "tipo_gestion": "Estatal",
       "orientacion": null,
       "turnos": [
         "manana",
@@ -205,19 +205,19 @@
     {
       "id": "edu-010",
       "tipo": "educativa",
-      "nombre": "ESCUELA GENERATIVA Gea",
+      "nombre": "Escuela Generativa Gea",
       "lat": -33.7003806,
       "lng": -65.4348533,
       "descripcion": null,
       "direccion": null,
       "emails": [
-        "escuelagenerativagea@gmail.com"
+        "EscuelaGenerativagea@gmail.com"
       ],
       "telefonos": [],
       "cant_alumnos": 533,
       "subcategoria": "escuela",
       "modalidad": "Escuela Generativa",
-      "tipo_gestion": "PUBLICO AUTOGESTIONADA",
+      "tipo_gestion": "Publico Autogestionada",
       "orientacion": null,
       "turnos": [
         "manana"
@@ -228,7 +228,7 @@
     {
       "id": "edu-011",
       "tipo": "educativa",
-      "nombre": "ESCUELA N°431 Angela Nelly Chenau De Vecino",
+      "nombre": "Escuela N°431 Angela Nelly Chenau De Vecino",
       "lat": -33.7039813,
       "lng": -65.4341901,
       "descripcion": null,
@@ -238,7 +238,7 @@
       "cant_alumnos": 456,
       "subcategoria": "escuela",
       "modalidad": null,
-      "tipo_gestion": "ESTATAL",
+      "tipo_gestion": "Estatal",
       "orientacion": null,
       "turnos": [
         "tarde",
@@ -250,7 +250,7 @@
     {
       "id": "edu-012",
       "tipo": "educativa",
-      "nombre": "ESCUELA N°29 Remedios Escalada De San Martin",
+      "nombre": "Escuela N°29 Remedios Escalada De San Martin",
       "lat": -33.6803328,
       "lng": -65.4644515,
       "descripcion": null,
@@ -262,7 +262,7 @@
       "cant_alumnos": 123,
       "subcategoria": "escuela",
       "modalidad": null,
-      "tipo_gestion": "ESTATAL",
+      "tipo_gestion": "Estatal",
       "orientacion": null,
       "turnos": [
         "manana",
@@ -274,7 +274,7 @@
     {
       "id": "edu-013",
       "tipo": "educativa",
-      "nombre": "CENTRO EDUCATIVO N°9 Doctor Juan Llerena",
+      "nombre": "Centro Educativo N°9 Doctor Juan Llerena",
       "lat": -33.6833638,
       "lng": -65.4628568,
       "descripcion": null,
@@ -286,7 +286,7 @@
       "cant_alumnos": 203,
       "subcategoria": "escuela",
       "modalidad": null,
-      "tipo_gestion": "ESTATAL",
+      "tipo_gestion": "Estatal",
       "orientacion": null,
       "turnos": [
         "manana",
@@ -298,19 +298,19 @@
     {
       "id": "edu-014",
       "tipo": "educativa",
-      "nombre": "ESCUELA GENERATIVA Terra Mater",
+      "nombre": "Escuela Generativa Terra Mater",
       "lat": -33.6852166,
       "lng": -65.495266,
       "descripcion": null,
       "direccion": null,
       "emails": [
-        "terramaterescuelagenerativa@gmail.com"
+        "terramaterEscuelaGenerativa@gmail.com"
       ],
       "telefonos": [],
       "cant_alumnos": 143,
       "subcategoria": "escuela",
       "modalidad": "Escuela Generativa",
-      "tipo_gestion": "GENERATIVA",
+      "tipo_gestion": "Generativa",
       "orientacion": null,
       "turnos": [
         "tarde",
@@ -322,19 +322,19 @@
     {
       "id": "edu-015",
       "tipo": "educativa",
-      "nombre": "ESCUELA GENERATIVA Estación Recrear",
+      "nombre": "Escuela Generativa Estación Recrear",
       "lat": -33.6618751,
       "lng": -65.4532139,
       "descripcion": null,
       "direccion": null,
       "emails": [
-        "recrearescuelagenerativa@gmail.com"
+        "recrearEscuelaGenerativa@gmail.com"
       ],
       "telefonos": [],
       "cant_alumnos": 85,
       "subcategoria": "escuela",
       "modalidad": "Escuela Generativa",
-      "tipo_gestion": "GENERATIVA",
+      "tipo_gestion": "Generativa",
       "orientacion": null,
       "turnos": [
         "manana",
@@ -346,7 +346,7 @@
     {
       "id": "edu-016",
       "tipo": "educativa",
-      "nombre": "ESCUELA TÉCNICA N°14 Ministro Del Sup Trib De Just Dr Luis Angel Luco",
+      "nombre": "Escuela Técnica N°14 Ministro Del Sup Trib De Just Dr Luis Angel Luco",
       "lat": -33.6776009,
       "lng": -65.5042172,
       "descripcion": null,
@@ -358,7 +358,7 @@
       "cant_alumnos": 24,
       "subcategoria": "escuela",
       "modalidad": "Escuela Técnica",
-      "tipo_gestion": "ESTATAL",
+      "tipo_gestion": "Estatal",
       "orientacion": null,
       "turnos": [
         "manana",
@@ -371,7 +371,7 @@
     {
       "id": "edu-017",
       "tipo": "educativa",
-      "nombre": "ESCUELA PÚBLICA AUTOGESTIONADA N°10 Maestro Escultor Vicente Lucero",
+      "nombre": "Escuela PÚBLICA AUTOGESTIONADA N°10 Maestro Escultor Vicente Lucero",
       "lat": -33.6846268,
       "lng": -65.5016479,
       "descripcion": null,
@@ -385,7 +385,7 @@
       "cant_alumnos": 300,
       "subcategoria": "escuela",
       "modalidad": null,
-      "tipo_gestion": "PUBLICO AUTOGESTIONADA",
+      "tipo_gestion": "Publico Autogestionada",
       "orientacion": null,
       "turnos": [
         "manana",
@@ -398,7 +398,7 @@
     {
       "id": "edu-018",
       "tipo": "educativa",
-      "nombre": "ESCUELA PÚBLICA AUTOGESTIONADA Escuela Pública Digital Bilingüe - Mahatma Gandhi",
+      "nombre": "Escuela PÚBLICA AUTOGESTIONADA Escuela Pública Digital Bilingüe - Mahatma Gandhi",
       "lat": -33.7016074,
       "lng": -65.4983154,
       "descripcion": null,
@@ -410,7 +410,7 @@
       "cant_alumnos": 533,
       "subcategoria": "escuela",
       "modalidad": null,
-      "tipo_gestion": "PUBLICO AUTOGESTIONADA",
+      "tipo_gestion": "Publico Autogestionada",
       "orientacion": null,
       "turnos": [
         "manana",
@@ -423,7 +423,7 @@
     {
       "id": "edu-019",
       "tipo": "educativa",
-      "nombre": "ESCUELA TÉCNICA N°20 Antonio Berni",
+      "nombre": "Escuela Técnica N°20 Antonio Berni",
       "lat": -33.6729994,
       "lng": -65.4765986,
       "descripcion": null,
@@ -435,7 +435,7 @@
       "cant_alumnos": 456,
       "subcategoria": "escuela",
       "modalidad": "Escuela Técnica",
-      "tipo_gestion": "ESTATAL",
+      "tipo_gestion": "Estatal",
       "orientacion": null,
       "turnos": [
         "tarde",
@@ -447,19 +447,19 @@
     {
       "id": "edu-020",
       "tipo": "educativa",
-      "nombre": "ESCUELA N°31 Mariano Moreno",
+      "nombre": "Escuela N°31 Mariano Moreno",
       "lat": -33.6869024,
       "lng": -65.4653793,
       "descripcion": null,
       "direccion": null,
       "emails": [
-        "escuela31@sanluis.gov.ar"
+        "Escuela31@sanluis.gov.ar"
       ],
       "telefonos": [],
       "cant_alumnos": 123,
       "subcategoria": "escuela",
       "modalidad": null,
-      "tipo_gestion": "ESTATAL",
+      "tipo_gestion": "Estatal",
       "orientacion": null,
       "turnos": [
         "manana",
@@ -471,19 +471,19 @@
     {
       "id": "edu-021",
       "tipo": "educativa",
-      "nombre": "INSTITUTO Instituto Cultural Argentino",
+      "nombre": "Instituto Instituto Cultural Argentino",
       "lat": -33.6767371,
       "lng": -65.4720293,
       "descripcion": null,
       "direccion": null,
       "emails": [
-        "institutoculturalargentino@hotmail.com"
+        "Institutoculturalargentino@hotmail.com"
       ],
       "telefonos": [],
       "cant_alumnos": 500,
       "subcategoria": "escuela",
       "modalidad": null,
-      "tipo_gestion": "PRIVADO",
+      "tipo_gestion": "Privado",
       "orientacion": null,
       "turnos": [
         "tarde",
@@ -496,19 +496,19 @@
     {
       "id": "edu-022",
       "tipo": "educativa",
-      "nombre": "ESCUELA GENERATIVA Alberdi Club",
+      "nombre": "Escuela Generativa Alberdi Club",
       "lat": -33.6746907,
       "lng": -65.4653237,
       "descripcion": null,
       "direccion": null,
       "emails": [
-        "esc.generativaalberdi@gmail.com"
+        "esc.Generativaalberdi@gmail.com"
       ],
       "telefonos": [],
       "cant_alumnos": 300,
       "subcategoria": "escuela",
       "modalidad": "Escuela Generativa",
-      "tipo_gestion": "GENERATIVA",
+      "tipo_gestion": "Generativa",
       "orientacion": null,
       "turnos": [
         "manana"
@@ -519,20 +519,20 @@
     {
       "id": "edu-023",
       "tipo": "educativa",
-      "nombre": "ESCUELA SECUNDARIA DE ARTE N°1 Profesor Gaspar Di Gennaro",
+      "nombre": "Escuela SECUNDARIA DE ARTE N°1 Profesor Gaspar Di Gennaro",
       "lat": -33.6628261,
       "lng": -65.467073,
       "descripcion": null,
       "direccion": "Junín 33",
       "emails": [
         "direccionartegaspardigennaro@gmail.com",
-        "escueladeartesvm@yahoo.com.ar"
+        "Escueladeartesvm@yahoo.com.ar"
       ],
       "telefonos": [],
       "cant_alumnos": 533,
       "subcategoria": "escuela",
       "modalidad": null,
-      "tipo_gestion": "ESTATAL",
+      "tipo_gestion": "Estatal",
       "orientacion": null,
       "turnos": [
         "doble_turno"
@@ -543,7 +543,7 @@
     {
       "id": "edu-024",
       "tipo": "educativa",
-      "nombre": "ESCUELA PÚBLICA AUTOGESTIONADA N°7 Eduardo Galeano",
+      "nombre": "Escuela PÚBLICA AUTOGESTIONADA N°7 Eduardo Galeano",
       "lat": -33.686167,
       "lng": -65.4831615,
       "descripcion": null,
@@ -555,7 +555,7 @@
       "cant_alumnos": 456,
       "subcategoria": "escuela",
       "modalidad": null,
-      "tipo_gestion": "PUBLICO AUTOGESTIONADA",
+      "tipo_gestion": "Publico Autogestionada",
       "orientacion": null,
       "turnos": [
         "manana",
@@ -567,7 +567,7 @@
     {
       "id": "edu-025",
       "tipo": "educativa",
-      "nombre": "ESCUELA TÉCNICA N°19 Bernardino Rivadavia",
+      "nombre": "Escuela Técnica N°19 Bernardino Rivadavia",
       "lat": -33.6700426,
       "lng": -65.4833233,
       "descripcion": null,
@@ -579,7 +579,7 @@
       "cant_alumnos": 300,
       "subcategoria": "escuela",
       "modalidad": "Escuela Técnica",
-      "tipo_gestion": "ESTATAL",
+      "tipo_gestion": "Estatal",
       "orientacion": null,
       "turnos": [
         "manana",
@@ -591,19 +591,19 @@
     {
       "id": "edu-026",
       "tipo": "educativa",
-      "nombre": "ESCUELA GENERATIVA Gen Z",
+      "nombre": "Escuela Generativa Gen Z",
       "lat": -33.6854019,
       "lng": -65.4945983,
       "descripcion": null,
       "direccion": null,
       "emails": [
-        "genzescuelagenerativa@gmail.com"
+        "genzEscuelaGenerativa@gmail.com"
       ],
       "telefonos": [],
       "cant_alumnos": 533,
       "subcategoria": "escuela",
       "modalidad": "Escuela Generativa",
-      "tipo_gestion": "GENERATIVA",
+      "tipo_gestion": "Generativa",
       "orientacion": null,
       "turnos": [
         "manana",
@@ -615,21 +615,21 @@
     {
       "id": "edu-027",
       "tipo": "educativa",
-      "nombre": "ESCUELA N°176 Maestra Nelida Esther Perez De Ferrer",
+      "nombre": "Escuela N°176 Maestra Nelida Esther Perez De Ferrer",
       "lat": -33.6815929,
       "lng": -65.4733694,
       "descripcion": null,
       "direccion": null,
       "emails": [
-        "escuela176.archivo@gmail.com",
-        "ESCUELA176@SANLUIS.GOV.AR",
+        "Escuela176.archivo@gmail.com",
+        "Escuela176@SANLUIS.GOV.AR",
         "valeriavaugusto@sanluis.edu.ar"
       ],
       "telefonos": [],
       "cant_alumnos": 456,
       "subcategoria": "escuela",
       "modalidad": null,
-      "tipo_gestion": "ESTATAL",
+      "tipo_gestion": "Estatal",
       "orientacion": null,
       "turnos": [
         "manana",
@@ -641,7 +641,7 @@
     {
       "id": "edu-028",
       "tipo": "educativa",
-      "nombre": "ESCUELA PÚBLICA AUTOGESTIONADA N°8 Leonardo Da Vinci",
+      "nombre": "Escuela PÚBLICA AUTOGESTIONADA N°8 Leonardo Da Vinci",
       "lat": -33.6804086,
       "lng": -65.4378069,
       "descripcion": null,
@@ -653,7 +653,7 @@
       "cant_alumnos": 123,
       "subcategoria": "escuela",
       "modalidad": null,
-      "tipo_gestion": "PUBLICO AUTOGESTIONADA",
+      "tipo_gestion": "Publico Autogestionada",
       "orientacion": null,
       "turnos": [
         "manana",
@@ -665,7 +665,7 @@
     {
       "id": "edu-029",
       "tipo": "educativa",
-      "nombre": "ESCUELA PÚBLICA DIGITAL ADULTOS N°58 Epda Nº 58 Villa Mercedes",
+      "nombre": "Escuela PÚBLICA DIGITAL ADULTOS N°58 Villa Mercedes (Epda Nº 58)",
       "lat": -33.6895504,
       "lng": -65.4671824,
       "descripcion": null,
@@ -677,7 +677,7 @@
       "cant_alumnos": 500,
       "subcategoria": "escuela",
       "modalidad": null,
-      "tipo_gestion": "ESTATAL",
+      "tipo_gestion": "Estatal",
       "orientacion": null,
       "turnos": [
         "manana",
@@ -690,7 +690,7 @@
     {
       "id": "edu-030",
       "tipo": "educativa",
-      "nombre": "CENTRO EDUCATIVO N°1 Centro Educativo Nivel Secundario Nº1",
+      "nombre": "Centro Educativo N°1 Centro Educativo Nivel Secundario Nº1",
       "lat": -33.68972,
       "lng": -65.4692261,
       "descripcion": null,
@@ -702,7 +702,7 @@
       "cant_alumnos": 300,
       "subcategoria": "escuela",
       "modalidad": null,
-      "tipo_gestion": "ESTATAL",
+      "tipo_gestion": "Estatal",
       "orientacion": null,
       "turnos": [
         "noche"
@@ -713,19 +713,19 @@
     {
       "id": "edu-031",
       "tipo": "educativa",
-      "nombre": "ESCUELA N°46 Gobernador Leon Guillet",
+      "nombre": "Escuela N°46 Gobernador Leon Guillet",
       "lat": -33.6853056311811,
       "lng": -65.4760805641088,
       "descripcion": null,
       "direccion": null,
       "emails": [
-        "direccionescuela46@gmail.com"
+        "direccionEscuela46@gmail.com"
       ],
       "telefonos": [],
       "cant_alumnos": null,
       "subcategoria": "escuela",
       "modalidad": null,
-      "tipo_gestion": "ESTATAL",
+      "tipo_gestion": "Estatal",
       "orientacion": null,
       "turnos": [
         "manana"
@@ -736,7 +736,7 @@
     {
       "id": "edu-032",
       "tipo": "educativa",
-      "nombre": "ESCUELA DE EDUCACIÓN ESPECIAL N°6 Doctora Maria Montessori",
+      "nombre": "Escuela DE EDUCACIÓN ESPECIAL N°6 Doctora Maria Montessori",
       "lat": -33.67616846272273,
       "lng": -65.45594016909926,
       "descripcion": null,
@@ -748,7 +748,7 @@
       "cant_alumnos": null,
       "subcategoria": "escuela",
       "modalidad": null,
-      "tipo_gestion": "ESTATAL",
+      "tipo_gestion": "Estatal",
       "orientacion": null,
       "turnos": [
         "tarde",
@@ -760,19 +760,19 @@
     {
       "id": "edu-033",
       "tipo": "educativa",
-      "nombre": "ESCUELA N°371 Juan Bautista Alberdi",
+      "nombre": "Escuela N°371 Juan Bautista Alberdi",
       "lat": -33.66594248872239,
       "lng": -65.44740121463641,
       "descripcion": null,
       "direccion": null,
       "emails": [
-        "escuela371@sanluis.gob.ar"
+        "Escuela371@sanluis.gob.ar"
       ],
       "telefonos": [],
       "cant_alumnos": null,
       "subcategoria": "escuela",
       "modalidad": null,
-      "tipo_gestion": "ESTATAL",
+      "tipo_gestion": "Estatal",
       "orientacion": null,
       "turnos": [
         "manana",
@@ -784,19 +784,19 @@
     {
       "id": "edu-034",
       "tipo": "educativa",
-      "nombre": "ESCUELA N°148 Provincia De Chubut",
+      "nombre": "Escuela N°148 Provincia De Chubut",
       "lat": -33.700077435145815,
       "lng": -65.42823247408934,
       "descripcion": null,
       "direccion": null,
       "emails": [
-        "escuela148vm.sl@gmail.com"
+        "Escuela148vm.sl@gmail.com"
       ],
       "telefonos": [],
       "cant_alumnos": null,
       "subcategoria": "escuela",
       "modalidad": null,
-      "tipo_gestion": "ESTATAL",
+      "tipo_gestion": "Estatal",
       "orientacion": null,
       "turnos": [
         "manana",
@@ -808,7 +808,7 @@
     {
       "id": "edu-035",
       "tipo": "educativa",
-      "nombre": "ESCUELA N°388 Sargento Eduardo Romero",
+      "nombre": "Escuela N°388 Sargento Eduardo Romero",
       "lat": -33.694384,
       "lng": -65.456061,
       "descripcion": null,
@@ -820,7 +820,7 @@
       "cant_alumnos": null,
       "subcategoria": "escuela",
       "modalidad": null,
-      "tipo_gestion": "ESTATAL",
+      "tipo_gestion": "Estatal",
       "orientacion": null,
       "turnos": [
         "manana",
@@ -832,19 +832,19 @@
     {
       "id": "edu-036",
       "tipo": "educativa",
-      "nombre": "ESCUELA N°32 Justo Daract",
+      "nombre": "Escuela N°32 Justo Daract",
       "lat": -33.689693,
       "lng": -65.460811,
       "descripcion": null,
       "direccion": null,
       "emails": [
-        "escuelajustodaract32@gmail.com"
+        "Escuelajustodaract32@gmail.com"
       ],
       "telefonos": [],
       "cant_alumnos": null,
       "subcategoria": "escuela",
       "modalidad": null,
-      "tipo_gestion": "ESTATAL",
+      "tipo_gestion": "Estatal",
       "orientacion": null,
       "turnos": [
         "manana",
@@ -856,7 +856,7 @@
     {
       "id": "edu-037",
       "tipo": "educativa",
-      "nombre": "ESCUELA N°240 Provincia De Corrientes",
+      "nombre": "Escuela N°240 Provincia De Corrientes",
       "lat": -33.66506872427785,
       "lng": -65.46227539750072,
       "descripcion": null,
@@ -868,7 +868,7 @@
       "cant_alumnos": null,
       "subcategoria": "escuela",
       "modalidad": null,
-      "tipo_gestion": "ESTATAL",
+      "tipo_gestion": "Estatal",
       "orientacion": null,
       "turnos": [
         "manana",
@@ -880,19 +880,19 @@
     {
       "id": "edu-038",
       "tipo": "educativa",
-      "nombre": "ESCUELA N°150 Provincia De Santa Fe",
+      "nombre": "Escuela N°150 Provincia De Santa Fe",
       "lat": -33.668999,
       "lng": -65.478833,
       "descripcion": null,
       "direccion": "Colón 748",
       "emails": [
-        "escuela150@sanluis.gov.ar"
+        "Escuela150@sanluis.gov.ar"
       ],
       "telefonos": [],
       "cant_alumnos": null,
       "subcategoria": "escuela",
       "modalidad": null,
-      "tipo_gestion": "ESTATAL",
+      "tipo_gestion": "Estatal",
       "orientacion": null,
       "turnos": [
         "manana",
@@ -904,19 +904,19 @@
     {
       "id": "edu-039",
       "tipo": "educativa",
-      "nombre": "INSTITUTO Soy Feliz- Blandina Varetto De Ferrari",
-      "lat": -33.666815,
-      "lng": -65.459749,
+      "nombre": "Escuela N°30 General Pedernera",
+      "lat": -33.68955,
+      "lng": -65.467182,
       "descripcion": null,
-      "direccion": "Av Bartolomé Mitre 1434",
+      "direccion": "Pedernera 175",
       "emails": [
-        "jardinsoyfeliz@gmail.com"
+        "Escuelapedernera30@gmail.com"
       ],
       "telefonos": [],
       "cant_alumnos": null,
       "subcategoria": "escuela",
       "modalidad": null,
-      "tipo_gestion": "PRIVADO",
+      "tipo_gestion": "Estatal",
       "orientacion": null,
       "turnos": [
         "manana",
@@ -928,19 +928,19 @@
     {
       "id": "edu-040",
       "tipo": "educativa",
-      "nombre": "ESCUELA N°30 General Pedernera",
-      "lat": -33.68955,
-      "lng": -65.467182,
+      "nombre": "Escuela N°187 Jose Hernandez",
+      "lat": -33.680124,
+      "lng": -65.471534,
       "descripcion": null,
-      "direccion": "Pedernera 175",
+      "direccion": "Av 25 de Mayo y San Martín",
       "emails": [
-        "escuelapedernera30@gmail.com"
+        "Escuela187josehernandez@gmail.com"
       ],
       "telefonos": [],
       "cant_alumnos": null,
       "subcategoria": "escuela",
       "modalidad": null,
-      "tipo_gestion": "ESTATAL",
+      "tipo_gestion": "Estatal",
       "orientacion": null,
       "turnos": [
         "manana",
@@ -952,31 +952,7 @@
     {
       "id": "edu-041",
       "tipo": "educativa",
-      "nombre": "ESCUELA N°187 Jose Hernandez",
-      "lat": -33.680124,
-      "lng": -65.471534,
-      "descripcion": null,
-      "direccion": "Av 25 de Mayo y San Martín",
-      "emails": [
-        "escuela187josehernandez@gmail.com"
-      ],
-      "telefonos": [],
-      "cant_alumnos": null,
-      "subcategoria": "escuela",
-      "modalidad": null,
-      "tipo_gestion": "ESTATAL",
-      "orientacion": null,
-      "turnos": [
-        "manana",
-        "tarde"
-      ],
-      "niveles_str": "NIVEL INICIAL, PRIMARIO",
-      "datos_pendientes": false
-    },
-    {
-      "id": "edu-042",
-      "tipo": "educativa",
-      "nombre": "ESCUELA N°11 2026-04-02 00:00:00",
+      "nombre": "Escuela N°11 2026-04-02 00:00:00",
       "lat": -33.659871,
       "lng": -65.458921,
       "descripcion": null,
@@ -988,7 +964,7 @@
       "cant_alumnos": null,
       "subcategoria": "escuela",
       "modalidad": null,
-      "tipo_gestion": "ESTATAL",
+      "tipo_gestion": "Estatal",
       "orientacion": null,
       "turnos": [
         "tarde"
@@ -997,21 +973,45 @@
       "datos_pendientes": false
     },
     {
-      "id": "edu-043",
+      "id": "edu-042",
       "tipo": "educativa",
-      "nombre": "ESCUELA N°34 Raul Basilio Diaz",
+      "nombre": "Escuela N°34 Raul Basilio Diaz",
       "lat": -33.673412,
       "lng": -65.465811,
       "descripcion": null,
       "direccion": "Almafuerte 351",
       "emails": [
-        "escuela34@sanluis.gov.ar"
+        "Escuela34@sanluis.gov.ar"
       ],
       "telefonos": [],
       "cant_alumnos": null,
       "subcategoria": "escuela",
       "modalidad": null,
-      "tipo_gestion": "ESTATAL",
+      "tipo_gestion": "Estatal",
+      "orientacion": null,
+      "turnos": [
+        "manana",
+        "tarde"
+      ],
+      "niveles_str": "NIVEL INICIAL, PRIMARIO, SECUNDARIO",
+      "datos_pendientes": false
+    },
+    {
+      "id": "edu-043",
+      "tipo": "educativa",
+      "nombre": "Escuela N°40 Doctor Ricardo Rojas",
+      "lat": -33.681123,
+      "lng": -65.461932,
+      "descripcion": null,
+      "direccion": "Av Los Álamos y Belgrano",
+      "emails": [
+        "Escuela40rr@gmail.com"
+      ],
+      "telefonos": [],
+      "cant_alumnos": null,
+      "subcategoria": "escuela",
+      "modalidad": null,
+      "tipo_gestion": "Estatal",
       "orientacion": null,
       "turnos": [
         "manana",
@@ -1023,31 +1023,7 @@
     {
       "id": "edu-044",
       "tipo": "educativa",
-      "nombre": "ESCUELA N°40 Doctor Ricardo Rojas",
-      "lat": -33.681123,
-      "lng": -65.461932,
-      "descripcion": null,
-      "direccion": "Av Los Álamos y Belgrano",
-      "emails": [
-        "escuela40rr@gmail.com"
-      ],
-      "telefonos": [],
-      "cant_alumnos": null,
-      "subcategoria": "escuela",
-      "modalidad": null,
-      "tipo_gestion": "ESTATAL",
-      "orientacion": null,
-      "turnos": [
-        "manana",
-        "tarde"
-      ],
-      "niveles_str": "NIVEL INICIAL, PRIMARIO, SECUNDARIO",
-      "datos_pendientes": false
-    },
-    {
-      "id": "edu-045",
-      "tipo": "educativa",
-      "nombre": "ESCUELA PÚBLICA AUTOGESTIONADA N°6 Doctor Luis Roberto Barroso",
+      "nombre": "Escuela PÚBLICA AUTOGESTIONADA N°6 Doctor Luis Roberto Barroso",
       "lat": -33.66030656645345,
       "lng": -65.43723885789346,
       "descripcion": null,
@@ -1059,7 +1035,7 @@
       "cant_alumnos": null,
       "subcategoria": "escuela",
       "modalidad": null,
-      "tipo_gestion": "PUBLICO AUTOGESTIONADA",
+      "tipo_gestion": "Publico Autogestionada",
       "orientacion": null,
       "turnos": [
         "tarde",
@@ -1070,21 +1046,45 @@
       "datos_pendientes": false
     },
     {
-      "id": "edu-046",
+      "id": "edu-045",
       "tipo": "educativa",
-      "nombre": "ESCUELA N°147 Provincia De Mendoza",
+      "nombre": "Escuela N°147 Provincia De Mendoza",
       "lat": -33.658269541897326,
       "lng": -65.45104573494838,
       "descripcion": null,
       "direccion": "Italia 2009",
       "emails": [
-        "escuela147pm@gmail.com"
+        "Escuela147pm@gmail.com"
       ],
       "telefonos": [],
       "cant_alumnos": null,
       "subcategoria": "escuela",
       "modalidad": null,
-      "tipo_gestion": "ESTATAL",
+      "tipo_gestion": "Estatal",
+      "orientacion": null,
+      "turnos": [
+        "manana",
+        "tarde"
+      ],
+      "niveles_str": "NIVEL INICIAL, PRIMARIO, SECUNDARIO",
+      "datos_pendientes": false
+    },
+    {
+      "id": "edu-046",
+      "tipo": "educativa",
+      "nombre": "Escuela N°33 Vicente Dupuy",
+      "lat": -33.66426523399769,
+      "lng": -65.45544891480318,
+      "descripcion": null,
+      "direccion": "Zavala Ortiz 185",
+      "emails": [
+        "Escuela33@sanluis.gov.ar"
+      ],
+      "telefonos": [],
+      "cant_alumnos": null,
+      "subcategoria": "escuela",
+      "modalidad": null,
+      "tipo_gestion": "Estatal",
       "orientacion": null,
       "turnos": [
         "manana",
@@ -1096,19 +1096,19 @@
     {
       "id": "edu-047",
       "tipo": "educativa",
-      "nombre": "ESCUELA N°33 Vicente Dupuy",
-      "lat": -33.66426523399769,
-      "lng": -65.45544891480318,
+      "nombre": "Escuela N°43 Doctor Tomas Jofre",
+      "lat": -33.6721,
+      "lng": -65.454222,
       "descripcion": null,
-      "direccion": "Zavala Ortiz 185",
+      "direccion": "Tucumán y 9 de Julio",
       "emails": [
-        "escuela33@sanluis.gov.ar"
+        "Escuela43@sanluis.gov.ar"
       ],
       "telefonos": [],
       "cant_alumnos": null,
       "subcategoria": "escuela",
       "modalidad": null,
-      "tipo_gestion": "ESTATAL",
+      "tipo_gestion": "Estatal",
       "orientacion": null,
       "turnos": [
         "manana",
@@ -1120,43 +1120,19 @@
     {
       "id": "edu-048",
       "tipo": "educativa",
-      "nombre": "ESCUELA N°43 Doctor Tomas Jofre",
-      "lat": -33.6721,
-      "lng": -65.454222,
-      "descripcion": null,
-      "direccion": "Tucumán y 9 de Julio",
-      "emails": [
-        "escuela43@sanluis.gov.ar"
-      ],
-      "telefonos": [],
-      "cant_alumnos": null,
-      "subcategoria": "escuela",
-      "modalidad": null,
-      "tipo_gestion": "ESTATAL",
-      "orientacion": null,
-      "turnos": [
-        "manana",
-        "tarde"
-      ],
-      "niveles_str": "NIVEL INICIAL, PRIMARIO, SECUNDARIO",
-      "datos_pendientes": false
-    },
-    {
-      "id": "edu-049",
-      "tipo": "educativa",
-      "nombre": "ESCUELA N°36 Gobernador Doctor Carlos Alric",
+      "nombre": "Escuela N°36 Gobernador Doctor Carlos Alric",
       "lat": -33.697075419614244,
       "lng": -65.4520706536661,
       "descripcion": null,
       "direccion": "Venezuela 775",
       "emails": [
-        "escuela36gdca@gmail.com"
+        "Escuela36gdca@gmail.com"
       ],
       "telefonos": [],
       "cant_alumnos": null,
       "subcategoria": "escuela",
       "modalidad": null,
-      "tipo_gestion": "ESTATAL",
+      "tipo_gestion": "Estatal",
       "orientacion": null,
       "turnos": [
         "manana",
@@ -1168,9 +1144,9 @@
       "datos_pendientes": false
     },
     {
-      "id": "edu-050",
+      "id": "edu-049",
       "tipo": "educativa",
-      "nombre": "INSTITUTO Sagrado Corazon",
+      "nombre": "Instituto Sagrado Corazon",
       "lat": -33.673891,
       "lng": -65.465111,
       "descripcion": null,
@@ -1182,7 +1158,31 @@
       "cant_alumnos": null,
       "subcategoria": "escuela",
       "modalidad": null,
-      "tipo_gestion": "PRIVADO",
+      "tipo_gestion": "Privado",
+      "orientacion": null,
+      "turnos": [
+        "manana",
+        "tarde"
+      ],
+      "niveles_str": "NIVEL INICIAL, PRIMARIO, SECUNDARIO",
+      "datos_pendientes": false
+    },
+    {
+      "id": "edu-050",
+      "tipo": "educativa",
+      "nombre": "Escuela N°152 Alas Argentinas",
+      "lat": -33.683151,
+      "lng": -65.452895,
+      "descripcion": null,
+      "direccion": "Avenida Presidente Perón 678",
+      "emails": [
+        "Escuelaalasargentinas152@gmail.com"
+      ],
+      "telefonos": [],
+      "cant_alumnos": null,
+      "subcategoria": "escuela",
+      "modalidad": null,
+      "tipo_gestion": "Estatal",
       "orientacion": null,
       "turnos": [
         "manana",
@@ -1194,43 +1194,19 @@
     {
       "id": "edu-051",
       "tipo": "educativa",
-      "nombre": "ESCUELA N°152 Alas Argentinas",
-      "lat": -33.654211,
-      "lng": -65.461233,
-      "descripcion": null,
-      "direccion": "Córdoba 551-599",
-      "emails": [
-        "escuelaalasargentinas152@gmail.com"
-      ],
-      "telefonos": [],
-      "cant_alumnos": null,
-      "subcategoria": "escuela",
-      "modalidad": null,
-      "tipo_gestion": "ESTATAL",
-      "orientacion": null,
-      "turnos": [
-        "manana",
-        "tarde"
-      ],
-      "niveles_str": "NIVEL INICIAL, PRIMARIO, SECUNDARIO",
-      "datos_pendientes": false
-    },
-    {
-      "id": "edu-052",
-      "tipo": "educativa",
-      "nombre": "ESCUELA DE JORNADA EXTENDIDA N°69 Maestra Olga Ester Sarden",
+      "nombre": "Escuela DE JORNADA EXTENDIDA N°69 Maestra Olga Ester Sarden",
       "lat": -33.68283234607774,
       "lng": -65.45238368163574,
       "descripcion": null,
       "direccion": "Barrio San José",
       "emails": [
-        "escuela69moes@gmail.com"
+        "Escuela69moes@gmail.com"
       ],
       "telefonos": [],
       "cant_alumnos": null,
       "subcategoria": "escuela",
       "modalidad": null,
-      "tipo_gestion": "ESTATAL",
+      "tipo_gestion": "Estatal",
       "orientacion": null,
       "turnos": [
         "manana",
@@ -1241,9 +1217,9 @@
       "datos_pendientes": false
     },
     {
-      "id": "edu-053",
+      "id": "edu-052",
       "tipo": "educativa",
-      "nombre": "ESCUELA GENERATIVA Club Jorge Newbery",
+      "nombre": "Escuela Generativa Club Jorge Newbery",
       "lat": -33.672522,
       "lng": -65.468133,
       "descripcion": null,
@@ -1255,7 +1231,7 @@
       "cant_alumnos": null,
       "subcategoria": "escuela",
       "modalidad": "Escuela Generativa",
-      "tipo_gestion": "PUBLICO AUTOGESTIONADA",
+      "tipo_gestion": "Publico Autogestionada",
       "orientacion": null,
       "turnos": [
         "manana",
@@ -1265,9 +1241,9 @@
       "datos_pendientes": false
     },
     {
-      "id": "edu-054",
+      "id": "edu-053",
       "tipo": "educativa",
-      "nombre": "COLEGIO Isabel La Catolica",
+      "nombre": "Colegio Isabel La Catolica",
       "lat": -33.674121,
       "lng": -65.466533,
       "descripcion": null,
@@ -1279,7 +1255,7 @@
       "cant_alumnos": null,
       "subcategoria": "escuela",
       "modalidad": null,
-      "tipo_gestion": "PRIVADO",
+      "tipo_gestion": "Privado",
       "orientacion": null,
       "turnos": [
         "manana",
@@ -1289,9 +1265,9 @@
       "datos_pendientes": false
     },
     {
-      "id": "edu-055",
+      "id": "edu-054",
       "tipo": "educativa",
-      "nombre": "ESCUELA N°12 Tomasa Garraza De Quiroga \"Maestras Mercedinas\"",
+      "nombre": "Escuela N°12 Tomasa Garraza De Quiroga \"Maestras Mercedinas\"",
       "lat": -33.67523070154636,
       "lng": -65.47381274265021,
       "descripcion": null,
@@ -1303,7 +1279,31 @@
       "cant_alumnos": null,
       "subcategoria": "escuela",
       "modalidad": null,
-      "tipo_gestion": "ESTATAL",
+      "tipo_gestion": "Estatal",
+      "orientacion": null,
+      "turnos": [
+        "manana",
+        "tarde"
+      ],
+      "niveles_str": "PRIMARIO",
+      "datos_pendientes": false
+    },
+    {
+      "id": "edu-055",
+      "tipo": "educativa",
+      "nombre": "Instituto Modelo Bilingue San Marcos",
+      "lat": -33.677511,
+      "lng": -65.474133,
+      "descripcion": null,
+      "direccion": "Betbeder 215",
+      "emails": [
+        "Institutosanmarcosvm@hotmail.com"
+      ],
+      "telefonos": [],
+      "cant_alumnos": null,
+      "subcategoria": "escuela",
+      "modalidad": null,
+      "tipo_gestion": "Privado",
       "orientacion": null,
       "turnos": [
         "manana",
@@ -1315,31 +1315,7 @@
     {
       "id": "edu-056",
       "tipo": "educativa",
-      "nombre": "INSTITUTO Modelo Bilingue San Marcos",
-      "lat": -33.677511,
-      "lng": -65.474133,
-      "descripcion": null,
-      "direccion": "Betbeder 215",
-      "emails": [
-        "institutosanmarcosvm@hotmail.com"
-      ],
-      "telefonos": [],
-      "cant_alumnos": null,
-      "subcategoria": "escuela",
-      "modalidad": null,
-      "tipo_gestion": "PRIVADO",
-      "orientacion": null,
-      "turnos": [
-        "manana",
-        "tarde"
-      ],
-      "niveles_str": "PRIMARIO",
-      "datos_pendientes": false
-    },
-    {
-      "id": "edu-057",
-      "tipo": "educativa",
-      "nombre": "INSTITUTO San Valentin",
+      "nombre": "Instituto San Valentin",
       "lat": -33.681831,
       "lng": -65.467241,
       "descripcion": null,
@@ -1352,7 +1328,7 @@
       "cant_alumnos": null,
       "subcategoria": "escuela",
       "modalidad": null,
-      "tipo_gestion": "PRIVADO",
+      "tipo_gestion": "Privado",
       "orientacion": null,
       "turnos": [
         "manana",
@@ -1362,21 +1338,21 @@
       "datos_pendientes": false
     },
     {
-      "id": "edu-058",
+      "id": "edu-057",
       "tipo": "educativa",
-      "nombre": "ESCUELA DE JORNADA COMPLETA N°444 Maria Eva Duarte De Peron",
+      "nombre": "Escuela DE JORNADA COMPLETA N°444 Maria Eva Duarte De Peron",
       "lat": -3.3674739948748e+16,
       "lng": -65.45798351590177,
       "descripcion": null,
       "direccion": "9 de July 1050",
       "emails": [
-        "escueladejornadacompleta444@gmail.com"
+        "Escueladejornadacompleta444@gmail.com"
       ],
       "telefonos": [],
       "cant_alumnos": null,
       "subcategoria": "escuela",
       "modalidad": null,
-      "tipo_gestion": "ESTATAL",
+      "tipo_gestion": "Estatal",
       "orientacion": null,
       "turnos": [
         "doble_turno"
@@ -1385,21 +1361,21 @@
       "datos_pendientes": false
     },
     {
-      "id": "edu-059",
+      "id": "edu-058",
       "tipo": "educativa",
-      "nombre": "ESCUELA N°445 Rio Quinto",
+      "nombre": "Escuela N°445 Rio Quinto",
       "lat": -33.68292640669986,
       "lng": -65.42624722468749,
       "descripcion": null,
       "direccion": "Domicilio: Maipú 1712 esq. Ramón Moyano",
       "emails": [
-        "escuela445rq@gmail.com"
+        "Escuela445rq@gmail.com"
       ],
       "telefonos": [],
       "cant_alumnos": null,
       "subcategoria": "escuela",
       "modalidad": null,
-      "tipo_gestion": "ESTATAL",
+      "tipo_gestion": "Estatal",
       "orientacion": null,
       "turnos": [
         "tarde",
@@ -1409,9 +1385,9 @@
       "datos_pendientes": false
     },
     {
-      "id": "edu-060",
+      "id": "edu-059",
       "tipo": "educativa",
-      "nombre": "ESCUELA GENERATIVA Maria Eva Duarte De Peron \"Construyendo Infancias\"",
+      "nombre": "Escuela Generativa Maria Eva Duarte De Peron \"Construyendo Infancias\"",
       "lat": -33.659337929599,
       "lng": -65.42978712930812,
       "descripcion": null,
@@ -1423,7 +1399,7 @@
       "cant_alumnos": null,
       "subcategoria": "escuela",
       "modalidad": "Escuela Generativa",
-      "tipo_gestion": "GENERATIVA",
+      "tipo_gestion": "Generativa",
       "orientacion": null,
       "turnos": [
         "manana"
@@ -1432,9 +1408,9 @@
       "datos_pendientes": false
     },
     {
-      "id": "edu-061",
+      "id": "edu-060",
       "tipo": "educativa",
-      "nombre": "ESCUELA TÉCNICA N°20 Juan Wenceslao Gez",
+      "nombre": "Escuela Técnica N°20 Juan Wenceslao Gez",
       "lat": -33.667777,
       "lng": -65.438865,
       "descripcion": null,
@@ -1446,7 +1422,7 @@
       "cant_alumnos": null,
       "subcategoria": "escuela",
       "modalidad": "Escuela Técnica",
-      "tipo_gestion": "ESTATAL",
+      "tipo_gestion": "Estatal",
       "orientacion": null,
       "turnos": [
         "noche",
@@ -1458,21 +1434,21 @@
       "datos_pendientes": false
     },
     {
-      "id": "edu-062",
+      "id": "edu-061",
       "tipo": "educativa",
-      "nombre": "COLEGIO N°11 Benito Juarez",
+      "nombre": "Colegio N°11 Benito Juarez",
       "lat": -33.682133,
       "lng": -65.471133,
       "descripcion": null,
       "direccion": "Av 25 de Mayo 850",
       "emails": [
-        "colegio11benitojuarez@gmail.com"
+        "Colegio11benitojuarez@gmail.com"
       ],
       "telefonos": [],
       "cant_alumnos": null,
       "subcategoria": "escuela",
       "modalidad": null,
-      "tipo_gestion": "ESTATAL",
+      "tipo_gestion": "Estatal",
       "orientacion": null,
       "turnos": [
         "manana",
@@ -1482,9 +1458,9 @@
       "datos_pendientes": false
     },
     {
-      "id": "edu-063",
+      "id": "edu-062",
       "tipo": "educativa",
-      "nombre": "ESCUELA TÉCNICA N°3 Eva Duarte De Peron",
+      "nombre": "Escuela Técnica N°3 Eva Duarte De Peron",
       "lat": -33.664522,
       "lng": -65.461144,
       "descripcion": null,
@@ -1496,7 +1472,7 @@
       "cant_alumnos": null,
       "subcategoria": "escuela",
       "modalidad": "Escuela Técnica",
-      "tipo_gestion": "ESTATAL",
+      "tipo_gestion": "Estatal",
       "orientacion": null,
       "turnos": [
         "manana",
@@ -1507,21 +1483,21 @@
       "datos_pendientes": false
     },
     {
-      "id": "edu-064",
+      "id": "edu-063",
       "tipo": "educativa",
-      "nombre": "ESCUELA GENERATIVA N°11 2026-04-02 00:00:00",
+      "nombre": "Escuela Generativa N°11 2026-04-02 00:00:00",
       "lat": -33.640682217225525,
       "lng": -65.47542560796954,
       "descripcion": null,
       "direccion": "Colectora Norte (Ruta Nacional) Nº 7 Km 697",
       "emails": [
-        "escuela11@sanluis.gob.ar"
+        "Escuela11@sanluis.gob.ar"
       ],
       "telefonos": [],
       "cant_alumnos": null,
       "subcategoria": "escuela",
       "modalidad": "Escuela Generativa",
-      "tipo_gestion": "GENERATIVA",
+      "tipo_gestion": "Generativa",
       "orientacion": null,
       "turnos": [
         "manana"
@@ -1530,9 +1506,9 @@
       "datos_pendientes": false
     },
     {
-      "id": "edu-065",
+      "id": "edu-064",
       "tipo": "educativa",
-      "nombre": "ESCUELA PÚBLICA AUTOGESTIONADA N°19 Libertad",
+      "nombre": "Escuela PÚBLICA AUTOGESTIONADA N°19 Libertad",
       "lat": -33.68519099964429,
       "lng": -65.45045011752963,
       "descripcion": null,
@@ -1545,7 +1521,7 @@
       "cant_alumnos": null,
       "subcategoria": "escuela",
       "modalidad": null,
-      "tipo_gestion": "PUBLICO AUTOGESTIONADA",
+      "tipo_gestion": "Publico Autogestionada",
       "orientacion": null,
       "turnos": [
         "noche"
@@ -1554,22 +1530,22 @@
       "datos_pendientes": false
     },
     {
-      "id": "edu-066",
+      "id": "edu-065",
       "tipo": "educativa",
-      "nombre": "ESCUELA TÉCNICA N°17 V Brigada Aérea",
+      "nombre": "Escuela Técnica N°17 V Brigada Aérea",
       "lat": -33.729133,
       "lng": -65.385511,
       "descripcion": null,
       "direccion": "Base Aérea, Villa Reynolds",
       "emails": [
         "et17sanluis@gmail.com",
-        "escuelatecnicavbrigada@gmail.com"
+        "Escuelatecnicavbrigada@gmail.com"
       ],
       "telefonos": [],
       "cant_alumnos": 533,
       "subcategoria": "escuela",
       "modalidad": "Escuela Técnica",
-      "tipo_gestion": "ESTATAL",
+      "tipo_gestion": "Estatal",
       "orientacion": null,
       "turnos": [
         "doble_turno"
