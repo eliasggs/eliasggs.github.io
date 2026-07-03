@@ -8,7 +8,10 @@
       "lng": -65.472725,
       "descripcion": "Institución de gestión privada muy reconocida en la ciudad por brindar una educación católica integral. Se enfoca en transmitir sólidos valores cristianos, disciplina, y ofrece un acompañamiento cercano para los alumnos y sus familias.",
       "direccion": "Almafuerte 371",
-      "email": "instituto.del.carmen@hotmail.com; nivelsecundarioinsc@gmail.com",
+      "emails": [
+        "instituto.del.carmen@hotmail.com",
+        "nivelsecundarioinsc@gmail.com"
+      ],
       "telefonos": [
         "02657-424612",
         "2657 66-7363"
@@ -17,7 +20,7 @@
       "subcategoria": "escuela",
       "modalidad": null,
       "tipo_gestion": "PRIVADO",
-      "orientacion": null,
+      "orientacion": "católica y humanística",
       "turnos": [
         "manana",
         "tarde"
@@ -33,13 +36,16 @@
       "lng": -65.4741745,
       "descripcion": "Es una institución educativa de gestión pública que concentra su labor en la formación integral de niñas y niños de nivel primario, combinando aprendizajes académicos con el desarrollo de valores y la participación en la comunidad escolar. Como muchas escuelas estatales argentinas, funciona como espacio de referencia para las familias del barrio, ofreciendo contención, socialización y oportunidades de aprendizaje que van más allá de lo estrictamente curricular.",
       "direccion": "Gral. Paunero 1149",
-      "email": "escuela106@sanluis.gov.ar; escuela106tomasferrari@gmail.com",
+      "emails": [
+        "escuela106@sanluis.gov.ar",
+        "escuela106tomasferrari@gmail.com"
+      ],
       "telefonos": [],
       "cant_alumnos": 500,
       "subcategoria": "escuela",
       "modalidad": null,
       "tipo_gestion": "ESTATAL",
-      "orientacion": null,
+      "orientacion": "Arte con especialidad en Artes Visuales",
       "turnos": [
         "manana",
         "tarde"
@@ -55,7 +61,9 @@
       "lng": -65.4676616,
       "descripcion": "Institución educativa pública de gestión estatal ubicada en Villa Mercedes, San Luis. Se especializa en educación técnica, ofreciendo ciclos secundarios orientados a la electromecánica y brindando una sólida formación que combina teoría en el aula y práctica en talleres",
       "direccion": "Intendente Leyes 260",
-      "email": "et15sanluis@gmail.com",
+      "emails": [
+        "et15sanluis@gmail.com"
+      ],
       "telefonos": [
         "02657 42-3171"
       ],
@@ -63,7 +71,7 @@
       "subcategoria": "escuela",
       "modalidad": "Escuela Técnica",
       "tipo_gestion": "ESTATAL",
-      "orientacion": null,
+      "orientacion": "Mantenimiento Electromecánico",
       "turnos": [
         "manana",
         "doble_turno"
@@ -79,13 +87,15 @@
       "lng": -65.4683619,
       "descripcion": null,
       "direccion": null,
-      "email": "et18sanluis@gmail.com",
+      "emails": [
+        "et18sanluis@gmail.com"
+      ],
       "telefonos": [],
       "cant_alumnos": 533,
       "subcategoria": "escuela",
       "modalidad": "Escuela Técnica",
       "tipo_gestion": "ESTATAL",
-      "orientacion": null,
+      "orientacion": "Técnico en Gestión y Administración de las Organizaciones",
       "turnos": [
         "manana",
         "tarde",
@@ -102,7 +112,10 @@
       "lng": -65.4546152,
       "descripcion": null,
       "direccion": null,
-      "email": "direccionsecundariaisb@gmail.com; mercedesanbue@gmail.com",
+      "emails": [
+        "direccionsecundariaisb@gmail.com",
+        "mercedesanbue@gmail.com"
+      ],
       "telefonos": [],
       "cant_alumnos": 456,
       "subcategoria": "escuela",
@@ -124,7 +137,9 @@
       "lng": -65.4589316,
       "descripcion": null,
       "direccion": null,
-      "email": "indi_escuela@hotmail.com",
+      "emails": [
+        "indi_escuela@hotmail.com"
+      ],
       "telefonos": [],
       "cant_alumnos": 123,
       "subcategoria": "escuela",
@@ -146,7 +161,9 @@
       "lng": -65.4626446,
       "descripcion": null,
       "direccion": null,
-      "email": "col2.juanepedernera@sanluis.com.ar",
+      "emails": [
+        "col2.juanepedernera@sanluis.com.ar"
+      ],
       "telefonos": [],
       "cant_alumnos": 500,
       "subcategoria": "escuela",
@@ -169,7 +186,9 @@
       "lng": -65.4404276,
       "descripcion": null,
       "direccion": null,
-      "email": "ce10sanluis@gmail.com",
+      "emails": [
+        "ce10sanluis@gmail.com"
+      ],
       "telefonos": [],
       "cant_alumnos": 300,
       "subcategoria": "escuela",
@@ -191,7 +210,9 @@
       "lng": -65.4348533,
       "descripcion": null,
       "direccion": null,
-      "email": "escuelagenerativagea@gmail.com",
+      "emails": [
+        "escuelagenerativagea@gmail.com"
+      ],
       "telefonos": [],
       "cant_alumnos": 533,
       "subcategoria": "escuela",
@@ -212,7 +233,7 @@
       "lng": -65.4341901,
       "descripcion": null,
       "direccion": null,
-      "email": null,
+      "emails": [],
       "telefonos": [],
       "cant_alumnos": 456,
       "subcategoria": "escuela",
@@ -234,7 +255,9 @@
       "lng": -65.4644515,
       "descripcion": null,
       "direccion": null,
-      "email": "direccionremediosescaladas@gmail.com",
+      "emails": [
+        "direccionremediosescaladas@gmail.com"
+      ],
       "telefonos": [],
       "cant_alumnos": 123,
       "subcategoria": "escuela",
@@ -256,7 +279,9 @@
       "lng": -65.4628568,
       "descripcion": null,
       "direccion": null,
-      "email": "secretariacentronueve@gmail.com",
+      "emails": [
+        "secretariacentronueve@gmail.com"
+      ],
       "telefonos": [],
       "cant_alumnos": 203,
       "subcategoria": "escuela",
@@ -278,7 +303,9 @@
       "lng": -65.495266,
       "descripcion": null,
       "direccion": null,
-      "email": "terramaterescuelagenerativa@gmail.com",
+      "emails": [
+        "terramaterescuelagenerativa@gmail.com"
+      ],
       "telefonos": [],
       "cant_alumnos": 143,
       "subcategoria": "escuela",
@@ -300,7 +327,9 @@
       "lng": -65.4532139,
       "descripcion": null,
       "direccion": null,
-      "email": "recrearescuelagenerativa@gmail.com",
+      "emails": [
+        "recrearescuelagenerativa@gmail.com"
+      ],
       "telefonos": [],
       "cant_alumnos": 85,
       "subcategoria": "escuela",
@@ -322,7 +351,9 @@
       "lng": -65.5042172,
       "descripcion": null,
       "direccion": null,
-      "email": "et14sanluis@gmail.com",
+      "emails": [
+        "et14sanluis@gmail.com"
+      ],
       "telefonos": [],
       "cant_alumnos": 24,
       "subcategoria": "escuela",
@@ -345,7 +376,11 @@
       "lng": -65.5016479,
       "descripcion": null,
       "direccion": null,
-      "email": "admiepa10.sb@gmail.com; eped2@sanluis.gov.ar; secr.ejecutiva.epa10@gmail.com",
+      "emails": [
+        "admiepa10.sb@gmail.com",
+        "eped2@sanluis.gov.ar",
+        "secr.ejecutiva.epa10@gmail.com"
+      ],
       "telefonos": [],
       "cant_alumnos": 300,
       "subcategoria": "escuela",
@@ -368,7 +403,9 @@
       "lng": -65.4983154,
       "descripcion": null,
       "direccion": null,
-      "email": "secretariaepbdgandhi@gmail.com",
+      "emails": [
+        "secretariaepbdgandhi@gmail.com"
+      ],
       "telefonos": [],
       "cant_alumnos": 533,
       "subcategoria": "escuela",
@@ -391,7 +428,9 @@
       "lng": -65.4765986,
       "descripcion": null,
       "direccion": null,
-      "email": "et20sanluis@gmail.com",
+      "emails": [
+        "et20sanluis@gmail.com"
+      ],
       "telefonos": [],
       "cant_alumnos": 456,
       "subcategoria": "escuela",
@@ -413,7 +452,9 @@
       "lng": -65.4653793,
       "descripcion": null,
       "direccion": null,
-      "email": "escuela31@sanluis.gov.ar",
+      "emails": [
+        "escuela31@sanluis.gov.ar"
+      ],
       "telefonos": [],
       "cant_alumnos": 123,
       "subcategoria": "escuela",
@@ -435,7 +476,9 @@
       "lng": -65.4720293,
       "descripcion": null,
       "direccion": null,
-      "email": "institutoculturalargentino@hotmail.com",
+      "emails": [
+        "institutoculturalargentino@hotmail.com"
+      ],
       "telefonos": [],
       "cant_alumnos": 500,
       "subcategoria": "escuela",
@@ -458,7 +501,9 @@
       "lng": -65.4653237,
       "descripcion": null,
       "direccion": null,
-      "email": "esc.generativaalberdi@gmail.com",
+      "emails": [
+        "esc.generativaalberdi@gmail.com"
+      ],
       "telefonos": [],
       "cant_alumnos": 300,
       "subcategoria": "escuela",
@@ -479,7 +524,10 @@
       "lng": -65.467073,
       "descripcion": null,
       "direccion": "Junín 33",
-      "email": "direccionartegaspardigennaro@gmail.com; escueladeartesvm@yahoo.com.ar",
+      "emails": [
+        "direccionartegaspardigennaro@gmail.com",
+        "escueladeartesvm@yahoo.com.ar"
+      ],
       "telefonos": [],
       "cant_alumnos": 533,
       "subcategoria": "escuela",
@@ -500,7 +548,9 @@
       "lng": -65.4831615,
       "descripcion": null,
       "direccion": null,
-      "email": "epa7eg@yahoo.com",
+      "emails": [
+        "epa7eg@yahoo.com"
+      ],
       "telefonos": [],
       "cant_alumnos": 456,
       "subcategoria": "escuela",
@@ -522,7 +572,9 @@
       "lng": -65.4833233,
       "descripcion": null,
       "direccion": null,
-      "email": "et19sanluis@gmail.com",
+      "emails": [
+        "et19sanluis@gmail.com"
+      ],
       "telefonos": [],
       "cant_alumnos": 300,
       "subcategoria": "escuela",
@@ -544,7 +596,9 @@
       "lng": -65.4945983,
       "descripcion": null,
       "direccion": null,
-      "email": "genzescuelagenerativa@gmail.com",
+      "emails": [
+        "genzescuelagenerativa@gmail.com"
+      ],
       "telefonos": [],
       "cant_alumnos": 533,
       "subcategoria": "escuela",
@@ -566,7 +620,11 @@
       "lng": -65.4733694,
       "descripcion": null,
       "direccion": null,
-      "email": "escuela176.archivo@gmail.com; ESCUELA176@SANLUIS.GOV.AR; valeriavaugusto@sanluis.edu.ar",
+      "emails": [
+        "escuela176.archivo@gmail.com",
+        "ESCUELA176@SANLUIS.GOV.AR",
+        "valeriavaugusto@sanluis.edu.ar"
+      ],
       "telefonos": [],
       "cant_alumnos": 456,
       "subcategoria": "escuela",
@@ -588,7 +646,9 @@
       "lng": -65.4378069,
       "descripcion": null,
       "direccion": null,
-      "email": "epan8ldv@epa8.org",
+      "emails": [
+        "epan8ldv@epa8.org"
+      ],
       "telefonos": [],
       "cant_alumnos": 123,
       "subcategoria": "escuela",
@@ -610,7 +670,9 @@
       "lng": -65.4671824,
       "descripcion": null,
       "direccion": null,
-      "email": "gestioneducativaepd@ulp.edu.ar",
+      "emails": [
+        "gestioneducativaepd@ulp.edu.ar"
+      ],
       "telefonos": [],
       "cant_alumnos": 500,
       "subcategoria": "escuela",
@@ -633,7 +695,9 @@
       "lng": -65.4692261,
       "descripcion": null,
       "direccion": null,
-      "email": "cens1@sanluis.gov.ar",
+      "emails": [
+        "cens1@sanluis.gov.ar"
+      ],
       "telefonos": [],
       "cant_alumnos": 300,
       "subcategoria": "escuela",
@@ -654,7 +718,9 @@
       "lng": -65.4760805641088,
       "descripcion": null,
       "direccion": null,
-      "email": "direccionescuela46@gmail.com",
+      "emails": [
+        "direccionescuela46@gmail.com"
+      ],
       "telefonos": [],
       "cant_alumnos": null,
       "subcategoria": "escuela",
@@ -675,7 +741,9 @@
       "lng": -65.45594016909926,
       "descripcion": null,
       "direccion": null,
-      "email": "especial6montessori@gmail.com",
+      "emails": [
+        "especial6montessori@gmail.com"
+      ],
       "telefonos": [],
       "cant_alumnos": null,
       "subcategoria": "escuela",
@@ -697,7 +765,9 @@
       "lng": -65.44740121463641,
       "descripcion": null,
       "direccion": null,
-      "email": "escuela371@sanluis.gob.ar",
+      "emails": [
+        "escuela371@sanluis.gob.ar"
+      ],
       "telefonos": [],
       "cant_alumnos": null,
       "subcategoria": "escuela",
@@ -719,7 +789,9 @@
       "lng": -65.42823247408934,
       "descripcion": null,
       "direccion": null,
-      "email": "escuela148vm.sl@gmail.com",
+      "emails": [
+        "escuela148vm.sl@gmail.com"
+      ],
       "telefonos": [],
       "cant_alumnos": null,
       "subcategoria": "escuela",
@@ -741,7 +813,9 @@
       "lng": -65.456061,
       "descripcion": null,
       "direccion": null,
-      "email": "esc388eduardoromero@sanluis.gov.ar",
+      "emails": [
+        "esc388eduardoromero@sanluis.gov.ar"
+      ],
       "telefonos": [],
       "cant_alumnos": null,
       "subcategoria": "escuela",
@@ -763,7 +837,9 @@
       "lng": -65.460811,
       "descripcion": null,
       "direccion": null,
-      "email": "escuelajustodaract32@gmail.com",
+      "emails": [
+        "escuelajustodaract32@gmail.com"
+      ],
       "telefonos": [],
       "cant_alumnos": null,
       "subcategoria": "escuela",
@@ -785,7 +861,9 @@
       "lng": -65.46227539750072,
       "descripcion": null,
       "direccion": null,
-      "email": "esc240provcorrientes@sanluis.gov.ar",
+      "emails": [
+        "esc240provcorrientes@sanluis.gov.ar"
+      ],
       "telefonos": [],
       "cant_alumnos": null,
       "subcategoria": "escuela",
@@ -807,7 +885,9 @@
       "lng": -65.478833,
       "descripcion": null,
       "direccion": "Colón 748",
-      "email": "escuela150@sanluis.gov.ar",
+      "emails": [
+        "escuela150@sanluis.gov.ar"
+      ],
       "telefonos": [],
       "cant_alumnos": null,
       "subcategoria": "escuela",
@@ -829,7 +909,9 @@
       "lng": -65.459749,
       "descripcion": null,
       "direccion": "Av Bartolomé Mitre 1434",
-      "email": "jardinsoyfeliz@gmail.com",
+      "emails": [
+        "jardinsoyfeliz@gmail.com"
+      ],
       "telefonos": [],
       "cant_alumnos": null,
       "subcategoria": "escuela",
@@ -851,7 +933,9 @@
       "lng": -65.467182,
       "descripcion": null,
       "direccion": "Pedernera 175",
-      "email": "escuelapedernera30@gmail.com",
+      "emails": [
+        "escuelapedernera30@gmail.com"
+      ],
       "telefonos": [],
       "cant_alumnos": null,
       "subcategoria": "escuela",
@@ -873,7 +957,9 @@
       "lng": -65.471534,
       "descripcion": null,
       "direccion": "Av 25 de Mayo y San Martín",
-      "email": "escuela187josehernandez@gmail.com",
+      "emails": [
+        "escuela187josehernandez@gmail.com"
+      ],
       "telefonos": [],
       "cant_alumnos": null,
       "subcategoria": "escuela",
@@ -895,7 +981,9 @@
       "lng": -65.458921,
       "descripcion": null,
       "direccion": "Barrio ATE II, Av Jorge Newbery",
-      "email": "juanbulacio67@gmail.com",
+      "emails": [
+        "juanbulacio67@gmail.com"
+      ],
       "telefonos": [],
       "cant_alumnos": null,
       "subcategoria": "escuela",
@@ -916,7 +1004,9 @@
       "lng": -65.465811,
       "descripcion": null,
       "direccion": "Almafuerte 351",
-      "email": "escuela34@sanluis.gov.ar",
+      "emails": [
+        "escuela34@sanluis.gov.ar"
+      ],
       "telefonos": [],
       "cant_alumnos": null,
       "subcategoria": "escuela",
@@ -938,7 +1028,9 @@
       "lng": -65.461932,
       "descripcion": null,
       "direccion": "Av Los Álamos y Belgrano",
-      "email": "escuela40rr@gmail.com",
+      "emails": [
+        "escuela40rr@gmail.com"
+      ],
       "telefonos": [],
       "cant_alumnos": null,
       "subcategoria": "escuela",
@@ -960,7 +1052,9 @@
       "lng": -65.43723885789346,
       "descripcion": null,
       "direccion": "Min. Berrondo 925, D5732 Villa Mercedes, San Luis",
-      "email": "epa6rbarroso@gmail.com",
+      "emails": [
+        "epa6rbarroso@gmail.com"
+      ],
       "telefonos": [],
       "cant_alumnos": null,
       "subcategoria": "escuela",
@@ -983,7 +1077,9 @@
       "lng": -65.45104573494838,
       "descripcion": null,
       "direccion": "Italia 2009",
-      "email": "escuela147pm@gmail.com",
+      "emails": [
+        "escuela147pm@gmail.com"
+      ],
       "telefonos": [],
       "cant_alumnos": null,
       "subcategoria": "escuela",
@@ -1005,7 +1101,9 @@
       "lng": -65.45544891480318,
       "descripcion": null,
       "direccion": "Zavala Ortiz 185",
-      "email": "escuela33@sanluis.gov.ar",
+      "emails": [
+        "escuela33@sanluis.gov.ar"
+      ],
       "telefonos": [],
       "cant_alumnos": null,
       "subcategoria": "escuela",
@@ -1027,7 +1125,9 @@
       "lng": -65.454222,
       "descripcion": null,
       "direccion": "Tucumán y 9 de Julio",
-      "email": "escuela43@sanluis.gov.ar",
+      "emails": [
+        "escuela43@sanluis.gov.ar"
+      ],
       "telefonos": [],
       "cant_alumnos": null,
       "subcategoria": "escuela",
@@ -1049,7 +1149,9 @@
       "lng": -65.4520706536661,
       "descripcion": null,
       "direccion": "Venezuela 775",
-      "email": "escuela36gdca@gmail.com",
+      "emails": [
+        "escuela36gdca@gmail.com"
+      ],
       "telefonos": [],
       "cant_alumnos": null,
       "subcategoria": "escuela",
@@ -1073,7 +1175,9 @@
       "lng": -65.465111,
       "descripcion": null,
       "direccion": "Balcarce 454",
-      "email": "adminis.sc@mcabrini.org.ar",
+      "emails": [
+        "adminis.sc@mcabrini.org.ar"
+      ],
       "telefonos": [],
       "cant_alumnos": null,
       "subcategoria": "escuela",
@@ -1095,7 +1199,9 @@
       "lng": -65.461233,
       "descripcion": null,
       "direccion": "Córdoba 551-599",
-      "email": "escuelaalasargentinas152@gmail.com",
+      "emails": [
+        "escuelaalasargentinas152@gmail.com"
+      ],
       "telefonos": [],
       "cant_alumnos": null,
       "subcategoria": "escuela",
@@ -1117,7 +1223,9 @@
       "lng": -65.45238368163574,
       "descripcion": null,
       "direccion": "Barrio San José",
-      "email": "escuela69moes@gmail.com",
+      "emails": [
+        "escuela69moes@gmail.com"
+      ],
       "telefonos": [],
       "cant_alumnos": null,
       "subcategoria": "escuela",
@@ -1140,7 +1248,9 @@
       "lng": -65.468133,
       "descripcion": null,
       "direccion": "Suipacha 351 (Instalaciones del Club)",
-      "email": "egjorgenewbery@gmail.com",
+      "emails": [
+        "egjorgenewbery@gmail.com"
+      ],
       "telefonos": [],
       "cant_alumnos": null,
       "subcategoria": "escuela",
@@ -1162,7 +1272,9 @@
       "lng": -65.466533,
       "descripcion": null,
       "direccion": "Pringles 551",
-      "email": "isabellacatolicasanluis@servidoras.org",
+      "emails": [
+        "isabellacatolicasanluis@servidoras.org"
+      ],
       "telefonos": [],
       "cant_alumnos": null,
       "subcategoria": "escuela",
@@ -1184,7 +1296,9 @@
       "lng": -65.47381274265021,
       "descripcion": null,
       "direccion": "Justo Daract y San Luis",
-      "email": "eni8maestrasmercedinas@gmail.com",
+      "emails": [
+        "eni8maestrasmercedinas@gmail.com"
+      ],
       "telefonos": [],
       "cant_alumnos": null,
       "subcategoria": "escuela",
@@ -1206,7 +1320,9 @@
       "lng": -65.474133,
       "descripcion": null,
       "direccion": "Betbeder 215",
-      "email": "institutosanmarcosvm@hotmail.com",
+      "emails": [
+        "institutosanmarcosvm@hotmail.com"
+      ],
       "telefonos": [],
       "cant_alumnos": null,
       "subcategoria": "escuela",
@@ -1228,7 +1344,10 @@
       "lng": -65.467241,
       "descripcion": null,
       "direccion": "Belgrano 582",
-      "email": "jardinmanuelita1@hotmail.com; jardinmanuelitavm@gmail.com",
+      "emails": [
+        "jardinmanuelita1@hotmail.com",
+        "jardinmanuelitavm@gmail.com"
+      ],
       "telefonos": [],
       "cant_alumnos": null,
       "subcategoria": "escuela",
@@ -1250,7 +1369,9 @@
       "lng": -65.45798351590177,
       "descripcion": null,
       "direccion": "9 de July 1050",
-      "email": "escueladejornadacompleta444@gmail.com",
+      "emails": [
+        "escueladejornadacompleta444@gmail.com"
+      ],
       "telefonos": [],
       "cant_alumnos": null,
       "subcategoria": "escuela",
@@ -1271,7 +1392,9 @@
       "lng": -65.42624722468749,
       "descripcion": null,
       "direccion": "Domicilio: Maipú 1712 esq. Ramón Moyano",
-      "email": "escuela445rq@gmail.com",
+      "emails": [
+        "escuela445rq@gmail.com"
+      ],
       "telefonos": [],
       "cant_alumnos": null,
       "subcategoria": "escuela",
@@ -1289,11 +1412,13 @@
       "id": "edu-060",
       "tipo": "educativa",
       "nombre": "ESCUELA GENERATIVA Maria Eva Duarte De Peron \"Construyendo Infancias\"",
-      "lat": -3.36593379295996e+16,
+      "lat": -33.659337929599,
       "lng": -65.42978712930812,
       "descripcion": null,
       "direccion": "Granaderos Puntanos y Principal Pereyra",
-      "email": "genconstruyendoinfancias@gmail.com",
+      "emails": [
+        "genconstruyendoinfancias@gmail.com"
+      ],
       "telefonos": [],
       "cant_alumnos": null,
       "subcategoria": "escuela",
@@ -1314,7 +1439,9 @@
       "lng": -65.438865,
       "descripcion": null,
       "direccion": "Vicente Dupuy 1026",
-      "email": "ce20sanluis@gmail.com",
+      "emails": [
+        "ce20sanluis@gmail.com"
+      ],
       "telefonos": [],
       "cant_alumnos": null,
       "subcategoria": "escuela",
@@ -1338,7 +1465,9 @@
       "lng": -65.471133,
       "descripcion": null,
       "direccion": "Av 25 de Mayo 850",
-      "email": "colegio11benitojuarez@gmail.com",
+      "emails": [
+        "colegio11benitojuarez@gmail.com"
+      ],
       "telefonos": [],
       "cant_alumnos": null,
       "subcategoria": "escuela",
@@ -1360,7 +1489,9 @@
       "lng": -65.461144,
       "descripcion": null,
       "direccion": "Calle Europa y 3 de Febrero",
-      "email": "et3sanluis@gmail.com",
+      "emails": [
+        "et3sanluis@gmail.com"
+      ],
       "telefonos": [],
       "cant_alumnos": null,
       "subcategoria": "escuela",
@@ -1383,7 +1514,9 @@
       "lng": -65.47542560796954,
       "descripcion": null,
       "direccion": "Colectora Norte (Ruta Nacional) Nº 7 Km 697",
-      "email": "escuela11@sanluis.gob.ar",
+      "emails": [
+        "escuela11@sanluis.gob.ar"
+      ],
       "telefonos": [],
       "cant_alumnos": null,
       "subcategoria": "escuela",
@@ -1404,7 +1537,10 @@
       "lng": -65.45045011752963,
       "descripcion": null,
       "direccion": "690 Rafael Cortez",
-      "email": "epa19libertad@gmail.com; secretariaepa19libertad@gmail.com",
+      "emails": [
+        "epa19libertad@gmail.com",
+        "secretariaepa19libertad@gmail.com"
+      ],
       "telefonos": [],
       "cant_alumnos": null,
       "subcategoria": "escuela",
@@ -1425,7 +1561,10 @@
       "lng": -65.385511,
       "descripcion": null,
       "direccion": "Base Aérea, Villa Reynolds",
-      "email": "et17sanluis@gmail.com; escuelatecnicavbrigada@gmail.com",
+      "emails": [
+        "et17sanluis@gmail.com",
+        "escuelatecnicavbrigada@gmail.com"
+      ],
       "telefonos": [],
       "cant_alumnos": 533,
       "subcategoria": "escuela",
