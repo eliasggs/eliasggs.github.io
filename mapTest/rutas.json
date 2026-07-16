@@ -3,7 +3,7 @@
   "rutas": [
     {
       "id": "linea-a",
-      "nombre": "Línea A ida",
+      "nombre": "Línea A (ida)",
       "tipo": "urbano",
       "empresa": "Sol Bus",
       "horario": "5:15 a 20:20 hs (ejemplo)",
@@ -113,7 +113,7 @@
     },
     {
       "id": "ruta-oeste",
-      "nombre": "Línea Oeste",
+      "nombre": "Línea Oeste (ejemplo)",
       "tipo": "urbano",
       "empresa": "Sol Bus",
       "horario": "5:15 a 20:20 hs (ejemplo)",
