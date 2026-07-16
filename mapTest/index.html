@@ -1122,8 +1122,15 @@ function crearIcono(inst) {
   function crearTodasLasRutas() {
     rutas.forEach(ruta => {
       if (!ruta.recorrido || ruta.recorrido.length < 2) return;
+
+      // "recorrido" se guarda en el mismo orden que usa GeoJSON: [longitud, latitud]
+      // (así se puede pegar la salida de geojson.io/QGIS tal cual, sin editarla).
+      // Leaflet en cambio espera [latitud, longitud], así que se invierte cada
+      // par acá, una sola vez, al construir la línea.
+      const coordenadasLeaflet = ruta.recorrido.map(([lng, lat]) => [lat, lng]);
+
       const esInterurbano = ruta.tipo === 'interurbano';
-      const polyline = L.polyline(ruta.recorrido, {
+      const polyline = L.polyline(coordenadasLeaflet, {
         color: ruta.color || '#2E5C8A',
         weight: 5,
         opacity: 0.85,
