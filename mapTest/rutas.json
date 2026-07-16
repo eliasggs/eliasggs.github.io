@@ -110,43 +110,7 @@
         [-65.4285153, -33.7018092],
         [-65.4282006, -33.7008388]
       ]
-    },
-    {
-      "id": "ruta-oeste",
-      "nombre": "Línea Oeste (ejemplo)",
-      "tipo": "urbano",
-      "empresa": "Sol Bus",
-      "horario": "5:15 a 20:20 hs (ejemplo)",
-      "frecuencia": "cada 20 min aprox. (ejemplo)",
-      "color": "#3C7A5F",
-      "recorrido": [
-        [-65.454, -33.6755],
-        [-65.459, -33.678],
-        [-65.464, -33.676],
-        [-65.466, -33.671],
-        [-65.463, -33.667],
-        [-65.458, -33.666],
-        [-65.455, -33.669],
-        [-65.4545, -33.672],
-        [-65.454, -33.6755]
-      ]
-    },
-    {
-      "id": "ruta-interurbano",
-      "nombre": "Interurbano (ejemplo)",
-      "tipo": "interurbano",
-      "empresa": "Sol Bus",
-      "horario": "9:00 a 18:00 hs (ejemplo)",
-      "frecuencia": "cada 60 min aprox. (ejemplo)",
-      "color": "#2E5C8A",
-      "recorrido": [
-        [-65.454, -33.6755],
-        [-65.45, -33.682],
-        [-65.446, -33.69],
-        [-65.443, -33.698],
-        [-65.44, -33.705]
-      ]
-    }
+    },    
   ],
   "_formato_recorrido": "Cada punto de \"recorrido\" va como [longitud, latitud] -- el mismo orden que usa GeoJSON. Se puede pegar la salida de geojson.io/QGIS directo, sin invertir nada."
 }
