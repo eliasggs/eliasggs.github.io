@@ -20,6 +20,7 @@
     --tinta: #1B1B17;
     --linea: #D8D0BC;
     --blanco: #FFFFFF;
+    --azul-bus: #2E5C8A;
   }
 
   * { box-sizing: border-box; }
@@ -297,6 +298,33 @@
 
   .punto.educativa { background: var(--verde-claro); }
   .punto.cultural { background: var(--terracota); }
+  .punto.rutas { background: var(--azul-bus); }
+  /* Fila de una línea de colectivo dentro del filtro (color dinámico por línea) */
+  .fila-linea {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 4px;
+  }
+  .fila-linea label.chk { flex: 1; }
+  .fila-linea .punto-linea {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    border: 1.5px solid rgba(255,255,255,0.6);
+    box-shadow: 0 0 0 1px rgba(27,27,23,0.15);
+  }
+  .aviso-ejemplo {
+    font-family: 'Space Mono', monospace;
+    font-size: 10.5px;
+    line-height: 1.5;
+    color: #8C4324;
+    background: #F6E3D8;
+    padding: 6px 8px;
+    border-radius: 6px;
+    margin: 4px 2px 6px;
+  }
+
 
   .btn-expandir {
     width: 22px; height: 22px;
@@ -451,6 +479,17 @@
 
   .pop-tipo.educativa { background: #E3EEE7; color: var(--verde-cartel); }
   .pop-tipo.cultural { background: #F6E3D8; color: #8C4324; }
+  .pop-tipo.ruta { background: #E3E8F6; color: #26407A; }
+  .pop-linea-color {
+    width: 13px; height: 13px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 7px;
+    vertical-align: -2px;
+    border: 2px solid var(--blanco);
+    box-shadow: 0 0 0 1px rgba(27,27,23,0.2);
+  }
+
 
   .pop-nombre {
     font-family: 'Fraunces', serif;
@@ -630,7 +669,8 @@
 .marcador-icono.formacion_profesional {
   background: #546E7A;
 }
-
+.marcador-icono.educativa { background: var(--verde-claro); }
+.marcador-icono.cultural { background: var(--terracota); }
   /* ---------- Clusters (agrupación de marcadores en zoom alejado) ---------- */
   .cluster-icono {
     border-radius: 50%;
@@ -761,7 +801,18 @@
           <h3><span class="punto cultural"></span>Culturales</h3>
         </div>
       </div>
-
+     <div class="grupo-filtro" id="grupo-rutas" style="display:none;">
+        <div class="fila-categoria">
+          <input type="checkbox" id="cat-rutas" checked>
+          <h3 id="titulo-rutas"><span class="punto rutas"></span>Colectivos</h3>
+          <button class="btn-expandir" data-target="subrutas">+</button>
+        </div>
+        <div class="subniveles" id="subrutas">
+          <div class="aviso-ejemplo">🚧 Recorridos de ejemplo — reemplazar por datos reales</div>
+          <!-- Las líneas se completan dinámicamente desde rutas.json -->
+        </div>
+      </div>
+      
       <div class="resultados-info">
         <strong id="contador-resultados">0</strong>
         instituciones visibles en el mapa
@@ -858,6 +909,13 @@
 
   clusterEducativa.addTo(mapa);
   clusterCultural.addTo(mapa);
+    // ---------- Capa de rutas de colectivos ----------
+  // A diferencia de instituciones (puntos con cluster), las rutas son líneas:
+  // no necesitan agruparse, así que van en un layerGroup simple. Cada línea
+  // guarda su propio polyline + checkbox para poder prenderla/apagarla sola.
+  let rutas = [];
+  const rutasLayer = L.layerGroup().addTo(mapa);
+  const polilineasRutas = []; // [{ ruta, polyline, capaVisible }]
 
   function grupoDeTipo(tipo) {
     return tipo === 'cultural' ? clusterCultural : clusterEducativa;
@@ -1046,6 +1104,81 @@ function crearIcono(inst) {
       </div>
     `;
   }
+    // ---------- Popup de rutas de colectivos ----------
+  const NOMBRES_TIPO_RUTA = { urbano: 'Urbano', interurbano: 'Interurbano' };
+  function construirPopupRuta(ruta) {
+    const tipoLabel = NOMBRES_TIPO_RUTA[ruta.tipo] || 'Colectivo';
+    return `
+      <div class="pop-tipo ruta">${tipoLabel}</div>
+      <p class="pop-nombre"><span class="pop-linea-color" style="background:${ruta.color}"></span>${ruta.nombre}</p>
+      ${ruta.empresa ? `<div class="pop-fila"><b>Empresa:</b> ${ruta.empresa}</div>` : ''}
+      ${ruta.horario ? `<div class="pop-fila"><b>Horario:</b> ${ruta.horario}</div>` : ''}
+      ${ruta.frecuencia ? `<div class="pop-fila"><b>Frecuencia:</b> ${ruta.frecuencia}</div>` : ''}
+    `;
+  }
+  // Cada línea se dibuja una sola vez al cargar rutas.json. Igual que con los
+  // marcadores de instituciones, filtrar después solo agrega/quita del mapa,
+  // no reconstruye el polyline.
+  function crearTodasLasRutas() {
+    rutas.forEach(ruta => {
+      if (!ruta.recorrido || ruta.recorrido.length < 2) return;
+      const esInterurbano = ruta.tipo === 'interurbano';
+      const polyline = L.polyline(ruta.recorrido, {
+        color: ruta.color || '#2E5C8A',
+        weight: 5,
+        opacity: 0.85,
+        lineJoin: 'round',
+        dashArray: esInterurbano ? '10 8' : null
+      });
+      polyline.bindPopup('', { maxWidth: 300 });
+      polyline.on('popupopen', () => polyline.setPopupContent(construirPopupRuta(ruta)));
+      // Resaltar la línea al pasar el mouse, para distinguirla si se cruza con otras.
+      polyline.on('mouseover', () => polyline.setStyle({ weight: 8, opacity: 1 }));
+      polyline.on('mouseout', () => polyline.setStyle({ weight: 5, opacity: 0.85 }));
+      polilineasRutas.push({ ruta, polyline, capaVisible: true });
+    });
+  }
+  function renderizarRutas() {
+    const catActiva = document.getElementById('cat-rutas').checked;
+    let visibles = 0;
+    polilineasRutas.forEach(p => {
+      const chk = document.querySelector(`.ruta-chk[data-ruta="${p.ruta.id}"]`);
+      const debeVerse = catActiva && (chk ? chk.checked : true);
+      if (debeVerse && !rutasLayer.hasLayer(p.polyline)) {
+        rutasLayer.addLayer(p.polyline);
+      } else if (!debeVerse && rutasLayer.hasLayer(p.polyline)) {
+        rutasLayer.removeLayer(p.polyline);
+      }
+      if (debeVerse) visibles++;
+    });
+    return visibles;
+  }
+  // Arma dinámicamente una fila de checkbox por cada línea encontrada en rutas.json,
+  // así el panel se ajusta solo sin tocar el HTML si mañana hay más o menos líneas.
+  function construirFiltroDeRutas() {
+    const contenedor = document.getElementById('subrutas');
+    rutas.forEach(ruta => {
+      const fila = document.createElement('div');
+      fila.className = 'fila-linea';
+      fila.innerHTML = `
+        <label class="chk" style="flex:1;">
+          <input type="checkbox" class="ruta-chk" data-ruta="${ruta.id}" checked>
+          <span class="punto-linea" style="background:${ruta.color}"></span>
+          ${ruta.nombre}
+        </label>
+      `;
+      contenedor.appendChild(fila);
+      fila.querySelector('.ruta-chk').addEventListener('change', () => {
+        actualizarCheckboxCategoriaRutas();
+        renderizarRutas();
+      });
+    });
+  }
+  function actualizarCheckboxCategoriaRutas() {
+    const algunaActiva = Array.from(document.querySelectorAll('.ruta-chk')).some(c => c.checked);
+    document.getElementById('cat-rutas').checked = algunaActiva;
+  }
+
 
   // ---------- Lógica de filtros ----------
   function subcatVisible(subcat) {
@@ -1198,6 +1331,26 @@ const marcador = L.marker([inst.lat, inst.lng], {
       document.getElementById('contador-resultados').textContent = '0';
     });
 
+   // ---------- Carga de rutas de colectivos ----------
+  // Si el archivo no existe todavía (proyecto sin esa capa cargada), la sección
+  // "Colectivos" del panel se queda oculta en vez de mostrarse vacía o rota.
+  fetch('rutas.json')
+    .then(res => {
+      if (!res.ok) throw new Error('rutas.json no encontrado');
+      return res.json();
+    })
+    .then(data => {
+      rutas = data.rutas || [];
+      if (rutas.length === 0) return;
+      crearTodasLasRutas();
+      construirFiltroDeRutas();
+      renderizarRutas();
+      document.getElementById('grupo-rutas').style.display = '';
+    })
+    .catch(err => {
+      console.info('Capa de rutas no disponible todavía:', err.message);
+    });
+  
   // ---------- Evento: categoría educativa madre ----------
   document.getElementById('cat-educativa').addEventListener('change', (e) => {
     const activo = e.target.checked;
@@ -1207,6 +1360,13 @@ const marcador = L.marker([inst.lat, inst.lng], {
 
   document.getElementById('cat-cultural').addEventListener('change', renderizarMarcadores);
 
+    // ---------- Evento: categoría colectivos madre ----------
+  document.getElementById('cat-rutas').addEventListener('change', (e) => {
+    document.querySelectorAll('.ruta-chk').forEach(chk => chk.checked = e.target.checked);
+    renderizarRutas();
+  });
+
+  
   // ---------- Evento: subcategorías ----------
   document.querySelectorAll('.subcat-chk').forEach(chkSubcat => {
     chkSubcat.addEventListener('change', () => {
@@ -1252,6 +1412,10 @@ const marcador = L.marker([inst.lat, inst.lng], {
 
   document.getElementById('titulo-educativa').addEventListener('click', () => {
     const btn = document.querySelector('.btn-expandir[data-target="subcats-educativa"]');
+    btn.click();
+  });
+  document.getElementById('titulo-rutas').addEventListener('click', () => {
+    const btn = document.querySelector('.btn-expandir[data-target="subrutas"]');
     btn.click();
   });
 
