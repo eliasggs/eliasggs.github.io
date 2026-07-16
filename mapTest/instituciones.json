@@ -1,7 +1,7 @@
 {
   "instituciones": [
     {
-      "id": "edu-002",
+      "id": "esc-001",
       "tipo": "educativa",
       "nombre": "Instituto Nuestra Señora Del Carmen",
       "lat": -33.6841015,
@@ -29,7 +29,7 @@
       "datos_pendientes": false
     },
     {
-      "id": "edu-003",
+      "id": "esc-002",
       "tipo": "educativa",
       "nombre": "Escuela N°106 Profesor Tomas Ferrari",
       "lat": -33.6690917,
@@ -54,7 +54,7 @@
       "datos_pendientes": false
     },
     {
-      "id": "edu-004",
+      "id": "esc-003",
       "tipo": "educativa",
       "nombre": "Escuela Técnica N°15 Ingeniero Agustin Mercau",
       "lat": -33.6677102,
@@ -80,7 +80,7 @@
       "datos_pendientes": false
     },
     {
-      "id": "edu-005",
+      "id": "esc-004",
       "tipo": "educativa",
       "nombre": "Escuela Técnica N°18 Nicolasa Berrondo De Quiroga",
       "lat": -33.6675378,
@@ -105,7 +105,7 @@
       "datos_pendientes": true
     },
     {
-      "id": "edu-006",
+      "id": "esc-005",
       "tipo": "educativa",
       "nombre": "Instituto San Buenaventura",
       "lat": -33.6620737,
@@ -130,7 +130,7 @@
       "datos_pendientes": true
     },
     {
-      "id": "edu-007",
+      "id": "esc-006",
       "tipo": "educativa",
       "nombre": "Instituto Instituto Nacional De Informatica (I.N.D.I)",
       "lat": -33.663865,
@@ -154,7 +154,7 @@
       "datos_pendientes": false
     },
     {
-      "id": "edu-008",
+      "id": "esc-007",
       "tipo": "educativa",
       "nombre": "Colegio N°2 Juan Esteban Pedernera",
       "lat": -33.677327,
@@ -179,7 +179,7 @@
       "datos_pendientes": true
     },
     {
-      "id": "edu-009",
+      "id": "esc-008",
       "tipo": "educativa",
       "nombre": "Centro Educativo N°10 Ramiro Podetti",
       "lat": -33.698659,
@@ -203,7 +203,7 @@
       "datos_pendientes": true
     },
     {
-      "id": "edu-010",
+      "id": "esc-009",
       "tipo": "educativa",
       "nombre": "Escuela Generativa Gea",
       "lat": -33.7003806,
@@ -226,7 +226,7 @@
       "datos_pendientes": true
     },
     {
-      "id": "edu-011",
+      "id": "esc-010",
       "tipo": "educativa",
       "nombre": "Escuela N°431 Angela Nelly Chenau De Vecino",
       "lat": -33.7039813,
@@ -248,7 +248,7 @@
       "datos_pendientes": true
     },
     {
-      "id": "edu-012",
+      "id": "esc-011",
       "tipo": "educativa",
       "nombre": "Escuela N°29 Remedios Escalada De San Martin",
       "lat": -33.6803328,
@@ -272,7 +272,7 @@
       "datos_pendientes": true
     },
     {
-      "id": "edu-013",
+      "id": "esc-012",
       "tipo": "educativa",
       "nombre": "Centro Educativo N°9 Doctor Juan Llerena",
       "lat": -33.6833638,
@@ -296,7 +296,7 @@
       "datos_pendientes": true
     },
     {
-      "id": "edu-014",
+      "id": "esc-013",
       "tipo": "educativa",
       "nombre": "Escuela Generativa Terra Mater",
       "lat": -33.6852166,
@@ -320,7 +320,7 @@
       "datos_pendientes": true
     },
     {
-      "id": "edu-015",
+      "id": "esc-014",
       "tipo": "educativa",
       "nombre": "Escuela Generativa Estación Recrear",
       "lat": -33.6618751,
@@ -344,7 +344,7 @@
       "datos_pendientes": true
     },
     {
-      "id": "edu-016",
+      "id": "esc-015",
       "tipo": "educativa",
       "nombre": "Escuela Técnica N°14 Ministro Del Sup Trib De Just Dr Luis Angel Luco",
       "lat": -33.6776009,
@@ -369,7 +369,7 @@
       "datos_pendientes": true
     },
     {
-      "id": "edu-017",
+      "id": "esc-016",
       "tipo": "educativa",
       "nombre": "Escuela PÚBLICA AUTOGESTIONADA N°10 Maestro Escultor Vicente Lucero",
       "lat": -33.6846268,
@@ -396,7 +396,7 @@
       "datos_pendientes": true
     },
     {
-      "id": "edu-018",
+      "id": "esc-017",
       "tipo": "educativa",
       "nombre": "Escuela PÚBLICA AUTOGESTIONADA Escuela Pública Digital Bilingüe - Mahatma Gandhi",
       "lat": -33.7016074,
@@ -421,7 +421,7 @@
       "datos_pendientes": true
     },
     {
-      "id": "edu-019",
+      "id": "esc-018",
       "tipo": "educativa",
       "nombre": "Escuela Técnica N°20 Antonio Berni",
       "lat": -33.6729994,
@@ -445,7 +445,7 @@
       "datos_pendientes": true
     },
     {
-      "id": "edu-020",
+      "id": "esc-019",
       "tipo": "educativa",
       "nombre": "Escuela N°31 Mariano Moreno",
       "lat": -33.6869024,
@@ -469,7 +469,7 @@
       "datos_pendientes": true
     },
     {
-      "id": "edu-021",
+      "id": "esc-020",
       "tipo": "educativa",
       "nombre": "Instituto Instituto Cultural Argentino",
       "lat": -33.6767371,
@@ -494,7 +494,7 @@
       "datos_pendientes": true
     },
     {
-      "id": "edu-022",
+      "id": "esc-021",
       "tipo": "educativa",
       "nombre": "Escuela Generativa Alberdi Club",
       "lat": -33.6746907,
@@ -517,7 +517,7 @@
       "datos_pendientes": true
     },
     {
-      "id": "edu-023",
+      "id": "esc-022",
       "tipo": "educativa",
       "nombre": "Escuela SECUNDARIA DE ARTE N°1 Profesor Gaspar Di Gennaro",
       "lat": -33.6628261,
@@ -541,7 +541,7 @@
       "datos_pendientes": false
     },
     {
-      "id": "edu-024",
+      "id": "esc-023",
       "tipo": "educativa",
       "nombre": "Escuela PÚBLICA AUTOGESTIONADA N°7 Eduardo Galeano",
       "lat": -33.686167,
@@ -565,7 +565,7 @@
       "datos_pendientes": true
     },
     {
-      "id": "edu-025",
+      "id": "esc-024",
       "tipo": "educativa",
       "nombre": "Escuela Técnica N°19 Bernardino Rivadavia",
       "lat": -33.6700426,
@@ -589,7 +589,7 @@
       "datos_pendientes": true
     },
     {
-      "id": "edu-026",
+      "id": "esc-025",
       "tipo": "educativa",
       "nombre": "Escuela Generativa Gen Z",
       "lat": -33.6854019,
@@ -613,7 +613,7 @@
       "datos_pendientes": true
     },
     {
-      "id": "edu-027",
+      "id": "esc-026",
       "tipo": "educativa",
       "nombre": "Escuela N°176 Maestra Nelida Esther Perez De Ferrer",
       "lat": -33.6815929,
@@ -639,7 +639,7 @@
       "datos_pendientes": true
     },
     {
-      "id": "edu-028",
+      "id": "esc-027",
       "tipo": "educativa",
       "nombre": "Escuela PÚBLICA AUTOGESTIONADA N°8 Leonardo Da Vinci",
       "lat": -33.6804086,
@@ -663,9 +663,9 @@
       "datos_pendientes": true
     },
     {
-      "id": "edu-029",
+      "id": "esc-028",
       "tipo": "educativa",
-      "nombre": "Escuela PÚBLICA DIGITAL ADULTOS N°58 Villa Mercedes (Epda Nº 58)",
+      "nombre": "Escuela PÚBLICA DIGITAL ADULTOS N°58 Villa Mercedes (epda Nº 58)",
       "lat": -33.6895504,
       "lng": -65.4671824,
       "descripcion": null,
@@ -688,7 +688,7 @@
       "datos_pendientes": true
     },
     {
-      "id": "edu-030",
+      "id": "esc-029",
       "tipo": "educativa",
       "nombre": "Centro Educativo N°1 Centro Educativo Nivel Secundario Nº1",
       "lat": -33.68972,
@@ -711,7 +711,7 @@
       "datos_pendientes": true
     },
     {
-      "id": "edu-031",
+      "id": "esc-030",
       "tipo": "educativa",
       "nombre": "Escuela N°46 Gobernador Leon Guillet",
       "lat": -33.6853056311811,
@@ -734,7 +734,7 @@
       "datos_pendientes": true
     },
     {
-      "id": "edu-032",
+      "id": "esc-031",
       "tipo": "educativa",
       "nombre": "Escuela DE EDUCACIÓN ESPECIAL N°6 Doctora Maria Montessori",
       "lat": -33.67616846272273,
@@ -758,7 +758,7 @@
       "datos_pendientes": true
     },
     {
-      "id": "edu-033",
+      "id": "esc-032",
       "tipo": "educativa",
       "nombre": "Escuela N°371 Juan Bautista Alberdi",
       "lat": -33.66594248872239,
@@ -782,7 +782,7 @@
       "datos_pendientes": true
     },
     {
-      "id": "edu-034",
+      "id": "esc-033",
       "tipo": "educativa",
       "nombre": "Escuela N°148 Provincia De Chubut",
       "lat": -33.700077435145815,
@@ -806,7 +806,7 @@
       "datos_pendientes": true
     },
     {
-      "id": "edu-035",
+      "id": "esc-034",
       "tipo": "educativa",
       "nombre": "Escuela N°388 Sargento Eduardo Romero",
       "lat": -33.694384,
@@ -830,7 +830,7 @@
       "datos_pendientes": true
     },
     {
-      "id": "edu-036",
+      "id": "esc-035",
       "tipo": "educativa",
       "nombre": "Escuela N°32 Justo Daract",
       "lat": -33.689693,
@@ -854,7 +854,7 @@
       "datos_pendientes": true
     },
     {
-      "id": "edu-037",
+      "id": "esc-036",
       "tipo": "educativa",
       "nombre": "Escuela N°240 Provincia De Corrientes",
       "lat": -33.66506872427785,
@@ -878,7 +878,7 @@
       "datos_pendientes": true
     },
     {
-      "id": "edu-038",
+      "id": "esc-037",
       "tipo": "educativa",
       "nombre": "Escuela N°150 Provincia De Santa Fe",
       "lat": -33.668999,
@@ -902,7 +902,7 @@
       "datos_pendientes": false
     },
     {
-      "id": "edu-039",
+      "id": "esc-038",
       "tipo": "educativa",
       "nombre": "Escuela N°30 General Pedernera",
       "lat": -33.68955,
@@ -926,7 +926,7 @@
       "datos_pendientes": false
     },
     {
-      "id": "edu-040",
+      "id": "esc-039",
       "tipo": "educativa",
       "nombre": "Escuela N°187 Jose Hernandez",
       "lat": -33.680124,
@@ -950,7 +950,7 @@
       "datos_pendientes": false
     },
     {
-      "id": "edu-041",
+      "id": "esc-040",
       "tipo": "educativa",
       "nombre": "Escuela N°11 2 De Abril",
       "lat": -33.659871,
@@ -973,7 +973,7 @@
       "datos_pendientes": false
     },
     {
-      "id": "edu-042",
+      "id": "esc-041",
       "tipo": "educativa",
       "nombre": "Escuela N°34 Raul Basilio Diaz",
       "lat": -33.673412,
@@ -997,7 +997,7 @@
       "datos_pendientes": false
     },
     {
-      "id": "edu-043",
+      "id": "esc-042",
       "tipo": "educativa",
       "nombre": "Escuela N°40 Doctor Ricardo Rojas",
       "lat": -33.681123,
@@ -1021,7 +1021,7 @@
       "datos_pendientes": false
     },
     {
-      "id": "edu-044",
+      "id": "esc-043",
       "tipo": "educativa",
       "nombre": "Escuela PÚBLICA AUTOGESTIONADA N°6 Doctor Luis Roberto Barroso",
       "lat": -33.66030656645345,
@@ -1046,7 +1046,7 @@
       "datos_pendientes": false
     },
     {
-      "id": "edu-045",
+      "id": "esc-044",
       "tipo": "educativa",
       "nombre": "Escuela N°147 Provincia De Mendoza",
       "lat": -33.658269541897326,
@@ -1070,7 +1070,7 @@
       "datos_pendientes": false
     },
     {
-      "id": "edu-046",
+      "id": "esc-045",
       "tipo": "educativa",
       "nombre": "Escuela N°33 Vicente Dupuy",
       "lat": -33.66426523399769,
@@ -1094,7 +1094,7 @@
       "datos_pendientes": false
     },
     {
-      "id": "edu-047",
+      "id": "esc-046",
       "tipo": "educativa",
       "nombre": "Escuela N°43 Doctor Tomas Jofre",
       "lat": -33.6721,
@@ -1118,7 +1118,7 @@
       "datos_pendientes": false
     },
     {
-      "id": "edu-048",
+      "id": "esc-047",
       "tipo": "educativa",
       "nombre": "Escuela N°36 Gobernador Doctor Carlos Alric",
       "lat": -33.697075419614244,
@@ -1144,7 +1144,7 @@
       "datos_pendientes": false
     },
     {
-      "id": "edu-049",
+      "id": "esc-048",
       "tipo": "educativa",
       "nombre": "Instituto Sagrado Corazon",
       "lat": -33.673891,
@@ -1168,7 +1168,7 @@
       "datos_pendientes": false
     },
     {
-      "id": "edu-050",
+      "id": "esc-049",
       "tipo": "educativa",
       "nombre": "Escuela N°152 Alas Argentinas",
       "lat": -33.683151,
@@ -1192,7 +1192,7 @@
       "datos_pendientes": false
     },
     {
-      "id": "edu-051",
+      "id": "esc-050",
       "tipo": "educativa",
       "nombre": "Escuela DE JORNADA EXTENDIDA N°69 Maestra Olga Ester Sarden",
       "lat": -33.68283234607774,
@@ -1217,7 +1217,7 @@
       "datos_pendientes": false
     },
     {
-      "id": "edu-052",
+      "id": "esc-051",
       "tipo": "educativa",
       "nombre": "Escuela Generativa Club Jorge Newbery",
       "lat": -33.672522,
@@ -1241,7 +1241,7 @@
       "datos_pendientes": false
     },
     {
-      "id": "edu-053",
+      "id": "esc-052",
       "tipo": "educativa",
       "nombre": "Colegio Isabel La Catolica",
       "lat": -33.674121,
@@ -1265,9 +1265,9 @@
       "datos_pendientes": false
     },
     {
-      "id": "edu-054",
+      "id": "esc-053",
       "tipo": "educativa",
-      "nombre": "Escuela N°12 Tomasa Garraza De Quiroga \"Maestras Mercedinas\"",
+      "nombre": "Escuela N°12 Tomasa Garraza De Quiroga \"maestras Mercedinas\"",
       "lat": -33.67523070154636,
       "lng": -65.47381274265021,
       "descripcion": null,
@@ -1289,7 +1289,7 @@
       "datos_pendientes": false
     },
     {
-      "id": "edu-055",
+      "id": "esc-054",
       "tipo": "educativa",
       "nombre": "Instituto Modelo Bilingue San Marcos",
       "lat": -33.677511,
@@ -1313,7 +1313,7 @@
       "datos_pendientes": false
     },
     {
-      "id": "edu-056",
+      "id": "esc-055",
       "tipo": "educativa",
       "nombre": "Instituto San Valentin",
       "lat": -33.681831,
@@ -1338,7 +1338,7 @@
       "datos_pendientes": false
     },
     {
-      "id": "edu-057",
+      "id": "esc-056",
       "tipo": "educativa",
       "nombre": "Escuela DE JORNADA COMPLETA N°444 Maria Eva Duarte De Peron",
       "lat": -3.3674739948748e+16,
@@ -1361,7 +1361,7 @@
       "datos_pendientes": false
     },
     {
-      "id": "edu-058",
+      "id": "esc-057",
       "tipo": "educativa",
       "nombre": "Escuela N°445 Rio Quinto",
       "lat": -33.68292640669986,
@@ -1385,9 +1385,9 @@
       "datos_pendientes": false
     },
     {
-      "id": "edu-059",
+      "id": "esc-058",
       "tipo": "educativa",
-      "nombre": "Escuela Generativa Maria Eva Duarte De Peron \"Construyendo Infancias\"",
+      "nombre": "Escuela Generativa Maria Eva Duarte De Peron \"construyendo Infancias\"",
       "lat": -33.659337929599,
       "lng": -65.42978712930812,
       "descripcion": null,
@@ -1408,7 +1408,7 @@
       "datos_pendientes": false
     },
     {
-      "id": "edu-060",
+      "id": "esc-059",
       "tipo": "educativa",
       "nombre": "Escuela Técnica N°20 Juan Wenceslao Gez",
       "lat": -33.667777,
@@ -1434,7 +1434,7 @@
       "datos_pendientes": false
     },
     {
-      "id": "edu-061",
+      "id": "esc-060",
       "tipo": "educativa",
       "nombre": "Colegio N°11 Benito Juarez",
       "lat": -33.682133,
@@ -1458,7 +1458,7 @@
       "datos_pendientes": false
     },
     {
-      "id": "edu-062",
+      "id": "esc-061",
       "tipo": "educativa",
       "nombre": "Escuela Técnica N°3 Eva Duarte De Peron",
       "lat": -33.664522,
@@ -1483,7 +1483,7 @@
       "datos_pendientes": false
     },
     {
-      "id": "edu-063",
+      "id": "esc-062",
       "tipo": "educativa",
       "nombre": "Escuela Generativa N°11 2026-04-02 00:00:00",
       "lat": -33.640682217225525,
@@ -1506,7 +1506,7 @@
       "datos_pendientes": false
     },
     {
-      "id": "edu-064",
+      "id": "esc-063",
       "tipo": "educativa",
       "nombre": "Escuela PÚBLICA AUTOGESTIONADA N°19 Libertad",
       "lat": -33.68519099964429,
@@ -1530,7 +1530,7 @@
       "datos_pendientes": false
     },
     {
-      "id": "edu-065",
+      "id": "esc-064",
       "tipo": "educativa",
       "nombre": "Escuela Técnica N°17 V Brigada Aérea",
       "lat": -33.729133,
@@ -1551,6 +1551,30 @@
         "doble_turno"
       ],
       "niveles_str": "SECUNDARIO",
+      "datos_pendientes": false
+    },
+    {
+      "id": "uni-001",
+      "tipo": "educativa",
+      "nombre": "U.P.R.O",
+      "lat": -33.67361285111214,
+      "lng": -65.45496802248509,
+      "descripcion": "Institución pública y gratuita que capacita rápida y directamente para el mundo laboral. En su campus modelo se aprende haciendo, mediante una metodología 100% práctica con tecnología de vanguardia en áreas como construcción, tecnología, industria y servicios",
+      "direccion": "9 de julio 1095",
+      "emails": [
+        "info@uprosanluis.edu.ar"
+      ],
+      "telefonos": [
+        "0800-345-4222",
+        "+549-2657-262582"
+      ],
+      "cant_alumnos": null,
+      "subcategoria": "universidad",
+      "modalidad": null,
+      "tipo_gestion": "Pública",
+      "orientacion": "Oficios",
+      "turnos": [],
+      "niveles_str": "Pregrado",
       "datos_pendientes": false
     }
   ]
