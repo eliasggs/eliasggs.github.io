@@ -607,8 +607,29 @@
   }
 
   .marcador-icono span { transform: rotate(45deg); font-size: 13px; line-height: 1; }
-  .marcador-icono.educativa { background: var(--verde-claro); }
-  .marcador-icono.cultural { background: var(--terracota); }
+/* Escuelas */
+.marcador-icono.escuela {
+  background: #2f7e33;
+}
+
+/* Universidades */
+.marcador-icono.universidad {
+  background: #4990e0;
+}
+
+/* Instituciones culturales */
+.marcador-icono.cultural {
+  background: #FB8C00;
+}
+
+/* Otros tipos educativos */
+.marcador-icono.ifd {
+  background: #7E57C2;
+}
+
+.marcador-icono.formacion_profesional {
+  background: #546E7A;
+}
 
   /* ---------- Clusters (agrupación de marcadores en zoom alejado) ---------- */
   .cluster-icono {
@@ -842,16 +863,49 @@
     return tipo === 'cultural' ? clusterCultural : clusterEducativa;
   }
 
-  function crearIcono(tipo) {
-    const emoji = tipo === 'educativa' ? '🏫' : '🎭';
-    return L.divIcon({
-      className: '',
-      html: `<div class="marcador-icono ${tipo}"><span>${emoji}</span></div>`,
-      iconSize: [30, 30],
-      iconAnchor: [15, 28],
-      popupAnchor: [0, -26]
-    });
+function crearIcono(inst) {
+
+  let clase = 'cultural';
+  let emoji = '🎭';
+
+  if (inst.tipo === 'educativa') {
+
+    switch (inst.subcategoria) {
+
+      case 'escuela':
+        clase = 'escuela';
+        emoji = '🏫';
+        break;
+
+      case 'universidad':
+        clase = 'universidad';
+        emoji = '🎓';
+        break;
+
+      case 'ifd':
+        clase = 'ifd';
+        emoji = '📚';
+        break;
+
+      case 'formacion_profesional':
+        clase = 'formacion_profesional';
+        emoji = '👩‍💻';
+        break;
+
+      default:
+        clase = 'escuela';
+        emoji = '🏫';
+    }
   }
+
+  return L.divIcon({
+    className: '',
+    html: `<div class="marcador-icono ${clase}"><span>${emoji}</span></div>`,
+    iconSize: [30, 30],
+    iconAnchor: [15, 28],
+    popupAnchor: [0, -26]
+  });
+}
 
   // ---------- Nombres de turnos ----------
   const NOMBRES_TURNO = {
@@ -867,9 +921,16 @@
   function claseGestion(gestion) {
     if (!gestion) return '';
     const g = gestion.toUpperCase();
-    if (g.includes('ESTATAL')) return 'gestion-estatal';
-    if (g.includes('PRIVADO')) return 'gestion-privado';
+    // Orden importa: "Publico Autogestionada" tiene que caer acá, no en el
+    // chequeo genérico de PUBLIC de más abajo.
     if (g.includes('AUTOGESTIONADA') || g.includes('AUTOGESTION')) return 'gestion-autogestionada';
+    if (g.includes('ESTATAL')) return 'gestion-estatal';
+    // PRIVAD (sin O/A final) para que matchee tanto "Privado" (escuelas)
+    // como "Privada" (universidades).
+    if (g.includes('PRIVAD')) return 'gestion-privado';
+    // PUBLIC/PÚBLIC cubre "Público"/"Pública", usado en universidades en vez
+    // de "Estatal". Se agrupa con el mismo estilo visual (verde).
+    if (g.includes('PUBLIC') || g.includes('PÚBLIC')) return 'gestion-estatal';
     if (g.includes('GENERATIVA')) return 'gestion-generativa';
     return '';
   }
@@ -877,9 +938,10 @@
   function labelGestion(gestion) {
     if (!gestion) return null;
     const g = gestion.toUpperCase();
-    if (g.includes('ESTATAL')) return '🏛️ Estatal';
-    if (g.includes('PRIVADO')) return '🏢 Privada';
     if (g.includes('AUTOGESTIONADA')) return '🤝 Pública autogestionada';
+    if (g.includes('ESTATAL')) return '🏛️ Estatal';
+    if (g.includes('PRIVAD')) return '🏢 Privada';
+    if (g.includes('PUBLIC') || g.includes('PÚBLIC')) return '🏛️ Pública';
     if (g.includes('GENERATIVA')) return '🌱 Generativa';
     return gestion;
   }
@@ -1023,8 +1085,9 @@
   function crearTodosLosMarcadores() {
     instituciones.forEach(inst => {
       if (!inst.lat || !inst.lng) return;
-      const marcador = L.marker([inst.lat, inst.lng], { icon: crearIcono(inst.tipo) });
-      // Popup perezoso: el HTML se construye solo al abrirlo, no al crear el marcador.
+const marcador = L.marker([inst.lat, inst.lng], {
+    icon: crearIcono(inst)
+});      // Popup perezoso: el HTML se construye solo al abrirlo, no al crear el marcador.
       marcador.bindPopup('', { maxWidth: 320 });
       marcador.on('popupopen', () => {
         const contenido = inst.tipo === 'educativa'
