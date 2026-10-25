@@ -1,17 +1,21 @@
 {
   "meta": {
-    "city": "Villa Mercedes",
+    "city": "Villa Mercedes y Villa Reynolds",
     "province": "San Luis",
     "country": "Argentina",
     "center": [
       -33.6797,
       -65.4616
     ],
-    "source": "Mapa Educativo Nacional — Ministerio de Educación de la Nación",
+    "source": "Mapa Educativo Nacional y sitios oficiales de las universidades",
     "sourceUrl": "https://mapa.educacion.gob.ar/mapa-interactivo",
-    "registry": "Padrón enero 2025",
+    "registry": "Escuelas: Padrón enero 2025 · Universidades: sitios oficiales (2026)",
     "generated": "2026-10-24",
-    "total": 83
+    "total": 89,
+    "zones": [
+      "Villa Mercedes",
+      "Villa Reynolds"
+    ]
   },
   "schools": [
     {
@@ -33,7 +37,9 @@
       "managementOriginal": "Estatal",
       "lat": -33.667408,
       "lng": -65.466847,
-      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740054101"
+      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740054101",
+      "locality": "Villa Mercedes",
+      "sourceLabel": "Ficha oficial"
     },
     {
       "id": "740054301",
@@ -54,7 +60,9 @@
       "managementOriginal": "Estatal",
       "lat": -33.667381,
       "lng": -65.468728,
-      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740054301"
+      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740054301",
+      "locality": "Villa Mercedes",
+      "sourceLabel": "Ficha oficial"
     },
     {
       "id": "740034700",
@@ -75,7 +83,9 @@
       "managementOriginal": "Estatal",
       "lat": -33.689836,
       "lng": -65.468986,
-      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740034700"
+      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740034700",
+      "locality": "Villa Mercedes",
+      "sourceLabel": "Ficha oficial"
     },
     {
       "id": "740058100",
@@ -98,7 +108,9 @@
       "managementOriginal": "Estatal",
       "lat": -33.698686,
       "lng": -65.440339,
-      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740058100"
+      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740058100",
+      "locality": "Villa Mercedes",
+      "sourceLabel": "Ficha oficial"
     },
     {
       "id": "740059500",
@@ -120,7 +132,9 @@
       "managementOriginal": "Estatal",
       "lat": -33.667475,
       "lng": -65.438642,
-      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740059500"
+      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740059500",
+      "locality": "Villa Mercedes",
+      "sourceLabel": "Ficha oficial"
     },
     {
       "id": "740059000",
@@ -142,7 +156,9 @@
       "managementOriginal": "Estatal",
       "lat": -33.683217,
       "lng": -65.4632,
-      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740059000"
+      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740059000",
+      "locality": "Villa Mercedes",
+      "sourceLabel": "Ficha oficial"
     },
     {
       "id": "740034300",
@@ -165,7 +181,9 @@
       "managementOriginal": "Privado",
       "lat": -33.661967,
       "lng": -65.454714,
-      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740034300"
+      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740034300",
+      "locality": "Villa Mercedes",
+      "sourceLabel": "Ficha oficial"
     },
     {
       "id": "740077400",
@@ -188,7 +206,9 @@
       "managementOriginal": "Privado",
       "lat": -33.662666,
       "lng": -65.454689,
-      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740077400"
+      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740077400",
+      "locality": "Villa Mercedes",
+      "sourceLabel": "Ficha oficial"
     },
     {
       "id": "740019500",
@@ -209,7 +229,9 @@
       "managementOriginal": "Estatal",
       "lat": -33.689725,
       "lng": -65.469119,
-      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740019500"
+      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740019500",
+      "locality": "Villa Mercedes",
+      "sourceLabel": "Ficha oficial"
     },
     {
       "id": "740025100",
@@ -230,7 +252,9 @@
       "managementOriginal": "Estatal",
       "lat": -33.677406,
       "lng": -65.462553,
-      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740025100"
+      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740025100",
+      "locality": "Villa Mercedes",
+      "sourceLabel": "Ficha oficial"
     },
     {
       "id": "740034800",
@@ -253,7 +277,9 @@
       "managementOriginal": "Privado",
       "lat": -33.670967,
       "lng": -65.460831,
-      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740034800"
+      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740034800",
+      "locality": "Villa Mercedes",
+      "sourceLabel": "Ficha oficial"
     },
     {
       "id": "740034500",
@@ -276,7 +302,9 @@
       "managementOriginal": "Estatal",
       "lat": -33.697075,
       "lng": -65.452033,
-      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740034500"
+      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740034500",
+      "locality": "Villa Mercedes",
+      "sourceLabel": "Ficha oficial"
     },
     {
       "id": "740038500",
@@ -297,7 +325,9 @@
       "managementOriginal": "Estatal",
       "lat": -33.674008,
       "lng": -65.457803,
-      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740038500"
+      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740038500",
+      "locality": "Villa Mercedes",
+      "sourceLabel": "Ficha oficial"
     },
     {
       "id": "740053400",
@@ -318,7 +348,9 @@
       "managementOriginal": "Estatal",
       "lat": -33.679231,
       "lng": -65.437331,
-      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740053400"
+      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740053400",
+      "locality": "Villa Mercedes",
+      "sourceLabel": "Ficha oficial"
     },
     {
       "id": "740074900",
@@ -339,7 +371,9 @@
       "managementOriginal": "Estatal",
       "lat": -33.677269,
       "lng": -65.433394,
-      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740074900"
+      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740074900",
+      "locality": "Villa Mercedes",
+      "sourceLabel": "Ficha oficial"
     },
     {
       "id": "740076000",
@@ -360,7 +394,9 @@
       "managementOriginal": "Estatal",
       "lat": -33.683403,
       "lng": -65.46315,
-      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740076000"
+      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740076000",
+      "locality": "Villa Mercedes",
+      "sourceLabel": "Ficha oficial"
     },
     {
       "id": "740076100",
@@ -381,7 +417,9 @@
       "managementOriginal": "Estatal",
       "lat": -33.667808,
       "lng": -65.438808,
-      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740076100"
+      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740076100",
+      "locality": "Villa Mercedes",
+      "sourceLabel": "Ficha oficial"
     },
     {
       "id": "740070900",
@@ -402,7 +440,9 @@
       "managementOriginal": "Estatal",
       "lat": -33.675061,
       "lng": -65.474447,
-      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740070900"
+      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740070900",
+      "locality": "Villa Mercedes",
+      "sourceLabel": "Ficha oficial"
     },
     {
       "id": "740014100",
@@ -424,7 +464,9 @@
       "managementOriginal": "Estatal",
       "lat": -33.676167,
       "lng": -65.455783,
-      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740014100"
+      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740014100",
+      "locality": "Villa Mercedes",
+      "sourceLabel": "Ficha oficial"
     },
     {
       "id": "740072300",
@@ -446,7 +488,9 @@
       "managementOriginal": "Estatal",
       "lat": -33.6748,
       "lng": -65.465367,
-      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740072300"
+      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740072300",
+      "locality": "Villa Mercedes",
+      "sourceLabel": "Ficha oficial"
     },
     {
       "id": "740072400",
@@ -469,7 +513,9 @@
       "managementOriginal": "Estatal",
       "lat": -33.68745,
       "lng": -65.461033,
-      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740072400"
+      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740072400",
+      "locality": "Villa Mercedes",
+      "sourceLabel": "Ficha oficial"
     },
     {
       "id": "740075000",
@@ -491,7 +537,9 @@
       "managementOriginal": "Estatal",
       "lat": -33.664219,
       "lng": -65.458517,
-      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740075000"
+      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740075000",
+      "locality": "Villa Mercedes",
+      "sourceLabel": "Ficha oficial"
     },
     {
       "id": "740072500",
@@ -513,7 +561,9 @@
       "managementOriginal": "Estatal",
       "lat": -33.682483,
       "lng": -65.426089,
-      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740072500"
+      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740072500",
+      "locality": "Villa Mercedes",
+      "sourceLabel": "Ficha oficial"
     },
     {
       "id": "740072800",
@@ -535,7 +585,9 @@
       "managementOriginal": "Estatal",
       "lat": -33.685011,
       "lng": -65.494719,
-      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740072800"
+      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740072800",
+      "locality": "Villa Mercedes",
+      "sourceLabel": "Ficha oficial"
     },
     {
       "id": "740077000",
@@ -556,7 +608,9 @@
       "managementOriginal": "Estatal",
       "lat": -33.659278,
       "lng": -65.429989,
-      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740077000"
+      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740077000",
+      "locality": "Villa Mercedes",
+      "sourceLabel": "Ficha oficial"
     },
     {
       "id": "740073900",
@@ -577,7 +631,9 @@
       "managementOriginal": "Estatal",
       "lat": -33.685931,
       "lng": -65.494667,
-      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740073900"
+      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740073900",
+      "locality": "Villa Mercedes",
+      "sourceLabel": "Ficha oficial"
     },
     {
       "id": "740025300",
@@ -600,28 +656,9 @@
       "managementOriginal": "Estatal",
       "lat": -33.669339,
       "lng": -65.474514,
-      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740025300"
-    },
-    {
-      "id": "740046701",
-      "cue": "740046701",
-      "name": "Escuela N° 11 2 de Abril (Secundaria)",
-      "officialName": "ESC. N° 11  2 DE ABRIL",
-      "address": "Ruta N° 7, km 697, Ciudad Jardín",
-      "phone": "4452000",
-      "phoneDisplay": "+54 2657 445-2000",
-      "phoneHref": "tel:+5426574452000",
-      "email": null,
-      "typeLabel": "Escuela secundaria",
-      "category": "secundaria",
-      "levels": [
-        "Secundaria"
-      ],
-      "management": "Pública",
-      "managementOriginal": "Estatal",
-      "lat": -33.640553,
-      "lng": -65.475303,
-      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740046701"
+      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740025300",
+      "locality": "Villa Mercedes",
+      "sourceLabel": "Ficha oficial"
     },
     {
       "id": "740046700",
@@ -643,7 +680,32 @@
       "managementOriginal": "Estatal",
       "lat": -33.640453,
       "lng": -65.475408,
-      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740046700"
+      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740046700",
+      "locality": "Villa Mercedes",
+      "sourceLabel": "Ficha oficial"
+    },
+    {
+      "id": "740046701",
+      "cue": "740046701",
+      "name": "Escuela N° 11 2 de Abril (Secundaria)",
+      "officialName": "ESC. N° 11  2 DE ABRIL",
+      "address": "Ruta N° 7, km 697, Ciudad Jardín",
+      "phone": "4452000",
+      "phoneDisplay": "+54 2657 445-2000",
+      "phoneHref": "tel:+5426574452000",
+      "email": null,
+      "typeLabel": "Escuela secundaria",
+      "category": "secundaria",
+      "levels": [
+        "Secundaria"
+      ],
+      "management": "Pública",
+      "managementOriginal": "Estatal",
+      "lat": -33.640553,
+      "lng": -65.475303,
+      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740046701",
+      "locality": "Villa Mercedes",
+      "sourceLabel": "Ficha oficial"
     },
     {
       "id": "740025400",
@@ -664,7 +726,9 @@
       "managementOriginal": "Estatal",
       "lat": -33.675103,
       "lng": -65.474489,
-      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740025400"
+      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740025400",
+      "locality": "Villa Mercedes",
+      "sourceLabel": "Ficha oficial"
     },
     {
       "id": "740030300",
@@ -687,7 +751,9 @@
       "managementOriginal": "Estatal",
       "lat": -33.65825,
       "lng": -65.451175,
-      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740030300"
+      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740030300",
+      "locality": "Villa Mercedes",
+      "sourceLabel": "Ficha oficial"
     },
     {
       "id": "740052100",
@@ -709,7 +775,9 @@
       "managementOriginal": "Estatal",
       "lat": -33.700189,
       "lng": -65.428322,
-      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740052100"
+      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740052100",
+      "locality": "Villa Mercedes",
+      "sourceLabel": "Ficha oficial"
     },
     {
       "id": "740038600",
@@ -731,7 +799,9 @@
       "managementOriginal": "Estatal",
       "lat": -33.668992,
       "lng": -65.478725,
-      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740038600"
+      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740038600",
+      "locality": "Villa Mercedes",
+      "sourceLabel": "Ficha oficial"
     },
     {
       "id": "740030700",
@@ -754,7 +824,9 @@
       "managementOriginal": "Estatal",
       "lat": -33.680742,
       "lng": -65.458944,
-      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740030700"
+      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740030700",
+      "locality": "Villa Mercedes",
+      "sourceLabel": "Ficha oficial"
     },
     {
       "id": "740026200",
@@ -777,7 +849,9 @@
       "managementOriginal": "Estatal",
       "lat": -33.681969,
       "lng": -65.473278,
-      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740026200"
+      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740026200",
+      "locality": "Villa Mercedes",
+      "sourceLabel": "Ficha oficial"
     },
     {
       "id": "740030900",
@@ -799,7 +873,9 @@
       "managementOriginal": "Estatal",
       "lat": -33.664494,
       "lng": -65.470428,
-      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740030900"
+      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740030900",
+      "locality": "Villa Mercedes",
+      "sourceLabel": "Ficha oficial"
     },
     {
       "id": "740041200",
@@ -821,7 +897,9 @@
       "managementOriginal": "Estatal",
       "lat": -33.665339,
       "lng": -65.462164,
-      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740041200"
+      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740041200",
+      "locality": "Villa Mercedes",
+      "sourceLabel": "Ficha oficial"
     },
     {
       "id": "740035900",
@@ -843,7 +921,9 @@
       "managementOriginal": "Estatal",
       "lat": -33.680297,
       "lng": -65.464544,
-      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740035900"
+      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740035900",
+      "locality": "Villa Mercedes",
+      "sourceLabel": "Ficha oficial"
     },
     {
       "id": "740034400",
@@ -865,7 +945,9 @@
       "managementOriginal": "Estatal",
       "lat": -33.689528,
       "lng": -65.467361,
-      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740034400"
+      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740034400",
+      "locality": "Villa Mercedes",
+      "sourceLabel": "Ficha oficial"
     },
     {
       "id": "740047500",
@@ -888,7 +970,9 @@
       "managementOriginal": "Estatal",
       "lat": -33.686847,
       "lng": -65.465383,
-      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740047500"
+      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740047500",
+      "locality": "Villa Mercedes",
+      "sourceLabel": "Ficha oficial"
     },
     {
       "id": "740034600",
@@ -910,7 +994,9 @@
       "managementOriginal": "Estatal",
       "lat": -33.689683,
       "lng": -65.460794,
-      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740034600"
+      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740034600",
+      "locality": "Villa Mercedes",
+      "sourceLabel": "Ficha oficial"
     },
     {
       "id": "740029700",
@@ -932,7 +1018,9 @@
       "managementOriginal": "Estatal",
       "lat": -33.704111,
       "lng": -65.478292,
-      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740029700"
+      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740029700",
+      "locality": "Villa Mercedes",
+      "sourceLabel": "Ficha oficial"
     },
     {
       "id": "740029701",
@@ -953,7 +1041,9 @@
       "managementOriginal": "Estatal",
       "lat": -33.704419,
       "lng": -65.478522,
-      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740029701"
+      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740029701",
+      "locality": "Villa Mercedes",
+      "sourceLabel": "Ficha oficial"
     },
     {
       "id": "740045700",
@@ -976,7 +1066,9 @@
       "managementOriginal": "Estatal",
       "lat": -33.664089,
       "lng": -65.455694,
-      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740045700"
+      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740045700",
+      "locality": "Villa Mercedes",
+      "sourceLabel": "Ficha oficial"
     },
     {
       "id": "740014900",
@@ -999,7 +1091,9 @@
       "managementOriginal": "Estatal",
       "lat": -33.685347,
       "lng": -65.476036,
-      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740014900"
+      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740014900",
+      "locality": "Villa Mercedes",
+      "sourceLabel": "Ficha oficial"
     },
     {
       "id": "740045600",
@@ -1021,7 +1115,9 @@
       "managementOriginal": "Estatal",
       "lat": -33.665792,
       "lng": -65.447486,
-      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740045600"
+      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740045600",
+      "locality": "Villa Mercedes",
+      "sourceLabel": "Ficha oficial"
     },
     {
       "id": "740035000",
@@ -1043,7 +1139,9 @@
       "managementOriginal": "Estatal",
       "lat": -33.694419,
       "lng": -65.456167,
-      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740035000"
+      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740035000",
+      "locality": "Villa Mercedes",
+      "sourceLabel": "Ficha oficial"
     },
     {
       "id": "740031000",
@@ -1066,7 +1164,9 @@
       "managementOriginal": "Estatal",
       "lat": -33.655156,
       "lng": -65.452808,
-      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740031000"
+      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740031000",
+      "locality": "Villa Mercedes",
+      "sourceLabel": "Ficha oficial"
     },
     {
       "id": "740034900",
@@ -1089,7 +1189,9 @@
       "managementOriginal": "Estatal",
       "lat": -33.689089,
       "lng": -65.450025,
-      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740034900"
+      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740034900",
+      "locality": "Villa Mercedes",
+      "sourceLabel": "Ficha oficial"
     },
     {
       "id": "740062900",
@@ -1112,7 +1214,9 @@
       "managementOriginal": "Estatal",
       "lat": -33.704386,
       "lng": -65.434367,
-      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740062900"
+      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740062900",
+      "locality": "Villa Mercedes",
+      "sourceLabel": "Ficha oficial"
     },
     {
       "id": "740074400",
@@ -1133,7 +1237,9 @@
       "managementOriginal": "Estatal",
       "lat": -33.682914,
       "lng": -65.426322,
-      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740074400"
+      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740074400",
+      "locality": "Villa Mercedes",
+      "sourceLabel": "Ficha oficial"
     },
     {
       "id": "740047300",
@@ -1155,7 +1261,9 @@
       "managementOriginal": "Estatal",
       "lat": -33.68525,
       "lng": -65.476347,
-      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740047300"
+      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740047300",
+      "locality": "Villa Mercedes",
+      "sourceLabel": "Ficha oficial"
     },
     {
       "id": "740034000",
@@ -1178,7 +1286,9 @@
       "managementOriginal": "Estatal",
       "lat": -33.689569,
       "lng": -65.436064,
-      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740034000"
+      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740034000",
+      "locality": "Villa Mercedes",
+      "sourceLabel": "Ficha oficial"
     },
     {
       "id": "740061700",
@@ -1201,7 +1311,9 @@
       "managementOriginal": "Estatal",
       "lat": -33.659656,
       "lng": -65.437228,
-      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740061700"
+      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740061700",
+      "locality": "Villa Mercedes",
+      "sourceLabel": "Ficha oficial"
     },
     {
       "id": "740061400",
@@ -1224,7 +1336,9 @@
       "managementOriginal": "Estatal",
       "lat": -33.670331,
       "lng": -65.48305,
-      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740061400"
+      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740061400",
+      "locality": "Villa Mercedes",
+      "sourceLabel": "Ficha oficial"
     },
     {
       "id": "740061200",
@@ -1245,7 +1359,9 @@
       "managementOriginal": "Estatal",
       "lat": -33.680492,
       "lng": -65.437822,
-      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740061200"
+      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740061200",
+      "locality": "Villa Mercedes",
+      "sourceLabel": "Ficha oficial"
     },
     {
       "id": "740065680",
@@ -1266,7 +1382,9 @@
       "managementOriginal": "Estatal",
       "lat": -33.685114,
       "lng": -65.495853,
-      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740065680"
+      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740065680",
+      "locality": "Villa Mercedes",
+      "sourceLabel": "Ficha oficial"
     },
     {
       "id": "740065660",
@@ -1287,7 +1405,9 @@
       "managementOriginal": "Estatal",
       "lat": -33.663617,
       "lng": -65.470633,
-      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740065660"
+      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740065660",
+      "locality": "Villa Mercedes",
+      "sourceLabel": "Ficha oficial"
     },
     {
       "id": "740065681",
@@ -1308,7 +1428,9 @@
       "managementOriginal": "Estatal",
       "lat": -33.673503,
       "lng": -65.457414,
-      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740065681"
+      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740065681",
+      "locality": "Villa Mercedes",
+      "sourceLabel": "Ficha oficial"
     },
     {
       "id": "740065685",
@@ -1329,7 +1451,9 @@
       "managementOriginal": "Estatal",
       "lat": -33.67935,
       "lng": -65.471186,
-      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740065685"
+      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740065685",
+      "locality": "Villa Mercedes",
+      "sourceLabel": "Ficha oficial"
     },
     {
       "id": "740014200",
@@ -1350,7 +1474,9 @@
       "managementOriginal": "Estatal",
       "lat": -33.686133,
       "lng": -65.467078,
-      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740014200"
+      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740014200",
+      "locality": "Villa Mercedes",
+      "sourceLabel": "Ficha oficial"
     },
     {
       "id": "740053300",
@@ -1371,7 +1497,9 @@
       "managementOriginal": "Estatal",
       "lat": -33.677197,
       "lng": -65.503778,
-      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740053300"
+      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740053300",
+      "locality": "Villa Mercedes",
+      "sourceLabel": "Ficha oficial"
     },
     {
       "id": "740054100",
@@ -1392,7 +1520,32 @@
       "managementOriginal": "Estatal",
       "lat": -33.667506,
       "lng": -65.466803,
-      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740054100"
+      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740054100",
+      "locality": "Villa Mercedes",
+      "sourceLabel": "Ficha oficial"
+    },
+    {
+      "id": "740033800",
+      "cue": "740033800",
+      "name": "Escuela Técnica N° 17 V Brigada Aérea",
+      "officialName": "ESCUELA TECNICA N°17 V BRIGADA AEREA",
+      "address": "Ruta Provincial N° 24 y Acceso Aeródromo",
+      "phone": "422114",
+      "phoneDisplay": "+54 2657 422-114",
+      "phoneHref": "tel:+542657422114",
+      "email": null,
+      "typeLabel": "Escuela técnica",
+      "category": "tecnica",
+      "levels": [
+        "Secundaria"
+      ],
+      "management": "Pública",
+      "managementOriginal": "Estatal",
+      "locality": "Villa Reynolds",
+      "lat": -33.7172528,
+      "lng": -65.3851556,
+      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740033800",
+      "sourceLabel": "Ficha oficial"
     },
     {
       "id": "740054300",
@@ -1414,7 +1567,9 @@
       "managementOriginal": "Estatal",
       "lat": -33.667414,
       "lng": -65.468739,
-      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740054300"
+      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740054300",
+      "locality": "Villa Mercedes",
+      "sourceLabel": "Ficha oficial"
     },
     {
       "id": "740047100",
@@ -1435,7 +1590,9 @@
       "managementOriginal": "Estatal",
       "lat": -33.670214,
       "lng": -65.483131,
-      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740047100"
+      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740047100",
+      "locality": "Villa Mercedes",
+      "sourceLabel": "Ficha oficial"
     },
     {
       "id": "740014300",
@@ -1456,7 +1613,9 @@
       "managementOriginal": "Estatal",
       "lat": -33.673014,
       "lng": -65.476661,
-      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740014300"
+      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740014300",
+      "locality": "Villa Mercedes",
+      "sourceLabel": "Ficha oficial"
     },
     {
       "id": "740066100",
@@ -1477,7 +1636,9 @@
       "managementOriginal": "Estatal",
       "lat": -33.674033,
       "lng": -65.457731,
-      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740066100"
+      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740066100",
+      "locality": "Villa Mercedes",
+      "sourceLabel": "Ficha oficial"
     },
     {
       "id": "740047400",
@@ -1501,7 +1662,9 @@
       "managementOriginal": "Privado",
       "lat": -33.676731,
       "lng": -65.472003,
-      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740047400"
+      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740047400",
+      "locality": "Villa Mercedes",
+      "sourceLabel": "Ficha oficial"
     },
     {
       "id": "740062100",
@@ -1522,7 +1685,9 @@
       "managementOriginal": "Estatal",
       "lat": -33.673342,
       "lng": -65.457233,
-      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740062100"
+      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740062100",
+      "locality": "Villa Mercedes",
+      "sourceLabel": "Ficha oficial"
     },
     {
       "id": "740061800",
@@ -1543,7 +1708,9 @@
       "managementOriginal": "Privado",
       "lat": -33.676636,
       "lng": -65.462261,
-      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740061800"
+      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740061800",
+      "locality": "Villa Mercedes",
+      "sourceLabel": "Ficha oficial"
     },
     {
       "id": "740059300",
@@ -1564,7 +1731,9 @@
       "managementOriginal": "Privado",
       "lat": -33.663822,
       "lng": -65.456494,
-      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740059300"
+      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740059300",
+      "locality": "Villa Mercedes",
+      "sourceLabel": "Ficha oficial"
     },
     {
       "id": "740057300",
@@ -1588,7 +1757,9 @@
       "managementOriginal": "Privado",
       "lat": -33.684242,
       "lng": -65.472783,
-      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740057300"
+      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740057300",
+      "locality": "Villa Mercedes",
+      "sourceLabel": "Ficha oficial"
     },
     {
       "id": "740063601",
@@ -1609,7 +1780,9 @@
       "managementOriginal": "Privado",
       "lat": -33.681581,
       "lng": -65.464767,
-      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740063601"
+      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740063601",
+      "locality": "Villa Mercedes",
+      "sourceLabel": "Ficha oficial"
     },
     {
       "id": "740053500",
@@ -1630,7 +1803,9 @@
       "managementOriginal": "Privado",
       "lat": -33.681886,
       "lng": -65.463853,
-      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740053500"
+      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740053500",
+      "locality": "Villa Mercedes",
+      "sourceLabel": "Ficha oficial"
     },
     {
       "id": "740026400",
@@ -1651,7 +1826,9 @@
       "managementOriginal": "Estatal",
       "lat": -33.687444,
       "lng": -65.470625,
-      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740026400"
+      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740026400",
+      "locality": "Villa Mercedes",
+      "sourceLabel": "Ficha oficial"
     },
     {
       "id": "740066600",
@@ -1673,7 +1850,9 @@
       "managementOriginal": "Privado",
       "lat": -33.665686,
       "lng": -65.459033,
-      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740066600"
+      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740066600",
+      "locality": "Villa Mercedes",
+      "sourceLabel": "Ficha oficial"
     },
     {
       "id": "740064800",
@@ -1694,7 +1873,9 @@
       "managementOriginal": "Privado",
       "lat": -33.681942,
       "lng": -65.467497,
-      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740064800"
+      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740064800",
+      "locality": "Villa Mercedes",
+      "sourceLabel": "Ficha oficial"
     },
     {
       "id": "740078200",
@@ -1715,7 +1896,9 @@
       "managementOriginal": "Estatal",
       "lat": -33.690231,
       "lng": -65.436119,
-      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740078200"
+      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740078200",
+      "locality": "Villa Mercedes",
+      "sourceLabel": "Ficha oficial"
     },
     {
       "id": "740078300",
@@ -1736,7 +1919,9 @@
       "managementOriginal": "Estatal",
       "lat": -33.6985,
       "lng": -65.439649,
-      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740078300"
+      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740078300",
+      "locality": "Villa Mercedes",
+      "sourceLabel": "Ficha oficial"
     },
     {
       "id": "740078400",
@@ -1757,7 +1942,9 @@
       "managementOriginal": "Estatal",
       "lat": -33.663147,
       "lng": -65.450363,
-      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740078400"
+      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740078400",
+      "locality": "Villa Mercedes",
+      "sourceLabel": "Ficha oficial"
     },
     {
       "id": "740061900",
@@ -1778,7 +1965,9 @@
       "managementOriginal": "Privado",
       "lat": -33.676725,
       "lng": -65.462269,
-      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740061900"
+      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740061900",
+      "locality": "Villa Mercedes",
+      "sourceLabel": "Ficha oficial"
     },
     {
       "id": "740065800",
@@ -1799,7 +1988,101 @@
       "managementOriginal": "Privado",
       "lat": -33.681942,
       "lng": -65.467497,
-      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740065800"
+      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740065800",
+      "locality": "Villa Mercedes",
+      "sourceLabel": "Ficha oficial"
+    },
+    {
+      "id": "uccuyo-villa-mercedes",
+      "cue": null,
+      "name": "Universidad Católica de Cuyo – Subsede Villa Mercedes",
+      "officialName": "Universidad Católica de Cuyo – Subsede Villa Mercedes",
+      "address": "Suipacha 1758",
+      "phone": "",
+      "phoneDisplay": "",
+      "phoneHref": "",
+      "email": null,
+      "typeLabel": "Universidad privada",
+      "category": "universidad",
+      "levels": [
+        "Superior"
+      ],
+      "management": "Privada",
+      "managementOriginal": "Privado",
+      "locality": "Villa Mercedes",
+      "lat": -33.6620896,
+      "lng": -65.4532406,
+      "sourceUrl": "https://uccuyo.edu.ar/",
+      "sourceLabel": "Sitio oficial"
+    },
+    {
+      "id": "ucongreso-villa-mercedes",
+      "cue": null,
+      "name": "Universidad de Congreso – Extensión Áulica Villa Mercedes",
+      "officialName": "Universidad de Congreso – Extensión Áulica Villa Mercedes",
+      "address": "Suipacha 1777",
+      "phone": "5492664360408",
+      "phoneDisplay": "+54 9 266 436-0408",
+      "phoneHref": "tel:+5492664360408",
+      "email": "villamercedes@ucongreso.edu.ar",
+      "typeLabel": "Universidad privada",
+      "category": "universidad",
+      "levels": [
+        "Superior"
+      ],
+      "management": "Privada",
+      "managementOriginal": "Privado",
+      "locality": "Villa Mercedes",
+      "lat": -33.6620285,
+      "lng": -65.4534138,
+      "sourceUrl": "https://www.ucongreso.edu.ar/sedes-y-extensiones-aulicas/localizacion-villa-mercedes/",
+      "sourceLabel": "Sitio oficial"
+    },
+    {
+      "id": "unsl-campus-villa-mercedes",
+      "cue": null,
+      "name": "Universidad Nacional de San Luis (UNSL) – Campus Villa Mercedes",
+      "officialName": "Universidad Nacional de San Luis – Campus Villa Mercedes",
+      "address": "Ruta Provincial N° 55, extremo norte, Campus Universitario",
+      "phone": "02657 531000",
+      "phoneDisplay": "+54 2657 531-000",
+      "phoneHref": "tel:+542657531000",
+      "email": null,
+      "typeLabel": "Universidad nacional",
+      "category": "universidad",
+      "levels": [
+        "Superior"
+      ],
+      "management": "Pública",
+      "managementOriginal": "Estatal",
+      "locality": "Villa Mercedes",
+      "lat": -33.644225,
+      "lng": -65.447806,
+      "sourceUrl": "https://www.fcejs.unsl.edu.ar/",
+      "sourceLabel": "Sitio oficial"
+    },
+    {
+      "id": "unvime-villa-mercedes",
+      "cue": null,
+      "name": "Universidad Nacional de Villa Mercedes (UNViMe)",
+      "officialName": "Universidad Nacional de Villa Mercedes",
+      "address": "Ruta Provincial N° 55, extremo norte, Campus Universitario",
+      "phone": "2657 613569",
+      "phoneDisplay": "+54 2657 613-569",
+      "phoneHref": "tel:+542657613569",
+      "email": "secprivada@unvime.edu.ar",
+      "typeLabel": "Universidad nacional",
+      "category": "universidad",
+      "levels": [
+        "Superior"
+      ],
+      "management": "Pública",
+      "managementOriginal": "Estatal",
+      "locality": "Villa Mercedes",
+      "lat": -33.644498,
+      "lng": -65.445159,
+      "sourceUrl": "https://www.unvime.edu.ar/ubicaciones/",
+      "sourceLabel": "Sitio oficial"
     },
     {
       "id": "740066800",
@@ -1811,8 +2094,8 @@
       "phoneDisplay": "+54 2657 445-2000",
       "phoneHref": "tel:+5426574452000",
       "email": null,
-      "typeLabel": "Universidad",
-      "category": "superior",
+      "typeLabel": "Universidad provincial",
+      "category": "universidad",
       "levels": [
         "Superior",
         "Formación profesional"
@@ -1821,7 +2104,32 @@
       "managementOriginal": "Estatal",
       "lat": -33.674008,
       "lng": -65.457803,
-      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740066800"
+      "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740066800",
+      "locality": "Villa Mercedes",
+      "sourceLabel": "Ficha oficial"
+    },
+    {
+      "id": "siglo21-villa-mercedes",
+      "cue": null,
+      "name": "Universidad Siglo 21 – CAU Villa Mercedes",
+      "officialName": "Universidad Siglo 21 – CAU Villa Mercedes",
+      "address": "Belgrano, frente a Plaza Constitucional",
+      "phone": "2657 202405",
+      "phoneDisplay": "+54 2657 202-405",
+      "phoneHref": "tel:+542657202405",
+      "email": null,
+      "typeLabel": "Universidad privada",
+      "category": "universidad",
+      "levels": [
+        "Superior"
+      ],
+      "management": "Privada",
+      "managementOriginal": "Privado",
+      "locality": "Villa Mercedes",
+      "lat": -33.6842674,
+      "lng": -65.467956,
+      "sourceUrl": "https://21.edu.ar/",
+      "sourceLabel": "Sitio oficial"
     }
   ]
 }
