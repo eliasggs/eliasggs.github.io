@@ -15,6 +15,17 @@
     "zones": [
       "Villa Mercedes",
       "Villa Reynolds"
+    ],
+    "orientations": [
+      "Ciencias naturales",
+      "Ciencias sociales y humanidades",
+      "Economía y administración",
+      "Informática y programación",
+      "Turismo",
+      "Educación técnica",
+      "Agro y ambiente",
+      "Arte, diseño y comunicación",
+      "Educación física y deportes"
     ]
   },
   "schools": [
@@ -28,7 +39,7 @@
       "phoneDisplay": "+54 2657 433-641",
       "phoneHref": "tel:+542657433641",
       "email": "colegio_n15@yahoo.com.ar",
-      "typeLabel": "Centro de formación profesional",
+      "typeLabel": "Formación profesional y oficios",
       "category": "formacion",
       "levels": [
         "Formación profesional"
@@ -39,7 +50,9 @@
       "lng": -65.466847,
       "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740054101",
       "locality": "Villa Mercedes",
-      "sourceLabel": "Ficha oficial"
+      "sourceLabel": "Ficha oficial",
+      "orientations": [],
+      "degrees": []
     },
     {
       "id": "740054301",
@@ -51,7 +64,7 @@
       "phoneDisplay": "+54 2657 445-2000",
       "phoneHref": "tel:+5426574452000",
       "email": null,
-      "typeLabel": "Centro de formación profesional",
+      "typeLabel": "Formación profesional y oficios",
       "category": "formacion",
       "levels": [
         "Formación profesional"
@@ -62,7 +75,9 @@
       "lng": -65.468728,
       "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740054301",
       "locality": "Villa Mercedes",
-      "sourceLabel": "Ficha oficial"
+      "sourceLabel": "Ficha oficial",
+      "orientations": [],
+      "degrees": []
     },
     {
       "id": "740034700",
@@ -74,7 +89,7 @@
       "phoneDisplay": "+54 2657 445-2000",
       "phoneHref": "tel:+5426574452000",
       "email": "cens1@sanluis.gov.ar",
-      "typeLabel": "Centro de educación de adultos",
+      "typeLabel": "Educación de Jóvenes y Adultos",
       "category": "adultos",
       "levels": [
         "Secundaria"
@@ -85,7 +100,14 @@
       "lng": -65.468986,
       "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740034700",
       "locality": "Villa Mercedes",
-      "sourceLabel": "Ficha oficial"
+      "sourceLabel": "Ficha oficial",
+      "orientations": [
+        "Ciencias naturales",
+        "Economía y administración"
+      ],
+      "degrees": [
+        "BACHILLER CIENCIAS NATURALES Y BACHILLER ECONOMIA Y ADMINISTRACION"
+      ]
     },
     {
       "id": "740058100",
@@ -110,7 +132,15 @@
       "lng": -65.440339,
       "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740058100",
       "locality": "Villa Mercedes",
-      "sourceLabel": "Ficha oficial"
+      "sourceLabel": "Ficha oficial",
+      "orientations": [
+        "Ciencias naturales",
+        "Educación técnica"
+      ],
+      "degrees": [
+        "TECNICA ORIENTACION INDUSTRIAS DE PROCESOS",
+        "TECNICA ORIENTACION QUIMICA"
+      ]
     },
     {
       "id": "740059500",
@@ -134,7 +164,16 @@
       "lng": -65.438642,
       "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740059500",
       "locality": "Villa Mercedes",
-      "sourceLabel": "Ficha oficial"
+      "sourceLabel": "Ficha oficial",
+      "orientations": [
+        "Economía y administración",
+        "Educación técnica"
+      ],
+      "degrees": [
+        "BACHILLER ECONOMÍA Y ADMINISTRACIÓN",
+        "BACHILLER PROFESIONAL SECUNDARIO ENERGIA ELECTRICA",
+        "TECNICA ORIENTACION ELECTRONICA"
+      ]
     },
     {
       "id": "740059000",
@@ -158,7 +197,17 @@
       "lng": -65.4632,
       "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740059000",
       "locality": "Villa Mercedes",
-      "sourceLabel": "Ficha oficial"
+      "sourceLabel": "Ficha oficial",
+      "orientations": [
+        "Ciencias naturales",
+        "Ciencias sociales y humanidades",
+        "Arte, diseño y comunicación"
+      ],
+      "degrees": [
+        "BACHILLER ORIENTACIÓN CIENCIAS NATURALES",
+        "BACHILLER ORIENTACION CIENCIAS SOCIALES",
+        "BACHILLER ORIENTACION COMUNICACION"
+      ]
     },
     {
       "id": "740034300",
@@ -183,7 +232,15 @@
       "lng": -65.454714,
       "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740034300",
       "locality": "Villa Mercedes",
-      "sourceLabel": "Ficha oficial"
+      "sourceLabel": "Ficha oficial",
+      "orientations": [
+        "Economía y administración",
+        "Informática y programación"
+      ],
+      "degrees": [
+        "BACHILLER ORIENTACION ECONOMIA Y ADMINISTRACION",
+        "BACHILLER ORIENTACION ROBOTICA Y PROGRAMACION"
+      ]
     },
     {
       "id": "740077400",
@@ -208,7 +265,13 @@
       "lng": -65.454689,
       "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740077400",
       "locality": "Villa Mercedes",
-      "sourceLabel": "Ficha oficial"
+      "sourceLabel": "Ficha oficial",
+      "orientations": [
+        "Ciencias sociales y humanidades"
+      ],
+      "degrees": [
+        "BACHILLER ORIENTACION CIENCIAS SOCIALES"
+      ]
     },
     {
       "id": "740019500",
@@ -231,7 +294,13 @@
       "lng": -65.469119,
       "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740019500",
       "locality": "Villa Mercedes",
-      "sourceLabel": "Ficha oficial"
+      "sourceLabel": "Ficha oficial",
+      "orientations": [
+        "Economía y administración"
+      ],
+      "degrees": [
+        "BACHILLER ORIENTACION ECONOMIA Y ADMINISTRACION"
+      ]
     },
     {
       "id": "740025100",
@@ -254,7 +323,17 @@
       "lng": -65.462553,
       "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740025100",
       "locality": "Villa Mercedes",
-      "sourceLabel": "Ficha oficial"
+      "sourceLabel": "Ficha oficial",
+      "orientations": [
+        "Ciencias naturales",
+        "Ciencias sociales y humanidades",
+        "Economía y administración"
+      ],
+      "degrees": [
+        "BACHILLER ECONOMIA Y ADMINISTRACION",
+        "BACHILLER ORIENTACIÓN CIENCIAS NATURALES",
+        "BACHILLER ORIENTACION CIENCIAS SOCIALES"
+      ]
     },
     {
       "id": "740034800",
@@ -279,7 +358,13 @@
       "lng": -65.460831,
       "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740034800",
       "locality": "Villa Mercedes",
-      "sourceLabel": "Ficha oficial"
+      "sourceLabel": "Ficha oficial",
+      "orientations": [
+        "Economía y administración"
+      ],
+      "degrees": [
+        "BACHILLER ORIENTACION ECONOMIA Y ADMINISTRACION"
+      ]
     },
     {
       "id": "740034500",
@@ -304,7 +389,13 @@
       "lng": -65.452033,
       "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740034500",
       "locality": "Villa Mercedes",
-      "sourceLabel": "Ficha oficial"
+      "sourceLabel": "Ficha oficial",
+      "orientations": [
+        "Ciencias naturales"
+      ],
+      "degrees": [
+        "BACHILLER ORIENTACIÓN CIENCIAS NATURALES"
+      ]
     },
     {
       "id": "740038500",
@@ -327,7 +418,9 @@
       "lng": -65.457803,
       "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740038500",
       "locality": "Villa Mercedes",
-      "sourceLabel": "Ficha oficial"
+      "sourceLabel": "Ficha oficial",
+      "orientations": [],
+      "degrees": []
     },
     {
       "id": "740053400",
@@ -350,7 +443,9 @@
       "lng": -65.437331,
       "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740053400",
       "locality": "Villa Mercedes",
-      "sourceLabel": "Ficha oficial"
+      "sourceLabel": "Ficha oficial",
+      "orientations": [],
+      "degrees": []
     },
     {
       "id": "740074900",
@@ -373,7 +468,9 @@
       "lng": -65.433394,
       "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740074900",
       "locality": "Villa Mercedes",
-      "sourceLabel": "Ficha oficial"
+      "sourceLabel": "Ficha oficial",
+      "orientations": [],
+      "degrees": []
     },
     {
       "id": "740076000",
@@ -396,7 +493,9 @@
       "lng": -65.46315,
       "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740076000",
       "locality": "Villa Mercedes",
-      "sourceLabel": "Ficha oficial"
+      "sourceLabel": "Ficha oficial",
+      "orientations": [],
+      "degrees": []
     },
     {
       "id": "740076100",
@@ -419,7 +518,9 @@
       "lng": -65.438808,
       "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740076100",
       "locality": "Villa Mercedes",
-      "sourceLabel": "Ficha oficial"
+      "sourceLabel": "Ficha oficial",
+      "orientations": [],
+      "degrees": []
     },
     {
       "id": "740070900",
@@ -442,7 +543,9 @@
       "lng": -65.474447,
       "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740070900",
       "locality": "Villa Mercedes",
-      "sourceLabel": "Ficha oficial"
+      "sourceLabel": "Ficha oficial",
+      "orientations": [],
+      "degrees": []
     },
     {
       "id": "740014100",
@@ -454,7 +557,7 @@
       "phoneDisplay": "+54 2657 431-506",
       "phoneHref": "tel:+542657431506",
       "email": "escuelaespecial6@sanluis.gov.ar",
-      "typeLabel": "Escuela especial",
+      "typeLabel": "Educación Especial",
       "category": "especial",
       "levels": [
         "Inicial",
@@ -466,7 +569,9 @@
       "lng": -65.455783,
       "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740014100",
       "locality": "Villa Mercedes",
-      "sourceLabel": "Ficha oficial"
+      "sourceLabel": "Ficha oficial",
+      "orientations": [],
+      "degrees": []
     },
     {
       "id": "740072300",
@@ -478,8 +583,8 @@
       "phoneDisplay": "+54 2657 445-2000",
       "phoneHref": "tel:+5426574452000",
       "email": null,
-      "typeLabel": "Escuela primaria y secundaria",
-      "category": "secundaria",
+      "typeLabel": "Escuela Generativa",
+      "category": "generativa",
       "levels": [
         "Primaria",
         "Secundaria"
@@ -490,7 +595,13 @@
       "lng": -65.465367,
       "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740072300",
       "locality": "Villa Mercedes",
-      "sourceLabel": "Ficha oficial"
+      "sourceLabel": "Ficha oficial",
+      "orientations": [
+        "Educación física y deportes"
+      ],
+      "degrees": [
+        "BACHILLER ORIENTACIÓN EDUCACIÓN FÍSICA"
+      ]
     },
     {
       "id": "740072400",
@@ -502,8 +613,8 @@
       "phoneDisplay": "+54 2657 445-2000",
       "phoneHref": "tel:+5426574452000",
       "email": null,
-      "typeLabel": "Escuela inicial, primaria y secundaria",
-      "category": "secundaria",
+      "typeLabel": "Escuela Generativa",
+      "category": "generativa",
       "levels": [
         "Inicial",
         "Primaria",
@@ -515,7 +626,13 @@
       "lng": -65.461033,
       "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740072400",
       "locality": "Villa Mercedes",
-      "sourceLabel": "Ficha oficial"
+      "sourceLabel": "Ficha oficial",
+      "orientations": [
+        "Educación física y deportes"
+      ],
+      "degrees": [
+        "BACHILLER ORIENTACIÓN EDUCACIÓN FÍSICA"
+      ]
     },
     {
       "id": "740075000",
@@ -527,8 +644,8 @@
       "phoneDisplay": "+54 9 2657 631-351",
       "phoneHref": "tel:+5492657631351",
       "email": null,
-      "typeLabel": "Escuela primaria y secundaria",
-      "category": "secundaria",
+      "typeLabel": "Escuela Generativa",
+      "category": "generativa",
       "levels": [
         "Primaria",
         "Secundaria"
@@ -539,7 +656,15 @@
       "lng": -65.458517,
       "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740075000",
       "locality": "Villa Mercedes",
-      "sourceLabel": "Ficha oficial"
+      "sourceLabel": "Ficha oficial",
+      "orientations": [
+        "Arte, diseño y comunicación"
+      ],
+      "degrees": [
+        "BACHILLER ORIENTACION EN ARTE TEATRO",
+        "BACHILLER ORIENTACIÓN ARTE DANZA",
+        "BACHILLER ORIENTADO ARTE MUSICA"
+      ]
     },
     {
       "id": "740072500",
@@ -551,8 +676,8 @@
       "phoneDisplay": "+54 2657 445-2000",
       "phoneHref": "tel:+5426574452000",
       "email": null,
-      "typeLabel": "Escuela primaria y secundaria",
-      "category": "secundaria",
+      "typeLabel": "Escuela Generativa",
+      "category": "generativa",
       "levels": [
         "Primaria",
         "Secundaria"
@@ -563,7 +688,15 @@
       "lng": -65.426089,
       "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740072500",
       "locality": "Villa Mercedes",
-      "sourceLabel": "Ficha oficial"
+      "sourceLabel": "Ficha oficial",
+      "orientations": [
+        "Ciencias naturales",
+        "Ciencias sociales y humanidades"
+      ],
+      "degrees": [
+        "BACHILLER ORIENTACIÓN CIENCIAS NATURALES",
+        "BACHILLER CIENCIAS SOCIALES"
+      ]
     },
     {
       "id": "740072800",
@@ -575,8 +708,8 @@
       "phoneDisplay": "+54 9 2657 582-289",
       "phoneHref": "tel:+5492657582289",
       "email": null,
-      "typeLabel": "Escuela primaria y secundaria",
-      "category": "secundaria",
+      "typeLabel": "Escuela Generativa",
+      "category": "generativa",
       "levels": [
         "Primaria",
         "Secundaria"
@@ -587,7 +720,13 @@
       "lng": -65.494719,
       "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740072800",
       "locality": "Villa Mercedes",
-      "sourceLabel": "Ficha oficial"
+      "sourceLabel": "Ficha oficial",
+      "orientations": [
+        "Educación física y deportes"
+      ],
+      "degrees": [
+        "BACHILLER ORIENTACIÓN EDUCACIÓN FÍSICA"
+      ]
     },
     {
       "id": "740077000",
@@ -599,8 +738,8 @@
       "phoneDisplay": "+54 9 2657 223-695",
       "phoneHref": "tel:+5492657223695",
       "email": null,
-      "typeLabel": "Escuela primaria",
-      "category": "primaria",
+      "typeLabel": "Escuela Generativa",
+      "category": "generativa",
       "levels": [
         "Primaria"
       ],
@@ -610,7 +749,9 @@
       "lng": -65.429989,
       "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740077000",
       "locality": "Villa Mercedes",
-      "sourceLabel": "Ficha oficial"
+      "sourceLabel": "Ficha oficial",
+      "orientations": [],
+      "degrees": []
     },
     {
       "id": "740073900",
@@ -622,8 +763,8 @@
       "phoneDisplay": "+54 9 2657 582-289",
       "phoneHref": "tel:+5492657582289",
       "email": null,
-      "typeLabel": "Escuela secundaria",
-      "category": "secundaria",
+      "typeLabel": "Escuela Generativa",
+      "category": "generativa",
       "levels": [
         "Secundaria"
       ],
@@ -633,7 +774,15 @@
       "lng": -65.494667,
       "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740073900",
       "locality": "Villa Mercedes",
-      "sourceLabel": "Ficha oficial"
+      "sourceLabel": "Ficha oficial",
+      "orientations": [
+        "Agro y ambiente",
+        "Educación física y deportes"
+      ],
+      "degrees": [
+        "BACHILLER ORIENTACION AGRO Y AMBIENTE",
+        "BACHILLER EDUCACIÓN FÍSICA"
+      ]
     },
     {
       "id": "740025300",
@@ -658,7 +807,13 @@
       "lng": -65.474514,
       "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740025300",
       "locality": "Villa Mercedes",
-      "sourceLabel": "Ficha oficial"
+      "sourceLabel": "Ficha oficial",
+      "orientations": [
+        "Arte, diseño y comunicación"
+      ],
+      "degrees": [
+        "BACHILLER ORIENTACION ARTES VISUALES"
+      ]
     },
     {
       "id": "740046700",
@@ -682,7 +837,9 @@
       "lng": -65.475408,
       "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740046700",
       "locality": "Villa Mercedes",
-      "sourceLabel": "Ficha oficial"
+      "sourceLabel": "Ficha oficial",
+      "orientations": [],
+      "degrees": []
     },
     {
       "id": "740046701",
@@ -705,7 +862,15 @@
       "lng": -65.475303,
       "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740046701",
       "locality": "Villa Mercedes",
-      "sourceLabel": "Ficha oficial"
+      "sourceLabel": "Ficha oficial",
+      "orientations": [
+        "Ciencias sociales y humanidades",
+        "Agro y ambiente"
+      ],
+      "degrees": [
+        "BACHILLER ORIENTACION AGRO Y AMBIENTE",
+        "BACHILLER CIENCIAS SOCIALES"
+      ]
     },
     {
       "id": "740025400",
@@ -728,7 +893,9 @@
       "lng": -65.474489,
       "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740025400",
       "locality": "Villa Mercedes",
-      "sourceLabel": "Ficha oficial"
+      "sourceLabel": "Ficha oficial",
+      "orientations": [],
+      "degrees": []
     },
     {
       "id": "740030300",
@@ -753,7 +920,13 @@
       "lng": -65.451175,
       "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740030300",
       "locality": "Villa Mercedes",
-      "sourceLabel": "Ficha oficial"
+      "sourceLabel": "Ficha oficial",
+      "orientations": [
+        "Ciencias sociales y humanidades"
+      ],
+      "degrees": [
+        "BACHILLER ORIENTACION CIENCIAS SOCIALES"
+      ]
     },
     {
       "id": "740052100",
@@ -777,7 +950,9 @@
       "lng": -65.428322,
       "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740052100",
       "locality": "Villa Mercedes",
-      "sourceLabel": "Ficha oficial"
+      "sourceLabel": "Ficha oficial",
+      "orientations": [],
+      "degrees": []
     },
     {
       "id": "740038600",
@@ -801,7 +976,9 @@
       "lng": -65.478725,
       "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740038600",
       "locality": "Villa Mercedes",
-      "sourceLabel": "Ficha oficial"
+      "sourceLabel": "Ficha oficial",
+      "orientations": [],
+      "degrees": []
     },
     {
       "id": "740030700",
@@ -826,7 +1003,13 @@
       "lng": -65.458944,
       "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740030700",
       "locality": "Villa Mercedes",
-      "sourceLabel": "Ficha oficial"
+      "sourceLabel": "Ficha oficial",
+      "orientations": [
+        "Arte, diseño y comunicación"
+      ],
+      "degrees": [
+        "BACHILLER ORIENTACION ARTES VISUALES"
+      ]
     },
     {
       "id": "740026200",
@@ -851,7 +1034,13 @@
       "lng": -65.473278,
       "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740026200",
       "locality": "Villa Mercedes",
-      "sourceLabel": "Ficha oficial"
+      "sourceLabel": "Ficha oficial",
+      "orientations": [
+        "Ciencias sociales y humanidades"
+      ],
+      "degrees": [
+        "BACHILLER ORIENTACION CIENCIAS SOCIALES"
+      ]
     },
     {
       "id": "740030900",
@@ -875,7 +1064,9 @@
       "lng": -65.470428,
       "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740030900",
       "locality": "Villa Mercedes",
-      "sourceLabel": "Ficha oficial"
+      "sourceLabel": "Ficha oficial",
+      "orientations": [],
+      "degrees": []
     },
     {
       "id": "740041200",
@@ -899,7 +1090,9 @@
       "lng": -65.462164,
       "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740041200",
       "locality": "Villa Mercedes",
-      "sourceLabel": "Ficha oficial"
+      "sourceLabel": "Ficha oficial",
+      "orientations": [],
+      "degrees": []
     },
     {
       "id": "740035900",
@@ -923,7 +1116,15 @@
       "lng": -65.464544,
       "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740035900",
       "locality": "Villa Mercedes",
-      "sourceLabel": "Ficha oficial"
+      "sourceLabel": "Ficha oficial",
+      "orientations": [
+        "Ciencias naturales",
+        "Ciencias sociales y humanidades"
+      ],
+      "degrees": [
+        "BACHILLER ORIENTACIÓN CIENCIAS NATURALES",
+        "BACHILLER ORIENTACION CIENCIAS SOCIALES"
+      ]
     },
     {
       "id": "740034400",
@@ -947,7 +1148,9 @@
       "lng": -65.467361,
       "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740034400",
       "locality": "Villa Mercedes",
-      "sourceLabel": "Ficha oficial"
+      "sourceLabel": "Ficha oficial",
+      "orientations": [],
+      "degrees": []
     },
     {
       "id": "740047500",
@@ -972,7 +1175,13 @@
       "lng": -65.465383,
       "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740047500",
       "locality": "Villa Mercedes",
-      "sourceLabel": "Ficha oficial"
+      "sourceLabel": "Ficha oficial",
+      "orientations": [
+        "Arte, diseño y comunicación"
+      ],
+      "degrees": [
+        "BACHILLER ORIENTADO EN COMUNICACION"
+      ]
     },
     {
       "id": "740034600",
@@ -996,7 +1205,9 @@
       "lng": -65.460794,
       "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740034600",
       "locality": "Villa Mercedes",
-      "sourceLabel": "Ficha oficial"
+      "sourceLabel": "Ficha oficial",
+      "orientations": [],
+      "degrees": []
     },
     {
       "id": "740029700",
@@ -1020,7 +1231,9 @@
       "lng": -65.478292,
       "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740029700",
       "locality": "Villa Mercedes",
-      "sourceLabel": "Ficha oficial"
+      "sourceLabel": "Ficha oficial",
+      "orientations": [],
+      "degrees": []
     },
     {
       "id": "740029701",
@@ -1043,7 +1256,15 @@
       "lng": -65.478522,
       "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740029701",
       "locality": "Villa Mercedes",
-      "sourceLabel": "Ficha oficial"
+      "sourceLabel": "Ficha oficial",
+      "orientations": [
+        "Ciencias sociales y humanidades",
+        "Agro y ambiente"
+      ],
+      "degrees": [
+        "BACHILLER ORIENTACION AGRO Y AMBIENTE",
+        "BACHILLER CIENCIAS SOCIALES"
+      ]
     },
     {
       "id": "740045700",
@@ -1068,7 +1289,13 @@
       "lng": -65.455694,
       "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740045700",
       "locality": "Villa Mercedes",
-      "sourceLabel": "Ficha oficial"
+      "sourceLabel": "Ficha oficial",
+      "orientations": [
+        "Informática y programación"
+      ],
+      "degrees": [
+        "BACHILLER ORIENTACION INFORMATICA"
+      ]
     },
     {
       "id": "740014900",
@@ -1093,7 +1320,13 @@
       "lng": -65.476036,
       "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740014900",
       "locality": "Villa Mercedes",
-      "sourceLabel": "Ficha oficial"
+      "sourceLabel": "Ficha oficial",
+      "orientations": [
+        "Ciencias sociales y humanidades"
+      ],
+      "degrees": [
+        "BACHILLER ORIENTACION LENGUAS"
+      ]
     },
     {
       "id": "740045600",
@@ -1117,7 +1350,9 @@
       "lng": -65.447486,
       "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740045600",
       "locality": "Villa Mercedes",
-      "sourceLabel": "Ficha oficial"
+      "sourceLabel": "Ficha oficial",
+      "orientations": [],
+      "degrees": []
     },
     {
       "id": "740035000",
@@ -1141,7 +1376,9 @@
       "lng": -65.456167,
       "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740035000",
       "locality": "Villa Mercedes",
-      "sourceLabel": "Ficha oficial"
+      "sourceLabel": "Ficha oficial",
+      "orientations": [],
+      "degrees": []
     },
     {
       "id": "740031000",
@@ -1166,7 +1403,13 @@
       "lng": -65.452808,
       "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740031000",
       "locality": "Villa Mercedes",
-      "sourceLabel": "Ficha oficial"
+      "sourceLabel": "Ficha oficial",
+      "orientations": [
+        "Arte, diseño y comunicación"
+      ],
+      "degrees": [
+        "BACHILLER ORIENTADO EN COMUNICACION"
+      ]
     },
     {
       "id": "740034900",
@@ -1191,7 +1434,13 @@
       "lng": -65.450025,
       "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740034900",
       "locality": "Villa Mercedes",
-      "sourceLabel": "Ficha oficial"
+      "sourceLabel": "Ficha oficial",
+      "orientations": [
+        "Ciencias naturales"
+      ],
+      "degrees": [
+        "BACHILLER ORIENTACIÓN CIENCIAS NATURALES"
+      ]
     },
     {
       "id": "740062900",
@@ -1216,7 +1465,13 @@
       "lng": -65.434367,
       "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740062900",
       "locality": "Villa Mercedes",
-      "sourceLabel": "Ficha oficial"
+      "sourceLabel": "Ficha oficial",
+      "orientations": [
+        "Ciencias sociales y humanidades"
+      ],
+      "degrees": [
+        "BACHILLER ORIENTACION CIENCIAS SOCIALES"
+      ]
     },
     {
       "id": "740074400",
@@ -1239,7 +1494,9 @@
       "lng": -65.426322,
       "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740074400",
       "locality": "Villa Mercedes",
-      "sourceLabel": "Ficha oficial"
+      "sourceLabel": "Ficha oficial",
+      "orientations": [],
+      "degrees": []
     },
     {
       "id": "740047300",
@@ -1263,7 +1520,9 @@
       "lng": -65.476347,
       "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740047300",
       "locality": "Villa Mercedes",
-      "sourceLabel": "Ficha oficial"
+      "sourceLabel": "Ficha oficial",
+      "orientations": [],
+      "degrees": []
     },
     {
       "id": "740034000",
@@ -1288,7 +1547,13 @@
       "lng": -65.436064,
       "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740034000",
       "locality": "Villa Mercedes",
-      "sourceLabel": "Ficha oficial"
+      "sourceLabel": "Ficha oficial",
+      "orientations": [
+        "Ciencias sociales y humanidades"
+      ],
+      "degrees": [
+        "BACHILLER ORIENTACION CIENCIAS SOCIALES"
+      ]
     },
     {
       "id": "740061700",
@@ -1300,8 +1565,8 @@
       "phoneDisplay": "+54 2657 430-116",
       "phoneHref": "tel:+542657430116",
       "email": "escuelaexp6@sanluis.gov.ar",
-      "typeLabel": "Escuela inicial, primaria y secundaria",
-      "category": "secundaria",
+      "typeLabel": "Escuela Autogestionada",
+      "category": "autogestionada",
       "levels": [
         "Inicial",
         "Primaria",
@@ -1313,7 +1578,16 @@
       "lng": -65.437228,
       "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740061700",
       "locality": "Villa Mercedes",
-      "sourceLabel": "Ficha oficial"
+      "sourceLabel": "Ficha oficial",
+      "orientations": [
+        "Ciencias naturales",
+        "Informática y programación",
+        "Educación técnica"
+      ],
+      "degrees": [
+        "BACHILLER ORIENTACION INFORMATICA",
+        "BACHILLER ORIENTACIÓN CIENCIAS NATURALES Y TECNICA ORIENTACION ELECTRONICA"
+      ]
     },
     {
       "id": "740061400",
@@ -1325,8 +1599,8 @@
       "phoneDisplay": "+54 2657 432-189",
       "phoneHref": "tel:+542657432189",
       "email": "escuelaexp7@sanluis.gov.ar",
-      "typeLabel": "Escuela inicial, primaria y secundaria",
-      "category": "secundaria",
+      "typeLabel": "Escuela Autogestionada",
+      "category": "autogestionada",
       "levels": [
         "Inicial",
         "Primaria",
@@ -1338,7 +1612,13 @@
       "lng": -65.48305,
       "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740061400",
       "locality": "Villa Mercedes",
-      "sourceLabel": "Ficha oficial"
+      "sourceLabel": "Ficha oficial",
+      "orientations": [
+        "Educación física y deportes"
+      ],
+      "degrees": [
+        "BACHILLER ORIENTACIÓN EDUCACIÓN FÍSICA"
+      ]
     },
     {
       "id": "740061200",
@@ -1350,8 +1630,8 @@
       "phoneDisplay": "+54 2657 420-591",
       "phoneHref": "tel:+542657420591",
       "email": "direccionldvinci@yahoo.com.ar",
-      "typeLabel": "Escuela secundaria",
-      "category": "secundaria",
+      "typeLabel": "Escuela Autogestionada",
+      "category": "autogestionada",
       "levels": [
         "Secundaria"
       ],
@@ -1361,7 +1641,13 @@
       "lng": -65.437822,
       "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740061200",
       "locality": "Villa Mercedes",
-      "sourceLabel": "Ficha oficial"
+      "sourceLabel": "Ficha oficial",
+      "orientations": [
+        "Ciencias sociales y humanidades"
+      ],
+      "degrees": [
+        "BACHILLER ORIENTACION CIENCIAS SOCIALES"
+      ]
     },
     {
       "id": "740065680",
@@ -1373,7 +1659,7 @@
       "phoneDisplay": "+54 2657 445-2000",
       "phoneHref": "tel:+5426574452000",
       "email": null,
-      "typeLabel": "Centro de educación de adultos",
+      "typeLabel": "Educación de Jóvenes y Adultos",
       "category": "adultos",
       "levels": [
         "Secundaria"
@@ -1384,7 +1670,9 @@
       "lng": -65.495853,
       "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740065680",
       "locality": "Villa Mercedes",
-      "sourceLabel": "Ficha oficial"
+      "sourceLabel": "Ficha oficial",
+      "orientations": [],
+      "degrees": []
     },
     {
       "id": "740065660",
@@ -1396,7 +1684,7 @@
       "phoneDisplay": "+54 2657 445-2000",
       "phoneHref": "tel:+5426574452000",
       "email": null,
-      "typeLabel": "Centro de educación de adultos",
+      "typeLabel": "Educación de Jóvenes y Adultos",
       "category": "adultos",
       "levels": [
         "Secundaria"
@@ -1407,7 +1695,13 @@
       "lng": -65.470633,
       "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740065660",
       "locality": "Villa Mercedes",
-      "sourceLabel": "Ficha oficial"
+      "sourceLabel": "Ficha oficial",
+      "orientations": [
+        "Economía y administración"
+      ],
+      "degrees": [
+        "Economía y Administración"
+      ]
     },
     {
       "id": "740065681",
@@ -1419,7 +1713,7 @@
       "phoneDisplay": "+54 2657 445-2000",
       "phoneHref": "tel:+5426574452000",
       "email": null,
-      "typeLabel": "Centro de educación de adultos",
+      "typeLabel": "Educación de Jóvenes y Adultos",
       "category": "adultos",
       "levels": [
         "Secundaria"
@@ -1430,7 +1724,9 @@
       "lng": -65.457414,
       "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740065681",
       "locality": "Villa Mercedes",
-      "sourceLabel": "Ficha oficial"
+      "sourceLabel": "Ficha oficial",
+      "orientations": [],
+      "degrees": []
     },
     {
       "id": "740065685",
@@ -1442,7 +1738,7 @@
       "phoneDisplay": "",
       "phoneHref": "",
       "email": null,
-      "typeLabel": "Centro de educación de adultos",
+      "typeLabel": "Educación de Jóvenes y Adultos",
       "category": "adultos",
       "levels": [
         "Secundaria"
@@ -1453,7 +1749,9 @@
       "lng": -65.471186,
       "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740065685",
       "locality": "Villa Mercedes",
-      "sourceLabel": "Ficha oficial"
+      "sourceLabel": "Ficha oficial",
+      "orientations": [],
+      "degrees": []
     },
     {
       "id": "740014200",
@@ -1465,7 +1763,7 @@
       "phoneDisplay": "+54 2657 465-2000",
       "phoneHref": "tel:+5426574652000",
       "email": "escueladeartesvm@yahoo.com.ar",
-      "typeLabel": "Escuela de arte",
+      "typeLabel": "Escuela de Arte",
       "category": "artistica",
       "levels": [
         "Secundaria"
@@ -1476,7 +1774,14 @@
       "lng": -65.467078,
       "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740014200",
       "locality": "Villa Mercedes",
-      "sourceLabel": "Ficha oficial"
+      "sourceLabel": "Ficha oficial",
+      "orientations": [
+        "Arte, diseño y comunicación"
+      ],
+      "degrees": [
+        "BACHILLER ARTE ORIENTACION PINTURA",
+        "BACHILLER ARTE ORIENTACION ARTES VISUALES"
+      ]
     },
     {
       "id": "740053300",
@@ -1488,7 +1793,7 @@
       "phoneDisplay": "+54 2657 445-2000",
       "phoneHref": "tel:+5426574452000",
       "email": "colegio14@sanluis.gov.ar",
-      "typeLabel": "Escuela técnica",
+      "typeLabel": "Escuela Técnica",
       "category": "tecnica",
       "levels": [
         "Secundaria"
@@ -1499,7 +1804,13 @@
       "lng": -65.503778,
       "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740053300",
       "locality": "Villa Mercedes",
-      "sourceLabel": "Ficha oficial"
+      "sourceLabel": "Ficha oficial",
+      "orientations": [
+        "Agro y ambiente"
+      ],
+      "degrees": [
+        "TECNICA ORIENTACION PRODUCCION AGROPECUARIA"
+      ]
     },
     {
       "id": "740054100",
@@ -1511,7 +1822,7 @@
       "phoneDisplay": "+54 2657 423-171",
       "phoneHref": "tel:+542657423171",
       "email": "colegio_n15@yahoo.com.ar",
-      "typeLabel": "Escuela técnica",
+      "typeLabel": "Escuela Técnica",
       "category": "tecnica",
       "levels": [
         "Secundaria"
@@ -1522,7 +1833,13 @@
       "lng": -65.466803,
       "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740054100",
       "locality": "Villa Mercedes",
-      "sourceLabel": "Ficha oficial"
+      "sourceLabel": "Ficha oficial",
+      "orientations": [
+        "Educación técnica"
+      ],
+      "degrees": [
+        "TECNICA ORIENTACION EQUIPOS E INSTALACIONES ELECTROMECANICAS"
+      ]
     },
     {
       "id": "740033800",
@@ -1534,7 +1851,7 @@
       "phoneDisplay": "+54 2657 422-114",
       "phoneHref": "tel:+542657422114",
       "email": null,
-      "typeLabel": "Escuela técnica",
+      "typeLabel": "Escuela Técnica",
       "category": "tecnica",
       "levels": [
         "Secundaria"
@@ -1545,7 +1862,15 @@
       "lat": -33.7172528,
       "lng": -65.3851556,
       "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740033800",
-      "sourceLabel": "Ficha oficial"
+      "sourceLabel": "Ficha oficial",
+      "orientations": [
+        "Educación técnica"
+      ],
+      "degrees": [
+        "TECNICA ORIENTACION AERONAUTICA",
+        "TECNICA ORIENTACION AUTOMOTORES",
+        "TECNICA ORIENTACION ELECTRONICA"
+      ]
     },
     {
       "id": "740054300",
@@ -1557,7 +1882,7 @@
       "phoneDisplay": "+54 2657 436-273",
       "phoneHref": "tel:+542657436273",
       "email": "colegio18@sanlui.gov.ar",
-      "typeLabel": "Escuela técnica",
+      "typeLabel": "Escuela Técnica",
       "category": "tecnica",
       "levels": [
         "Secundaria",
@@ -1569,7 +1894,15 @@
       "lng": -65.468739,
       "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740054300",
       "locality": "Villa Mercedes",
-      "sourceLabel": "Ficha oficial"
+      "sourceLabel": "Ficha oficial",
+      "orientations": [
+        "Economía y administración",
+        "Educación técnica"
+      ],
+      "degrees": [
+        "BACHILLER PROFESIONAL SECUNDARIO GASTRONOMIA",
+        "TECNICA ORIENTACION GESTION Y ADMINISTRACION DE LAS ORGANIZACIONES"
+      ]
     },
     {
       "id": "740047100",
@@ -1581,7 +1914,7 @@
       "phoneDisplay": "+54 2657 433-627",
       "phoneHref": "tel:+542657433627",
       "email": "coln19@yahoo.com.ar",
-      "typeLabel": "Escuela técnica",
+      "typeLabel": "Escuela Técnica",
       "category": "tecnica",
       "levels": [
         "Secundaria"
@@ -1592,7 +1925,13 @@
       "lng": -65.483131,
       "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740047100",
       "locality": "Villa Mercedes",
-      "sourceLabel": "Ficha oficial"
+      "sourceLabel": "Ficha oficial",
+      "orientations": [
+        "Agro y ambiente"
+      ],
+      "degrees": [
+        "TECNICA ORIENTACION TECNOLOGIA DE LOS ALIMENTOS"
+      ]
     },
     {
       "id": "740014300",
@@ -1604,7 +1943,7 @@
       "phoneDisplay": "+54 2657 423-326",
       "phoneHref": "tel:+542657423326",
       "email": "colegio20vm@yahoo.com.ar",
-      "typeLabel": "Escuela técnica",
+      "typeLabel": "Escuela Técnica",
       "category": "tecnica",
       "levels": [
         "Secundaria"
@@ -1615,7 +1954,13 @@
       "lng": -65.476661,
       "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740014300",
       "locality": "Villa Mercedes",
-      "sourceLabel": "Ficha oficial"
+      "sourceLabel": "Ficha oficial",
+      "orientations": [
+        "Informática y programación"
+      ],
+      "degrees": [
+        "TECNICA ORIENTACION INFORMATICA PROFESIONAL Y PERSONAL"
+      ]
     },
     {
       "id": "740066100",
@@ -1627,7 +1972,7 @@
       "phoneDisplay": "+54 2657 445-2000",
       "phoneHref": "tel:+5426574452000",
       "email": null,
-      "typeLabel": "Escuela técnica",
+      "typeLabel": "Escuela Técnica",
       "category": "tecnica",
       "levels": [
         "Secundaria"
@@ -1638,7 +1983,13 @@
       "lng": -65.457731,
       "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740066100",
       "locality": "Villa Mercedes",
-      "sourceLabel": "Ficha oficial"
+      "sourceLabel": "Ficha oficial",
+      "orientations": [
+        "Turismo"
+      ],
+      "degrees": [
+        "TECNICA ORIENTACION TURISMO"
+      ]
     },
     {
       "id": "740047400",
@@ -1650,8 +2001,8 @@
       "phoneDisplay": "+54 2657 423-182",
       "phoneHref": "tel:+542657423182",
       "email": "instituto@arnet.com",
-      "typeLabel": "Escuela inicial, primaria y secundaria",
-      "category": "secundaria",
+      "typeLabel": "Instituto de formación docente",
+      "category": "docente",
       "levels": [
         "Inicial",
         "Primaria",
@@ -1664,7 +2015,13 @@
       "lng": -65.472003,
       "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740047400",
       "locality": "Villa Mercedes",
-      "sourceLabel": "Ficha oficial"
+      "sourceLabel": "Ficha oficial",
+      "orientations": [
+        "Economía y administración"
+      ],
+      "degrees": [
+        "BACHILLER ECONOMIA Y ADMINISTRACION"
+      ]
     },
     {
       "id": "740062100",
@@ -1676,8 +2033,8 @@
       "phoneDisplay": "+54 2657 432-142",
       "phoneHref": "tel:+542657432142",
       "email": null,
-      "typeLabel": "Instituto superior",
-      "category": "superior",
+      "typeLabel": "Instituto de formación docente",
+      "category": "docente",
       "levels": [
         "Superior"
       ],
@@ -1687,7 +2044,9 @@
       "lng": -65.457233,
       "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740062100",
       "locality": "Villa Mercedes",
-      "sourceLabel": "Ficha oficial"
+      "sourceLabel": "Ficha oficial",
+      "orientations": [],
+      "degrees": []
     },
     {
       "id": "740061800",
@@ -1710,7 +2069,9 @@
       "lng": -65.462261,
       "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740061800",
       "locality": "Villa Mercedes",
-      "sourceLabel": "Ficha oficial"
+      "sourceLabel": "Ficha oficial",
+      "orientations": [],
+      "degrees": []
     },
     {
       "id": "740059300",
@@ -1733,7 +2094,13 @@
       "lng": -65.456494,
       "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740059300",
       "locality": "Villa Mercedes",
-      "sourceLabel": "Ficha oficial"
+      "sourceLabel": "Ficha oficial",
+      "orientations": [
+        "Economía y administración"
+      ],
+      "degrees": [
+        "BACHILLER ECONOMIA Y ADMINISTRACION"
+      ]
     },
     {
       "id": "740057300",
@@ -1745,8 +2112,8 @@
       "phoneDisplay": "+54 2657 424-612",
       "phoneHref": "tel:+542657424612",
       "email": "insc-vm@yahoo.com.ar",
-      "typeLabel": "Escuela inicial, primaria y secundaria",
-      "category": "secundaria",
+      "typeLabel": "Instituto de formación docente",
+      "category": "docente",
       "levels": [
         "Inicial",
         "Primaria",
@@ -1759,7 +2126,13 @@
       "lng": -65.472783,
       "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740057300",
       "locality": "Villa Mercedes",
-      "sourceLabel": "Ficha oficial"
+      "sourceLabel": "Ficha oficial",
+      "orientations": [
+        "Ciencias sociales y humanidades"
+      ],
+      "degrees": [
+        "BACHILLER ORIENTACION CIENCIAS SOCIALES"
+      ]
     },
     {
       "id": "740063601",
@@ -1771,8 +2144,8 @@
       "phoneDisplay": "+54 2657 445-2000",
       "phoneHref": "tel:+5426574452000",
       "email": null,
-      "typeLabel": "Instituto superior",
-      "category": "superior",
+      "typeLabel": "Instituto de formación docente",
+      "category": "docente",
       "levels": [
         "Superior"
       ],
@@ -1782,7 +2155,9 @@
       "lng": -65.464767,
       "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740063601",
       "locality": "Villa Mercedes",
-      "sourceLabel": "Ficha oficial"
+      "sourceLabel": "Ficha oficial",
+      "orientations": [],
+      "degrees": []
     },
     {
       "id": "740053500",
@@ -1794,8 +2169,8 @@
       "phoneDisplay": "+54 2657 431-782",
       "phoneHref": "tel:+542657431782",
       "email": "isli@csi.vmercedes.com.ar",
-      "typeLabel": "Instituto superior",
-      "category": "superior",
+      "typeLabel": "Instituto de formación docente",
+      "category": "docente",
       "levels": [
         "Superior"
       ],
@@ -1805,7 +2180,9 @@
       "lng": -65.463853,
       "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740053500",
       "locality": "Villa Mercedes",
-      "sourceLabel": "Ficha oficial"
+      "sourceLabel": "Ficha oficial",
+      "orientations": [],
+      "degrees": []
     },
     {
       "id": "740026400",
@@ -1828,7 +2205,9 @@
       "lng": -65.470625,
       "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740026400",
       "locality": "Villa Mercedes",
-      "sourceLabel": "Ficha oficial"
+      "sourceLabel": "Ficha oficial",
+      "orientations": [],
+      "degrees": []
     },
     {
       "id": "740066600",
@@ -1852,7 +2231,9 @@
       "lng": -65.459033,
       "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740066600",
       "locality": "Villa Mercedes",
-      "sourceLabel": "Ficha oficial"
+      "sourceLabel": "Ficha oficial",
+      "orientations": [],
+      "degrees": []
     },
     {
       "id": "740064800",
@@ -1875,7 +2256,9 @@
       "lng": -65.467497,
       "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740064800",
       "locality": "Villa Mercedes",
-      "sourceLabel": "Ficha oficial"
+      "sourceLabel": "Ficha oficial",
+      "orientations": [],
+      "degrees": []
     },
     {
       "id": "740078200",
@@ -1898,7 +2281,9 @@
       "lng": -65.436119,
       "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740078200",
       "locality": "Villa Mercedes",
-      "sourceLabel": "Ficha oficial"
+      "sourceLabel": "Ficha oficial",
+      "orientations": [],
+      "degrees": []
     },
     {
       "id": "740078300",
@@ -1921,7 +2306,9 @@
       "lng": -65.439649,
       "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740078300",
       "locality": "Villa Mercedes",
-      "sourceLabel": "Ficha oficial"
+      "sourceLabel": "Ficha oficial",
+      "orientations": [],
+      "degrees": []
     },
     {
       "id": "740078400",
@@ -1944,7 +2331,9 @@
       "lng": -65.450363,
       "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740078400",
       "locality": "Villa Mercedes",
-      "sourceLabel": "Ficha oficial"
+      "sourceLabel": "Ficha oficial",
+      "orientations": [],
+      "degrees": []
     },
     {
       "id": "740061900",
@@ -1967,7 +2356,9 @@
       "lng": -65.462269,
       "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740061900",
       "locality": "Villa Mercedes",
-      "sourceLabel": "Ficha oficial"
+      "sourceLabel": "Ficha oficial",
+      "orientations": [],
+      "degrees": []
     },
     {
       "id": "740065800",
@@ -1990,7 +2381,9 @@
       "lng": -65.467497,
       "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740065800",
       "locality": "Villa Mercedes",
-      "sourceLabel": "Ficha oficial"
+      "sourceLabel": "Ficha oficial",
+      "orientations": [],
+      "degrees": []
     },
     {
       "id": "uccuyo-villa-mercedes",
@@ -2002,7 +2395,7 @@
       "phoneDisplay": "",
       "phoneHref": "",
       "email": null,
-      "typeLabel": "Universidad privada",
+      "typeLabel": "Universidad",
       "category": "universidad",
       "levels": [
         "Superior"
@@ -2013,7 +2406,9 @@
       "lat": -33.6620896,
       "lng": -65.4532406,
       "sourceUrl": "https://uccuyo.edu.ar/",
-      "sourceLabel": "Sitio oficial"
+      "sourceLabel": "Sitio oficial",
+      "orientations": [],
+      "degrees": []
     },
     {
       "id": "ucongreso-villa-mercedes",
@@ -2025,7 +2420,7 @@
       "phoneDisplay": "+54 9 266 436-0408",
       "phoneHref": "tel:+5492664360408",
       "email": "villamercedes@ucongreso.edu.ar",
-      "typeLabel": "Universidad privada",
+      "typeLabel": "Universidad",
       "category": "universidad",
       "levels": [
         "Superior"
@@ -2036,7 +2431,9 @@
       "lat": -33.6620285,
       "lng": -65.4534138,
       "sourceUrl": "https://www.ucongreso.edu.ar/sedes-y-extensiones-aulicas/localizacion-villa-mercedes/",
-      "sourceLabel": "Sitio oficial"
+      "sourceLabel": "Sitio oficial",
+      "orientations": [],
+      "degrees": []
     },
     {
       "id": "unsl-campus-villa-mercedes",
@@ -2048,7 +2445,7 @@
       "phoneDisplay": "+54 2657 531-000",
       "phoneHref": "tel:+542657531000",
       "email": null,
-      "typeLabel": "Universidad nacional",
+      "typeLabel": "Universidad",
       "category": "universidad",
       "levels": [
         "Superior"
@@ -2059,7 +2456,9 @@
       "lat": -33.644225,
       "lng": -65.447806,
       "sourceUrl": "https://www.fcejs.unsl.edu.ar/",
-      "sourceLabel": "Sitio oficial"
+      "sourceLabel": "Sitio oficial",
+      "orientations": [],
+      "degrees": []
     },
     {
       "id": "unvime-villa-mercedes",
@@ -2071,7 +2470,7 @@
       "phoneDisplay": "+54 2657 613-569",
       "phoneHref": "tel:+542657613569",
       "email": "secprivada@unvime.edu.ar",
-      "typeLabel": "Universidad nacional",
+      "typeLabel": "Universidad",
       "category": "universidad",
       "levels": [
         "Superior"
@@ -2082,7 +2481,9 @@
       "lat": -33.644498,
       "lng": -65.445159,
       "sourceUrl": "https://www.unvime.edu.ar/ubicaciones/",
-      "sourceLabel": "Sitio oficial"
+      "sourceLabel": "Sitio oficial",
+      "orientations": [],
+      "degrees": []
     },
     {
       "id": "740066800",
@@ -2094,7 +2495,7 @@
       "phoneDisplay": "+54 2657 445-2000",
       "phoneHref": "tel:+5426574452000",
       "email": null,
-      "typeLabel": "Universidad provincial",
+      "typeLabel": "Universidad",
       "category": "universidad",
       "levels": [
         "Superior",
@@ -2106,7 +2507,9 @@
       "lng": -65.457803,
       "sourceUrl": "https://mapa.educacion.gob.ar/legajo/740066800",
       "locality": "Villa Mercedes",
-      "sourceLabel": "Ficha oficial"
+      "sourceLabel": "Ficha oficial",
+      "orientations": [],
+      "degrees": []
     },
     {
       "id": "siglo21-villa-mercedes",
@@ -2118,7 +2521,7 @@
       "phoneDisplay": "+54 2657 202-405",
       "phoneHref": "tel:+542657202405",
       "email": null,
-      "typeLabel": "Universidad privada",
+      "typeLabel": "Universidad",
       "category": "universidad",
       "levels": [
         "Superior"
@@ -2129,7 +2532,9 @@
       "lat": -33.6842674,
       "lng": -65.467956,
       "sourceUrl": "https://21.edu.ar/",
-      "sourceLabel": "Sitio oficial"
+      "sourceLabel": "Sitio oficial",
+      "orientations": [],
+      "degrees": []
     }
   ]
 }

@@ -43,15 +43,6 @@
 
         <p class="hero__intro">Escuelas, institutos y universidades de Villa Mercedes y Villa Reynolds, en un solo mapa.</p>
 
-        <div class="location-pill">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.3 7-11.5a7 7 0 1 0-14 0C5 14.7 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
-          <span>Villa Mercedes</span>
-          <span class="location-pill__dot" aria-hidden="true"></span>
-          <span>Villa Reynolds</span>
-          <span class="location-pill__dot" aria-hidden="true"></span>
-          <span>San Luis</span>
-        </div>
-
         <div class="search-wrap">
           <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg>
           <input
@@ -71,17 +62,6 @@
       </header>
 
       <section class="filters" aria-label="Filtros del directorio">
-        <div class="filter filter--zone">
-          <div class="zone-line">
-            <span class="filter__label">Zona</span>
-            <div class="segment-control" id="locality-filter" role="group" aria-label="Filtrar por localidad">
-              <button class="segment is-active" type="button" data-locality="Todas" aria-pressed="true">Todas</button>
-              <button class="segment" type="button" data-locality="Villa Mercedes" aria-pressed="false">Villa Mercedes</button>
-              <button class="segment" type="button" data-locality="Villa Reynolds" aria-pressed="false">Villa Reynolds</button>
-            </div>
-          </div>
-        </div>
-
         <div class="filter">
           <div class="filter__heading">
             <span class="filter__label">Nivel educativo</span>
@@ -96,34 +76,51 @@
           </div>
         </div>
 
-        <div class="filter filter--split">
-          <div class="filter filter--management">
-            <span class="filter__label">Gestión</span>
-            <div class="segment-control" id="management-filter" role="group" aria-label="Filtrar por tipo de gestión">
-              <button class="segment is-active" type="button" data-management="Todas" aria-pressed="true">Todas</button>
-              <button class="segment" type="button" data-management="Pública" aria-pressed="false">Públicas</button>
-              <button class="segment" type="button" data-management="Privada" aria-pressed="false">Privadas</button>
-            </div>
+        <div class="filter filter--management">
+          <span class="filter__label">Gestión</span>
+          <div class="segment-control" id="management-filter" role="group" aria-label="Filtrar por tipo de gestión">
+            <button class="segment is-active" type="button" data-management="Todas" aria-pressed="true">Todas</button>
+            <button class="segment" type="button" data-management="Pública" aria-pressed="false">Públicas</button>
+            <button class="segment" type="button" data-management="Privada" aria-pressed="false">Privadas</button>
           </div>
-          <label class="filter filter--type">
-            <span class="filter__label" for="type-filter">Tipo</span>
-            <span class="select-wrap">
-              <select id="type-filter" class="select-input">
-                <option value="Todos">Todos los tipos</option>
-                <option value="inicial">Jardín de infantes</option>
-                <option value="primaria">Escuela primaria</option>
-                <option value="secundaria">Escuela secundaria</option>
-                <option value="tecnica">Escuela técnica</option>
-                <option value="especial">Escuela especial</option>
-                <option value="adultos">Educación de adultos</option>
-                <option value="artistica">Escuela de arte</option>
-                <option value="universidad">Universidad</option>
-                <option value="superior">Instituto superior</option>
-                <option value="formacion">Formación profesional</option>
-              </select>
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5"/></svg>
-            </span>
-          </label>
+        </div>
+
+        <div class="filter filter--type">
+          <label class="filter__label" for="type-filter">Tipo</label>
+          <span class="select-wrap">
+            <select id="type-filter" class="select-input">
+              <option value="Todos">Todos los tipos</option>
+              <option value="especial">Educación Especial</option>
+              <option value="autogestionada">Escuela Autogestionada</option>
+              <option value="generativa">Escuela Generativa</option>
+              <option value="tecnica">Escuela Técnica</option>
+              <option value="adultos">Educación de Jóvenes y Adultos</option>
+              <option value="docente">Instituto de formación docente</option>
+              <option value="universidad">Universidades</option>
+              <option value="formacion">Formación profesional y oficios</option>
+              <option value="artistica">Escuela de Arte</option>
+            </select>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5"/></svg>
+          </span>
+        </div>
+
+        <div class="filter filter--type">
+          <label class="filter__label" for="orientation-filter">Orientación</label>
+          <span class="select-wrap">
+            <select id="orientation-filter" class="select-input">
+              <option value="Todas">Todas las orientaciones</option>
+              <option value="Ciencias naturales">Ciencias naturales</option>
+              <option value="Ciencias sociales y humanidades">Ciencias sociales y humanidades</option>
+              <option value="Economía y administración">Economía y administración</option>
+              <option value="Informática y programación">Informática y programación</option>
+              <option value="Turismo">Turismo</option>
+              <option value="Educación técnica">Educación técnica</option>
+              <option value="Agro y ambiente">Agro y ambiente</option>
+              <option value="Arte, diseño y comunicación">Arte, diseño y comunicación</option>
+              <option value="Educación física y deportes">Educación física y deportes</option>
+            </select>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5"/></svg>
+          </span>
         </div>
       </section>
 
@@ -158,6 +155,7 @@
 
       <footer class="sidebar__footer">
         <span>Fuentes: <a href="https://mapa.educacion.gob.ar/mapa-interactivo" target="_blank" rel="noopener noreferrer">Mapa Educativo Nacional</a> y sitios oficiales</span>
+        <span>Barrios: <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a> (ODbL)</span>
         <span>Actualizado 2026</span>
       </footer>
     </aside>
@@ -171,21 +169,14 @@
         <button class="map-menu-button" id="open-sidebar" type="button" aria-controls="sidebar" aria-expanded="false">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
           <span>Directorio</span>
-          <span class="map-menu-button__count" id="mobile-count">83</span>
+          <span class="map-menu-button__count" id="mobile-count">89</span>
         </button>
-
-        <div class="map-title-card">
-          <span class="map-title-card__pin" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><path d="M12 21s7-6.3 7-11.5a7 7 0 1 0-14 0C5 14.7 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
-          </span>
-          <div>
-            <strong>Villa Mercedes</strong>
-            <span>y Villa Reynolds · San Luis</span>
-          </div>
-        </div>
       </div>
 
       <div class="map-actions" aria-label="Controles del mapa">
+        <button class="map-action map-action--barrios" id="toggle-barrios" type="button" aria-pressed="true" aria-label="Ocultar barrios">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 3 7.5 12 12l9-4.5L12 3Z"/><path d="m3 12.5 9 4.5 9-4.5"/><path d="m3 17 9 4.5 9-4.5"/></svg>
+        </button>
         <button class="map-action" id="zoom-in" type="button" aria-label="Acercar mapa">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
         </button>
@@ -207,13 +198,15 @@
           <div class="legend__item"><span class="legend__emoji" style="--pin:#d99a2b">🧸</span>Inicial</div>
           <div class="legend__item"><span class="legend__emoji" style="--pin:#37805d">🏫</span>Primaria</div>
           <div class="legend__item"><span class="legend__emoji" style="--pin:#356e9e">🎓</span>Secundaria</div>
-          <div class="legend__item"><span class="legend__emoji" style="--pin:#c0653a">⚙️</span>Técnica</div>
           <div class="legend__item"><span class="legend__emoji" style="--pin:#7a62b8">💙</span>Especial</div>
+          <div class="legend__item"><span class="legend__emoji" style="--pin:#2f7d6b">🌿</span>Autogestionada</div>
+          <div class="legend__item"><span class="legend__emoji" style="--pin:#9a6b3f">🎒</span>Generativa</div>
+          <div class="legend__item"><span class="legend__emoji" style="--pin:#c0653a">⚙️</span>Técnica</div>
           <div class="legend__item"><span class="legend__emoji" style="--pin:#b45e6a">📚</span>Adultos</div>
-          <div class="legend__item"><span class="legend__emoji" style="--pin:#a45f9a">🎭</span>Arte</div>
+          <div class="legend__item"><span class="legend__emoji" style="--pin:#1f7a78">📖</span>Docente</div>
           <div class="legend__item"><span class="legend__emoji" style="--pin:#5c4b8a">🏛️</span>Universidad</div>
-          <div class="legend__item"><span class="legend__emoji" style="--pin:#1f7a78">📖</span>Superior</div>
-          <div class="legend__item"><span class="legend__emoji" style="--pin:#6b7d3c">🛠️</span>Formación profesional</div>
+          <div class="legend__item"><span class="legend__emoji" style="--pin:#6b7d3c">🛠️</span>Oficios</div>
+          <div class="legend__item"><span class="legend__emoji" style="--pin:#a45f9a">🎭</span>Arte</div>
         </div>
       </div>
 
