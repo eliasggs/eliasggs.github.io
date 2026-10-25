@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="theme-color" content="#153f36">
-  <meta name="description" content="Mapa interactivo de escuelas e instituciones educativas de Villa Mercedes, San Luis, Argentina.">
-  <title>Mapa educativo · Villa Mercedes</title>
+  <meta name="description" content="Mapa interactivo de escuelas, institutos y universidades de Villa Mercedes y Villa Reynolds, San Luis, Argentina.">
+  <title>Mapa educativo · Villa Mercedes y Villa Reynolds</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%23153f36'/%3E%3Cpath d='M50 83s24-21.6 24-39.6a24 24 0 1 0-48 0C26 61.4 50 83 50 83Z' fill='%23dce9bd'/%3E%3Ccircle cx='50' cy='42' r='9' fill='%23153f36'/%3E%3C/svg%3E">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -41,13 +41,15 @@
           </button>
         </div>
 
-        <p class="hero__intro">Escuelas e instituciones educativas de la ciudad, en un solo mapa.</p>
+        <p class="hero__intro">Escuelas, institutos y universidades de Villa Mercedes y Villa Reynolds, en un solo mapa.</p>
 
         <div class="location-pill">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.3 7-11.5a7 7 0 1 0-14 0C5 14.7 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
-          <span>Villa Mercedes, San Luis</span>
+          <span>Villa Mercedes</span>
           <span class="location-pill__dot" aria-hidden="true"></span>
-          <span>Argentina</span>
+          <span>Villa Reynolds</span>
+          <span class="location-pill__dot" aria-hidden="true"></span>
+          <span>San Luis</span>
         </div>
 
         <div class="search-wrap">
@@ -69,6 +71,17 @@
       </header>
 
       <section class="filters" aria-label="Filtros del directorio">
+        <div class="filter filter--zone">
+          <div class="zone-line">
+            <span class="filter__label">Zona</span>
+            <div class="segment-control" id="locality-filter" role="group" aria-label="Filtrar por localidad">
+              <button class="segment is-active" type="button" data-locality="Todas" aria-pressed="true">Todas</button>
+              <button class="segment" type="button" data-locality="Villa Mercedes" aria-pressed="false">Villa Mercedes</button>
+              <button class="segment" type="button" data-locality="Villa Reynolds" aria-pressed="false">Villa Reynolds</button>
+            </div>
+          </div>
+        </div>
+
         <div class="filter">
           <div class="filter__heading">
             <span class="filter__label">Nivel educativo</span>
@@ -104,6 +117,7 @@
                 <option value="especial">Escuela especial</option>
                 <option value="adultos">Educación de adultos</option>
                 <option value="artistica">Escuela de arte</option>
+                <option value="universidad">Universidad</option>
                 <option value="superior">Instituto superior</option>
                 <option value="formacion">Formación profesional</option>
               </select>
@@ -143,8 +157,8 @@
       </div>
 
       <footer class="sidebar__footer">
-        <span>Fuente: <a href="https://mapa.educacion.gob.ar/mapa-interactivo" target="_blank" rel="noopener noreferrer">Mapa Educativo Nacional</a></span>
-        <span>Padrón enero 2025</span>
+        <span>Fuentes: <a href="https://mapa.educacion.gob.ar/mapa-interactivo" target="_blank" rel="noopener noreferrer">Mapa Educativo Nacional</a> y sitios oficiales</span>
+        <span>Actualizado 2026</span>
       </footer>
     </aside>
 
@@ -166,7 +180,7 @@
           </span>
           <div>
             <strong>Villa Mercedes</strong>
-            <span>San Luis · Argentina</span>
+            <span>y Villa Reynolds · San Luis</span>
           </div>
         </div>
       </div>
@@ -197,7 +211,8 @@
           <div class="legend__item"><span class="legend__emoji" style="--pin:#7a62b8">💙</span>Especial</div>
           <div class="legend__item"><span class="legend__emoji" style="--pin:#b45e6a">📚</span>Adultos</div>
           <div class="legend__item"><span class="legend__emoji" style="--pin:#a45f9a">🎭</span>Arte</div>
-          <div class="legend__item"><span class="legend__emoji" style="--pin:#1f7a78">🏛️</span>Superior</div>
+          <div class="legend__item"><span class="legend__emoji" style="--pin:#5c4b8a">🏛️</span>Universidad</div>
+          <div class="legend__item"><span class="legend__emoji" style="--pin:#1f7a78">📖</span>Superior</div>
           <div class="legend__item"><span class="legend__emoji" style="--pin:#6b7d3c">🛠️</span>Formación profesional</div>
         </div>
       </div>
