@@ -204,6 +204,9 @@
     el.legendToggle = document.getElementById("legend-toggle");
     el.legendPanel = document.getElementById("legend-panel");
     el.mapError = document.getElementById("map-error");
+    el.openCredits = document.getElementById("open-credits");
+    el.creditsDialog = document.getElementById("credits-dialog");
+    el.closeCredits = document.getElementById("close-credits");
   }
 
   function initMap() {
@@ -1009,8 +1012,16 @@
     });
 
     el.openSidebar.addEventListener("click", openSidebar);
-    el.closeSidebar.addEventListener("click", function () { closeSidebar(true); });
+    el.closeSidebar.addEventListener("click", toggleSidebar);
     el.backdrop.addEventListener("click", function () { closeSidebar(true); });
+
+    if (el.openCredits && el.creditsDialog) {
+      el.openCredits.addEventListener("click", openCredits);
+      el.closeCredits.addEventListener("click", closeCredits);
+      el.creditsDialog.addEventListener("click", function (event) {
+        if (event.target === el.creditsDialog) closeCredits();
+      });
+    }
 
     el.zoomIn.addEventListener("click", function () { if (map) map.zoomIn(); });
     el.zoomOut.addEventListener("click", function () { if (map) map.zoomOut(); });
@@ -1031,6 +1042,8 @@
     });
 
     document.addEventListener("keydown", function (event) {
+      if (el.creditsDialog && el.creditsDialog.open) return;
+
       const tag = event.target && event.target.tagName;
       const isTyping = tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT" || (event.target && event.target.isContentEditable);
 
@@ -1057,7 +1070,7 @@
       if (!mobileMedia.matches) {
         el.sidebar.classList.remove("is-open");
         el.backdrop.hidden = true;
-        el.openSidebar.setAttribute("aria-expanded", "false");
+        updateSidebarToggle(false);
         document.body.classList.remove("sidebar-open");
       }
     }, 160));
@@ -1067,7 +1080,7 @@
         if (!event.matches) {
           el.sidebar.classList.remove("is-open");
           el.backdrop.hidden = true;
-          el.openSidebar.setAttribute("aria-expanded", "false");
+          updateSidebarToggle(false);
           document.body.classList.remove("sidebar-open");
         }
         if (map) map.invalidateSize();
@@ -1075,22 +1088,59 @@
     }
   }
 
+  function openCredits() {
+    if (!el.creditsDialog || el.creditsDialog.open) return;
+    if (typeof el.creditsDialog.showModal === "function") {
+      el.creditsDialog.showModal();
+    } else {
+      el.creditsDialog.setAttribute("open", "");
+    }
+  }
+
+  function closeCredits() {
+    if (!el.creditsDialog) return;
+    if (typeof el.creditsDialog.close === "function" && el.creditsDialog.open) {
+      el.creditsDialog.close();
+    } else {
+      el.creditsDialog.removeAttribute("open");
+    }
+  }
+
   function openSidebar() {
     el.sidebar.classList.add("is-open");
     el.backdrop.hidden = false;
-    el.openSidebar.setAttribute("aria-expanded", "true");
+    updateSidebarToggle(true);
     document.body.classList.add("sidebar-open");
     window.setTimeout(function () {
-      if (el.closeSidebar) el.closeSidebar.focus({ preventScroll: true });
+      if (el.creditsDialog && el.creditsDialog.open) return;
+      if (el.sidebar) el.sidebar.focus({ preventScroll: true });
     }, 320);
   }
 
   function closeSidebar(returnFocus) {
     el.sidebar.classList.remove("is-open");
     el.backdrop.hidden = true;
-    el.openSidebar.setAttribute("aria-expanded", "false");
+    updateSidebarToggle(false);
     document.body.classList.remove("sidebar-open");
     if (returnFocus) el.openSidebar.focus({ preventScroll: true });
+  }
+
+  function toggleSidebar() {
+    if (el.sidebar.classList.contains("is-open")) {
+      closeSidebar(false);
+      el.closeSidebar.focus({ preventScroll: true });
+    } else {
+      openSidebar();
+    }
+  }
+
+  function updateSidebarToggle(open) {
+    if (el.openSidebar) el.openSidebar.setAttribute("aria-expanded", String(open));
+    if (el.closeSidebar) {
+      el.closeSidebar.setAttribute("aria-expanded", String(open));
+      el.closeSidebar.setAttribute("aria-label", open ? "Cerrar directorio" : "Abrir directorio");
+      el.closeSidebar.setAttribute("title", open ? "Cerrar directorio" : "Abrir directorio");
+    }
   }
 
   function debounce(fn, wait) {

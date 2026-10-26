@@ -21,7 +21,7 @@
   <a class="skip-link" href="#school-list">Saltar al listado de escuelas</a>
 
   <div class="app">
-    <aside class="sidebar" id="sidebar" aria-label="Directorio de escuelas">
+    <aside class="sidebar" id="sidebar" tabindex="-1" aria-label="Directorio de escuelas">
       <header class="sidebar__hero">
         <div class="hero__top">
           <a class="brand" href="./" aria-label="Inicio, mapa educativo de Villa Mercedes">
@@ -36,8 +36,8 @@
               <span class="brand__name">Villa Mercedes</span>
             </span>
           </a>
-          <button class="icon-button sidebar__close" id="close-sidebar" type="button" aria-label="Cerrar directorio">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+          <button class="icon-button sidebar__help" id="open-credits" type="button" aria-label="Ver fuentes, fecha de actualización y créditos" aria-haspopup="dialog" title="Fuentes y créditos">
+            <span aria-hidden="true">?</span>
           </button>
         </div>
 
@@ -62,10 +62,10 @@
       </header>
 
       <section class="filters" aria-label="Filtros del directorio">
-        <div class="filter">
-          <div class="filter__heading">
+        <div class="filter filter--level">
+          <div class="filter__side">
             <span class="filter__label">Nivel educativo</span>
-            <button class="text-button" id="clear-filters" type="button">Limpiar filtros</button>
+            <button class="text-button filter__clear" id="clear-filters" type="button">Limpiar filtros</button>
           </div>
           <div class="chip-row" id="level-filter" role="group" aria-label="Filtrar por nivel educativo">
             <button class="chip is-active" type="button" data-level="Todos" aria-pressed="true">Todos</button>
@@ -76,16 +76,16 @@
           </div>
         </div>
 
-        <div class="filter-grid">
-          <div class="filter filter--management">
-            <span class="filter__label">Gestión</span>
-            <div class="segment-control" id="management-filter" role="group" aria-label="Filtrar por tipo de gestión">
-              <button class="segment is-active" type="button" data-management="Todas" aria-pressed="true">Todas</button>
-              <button class="segment" type="button" data-management="Pública" aria-pressed="false">Públicas</button>
-              <button class="segment" type="button" data-management="Privada" aria-pressed="false">Privadas</button>
-            </div>
+        <div class="filter filter--management">
+          <span class="filter__label">Gestión</span>
+          <div class="segment-control" id="management-filter" role="group" aria-label="Filtrar por tipo de gestión">
+            <button class="segment is-active" type="button" data-management="Todas" aria-pressed="true">Todas</button>
+            <button class="segment" type="button" data-management="Pública" aria-pressed="false">Públicas</button>
+            <button class="segment" type="button" data-management="Privada" aria-pressed="false">Privadas</button>
           </div>
+        </div>
 
+        <div class="filter-grid">
           <div class="filter filter--type">
             <label class="filter__label" for="type-filter">Tipo</label>
             <span class="select-wrap">
@@ -156,16 +156,53 @@
       </div>
 
       <footer class="sidebar__footer">
-        <div class="sidebar__logos">
-          <img class="sidebar__logo sidebar__logo--muni" src="logos/logo_muni.png" alt="Municipalidad de Villa Mercedes" width="37" height="58">
-        </div>
-        <div class="sidebar__credits">
-          <span>Fuentes: <a href="https://mapa.educacion.gob.ar/mapa-interactivo" target="_blank" rel="noopener noreferrer">Mapa Educativo Nacional</a> y sitios oficiales</span>
-          <span>Barrios: <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a> (ODbL)</span>
-          <span>Actualizado 2026</span>
-        </div>
+        <img class="sidebar__logo sidebar__logo--muni" src="logos/logo_muni.png" alt="Municipalidad de Villa Mercedes" width="487" height="55">
       </footer>
     </aside>
+
+    <button class="sidebar-handle" id="close-sidebar" type="button" aria-label="Abrir directorio" aria-controls="sidebar" aria-expanded="false" title="Abrir directorio">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
+    </button>
+
+    <dialog class="credits-dialog" id="credits-dialog" aria-labelledby="credits-title">
+      <div class="credits-dialog__top">
+        <span class="credits-dialog__icon" aria-hidden="true">?</span>
+        <div class="credits-dialog__heading">
+          <p class="credits-dialog__eyebrow">Mapa educativo</p>
+          <h2 class="credits-dialog__title" id="credits-title">Fuentes y créditos</h2>
+        </div>
+        <button class="credits-dialog__close" id="close-credits" type="button" aria-label="Cerrar fuentes y créditos">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </div>
+
+      <div class="credits-dialog__body">
+        <dl class="credits-list">
+          <div class="credits-list__row">
+            <dt>Fuentes</dt>
+            <dd><a href="https://mapa.educacion.gob.ar/mapa-interactivo" target="_blank" rel="noopener noreferrer">Mapa Educativo Nacional</a> y sitios oficiales</dd>
+          </div>
+          <div class="credits-list__row">
+            <dt>Barrios</dt>
+            <dd><a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a> (ODbL)</dd>
+          </div>
+          <div class="credits-list__row">
+            <dt>Actualizado</dt>
+            <dd>2026</dd>
+          </div>
+        </dl>
+
+        <div class="credits-dev">
+          <p class="credits-dev__eyebrow">Desarrollado por</p>
+          <a class="credits-dev__name" href="mailto:eliasggs@gmail.com">Elias Gabriel Gonzalez Saez</a>
+          <p class="credits-dev__text">para la coordinación de relaciones educativas de Villa Mercedes.</p>
+          <a class="credits-dev__mail" href="mailto:eliasggs@gmail.com">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m4 7 8 6 8-6"/></svg>
+            eliasggs@gmail.com
+          </a>
+        </div>
+      </div>
+    </dialog>
 
     <div class="sidebar-backdrop" id="sidebar-backdrop" hidden></div>
 
@@ -175,8 +212,7 @@
       <div class="map-topbar">
         <button class="map-menu-button" id="open-sidebar" type="button" aria-controls="sidebar" aria-expanded="false">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
-          <span>Directorio</span>
-          <span class="map-menu-button__count" id="mobile-count">89</span>
+          <span class="map-menu-button__label">Instituciones visibles (<span class="map-menu-button__count" id="mobile-count">89</span>)</span>
         </button>
       </div>
 
