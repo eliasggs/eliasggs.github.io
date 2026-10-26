@@ -679,7 +679,7 @@
         marker = createMarker(school);
         markersById.set(school.id, marker);
       }
-      clusterLayer.addLayer(marker);
+      clusterLayer.addLayers(marker);
     });
 
     updateMarkerSelection();
