@@ -748,6 +748,8 @@ body.sidebar-open .sidebar-handle:hover svg {
   background: transparent;
   text-align: left;
   cursor: pointer;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 112px;
   transition: background 150ms ease, border-color 150ms ease, box-shadow 180ms ease, transform 180ms ease;
 }
 
@@ -767,7 +769,7 @@ body.sidebar-open .sidebar-handle:hover svg {
   position: absolute;
   top: 14px;
   bottom: 14px;
-  left: -1px;
+  left: 0;
   width: 3px;
   border-radius: 0 3px 3px 0;
   background: var(--pin, var(--forest));
@@ -1701,9 +1703,22 @@ body.sidebar-open .sidebar-handle:hover svg {
   position: relative;
   width: 48px;
   height: 58px;
-  filter: drop-shadow(0 6px 5px rgba(74, 38, 16, 0.26));
-  transition: transform 180ms var(--ease), filter 180ms ease;
+  transition: transform 180ms var(--ease);
   transform-origin: 50% 100%;
+}
+
+/* Sombra sin filter: los filtros por marcador obligan a rasterizar cada pin
+   por separado en cada frame de zoom/pan. */
+.school-pin::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 19px;
+  height: 6px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(74, 38, 16, 0.26) 0%, rgba(74, 38, 16, 0) 72%);
+  transform: translateX(-50%);
 }
 
 .school-pin__body {
@@ -1726,30 +1741,15 @@ body.sidebar-open .sidebar-handle:hover svg {
   font-size: 18px;
   line-height: 1;
   transform: rotate(45deg) translateY(-1px);
-  filter: saturate(1.2);
-}
-
-.school-pin__shadow {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  width: 19px;
-  height: 6px;
-  border-radius: 50%;
-  background: rgba(74, 38, 16, 0.22);
-  filter: blur(2px);
-  transform: translateX(-50%);
 }
 
 .school-pin:hover {
   z-index: 1000;
-  filter: drop-shadow(0 8px 7px rgba(74, 38, 16, 0.3));
   transform: scale(1.1);
 }
 
 .school-pin.is-selected {
   z-index: 1001;
-  filter: drop-shadow(0 8px 8px rgba(74, 38, 16, 0.32));
   transform: scale(1.14);
 }
 
@@ -2049,6 +2049,27 @@ body.sidebar-open .sidebar-handle:hover svg {
 
   .sidebar-handle {
     display: grid;
+  }
+
+  /* El blur de fondo se recalcula sobre el mapa en cada frame de pan/zoom y
+     detrás del drawer mientras se scrollea la lista. En móvil se cambia por
+     fondos casi opacos, que se ven igual y cuestan mucho menos. */
+  .map-logo,
+  .map-menu-button,
+  .map-action,
+  .legend__toggle,
+  .legend__panel,
+  .leaflet-control-attribution,
+  .sidebar-backdrop,
+  .credits-dialog::backdrop {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+
+  /* Con el directorio abierto la lista tapa el mapa: no hace falta componer
+     los marcadores que quedan detrás. */
+  body.sidebar-open .leaflet-marker-pane {
+    visibility: hidden;
   }
 
   .sidebar__hero {

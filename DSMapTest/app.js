@@ -227,7 +227,9 @@
 
       L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
         maxZoom: 19,
-        detectRetina: true,
+        // Las pantallas táctiles priorizan fluidez sobre nitidez: las teselas
+        // retina cuadruplican el trabajo de descarga y decodificación.
+        detectRetina: !mobileMedia.matches,
         attribution:
           '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a>'
       }).addTo(map);
@@ -697,7 +699,6 @@
           '<div class="school-pin__body">' +
             '<span class="school-pin__emoji" aria-hidden="true">' + meta.emoji + "</span>" +
           "</div>" +
-          '<span class="school-pin__shadow"></span>' +
         "</div>",
       iconSize: [48, 58],
       iconAnchor: [24, 56],
