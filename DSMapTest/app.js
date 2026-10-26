@@ -18,7 +18,7 @@
     secundaria: { emoji: "🎓", color: "#356e9e", label: "Secundaria" },
     especial: { emoji: "💙", color: "#7a62b8", label: "Educación Especial" },
     autogestionada: { emoji: "🌿", color: "#2f7d6b", label: "Escuela Autogestionada" },
-    generativa: { emoji: "🎒", color: "#9a6b3f", label: "Escuela Generativa" },
+    generativa: { emoji: "🎒", color: "#fec925", ink: "#7a5200", label: "Escuela Generativa" },
     tecnica: { emoji: "⚙️", color: "#c0653a", label: "Escuela Técnica" },
     adultos: { emoji: "📚", color: "#b45e6a", label: "Educación de Jóvenes y Adultos" },
     docente: { emoji: "📖", color: "#1f7a78", label: "Instituto de formación docente" },
@@ -42,7 +42,7 @@
     orientation: "Todas",
     selectedId: null,
     dataLoaded: false,
-    barrios: false
+    barrios: true
   };
 
   let map = null;
@@ -167,7 +167,7 @@
   }
 
   function getMeta(school) {
-    return TYPE_META[school.category] || { emoji: "📍", color: "#153f36", label: "Institución" };
+    return TYPE_META[school.category] || { emoji: "📍", color: "#b8430a", label: "Institución" };
   }
 
   /* Initialization ---------------------------------------------------------- */
@@ -277,10 +277,12 @@
     const dominant = Object.keys(counts).sort(function (a, b) {
       return counts[b] - counts[a];
     })[0];
-    const color = dominant && TYPE_META[dominant] ? TYPE_META[dominant].color : "#153f36";
+    const meta = dominant && TYPE_META[dominant] ? TYPE_META[dominant] : null;
+    const color = meta ? meta.color : "#b8430a";
+    const ink = meta && meta.ink ? ";--cluster-ink:" + meta.ink : "";
     const count = children.length;
     return L.divIcon({
-      html: '<div style="--cluster-color:' + color + '"><span>' + count + "</span></div>",
+      html: '<div style="--cluster-color:' + color + ink + '"><span>' + count + "</span></div>",
       className: "marker-cluster school-cluster",
       iconSize: L.point(43, 43)
     });
@@ -578,7 +580,7 @@
     return (
       '<article class="school-card" data-id="' + escapeAttr(school.id) + '" tabindex="0" role="button" ' +
         'aria-label="' + escapeAttr(school.name + ", " + typeLabel + ". Ver en el mapa") + '" ' +
-        'style="--pin:' + escapeAttr(meta.color) + '">' +
+        'style="--pin:' + escapeAttr(meta.color) + (meta.ink ? ";--pin-ink:" + escapeAttr(meta.ink) : "") + '">' +
         '<div class="school-card__icon" aria-hidden="true">' + meta.emoji + "</div>" +
         '<div class="school-card__body">' +
           '<h3 class="school-card__name" title="' + escapeAttr(school.name) + '">' + escapeHTML(school.name) + "</h3>" +
@@ -688,7 +690,7 @@
     const icon = L.divIcon({
       className: "school-marker",
       html:
-        '<div class="school-pin" style="--pin:' + escapeAttr(meta.color) + '">' +
+        '<div class="school-pin" style="--pin:' + escapeAttr(meta.color) + (meta.ink ? ";--pin-ink:" + escapeAttr(meta.ink) : "") + '">' +
           '<div class="school-pin__body">' +
             '<span class="school-pin__emoji" aria-hidden="true">' + meta.emoji + "</span>" +
           "</div>" +
@@ -780,7 +782,7 @@
       : "";
 
     return (
-      '<div class="popup" style="--pin:' + escapeAttr(meta.color) + '">' +
+      '<div class="popup" style="--pin:' + escapeAttr(meta.color) + (meta.ink ? ";--pin-ink:" + escapeAttr(meta.ink) : "") + '">' +
         '<div class="popup__top">' +
           '<div class="popup__icon" aria-hidden="true">' + meta.emoji + "</div>" +
           "<div>" +
