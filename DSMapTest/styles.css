@@ -23,7 +23,7 @@
   --forest-light: #ffd9b3;
   --gold: var(--accent);
   --danger: var(--alert);
-  --sidebar-width: 418px;
+  --sidebar-width: 350px;
   --radius-lg: 22px;
   --radius-md: 15px;
   --radius-sm: 10px;
@@ -380,13 +380,32 @@ svg {
 
 .filters {
   flex: 0 0 auto;
-  padding: 15px 24px 13px;
+  padding: 12px 20px 11px;
   border-bottom: 1px solid rgba(74, 38, 16, 0.09);
   background: #fdf3e7;
 }
 
 .filter + .filter {
-  margin-top: 12px;
+  margin-top: 9px;
+}
+
+.filter-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 9px 10px;
+  margin-top: 9px;
+}
+
+.filter-grid .filter {
+  min-width: 0;
+}
+
+.filter-grid .filter + .filter {
+  margin-top: 0;
+}
+
+.filter--management {
+  grid-column: 1 / -1;
 }
 
 .filter__heading {
@@ -394,14 +413,14 @@ svg {
   align-items: center;
   justify-content: space-between;
   gap: 10px;
-  margin-bottom: 8px;
+  margin-bottom: 7px;
 }
 
 .filter__label {
   display: block;
-  margin-bottom: 7px;
+  margin-bottom: 5px;
   color: #806354;
-  font-size: 9.5px;
+  font-size: 9px;
   font-weight: 700;
   letter-spacing: 0.13em;
   text-transform: uppercase;
@@ -431,16 +450,16 @@ svg {
 .chip-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 5px;
 }
 
 .chip {
-  padding: 6px 11px;
+  padding: 5px 10px;
   border: 1px solid #eedac7;
   border-radius: 999px;
   background: #fffaf4;
   color: #6b5040;
-  font-size: 11.5px;
+  font-size: 11px;
   font-weight: 600;
   line-height: 1.25;
   transition: background 160ms ease, color 160ms ease, border-color 160ms ease, transform 160ms ease;
@@ -466,20 +485,20 @@ svg {
 .segment-control {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  padding: 3px;
+  padding: 2px;
   border: 1px solid #ead9c7;
-  border-radius: 11px;
+  border-radius: 10px;
   background: #f6e6d5;
 }
 
 .segment {
   min-width: 0;
-  padding: 5px 2px;
+  padding: 4px 2px;
   border: 0;
   border-radius: 8px;
   background: transparent;
   color: #8a6c5b;
-  font-size: 10.5px;
+  font-size: 10px;
   font-weight: 600;
   white-space: nowrap;
   transition: background 150ms ease, color 150ms ease, box-shadow 150ms ease;
@@ -507,9 +526,9 @@ svg {
 .select-wrap > svg {
   position: absolute;
   top: 50%;
-  right: 10px;
-  width: 13px;
-  height: 13px;
+  right: 9px;
+  width: 12px;
+  height: 12px;
   pointer-events: none;
   transform: translateY(-50%);
   color: #9b7e6c;
@@ -517,16 +536,17 @@ svg {
 
 .select-input {
   width: 100%;
-  height: 34px;
-  padding: 0 28px 0 10px;
+  height: 31px;
+  padding: 0 25px 0 9px;
   appearance: none;
   border: 1px solid #ead9c7;
-  border-radius: 10px;
+  border-radius: 9px;
   outline: 0;
   background: #fffdf9;
   color: #654936;
-  font-size: 10.5px;
+  font-size: 10px;
   font-weight: 600;
+  text-overflow: ellipsis;
   transition: border-color 150ms ease, box-shadow 150ms ease;
 }
 
@@ -589,7 +609,7 @@ svg {
   min-height: 0;
   overflow-x: hidden;
   overflow-y: auto;
-  padding: 2px 14px 18px;
+  padding: 2px 5px 5px;
   scrollbar-width: thin;
   scrollbar-color: #dfc7b1 transparent;
   overscroll-behavior: contain;
@@ -928,11 +948,6 @@ svg {
   height: 34px;
 }
 
-.sidebar__logo--rel {
-  height: 52px;
-  margin-left: auto;
-}
-
 .sidebar__credits {
   display: flex;
   flex-wrap: wrap;
@@ -965,6 +980,38 @@ svg {
 
 .map-topbar > * {
   pointer-events: auto;
+}
+
+.map-logo {
+  position: absolute;
+  z-index: 600;
+  top: 18px;
+  right: 18px;
+  display: block;
+  padding: 6px 9px;
+  border: 1px solid rgba(74, 38, 16, 0.1);
+  border-radius: 12px;
+  background: rgba(255, 253, 248, 0.94);
+  box-shadow: 0 5px 18px rgba(94, 46, 18, 0.13);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  transition: transform 150ms ease, box-shadow 150ms ease, background 150ms ease;
+}
+
+.map-logo:hover {
+  background: #fff;
+  box-shadow: 0 7px 22px rgba(94, 46, 18, 0.17);
+  transform: translateY(-1px);
+}
+
+.map-logo:active {
+  transform: translateY(0);
+}
+
+.map-logo img {
+  display: block;
+  width: auto;
+  height: 38px;
 }
 
 .map-menu-button {
@@ -1727,6 +1774,16 @@ svg {
     top: max(12px, env(safe-area-inset-top));
     left: 12px;
     gap: 7px;
+  }
+
+  .map-logo {
+    top: max(12px, env(safe-area-inset-top));
+    right: 12px;
+    padding: 4px 7px;
+  }
+
+  .map-logo img {
+    height: 28px;
   }
 
   .search-shortcut {

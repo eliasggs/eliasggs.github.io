@@ -42,7 +42,7 @@
     orientation: "Todas",
     selectedId: null,
     dataLoaded: false,
-    barrios: true
+    barrios: false
   };
 
   let map = null;
