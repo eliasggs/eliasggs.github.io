@@ -221,6 +221,9 @@
       </a>
 
       <div class="map-actions" aria-label="Controles del mapa">
+        <button class="map-action map-action--location" id="locate-me" type="button" aria-pressed="false" aria-label="Mostrar mi ubicación" title="Mostrar mi ubicación">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.8v3.1M12 18.1v3.1M2.8 12h3.1M18.1 12h3.1"/></svg>
+        </button>
         <button class="map-action map-action--barrios" id="toggle-barrios" type="button" aria-pressed="true" aria-label="Ocultar barrios">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 3 7.5 12 12l9-4.5L12 3Z"/><path d="m3 12.5 9 4.5 9-4.5"/><path d="m3 17 9 4.5 9-4.5"/></svg>
         </button>
@@ -234,6 +237,8 @@
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M20 15v5h-5M4 4l5.5 5.5M20 20l-5.5-5.5"/></svg>
         </button>
       </div>
+
+      <p class="map-toast" id="map-toast" role="status" aria-live="polite"></p>
 
       <div class="legend" id="legend">
         <button class="legend__toggle" id="legend-toggle" type="button" aria-expanded="false" aria-controls="legend-panel">

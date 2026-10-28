@@ -31,6 +31,11 @@
   const OFFICIAL_RECORD = "https://mapa.educacion.gob.ar/legajo/";
   const BARRIOS_URL = "./barrios.geojson";
   const BARRIO_LEVEL_LABEL = { 9: "Barrio", 10: "Barrio", 11: "Complejo habitacional" };
+  const LOCATION_ZOOM = 16;
+  const LOCATION_TIMEOUT = 12000;
+  const PIN_DROP_MS = 620;
+  const PIN_LINGER_MS = 280;
+  const PIN_FADE_MS = 260;
 
   const state = {
     schools: [],
@@ -57,6 +62,15 @@
   let barriosUnavailable = false;
   const barrioCounts = new Map();
   const barrioFeatures = new Map();
+
+  let userMarker = null;
+  let userCircle = null;
+  let locatePending = false;
+  let toastTimer = null;
+  let dropPinMarker = null;
+  let locationTimers = [];
+  let locationActive = false;
+  let locationToken = 0;
 
   const el = {};
   const mobileMedia = window.matchMedia("(max-width: 900px)");
@@ -199,6 +213,8 @@
     el.zoomIn = document.getElementById("zoom-in");
     el.zoomOut = document.getElementById("zoom-out");
     el.resetView = document.getElementById("reset-view");
+    el.locateMe = document.getElementById("locate-me");
+    el.mapToast = document.getElementById("map-toast");
     el.barriosToggle = document.getElementById("toggle-barrios");
     el.legend = document.getElementById("legend");
     el.legendToggle = document.getElementById("legend-toggle");
@@ -243,6 +259,7 @@
       map.createPane("barrioPane").style.zIndex = 350;
       map.createPane("barrioLabelPane").style.zIndex = 450;
       map.getPane("barrioLabelPane").style.pointerEvents = "none";
+      map.createPane("userLocationPane").style.zIndex = 640;
 
       usesCluster = typeof L.markerClusterGroup === "function";
       if (usesCluster) {
@@ -481,6 +498,236 @@
     const zoom = map.getZoom();
     const bucket = zoom < 13 ? "off" : zoom < 14.5 ? "far" : zoom < 15.5 ? "mid" : "near";
     map.getContainer().setAttribute("data-barrio-zoom", bucket);
+  }
+
+  /* Mi ubicación ------------------------------------------------------------ */
+
+  function toggleUserLocation() {
+    if (!mapReady || !map) return;
+
+    if (locationActive) {
+      clearUserLocation();
+      showMapToast("Tu ubicación ya no se muestra en el mapa.", 4000);
+      return;
+    }
+
+    if (locatePending) return;
+
+    if (!navigator.geolocation) {
+      showMapToast("Tu navegador no permite compartir la ubicación.", 6000);
+      return;
+    }
+
+    if (window.isSecureContext === false) {
+      showMapToast("Para usar tu ubicación, abrí el mapa con https:// o desde localhost.", 7000);
+      return;
+    }
+
+    locatePending = true;
+    setLocatePending(true);
+    showMapToast("Buscando tu ubicación…", 0);
+
+    navigator.geolocation.getCurrentPosition(handleLocationFound, handleLocationError, {
+      enableHighAccuracy: true,
+      timeout: LOCATION_TIMEOUT,
+      maximumAge: 30000
+    });
+  }
+
+  function handleLocationFound(position) {
+    locatePending = false;
+    setLocatePending(false);
+    if (!mapReady || !map) return;
+
+    const target = L.latLng(position.coords.latitude, position.coords.longitude);
+    const accuracy = Number(position.coords.accuracy);
+
+    clearUserLocation();
+    locationActive = true;
+    const token = locationToken;
+    setLocationPressed(true);
+
+    let revealed = false;
+    const reveal = function () {
+      if (revealed || token !== locationToken) return;
+      revealed = true;
+      dropLocationPin(target, accuracy, token);
+    };
+
+    const needsMove = map.getZoom() < LOCATION_ZOOM || map.getCenter().distanceTo(target) > 2;
+    if (!needsMove) {
+      reveal();
+      return;
+    }
+
+    if (map.getZoom() < LOCATION_ZOOM) {
+      map.flyTo(target, LOCATION_ZOOM, { animate: true, duration: 0.8 });
+    } else {
+      map.panTo(target, { animate: true, duration: 0.45 });
+    }
+
+    map.once("moveend", reveal);
+    // Respaldo por si el mapa ya estaba en ese encuadre y no dispara moveend.
+    setLocationTimeout(reveal, 1100);
+  }
+
+  /* Secuencia: el pin cae, aparece el punto azul y el pin se desvanece. */
+  function dropLocationPin(target, accuracy, token) {
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const scale = reduced ? 0.1 : 1;
+    const dotAt = Math.round(PIN_DROP_MS * scale);
+    const leaveAt = Math.round((PIN_DROP_MS + PIN_LINGER_MS) * scale);
+    const removeAt = Math.round((PIN_DROP_MS + PIN_LINGER_MS + PIN_FADE_MS) * scale);
+
+    dropPinMarker = L.marker(target, {
+      pane: "userLocationPane",
+      interactive: false,
+      keyboard: false,
+      zIndexOffset: 1400,
+      icon: L.divIcon({
+        className: "drop-pin-icon",
+        html: '<span class="drop-pin" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 22s7.5-6.9 7.5-12A7.5 7.5 0 1 0 4.5 10c0 5.1 7.5 12 7.5 12Z" fill="currentColor"/><circle cx="12" cy="9.8" r="2.6" fill="#fff"/></svg></span>',
+        iconSize: [30, 38],
+        iconAnchor: [15, 38]
+      })
+    }).addTo(map);
+
+    setLocationTimeout(function () {
+      if (token !== locationToken) return;
+      showUserDot(target, accuracy);
+    }, dotAt);
+
+    setLocationTimeout(function () {
+      if (token !== locationToken) return;
+      const node = dropPinMarker && dropPinMarker.getElement();
+      if (node) node.classList.add("is-leaving");
+    }, leaveAt);
+
+    setLocationTimeout(function () {
+      if (token !== locationToken) return;
+      if (dropPinMarker) {
+        map.removeLayer(dropPinMarker);
+        dropPinMarker = null;
+      }
+    }, removeAt);
+  }
+
+  function showUserDot(target, accuracy) {
+    if (accuracy > 0) {
+      userCircle = L.circle(target, {
+        pane: "userLocationPane",
+        className: "user-location__accuracy",
+        radius: accuracy,
+        color: "#1d6fd1",
+        weight: 1,
+        opacity: 0.5,
+        fillColor: "#1d6fd1",
+        fillOpacity: 0.1,
+        interactive: false
+      }).addTo(map);
+    }
+
+    userMarker = L.marker(target, {
+      pane: "userLocationPane",
+      icon: L.divIcon({
+        className: "user-location-icon",
+        html: '<span class="user-location"><span class="user-location__pulse"></span><span class="user-location__dot"></span></span>',
+        iconSize: [22, 22],
+        iconAnchor: [11, 11]
+      }),
+      zIndexOffset: 1200,
+      keyboard: false,
+      title: "Tu ubicación"
+    }).addTo(map);
+
+    showMapToast(
+      "Ubicación marcada en el mapa." +
+        (accuracy > 0 ? " Precisión aproximada: ±" + Math.round(accuracy) + " m." : ""),
+      5000
+    );
+  }
+
+  function handleLocationError(error) {
+    locatePending = false;
+    setLocatePending(false);
+    const code = error ? error.code : 0;
+    if (code === 1) {
+      showMapToast("No diste permiso para usar tu ubicación. Habilitalo en tu navegador y volvé a intentarlo.", 7000);
+    } else if (code === 2) {
+      showMapToast("No pudimos obtener tu ubicación. Revisá el GPS o la conexión e intentá de nuevo.", 7000);
+    } else if (code === 3) {
+      showMapToast("La búsqueda de tu ubicación tardó demasiado. Volvé a intentarlo.", 7000);
+    } else {
+      showMapToast("No pudimos obtener tu ubicación. Volvé a intentarlo.", 7000);
+    }
+  }
+
+  function clearUserLocation() {
+    locationToken += 1;
+    locationActive = false;
+    clearLocationTimers();
+    if (dropPinMarker) {
+      if (map && map.hasLayer(dropPinMarker)) map.removeLayer(dropPinMarker);
+      dropPinMarker = null;
+    }
+    if (userMarker) {
+      if (map && map.hasLayer(userMarker)) map.removeLayer(userMarker);
+      userMarker = null;
+    }
+    if (userCircle) {
+      if (map && map.hasLayer(userCircle)) map.removeLayer(userCircle);
+      userCircle = null;
+    }
+    setLocationPressed(false);
+  }
+
+  function setLocationTimeout(callback, delay) {
+    const id = window.setTimeout(function () {
+      locationTimers = locationTimers.filter(function (item) { return item !== id; });
+      callback();
+    }, delay);
+    locationTimers.push(id);
+  }
+
+  function clearLocationTimers() {
+    locationTimers.forEach(function (id) { window.clearTimeout(id); });
+    locationTimers = [];
+  }
+
+  function setLocatePending(pending) {
+    if (!el.locateMe) return;
+    el.locateMe.classList.toggle("is-loading", pending);
+    el.locateMe.setAttribute("aria-busy", String(pending));
+    updateLocationButton(pending);
+  }
+
+  function setLocationPressed(active) {
+    if (!el.locateMe) return;
+    el.locateMe.setAttribute("aria-pressed", String(active));
+    updateLocationButton(false);
+  }
+
+  function updateLocationButton(pending) {
+    if (!el.locateMe) return;
+    const active = el.locateMe.getAttribute("aria-pressed") === "true";
+    const label = pending
+      ? "Buscando tu ubicación…"
+      : active ? "Ocultar mi ubicación" : "Mostrar mi ubicación";
+    el.locateMe.setAttribute("aria-label", pending ? "Buscando tu ubicación" : label);
+    el.locateMe.setAttribute("title", label);
+  }
+
+  function showMapToast(message, duration) {
+    if (!el.mapToast) return;
+    el.mapToast.textContent = message;
+    el.mapToast.classList.add("is-visible");
+    if (toastTimer) window.clearTimeout(toastTimer);
+    toastTimer = null;
+    if (duration === 0) return;
+    toastTimer = window.setTimeout(function () {
+      el.mapToast.classList.remove("is-visible");
+      toastTimer = null;
+    }, duration || 5000);
   }
 
   async function loadData() {
@@ -1034,6 +1281,10 @@
 
     if (el.barriosToggle) {
       el.barriosToggle.addEventListener("click", toggleBarrios);
+    }
+
+    if (el.locateMe) {
+      el.locateMe.addEventListener("click", toggleUserLocation);
     }
 
     el.legendToggle.addEventListener("click", function () {

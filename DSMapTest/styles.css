@@ -1401,6 +1401,150 @@ body.sidebar-open .sidebar-handle:hover svg {
   color: var(--brand-dark);
 }
 
+/* Mi ubicación ------------------------------------------------------------ */
+
+.map-action--location svg {
+  width: 18px;
+  height: 18px;
+}
+
+.map-action--location[aria-pressed="true"] {
+  border-color: transparent;
+  background: #1d6fd1;
+  color: #fff;
+}
+
+.map-action--location[aria-pressed="true"]:hover {
+  background: #2b80e2;
+  color: #fff;
+}
+
+.map-action--location.is-loading svg {
+  animation: locate-spin 1s linear infinite;
+}
+
+.user-location-icon {
+  border: 0;
+  background: none;
+}
+
+.user-location {
+  position: relative;
+  display: block;
+  width: 22px;
+  height: 22px;
+  animation: user-location-in 260ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.user-location__pulse {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: rgba(29, 111, 209, 0.3);
+  animation: user-location-pulse 2.2s ease-out infinite;
+}
+
+.user-location__dot {
+  position: absolute;
+  inset: 4px;
+  border: 2.5px solid #fff;
+  border-radius: 50%;
+  background: #1d6fd1;
+  box-shadow: 0 1px 6px rgba(15, 51, 98, 0.5);
+}
+
+.user-location__accuracy {
+  animation: user-location-accuracy-in 320ms ease-out both;
+}
+
+.drop-pin-icon {
+  border: 0;
+  background: none;
+}
+
+.drop-pin {
+  display: block;
+  width: 30px;
+  height: 38px;
+  color: #1d6fd1;
+  filter: drop-shadow(0 5px 5px rgba(15, 51, 98, 0.3));
+  transform-origin: 50% 100%;
+  animation: drop-pin-fall 620ms cubic-bezier(0.45, 0, 0.55, 1) both;
+}
+
+.drop-pin svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
+  stroke: none;
+}
+
+.drop-pin-icon.is-leaving .drop-pin {
+  animation: drop-pin-out 260ms ease-in both;
+}
+
+.map-toast {
+  position: absolute;
+  z-index: 650;
+  top: 74px;
+  left: 50%;
+  max-width: min(360px, calc(100vw - 32px));
+  margin: 0;
+  padding: 9px 13px;
+  border-radius: 12px;
+  background: rgba(46, 26, 17, 0.92);
+  color: #fff6ec;
+  font-size: 11.5px;
+  font-weight: 600;
+  line-height: 1.4;
+  text-align: center;
+  box-shadow: 0 8px 24px rgba(46, 26, 17, 0.22);
+  transform: translate(-50%, -6px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.map-toast.is-visible {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+@keyframes drop-pin-fall {
+  0% { transform: translateY(-115px) rotate(-12deg); opacity: 0; }
+  18% { opacity: 1; }
+  58% { transform: translateY(3px) rotate(2deg); opacity: 1; }
+  74% { transform: translateY(-9px) rotate(-1deg); }
+  88% { transform: translateY(1px) rotate(0deg); }
+  100% { transform: translateY(0) rotate(0deg); opacity: 1; }
+}
+
+@keyframes drop-pin-out {
+  0% { transform: translateY(0) scale(1); opacity: 1; }
+  100% { transform: translateY(-10px) scale(0.65); opacity: 0; }
+}
+
+@keyframes user-location-in {
+  0% { transform: scale(0.35); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes user-location-accuracy-in {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes user-location-pulse {
+  0% { transform: scale(0.6); opacity: 0.9; }
+  70% { transform: scale(2.4); opacity: 0; }
+  100% { transform: scale(2.4); opacity: 0; }
+}
+
+@keyframes locate-spin {
+  to { transform: rotate(360deg); }
+}
+
 /* Barrios ----------------------------------------------------------------- */
 
 .barrio-label {
@@ -2115,6 +2259,10 @@ body.sidebar-open .sidebar-handle:hover svg {
   .map-actions {
     right: 12px;
     bottom: max(48px, calc(env(safe-area-inset-bottom) + 42px));
+  }
+
+  .map-toast {
+    top: 64px;
   }
 
   .map-action {
