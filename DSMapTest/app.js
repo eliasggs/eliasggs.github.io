@@ -31,6 +31,8 @@
   const OFFICIAL_RECORD = "https://mapa.educacion.gob.ar/legajo/";
   const BARRIOS_URL = "./barrios.geojson";
   const BARRIO_LEVEL_LABEL = { 9: "Barrio", 10: "Barrio", 11: "Complejo habitacional" };
+  const RUTAS_URL = "./rutas.json";
+  const RUTA_COLOR_DEFAULT = "#F7683A";
   const LOCATION_ZOOM = 16;
   const LOCATION_TIMEOUT = 12000;
   const PIN_DROP_MS = 620;
@@ -47,7 +49,8 @@
     orientation: "Todas",
     selectedId: null,
     dataLoaded: false,
-    barrios: false
+    barrios: false,
+    rutas: false
   };
 
   let map = null;
@@ -62,6 +65,11 @@
   let barriosUnavailable = false;
   const barrioCounts = new Map();
   const barrioFeatures = new Map();
+
+  let rutasLayer = null;
+  let rutasRequest = null;
+  let rutasUnavailable = false;
+  let rutasCount = 0;
 
   let userMarker = null;
   let userCircle = null;
@@ -216,6 +224,7 @@
     el.locateMe = document.getElementById("locate-me");
     el.mapToast = document.getElementById("map-toast");
     el.barriosToggle = document.getElementById("toggle-barrios");
+    el.rutasToggle = document.getElementById("toggle-rutas");
     el.legend = document.getElementById("legend");
     el.legendToggle = document.getElementById("legend-toggle");
     el.legendPanel = document.getElementById("legend-panel");
@@ -257,6 +266,7 @@
       map.setView([-33.6797, -65.4616], 13);
 
       map.createPane("barrioPane").style.zIndex = 350;
+      map.createPane("rutaPane").style.zIndex = 360;
       map.createPane("barrioLabelPane").style.zIndex = 450;
       map.getPane("barrioLabelPane").style.pointerEvents = "none";
       map.createPane("userLocationPane").style.zIndex = 640;
@@ -498,6 +508,181 @@
     const zoom = map.getZoom();
     const bucket = zoom < 13 ? "off" : zoom < 14.5 ? "far" : zoom < 15.5 ? "mid" : "near";
     map.getContainer().setAttribute("data-barrio-zoom", bucket);
+  }
+
+  /* Recorridos de colectivos ------------------------------------------------ */
+
+  function normalizeRutas(data) {
+    const source = data && Array.isArray(data.rutas) ? data.rutas : [];
+    return source
+      .map(function (ruta, index) {
+        // rutas.json guarda [lng, lat]; Leaflet espera [lat, lng].
+        const puntos = (Array.isArray(ruta.recorrido) ? ruta.recorrido : [])
+          .map(function (par) {
+            if (!Array.isArray(par) || par.length < 2) return null;
+            const lng = Number(par[0]);
+            const lat = Number(par[1]);
+            return Number.isFinite(lat) && Number.isFinite(lng) ? [lat, lng] : null;
+          })
+          .filter(Boolean);
+        const color =
+          typeof ruta.color === "string" && /^#[0-9a-f]{3}([0-9a-f]{3})?$/i.test(ruta.color)
+            ? ruta.color
+            : RUTA_COLOR_DEFAULT;
+        return Object.assign({}, ruta, {
+          id: String(ruta.id || "ruta-" + index),
+          nombre: String(ruta.nombre || "Recorrido " + (index + 1)),
+          tipo: ruta.tipo ? String(ruta.tipo) : "urbano",
+          empresa: ruta.empresa ? String(ruta.empresa) : "",
+          horario: ruta.horario ? String(ruta.horario) : "",
+          frecuencia: ruta.frecuencia ? String(ruta.frecuencia) : "",
+          color: color,
+          puntos: puntos
+        });
+      })
+      .filter(function (ruta) { return ruta.puntos.length > 1; });
+  }
+
+  function rutaStyle(ruta) {
+    return {
+      pane: "rutaPane",
+      color: ruta.color,
+      weight: 5,
+      opacity: 0.9,
+      lineCap: "round",
+      lineJoin: "round"
+    };
+  }
+
+  function loadRutas() {
+    if (rutasLayer) return Promise.resolve(rutasLayer);
+    if (rutasRequest) return rutasRequest;
+
+    rutasRequest = fetch(RUTAS_URL, { cache: "no-store" })
+      .then(function (response) {
+        if (!response.ok) throw new Error("No se pudo leer rutas.json (" + response.status + ")");
+        return response.json();
+      })
+      .then(function (data) {
+        const rutas = normalizeRutas(data);
+        const layer = L.layerGroup();
+
+        rutas.forEach(function (ruta) {
+          // Contorno claro para que el recorrido se lea sobre barrios y teselas.
+          L.polyline(ruta.puntos, {
+            pane: "rutaPane",
+            color: "#fffdf9",
+            weight: 9,
+            opacity: 0.8,
+            lineCap: "round",
+            lineJoin: "round",
+            interactive: false
+          }).addTo(layer);
+
+          const linea = L.polyline(ruta.puntos, rutaStyle(ruta)).addTo(layer);
+          linea.bindTooltip(escapeHTML(ruta.nombre), {
+            sticky: true,
+            direction: "top",
+            opacity: 1,
+            className: "ruta-tooltip"
+          });
+          linea.bindPopup(function () {
+            return buildRutaPopup(ruta);
+          }, {
+            maxWidth: 290,
+            minWidth: 230,
+            className: "ruta-popup"
+          });
+          linea.on("mouseover", function () {
+            linea.setStyle({ weight: 7, opacity: 1 });
+            if (linea.bringToFront) linea.bringToFront();
+          });
+          linea.on("mouseout", function () {
+            linea.setStyle(rutaStyle(ruta));
+          });
+        });
+
+        rutasLayer = layer;
+        rutasCount = rutas.length;
+        return rutasLayer;
+      })
+      .catch(function (error) {
+        console.error("No se pudieron cargar los recorridos de colectivos", error);
+        rutasRequest = null;
+        rutasUnavailable = true;
+        if (el.rutasToggle) {
+          el.rutasToggle.hidden = true;
+          el.rutasToggle.setAttribute("aria-pressed", "false");
+        }
+        showMapToast("No pudimos cargar los recorridos de colectivos.", 6000);
+        return null;
+      });
+
+    return rutasRequest;
+  }
+
+  function buildRutaPopup(ruta) {
+    const tipo = ruta.tipo.charAt(0).toUpperCase() + ruta.tipo.slice(1);
+    return (
+      '<div class="popup popup--ruta">' +
+        '<div class="popup__top" style="--pin:' + escapeAttr(ruta.color) + '">' +
+          '<span class="popup__icon" aria-hidden="true">🚌</span>' +
+          '<div>' +
+            '<p class="popup__type">' + escapeHTML(tipo) + "</p>" +
+            '<h3 class="popup__name">' + escapeHTML(ruta.nombre) + "</h3>" +
+          "</div>" +
+        "</div>" +
+        '<div class="popup__body">' +
+          '<dl class="ruta-popup__list">' +
+            rutaPopupRow("Empresa", ruta.empresa) +
+            rutaPopupRow("Horario", ruta.horario) +
+            rutaPopupRow("Frecuencia", ruta.frecuencia) +
+          "</dl>" +
+        "</div>" +
+      "</div>"
+    );
+  }
+
+  function rutaPopupRow(label, value) {
+    if (!value) return "";
+    return (
+      '<div class="ruta-popup__item"><dt>' + escapeHTML(label) + "</dt>" +
+      "<dd>" + escapeHTML(value) + "</dd></div>"
+    );
+  }
+
+  function syncRutas() {
+    const visible = state.rutas && !rutasUnavailable && mapReady;
+    if (el.rutasToggle) {
+      el.rutasToggle.setAttribute("aria-pressed", visible ? "true" : "false");
+      const label = visible ? "Ocultar recorridos de colectivos" : "Mostrar recorridos de colectivos";
+      el.rutasToggle.setAttribute("aria-label", label);
+      el.rutasToggle.setAttribute("title", label);
+    }
+    if (!mapReady) return;
+
+    if (!visible) {
+      if (rutasLayer && map.hasLayer(rutasLayer)) map.removeLayer(rutasLayer);
+      return;
+    }
+
+    loadRutas().then(function (layer) {
+      if (!layer || !state.rutas) return;
+      if (!map.hasLayer(layer)) layer.addTo(map);
+      if (rutasCount === 0) {
+        showMapToast("Todavía no hay recorridos de colectivos cargados.", 5000);
+      } else if (rutasCount === 1) {
+        showMapToast("1 recorrido de colectivo en el mapa.", 4000);
+      } else {
+        showMapToast(rutasCount + " recorridos de colectivos en el mapa.", 4000);
+      }
+    });
+  }
+
+  function toggleRutas() {
+    if (rutasUnavailable) return;
+    state.rutas = !state.rutas;
+    syncRutas();
   }
 
   /* Mi ubicación ------------------------------------------------------------ */
@@ -1281,6 +1466,10 @@
 
     if (el.barriosToggle) {
       el.barriosToggle.addEventListener("click", toggleBarrios);
+    }
+
+    if (el.rutasToggle) {
+      el.rutasToggle.addEventListener("click", toggleRutas);
     }
 
     if (el.locateMe) {

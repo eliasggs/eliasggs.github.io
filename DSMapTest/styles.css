@@ -1614,6 +1614,68 @@ body.sidebar-open .sidebar-handle:hover svg {
   font-weight: 500;
 }
 
+/* Recorridos de colectivos ------------------------------------------------ */
+
+.map-action--rutas svg {
+  width: 18px;
+  height: 18px;
+}
+
+.ruta-tooltip {
+  border: none;
+  border-radius: 8px;
+  background: var(--forest);
+  color: #fff8ef;
+  font-size: 10.5px;
+  font-weight: 650;
+  box-shadow: 0 4px 14px rgba(184, 67, 10, 0.24);
+}
+
+.ruta-tooltip::before {
+  display: none;
+}
+
+.ruta-popup .leaflet-popup-content-wrapper {
+  border-radius: 14px;
+}
+
+.popup--ruta {
+  padding: 2px 2px 0;
+}
+
+.ruta-popup__list {
+  margin: 0;
+}
+
+.ruta-popup__item {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin: 0 0 6px;
+}
+
+.ruta-popup__item:last-child {
+  margin-bottom: 0;
+}
+
+.ruta-popup__item dt {
+  flex: 0 0 auto;
+  min-width: 70px;
+  color: var(--muted);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.ruta-popup__item dd {
+  margin: 0;
+  color: #6b5142;
+  font-size: 11.5px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
 /* Legend ------------------------------------------------------------------ */
 
 .legend {
