@@ -70,6 +70,9 @@
   let rutasRequest = null;
   let rutasUnavailable = false;
   let rutasCount = 0;
+  let rutaAnimations = [];
+  let rutaFrame = null;
+  let rutaLastTs = 0;
 
   let userMarker = null;
   let userCircle = null;
@@ -267,6 +270,8 @@
 
       map.createPane("barrioPane").style.zIndex = 350;
       map.createPane("rutaPane").style.zIndex = 360;
+      map.createPane("rutaBusPane").style.zIndex = 470;
+      map.getPane("rutaBusPane").style.pointerEvents = "none";
       map.createPane("barrioLabelPane").style.zIndex = 450;
       map.getPane("barrioLabelPane").style.pointerEvents = "none";
       map.createPane("userLocationPane").style.zIndex = 640;
@@ -602,6 +607,7 @@
           });
         });
 
+        rutaAnimations = buildRutaAnimations(rutas, layer);
         rutasLayer = layer;
         rutasCount = rutas.length;
         return rutasLayer;
@@ -651,6 +657,169 @@
     );
   }
 
+  /* Un colectivo recorre cada línea en el orden del arreglo `recorrido`, con
+     la rotación del ícono indicando el sentido de avance. */
+
+  function buildRutaAnimations(rutas, layer) {
+    return rutas
+      .map(function (ruta) {
+        const points = ruta.puntos.map(function (punto) {
+          return { lat: punto[0], lng: punto[1] };
+        });
+        const cumulative = [0];
+        let total = 0;
+
+        for (let index = 1; index < points.length; index += 1) {
+          total += distanceBetween(points[index - 1], points[index]);
+          cumulative.push(total);
+        }
+        if (total <= 0) return null;
+
+        // Recorrer la línea completa en 18–45 s: visible sin perder el detalle.
+        const duration = Math.min(45000, Math.max(18000, total * 4));
+        const marker = L.marker(points[0], {
+          pane: "rutaBusPane",
+          interactive: false,
+          keyboard: false,
+          zIndexOffset: 500,
+          icon: createRutaBusIcon(ruta)
+        }).addTo(layer);
+
+        return {
+          ruta: ruta,
+          points: points,
+          cumulative: cumulative,
+          total: total,
+          duration: duration,
+          marker: marker,
+          elapsed: 0,
+          lookahead: Math.max(10, Math.min(28, total * 0.004))
+        };
+      })
+      .filter(Boolean);
+  }
+
+  function createRutaBusIcon(ruta) {
+    return L.divIcon({
+      className: "ruta-bus-icon",
+      html:
+        '<span class="ruta-bus" style="--bus-color:' + escapeAttr(ruta.color) + '">' +
+          '<svg viewBox="0 0 24 24" aria-hidden="true">' +
+            '<rect x="7" y="2.4" width="10" height="19.2" rx="3" fill="currentColor" stroke="none"/>' +
+            '<path d="M12 4.4 9.7 7.1h4.6L12 4.4Z" fill="#fffdf9" stroke="none"/>' +
+            '<path d="M9 17.7h6" stroke="#fffdf9" stroke-width="1.3" stroke-linecap="round"/>' +
+          "</svg>" +
+        "</span>",
+      iconSize: [26, 26],
+      iconAnchor: [13, 13]
+    });
+  }
+
+  function distanceBetween(a, b) {
+    const earthRadius = 6371000;
+    const lat1 = (a.lat * Math.PI) / 180;
+    const lat2 = (b.lat * Math.PI) / 180;
+    const dLat = lat2 - lat1;
+    const dLng = ((b.lng - a.lng) * Math.PI) / 180;
+    const h =
+      Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+      Math.cos(lat1) * Math.cos(lat2) * Math.sin(dLng / 2) * Math.sin(dLng / 2);
+    return 2 * earthRadius * Math.asin(Math.min(1, Math.sqrt(h)));
+  }
+
+  function bearingBetween(a, b) {
+    const lat1 = (a.lat * Math.PI) / 180;
+    const lat2 = (b.lat * Math.PI) / 180;
+    const dLng = ((b.lng - a.lng) * Math.PI) / 180;
+    const y = Math.sin(dLng) * Math.cos(lat2);
+    const x = Math.cos(lat1) * Math.sin(lat2) - Math.sin(lat1) * Math.cos(lat2) * Math.cos(dLng);
+    if (x === 0 && y === 0) return 0;
+    return ((Math.atan2(y, x) * 180) / Math.PI + 360) % 360;
+  }
+
+  function pointAtDistance(anim, distance) {
+    const target = Math.max(0, Math.min(distance, anim.total));
+    const points = anim.points;
+    const cumulative = anim.cumulative;
+    let low = 1;
+    let high = points.length - 1;
+
+    while (low < high) {
+      const mid = Math.floor((low + high) / 2);
+      if (cumulative[mid] < target) low = mid + 1;
+      else high = mid;
+    }
+
+    const startDistance = cumulative[low - 1];
+    const endDistance = cumulative[low];
+    const ratio = endDistance > startDistance ? (target - startDistance) / (endDistance - startDistance) : 0;
+    const start = points[low - 1];
+    const end = points[low];
+    return {
+      lat: start.lat + (end.lat - start.lat) * ratio,
+      lng: start.lng + (end.lng - start.lng) * ratio
+    };
+  }
+
+  function rutaBearing(anim, distance) {
+    const clamped = Math.max(0, Math.min(distance, anim.total));
+    const ahead = Math.min(clamped + anim.lookahead, anim.total);
+    if (ahead > clamped + 0.01) {
+      return bearingBetween(pointAtDistance(anim, clamped), pointAtDistance(anim, ahead));
+    }
+    const behind = Math.max(0, clamped - anim.lookahead);
+    if (clamped > behind + 0.01) {
+      return bearingBetween(pointAtDistance(anim, behind), pointAtDistance(anim, clamped));
+    }
+    return 0;
+  }
+
+  function applyRutaPose(anim, progress) {
+    const distance = progress * anim.total;
+    const pose = pointAtDistance(anim, distance);
+    anim.marker.setLatLng([pose.lat, pose.lng]);
+
+    const element = anim.marker.getElement();
+    if (!element) return;
+    const bus = element.querySelector(".ruta-bus");
+    if (bus) {
+      bus.style.transform = "rotate(" + rutaBearing(anim, distance).toFixed(1) + "deg)";
+    }
+  }
+
+  function stepRutaBuses(timestamp) {
+    const delta = rutaLastTs ? Math.min(timestamp - rutaLastTs, 120) : 0;
+    rutaLastTs = timestamp;
+    rutaAnimations.forEach(function (anim) {
+      anim.elapsed = (anim.elapsed + delta) % anim.duration;
+      applyRutaPose(anim, anim.elapsed / anim.duration);
+    });
+    rutaFrame = window.requestAnimationFrame(stepRutaBuses);
+  }
+
+  function startRutaBuses() {
+    if (!rutaAnimations.length) return;
+    stopRutaBuses();
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    rutaAnimations.forEach(function (anim) {
+      anim.elapsed = 0;
+      applyRutaPose(anim, 0);
+    });
+    if (reduced) return;
+
+    rutaLastTs = 0;
+    rutaFrame = window.requestAnimationFrame(stepRutaBuses);
+  }
+
+  function stopRutaBuses() {
+    if (rutaFrame !== null) {
+      window.cancelAnimationFrame(rutaFrame);
+      rutaFrame = null;
+    }
+    rutaLastTs = 0;
+  }
+
   function syncRutas() {
     const visible = state.rutas && !rutasUnavailable && mapReady;
     if (el.rutasToggle) {
@@ -662,6 +831,7 @@
     if (!mapReady) return;
 
     if (!visible) {
+      stopRutaBuses();
       if (rutasLayer && map.hasLayer(rutasLayer)) map.removeLayer(rutasLayer);
       return;
     }
@@ -669,6 +839,7 @@
     loadRutas().then(function (layer) {
       if (!layer || !state.rutas) return;
       if (!map.hasLayer(layer)) layer.addTo(map);
+      startRutaBuses();
       if (rutasCount === 0) {
         showMapToast("Todavía no hay recorridos de colectivos cargados.", 5000);
       } else if (rutasCount === 1) {
