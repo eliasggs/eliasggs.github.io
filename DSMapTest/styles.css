@@ -1621,6 +1621,37 @@ body.sidebar-open .sidebar-handle:hover svg {
   height: 18px;
 }
 
+.ruta-bus-icon {
+  border: 0;
+  background: none;
+}
+
+.ruta-bus {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #fffdf9;
+  color: var(--bus-color, var(--brand-deep));
+  box-shadow:
+    0 0 0 2px var(--bus-color, var(--brand-deep)),
+    0 3px 9px rgba(46, 26, 17, 0.28);
+  transform-origin: 50% 50%;
+  will-change: transform;
+}
+
+.ruta-bus svg {
+  width: 16px;
+  height: 16px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ruta-bus {
+    will-change: auto;
+  }
+}
+
 .ruta-tooltip {
   border: none;
   border-radius: 8px;
