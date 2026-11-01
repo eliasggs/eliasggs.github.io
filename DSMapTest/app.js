@@ -227,10 +227,13 @@
   };
   const RUTAS_SOURCES = [
     { url: "./ruta-a.geojson", linea: "A" },
-    { url: "./ruta-e.geojson", linea: "E" }
+    { url: "./ruta-e.geojson", linea: "E" },
+    { url: "./ruta-este.geojson", linea: "ES" }
   ];
   const RUTA_COLOR_DEFAULT = "#F7683A";
-  const RUTA_LINE_COLORS = { A: "#F7683A", E: "#2E7D32" };
+  const RUTA_LINE_COLORS = { A: "#F7683A", E: "#2E7D32", ES: "#1E88E5" };
+  const RUTA_LINE_NAMES = { A: "Línea A", E: "Línea E", ES: "Línea Este" };
+  const RUTA_LINE_SHORT = { A: "A", E: "E", ES: "Este" };
   const LOCATION_ZOOM = 16;
   const LOCATION_TIMEOUT = 12000;
   const PIN_DROP_MS = 620;
@@ -251,6 +254,7 @@
     barrioLabels: true,
     barrioFillOpacity: 0.07,
     rutas: false,
+    rutaLineas: { A: true, E: true, ES: true },
     circuitos: false,
     circuitoMetric: "electores",
     circuitoLabels: false,
@@ -307,6 +311,7 @@
   let radioRanges = {};
 
   let rutasLayer = null;
+  let rutaGroups = {};
   let rutasRequest = null;
   let rutasUnavailable = false;
   let rutasCount = 0;
@@ -441,6 +446,8 @@
   function start() {
     cacheElements();
     bindEvents();
+    buildRutaLineRows();
+    syncRutasControls();
     mapReady = initMap();
     syncLayersPanel();
     loadData();
@@ -469,6 +476,11 @@
     el.locateMe = document.getElementById("locate-me");
     el.mapToast = document.getElementById("map-toast");
     el.rutasToggle = document.getElementById("toggle-rutas");
+    el.rutasPanel = document.getElementById("rutas-panel");
+    el.rutasClose = document.getElementById("rutas-close");
+    el.rutaVisible = document.getElementById("ruta-visible");
+    el.rutasMeta = document.getElementById("rutas-meta");
+    el.rutasLineas = document.getElementById("rutas-lineas");
     el.layersToggle = document.getElementById("layers-toggle");
     el.layersPanel = document.getElementById("layers-panel");
     el.layersClose = document.getElementById("layers-close");
@@ -606,10 +618,14 @@
       map.on("zoomend", updateCircuitLabelsVisibility);
       map.on("zoomend", updateRenabapLabelsVisibility);
       map.on("zoomend", updateRadioLabelsVisibility);
-      map.on("click", function () { closeLayersPanel(false); });
+      map.on("click", function () {
+        closeLayersPanel(false);
+        closeRutasPanel(false);
+      });
       map.on("popupopen", function () {
         if (el.mapLegends) el.mapLegends.classList.add("is-obscured");
         closeLayersPanel(false);
+        closeRutasPanel(false);
       });
       map.on("popupclose", function () {
         if (el.mapLegends) el.mapLegends.classList.remove("is-obscured");
@@ -719,6 +735,7 @@
 
   function openLayersPanel() {
     if (!el.layersPanel || !el.layersToggle) return;
+    closeRutasPanel(false);
     el.layersPanel.hidden = false;
     el.layersToggle.setAttribute("aria-expanded", "true");
   }
@@ -734,6 +751,26 @@
     if (!el.layersPanel) return;
     if (el.layersPanel.hidden) openLayersPanel();
     else closeLayersPanel(true);
+  }
+
+  function openRutasPanel() {
+    if (!el.rutasPanel || !el.rutasToggle) return;
+    closeLayersPanel(false);
+    el.rutasPanel.hidden = false;
+    el.rutasToggle.setAttribute("aria-expanded", "true");
+  }
+
+  function closeRutasPanel(returnFocus) {
+    if (!el.rutasPanel || el.rutasPanel.hidden) return;
+    el.rutasPanel.hidden = true;
+    if (el.rutasToggle) el.rutasToggle.setAttribute("aria-expanded", "false");
+    if (returnFocus && el.rutasToggle) el.rutasToggle.focus({ preventScroll: true });
+  }
+
+  function toggleRutasPanel() {
+    if (!el.rutasPanel) return;
+    if (el.rutasPanel.hidden) openRutasPanel();
+    else closeRutasPanel(true);
   }
 
   function setLayerSettingsTab(layer) {
@@ -829,6 +866,7 @@
     if (!el.layerSettingsDialog) return;
     setLayerSettingsTab(layer);
     closeLayersPanel(false);
+    closeRutasPanel(false);
     if (typeof el.layerSettingsDialog.showModal === "function") {
       el.layerSettingsDialog.showModal();
     } else {
@@ -2114,6 +2152,91 @@
     };
   }
 
+  function rutaLineaNombre(linea) {
+    return RUTA_LINE_NAMES[linea] || "Línea " + linea;
+  }
+
+  function rutaAlgunaLineaVisible() {
+    return RUTAS_SOURCES.some(function (source) {
+      return state.rutaLineas[source.linea] !== false;
+    });
+  }
+
+  function buildRutaLineRows() {
+    if (!el.rutasLineas) return;
+    el.rutasLineas.innerHTML = RUTAS_SOURCES.map(function (source) {
+      const linea = source.linea;
+      const id = "ruta-linea-" + linea.toLowerCase();
+      const color = RUTA_LINE_COLORS[linea] || RUTA_COLOR_DEFAULT;
+      const checked = state.rutaLineas[linea] === false ? "" : " checked";
+      return (
+        '<li class="layers-panel__item" data-ruta-row="' + escapeAttr(linea) + '">' +
+          '<label class="layers-panel__switch">' +
+            '<input type="checkbox" id="' + escapeAttr(id) + '" data-ruta-linea="' + escapeAttr(linea) + '"' + checked + ">" +
+            '<span class="layers-panel__text">' +
+              '<strong><span class="rutas-line__dot" style="--ruta-color:' + escapeAttr(color) + '" aria-hidden="true"></span>' +
+                escapeHTML(rutaLineaNombre(linea)) +
+              "</strong>" +
+              '<small data-ruta-meta="' + escapeAttr(linea) + '">Visible en el mapa</small>' +
+            "</span>" +
+          "</label>" +
+        "</li>"
+      );
+    }).join("");
+  }
+
+  function syncRutasControls() {
+    const visible = state.rutas && !rutasUnavailable;
+    if (el.rutaVisible) {
+      el.rutaVisible.checked = visible;
+      el.rutaVisible.disabled = rutasUnavailable;
+    }
+    if (el.rutasMeta) {
+      el.rutasMeta.textContent = rutasUnavailable
+        ? "No se pudieron cargar los recorridos"
+        : visible
+          ? "Visibles en el mapa"
+          : "Líneas A, E y Este";
+    }
+    if (el.rutasLineas) {
+      RUTAS_SOURCES.forEach(function (source) {
+        const linea = source.linea;
+        const row = el.rutasLineas.querySelector('[data-ruta-row="' + linea + '"]');
+        if (!row) return;
+        const input = row.querySelector("[data-ruta-linea]");
+        const meta = row.querySelector("[data-ruta-meta]");
+        const falla = rutasFaltantes.indexOf(linea) !== -1;
+        const activa = state.rutaLineas[linea] !== false;
+        if (input) {
+          input.checked = activa;
+          input.disabled = rutasUnavailable || falla;
+        }
+        if (meta) {
+          meta.textContent = falla ? "No se pudo cargar" : activa ? "Visible en el mapa" : "Oculta";
+        }
+        row.classList.toggle("is-unavailable", falla);
+      });
+    }
+    if (el.rutasToggle) {
+      el.rutasToggle.classList.toggle("is-active", visible);
+      const label = visible ? "Recorridos de colectivos, visibles" : "Recorridos de colectivos";
+      el.rutasToggle.setAttribute("aria-label", label);
+      el.rutasToggle.setAttribute("title", label);
+    }
+  }
+
+  function applyRutaLineVisibility() {
+    if (rutasLayer) {
+      Object.keys(rutaGroups).forEach(function (linea) {
+        const group = rutaGroups[linea];
+        const activa = state.rutaLineas[linea] !== false;
+        if (activa && !rutasLayer.hasLayer(group)) rutasLayer.addLayer(group);
+        if (!activa && rutasLayer.hasLayer(group)) rutasLayer.removeLayer(group);
+      });
+    }
+    syncRutasControls();
+  }
+
   function loadRutaSource(source) {
     return fetch(source.url, { cache: "no-store" })
       .then(function (response) {
@@ -2154,8 +2277,13 @@
         if (!rutas.length) throw new Error("No se pudo leer ningún recorrido de colectivos");
 
         const layer = L.layerGroup();
+        const groups = {};
 
         rutas.forEach(function (ruta) {
+          const lineaKey = ruta.linea || "";
+          if (!groups[lineaKey]) groups[lineaKey] = L.layerGroup();
+          const group = groups[lineaKey];
+
           // Contorno claro para que el recorrido se lea sobre barrios y teselas.
           L.polyline(ruta.puntos, {
             pane: "rutaPane",
@@ -2165,44 +2293,51 @@
             lineCap: "round",
             lineJoin: "round",
             interactive: false
-          }).addTo(layer);
+          }).addTo(group);
 
-          const linea = L.polyline(ruta.puntos, rutaStyle(ruta)).addTo(layer);
-          linea.bindTooltip(escapeHTML(ruta.nombre), {
+          const polilinea = L.polyline(ruta.puntos, rutaStyle(ruta)).addTo(group);
+          polilinea.bindTooltip(escapeHTML(ruta.nombre), {
             sticky: true,
             direction: "top",
             opacity: 1,
             className: "ruta-tooltip"
           });
-          linea.bindPopup(function () {
+          polilinea.bindPopup(function () {
             return buildRutaPopup(ruta);
           }, {
             maxWidth: 290,
             minWidth: 230,
             className: "ruta-popup"
           });
-          linea.on("mouseover", function () {
-            linea.setStyle({ weight: 7, opacity: 1 });
-            if (linea.bringToFront) linea.bringToFront();
+          polilinea.on("mouseover", function () {
+            polilinea.setStyle({ weight: 7, opacity: 1 });
+            if (polilinea.bringToFront) polilinea.bringToFront();
           });
-          linea.on("mouseout", function () {
-            linea.setStyle(rutaStyle(ruta));
+          polilinea.on("mouseout", function () {
+            polilinea.setStyle(rutaStyle(ruta));
           });
         });
 
-        rutaAnimations = buildRutaAnimations(rutas, layer);
+        rutaAnimations = buildRutaAnimations(rutas, groups);
+        Object.keys(groups).forEach(function (lineaKey) {
+          layer.addLayer(groups[lineaKey]);
+        });
+        rutaGroups = groups;
         rutasLayer = layer;
         rutasCount = rutas.length;
+        applyRutaLineVisibility();
         return rutasLayer;
       })
       .catch(function (error) {
         console.error("No se pudieron cargar los recorridos de colectivos", error);
         rutasRequest = null;
         rutasUnavailable = true;
+        closeRutasPanel(false);
         if (el.rutasToggle) {
           el.rutasToggle.hidden = true;
-          el.rutasToggle.setAttribute("aria-pressed", "false");
+          el.rutasToggle.setAttribute("aria-expanded", "false");
         }
+        syncRutasControls();
         showMapToast("No pudimos cargar los recorridos de colectivos.", 6000);
         return null;
       });
@@ -2241,9 +2376,9 @@
   }
 
   /* Un colectivo recorre cada línea en el orden de sus coordenadas, con la
-     letra de la línea (A/E) identificando el servicio. */
+     letra de la línea (A/E/ES) identificando el servicio. */
 
-  function buildRutaAnimations(rutas, layer) {
+  function buildRutaAnimations(rutas, groups) {
     return rutas
       .map(function (ruta) {
         const points = ruta.puntos.map(function (punto) {
@@ -2266,7 +2401,9 @@
           keyboard: false,
           zIndexOffset: 500,
           icon: createRutaBusIcon(ruta)
-        }).addTo(layer);
+        });
+        const group = groups[ruta.linea] || groups[""];
+        if (group) marker.addTo(group);
 
         return {
           ruta: ruta,
@@ -2340,6 +2477,7 @@
     const delta = rutaLastTs ? Math.min(timestamp - rutaLastTs, 120) : 0;
     rutaLastTs = timestamp;
     rutaAnimations.forEach(function (anim) {
+      if (state.rutaLineas[anim.ruta.linea] === false) return;
       anim.elapsed = (anim.elapsed + delta) % anim.duration;
       applyRutaPose(anim, anim.elapsed / anim.duration);
     });
@@ -2373,19 +2511,20 @@
     const lineas = [];
     rutaAnimations.forEach(function (anim) {
       const linea = anim.ruta.linea;
-      if (linea && lineas.indexOf(linea) === -1) lineas.push(linea);
+      if (!linea || state.rutaLineas[linea] === false) return;
+      if (lineas.indexOf(linea) === -1) lineas.push(linea);
     });
     return lineas.sort();
   }
 
+  function rutaLineasTexto(lineas) {
+    if (lineas.length < 2) return lineas.join("");
+    return lineas.slice(0, -1).join(", ") + " y " + lineas[lineas.length - 1];
+  }
+
   function syncRutas() {
     const visible = state.rutas && !rutasUnavailable && mapReady;
-    if (el.rutasToggle) {
-      el.rutasToggle.setAttribute("aria-pressed", visible ? "true" : "false");
-      const label = visible ? "Ocultar recorridos de colectivos" : "Mostrar recorridos de colectivos";
-      el.rutasToggle.setAttribute("aria-label", label);
-      el.rutasToggle.setAttribute("title", label);
-    }
+    syncRutasControls();
     if (!mapReady) return;
 
     if (!visible) {
@@ -2397,14 +2536,17 @@
     loadRutas().then(function (layer) {
       if (!layer || !state.rutas) return;
       if (!map.hasLayer(layer)) layer.addTo(map);
+      applyRutaLineVisibility();
       startRutaBuses();
       if (rutasCount === 0) {
         showMapToast("Todavía no hay recorridos de colectivos cargados.", 5000);
         return;
       }
-      const lineas = rutaLineas();
+      const lineas = rutaLineas().map(function (linea) {
+        return RUTA_LINE_SHORT[linea] || linea;
+      });
       const sufijo = lineas.length
-        ? " (" + (lineas.length === 1 ? "línea " : "líneas ") + lineas.join(" y ") + ")"
+        ? " (" + (lineas.length === 1 ? "línea " : "líneas ") + rutaLineasTexto(lineas) + ")"
         : "";
       const recorridos = rutasCount === 1 ? "1 recorrido de colectivo" : rutasCount + " recorridos de colectivos";
       const faltante = rutasFaltantes.length
@@ -2412,12 +2554,6 @@
         : "";
       showMapToast(recorridos + sufijo + " en el mapa." + faltante, faltante ? 6500 : 4000);
     });
-  }
-
-  function toggleRutas() {
-    if (rutasUnavailable) return;
-    state.rutas = !state.rutas;
-    syncRutas();
   }
 
   /* Mi ubicación ------------------------------------------------------------ */
@@ -3212,7 +3348,42 @@
     }
 
     if (el.rutasToggle) {
-      el.rutasToggle.addEventListener("click", toggleRutas);
+      el.rutasToggle.addEventListener("click", function (event) {
+        event.stopPropagation();
+        toggleRutasPanel();
+      });
+    }
+
+    if (el.rutasClose) {
+      el.rutasClose.addEventListener("click", function () { closeRutasPanel(true); });
+    }
+
+    if (el.rutaVisible) {
+      el.rutaVisible.addEventListener("change", function () {
+        state.rutas = el.rutaVisible.checked;
+        if (state.rutas && !rutaAlgunaLineaVisible()) {
+          RUTAS_SOURCES.forEach(function (source) {
+            state.rutaLineas[source.linea] = true;
+          });
+        }
+        syncRutas();
+      });
+    }
+
+    if (el.rutasLineas) {
+      el.rutasLineas.addEventListener("change", function (event) {
+        const input = event.target.closest("[data-ruta-linea]");
+        if (!input) return;
+        const linea = input.dataset.rutaLinea;
+        state.rutaLineas[linea] = input.checked;
+        const algunaVisible = rutaAlgunaLineaVisible();
+        if (algunaVisible !== state.rutas) {
+          state.rutas = algunaVisible;
+          syncRutas();
+        } else {
+          applyRutaLineVisibility();
+        }
+      });
     }
 
     if (el.layerBarrios) {
@@ -3418,10 +3589,16 @@
     });
 
     document.addEventListener("click", function (event) {
-      if (!el.layersPanel || el.layersPanel.hidden) return;
-      if (el.layersPanel.contains(event.target)) return;
-      if (el.layersToggle && el.layersToggle.contains(event.target)) return;
-      closeLayersPanel(false);
+      if (el.layersPanel && !el.layersPanel.hidden) {
+        if (el.layersPanel.contains(event.target)) return;
+        if (el.layersToggle && el.layersToggle.contains(event.target)) return;
+        closeLayersPanel(false);
+      }
+      if (el.rutasPanel && !el.rutasPanel.hidden) {
+        if (el.rutasPanel.contains(event.target)) return;
+        if (el.rutasToggle && el.rutasToggle.contains(event.target)) return;
+        closeRutasPanel(false);
+      }
     });
 
     document.addEventListener("keydown", function (event) {
@@ -3438,7 +3615,9 @@
       }
 
       if (event.key === "Escape") {
-        if (el.layersPanel && !el.layersPanel.hidden) {
+        if (el.rutasPanel && !el.rutasPanel.hidden) {
+          closeRutasPanel(true);
+        } else if (el.layersPanel && !el.layersPanel.hidden) {
           closeLayersPanel(true);
         } else if (el.sidebar.classList.contains("is-open") && mobileMedia.matches) {
           closeSidebar(true);

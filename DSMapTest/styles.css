@@ -1654,6 +1654,34 @@ body.sidebar-open .sidebar-handle:hover svg {
   line-height: 1.4;
 }
 
+/* Panel de colectivos ----------------------------------------------------- */
+
+.rutas-panel {
+  width: min(296px, calc(100vw - 84px));
+}
+
+.rutas-panel__label {
+  margin: 10px 0 0;
+  padding-top: 9px;
+  border-top: 1px solid #f1e1d0;
+  color: #9a735d;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.rutas-line__dot {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  margin-right: 6px;
+  border-radius: 50%;
+  background: var(--ruta-color, var(--brand));
+  box-shadow: 0 0 0 2px rgba(255, 253, 248, 0.9);
+  vertical-align: 0;
+}
+
 /* Ajustes por capa -------------------------------------------------------- */
 
 .layer-settings__tabs {
@@ -2376,6 +2404,18 @@ body.sidebar-open .sidebar-handle:hover svg {
 .map-action--rutas svg {
   width: 18px;
   height: 18px;
+}
+
+.map-action--rutas.is-active {
+  border-color: transparent;
+  background: var(--brand);
+  color: var(--brand-dark);
+}
+
+.map-action--rutas[aria-expanded="true"] {
+  border-color: var(--brand);
+  background: #fff;
+  color: var(--brand-deep);
 }
 
 .ruta-bus-icon {

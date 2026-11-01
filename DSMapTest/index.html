@@ -365,7 +365,7 @@
         <button class="map-action map-action--location" id="locate-me" type="button" aria-pressed="false" aria-label="Mostrar mi ubicación" title="Mostrar mi ubicación">
           <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.8v3.1M12 18.1v3.1M2.8 12h3.1M18.1 12h3.1"/></svg>
         </button>
-        <button class="map-action map-action--rutas" id="toggle-rutas" type="button" aria-pressed="false" aria-label="Mostrar recorridos de colectivos" title="Mostrar recorridos de colectivos">
+        <button class="map-action map-action--rutas" id="toggle-rutas" type="button" aria-expanded="false" aria-controls="rutas-panel" aria-label="Recorridos de colectivos" title="Recorridos de colectivos">
           <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="3" width="14" height="14" rx="3"/><path d="M5 10h14M8.5 17v3M15.5 17v3"/><circle cx="8.7" cy="13.7" r=".8"/><circle cx="15.3" cy="13.7" r=".8"/></svg>
         </button>
         <button class="map-action map-action--layers" id="layers-toggle" type="button" aria-expanded="false" aria-controls="layers-panel" aria-label="Capas del mapa" title="Capas del mapa">
@@ -444,6 +444,32 @@
           </li>
         </ul>
         <p class="layers-panel__hint">Activá las capas que quieras ver. El engranaje abre los ajustes de visualización de cada una.</p>
+      </div>
+
+      <div class="layers-panel rutas-panel" id="rutas-panel" role="group" aria-label="Recorridos de colectivos" hidden>
+        <div class="layers-panel__top">
+          <div>
+            <p class="layers-panel__eyebrow">Mapa</p>
+            <h3 class="layers-panel__title">Colectivos</h3>
+          </div>
+          <button class="layers-panel__close" id="rutas-close" type="button" aria-label="Cerrar recorridos de colectivos">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+          </button>
+        </div>
+        <ul class="layers-panel__list">
+          <li class="layers-panel__item">
+            <label class="layers-panel__switch">
+              <input type="checkbox" id="ruta-visible">
+              <span class="layers-panel__text">
+                <strong>Mostrar recorridos</strong>
+                <small id="rutas-meta">Líneas A, E y Este</small>
+              </span>
+            </label>
+          </li>
+        </ul>
+        <p class="rutas-panel__label" id="rutas-lineas-label">Líneas visibles</p>
+        <ul class="layers-panel__list" id="rutas-lineas" aria-labelledby="rutas-lineas-label"></ul>
+        <p class="layers-panel__hint">Elegí qué líneas querés ver en el mapa. Los recorridos se cargan la primera vez que activás la capa.</p>
       </div>
 
       <div class="map-legends" id="map-legends" hidden>
