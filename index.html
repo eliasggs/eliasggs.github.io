@@ -1,195 +1,542 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <meta charset="UTF-8">
-  <title>Eliasggs's space</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#b8430a">
+  <meta name="description" content="Mapa interactivo de escuelas, institutos y universidades de Villa Mercedes y Villa Reynolds, San Luis, Argentina.">
+  <title>Mapa educativo · Villa Mercedes y Villa Reynolds</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%23b8430a'/%3E%3Cpath d='M50 83s24-21.6 24-39.6a24 24 0 1 0-48 0C26 61.4 50 83 50 83Z' fill='%23fec925'/%3E%3Ccircle cx='50' cy='42' r='9' fill='%237a2a08'/%3E%3C/svg%3E">
 
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RXDDGD0F3Q"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
 
-    gtag('config', 'G-RXDDGD0F3Q');
-  </script>
-
-  <style>
-    body {
-      background-color: #000;
-      color: #0f0;
-      font-family: 'Courier New', Courier, monospace;
-      margin: 0;
-      padding: 20px;
-    }
-
-    .window {
-      border: 2px solid #0f0;
-      margin: 20px auto;
-      padding: 10px;
-      max-width: 800px;
-      background-color: #000;
-      box-shadow: 0 0 10px #0f0;
-    }
-
-    .window-title {
-      display: block;
-      border: 2px solid #0f0;
-      background-color: #000;
-      padding: 4px 10px;
-      margin-bottom: 10px;
-      color: #ff0;
-      font-weight: bold;
-      text-align: left;
-      box-shadow: 0 0 5px #0f0;
-    }
-
-
-    .project img {
-      max-width: 100%;
-      height: auto;
-      border: 1px solid #0f0;
-      margin-top: 10px;
-    }
-
-    .description {
-      color: #ccc;
-      margin-top: 5px;
-    }
-
-    .cursor {
-      display: inline-block;
-      width: 10px;
-      background-color: #0f0;
-      animation: blink 1s step-start infinite;
-      height: 1em;
-      vertical-align: bottom;
-    }
-
-    @keyframes blink {
-      50% {
-        background: transparent;
-      }
-    }
-
-    .thumb {
-      max-height: 250px;
-      height: auto;
-      width: auto;
-    }
-
-    .lang-switch {
-      position: fixed;
-      top: 10px;
-      right: 20px;
-      color: #0f0;
-      background: #000;
-      border: 1px solid #0f0;
-      padding: 5px 10px;
-      font-family: 'Courier New', Courier, monospace;
-      cursor: pointer;
-      z-index: 1000;
-      transition: background 0.3s;
-    }
-
-    .lang-switch:hover {
-      background: #0f0;
-      color: #000;
-    }
-  </style>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
+  <a class="skip-link" href="#school-list">Saltar al listado de escuelas</a>
 
-  <!-- Botón de cambio de idioma -->
-  <div class="lang-switch" onclick="toggleLanguage()">EN ⇄ ES</div>
+  <div class="app">
+    <aside class="sidebar" id="sidebar" tabindex="-1" aria-label="Directorio de escuelas">
+      <header class="sidebar__hero">
+        <div class="hero__top">
+          <a class="brand" href="./" aria-label="Inicio, mapa educativo de Villa Mercedes">
+            <span class="brand__mark" aria-hidden="true">
+              <svg viewBox="0 0 28 28" fill="none">
+                <path d="M14 25s8-7.2 8-13.2A8 8 0 0 0 6 11.8C6 17.8 14 25 14 25Z" fill="currentColor"/>
+                <circle cx="14" cy="11.5" r="3.1" fill="#7a2a08"/>
+              </svg>
+            </span>
+            <span class="brand__text">
+              <span class="brand__eyebrow">Mapa educativo</span>
+              <span class="brand__name">Villa Mercedes</span>
+            </span>
+          </a>
+          <button class="icon-button sidebar__help" id="open-credits" type="button" aria-label="Ver fuentes, fecha de actualización y créditos" aria-haspopup="dialog" title="Fuentes y créditos">
+            <span aria-hidden="true">?</span>
+          </button>
+        </div>
 
-  <!-- Ventana de bienvenida -->
-  <div class="window">
-    <div class="window-title" data-lang="es">Eliasggs - mis proyectos</div>
-    <div class="window-title" data-lang="en" style="display:none;">Eliasggs - my projects</div>
+        <p class="hero__intro">Escuelas, institutos y universidades de Villa Mercedes y Villa Reynolds, en un solo mapa.</p>
 
-    <p data-lang="es">¡Hola! Soy Elías Gonzalez Saez (A.K.A. Eliasggs en linea). Realizo pequeños proyectos de
-      electrónica, programación e impresión 3d desde Villa Mercedes, San Luis, Argentina.</p>
-    <p data-lang="en" style="display: none;">Hi! I'm Elías Gonzalez Saez (A.k.A. Eliasggs online). I like to make small
-      electronic, programming and 3D printing projects. I'm currently living in Villa Mercedes, San Luis, Argeninta.</p>
+        <div class="search-wrap">
+          <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg>
+          <input
+            id="search-input"
+            class="search-input"
+            type="search"
+            placeholder="Buscar escuela, dirección o teléfono…"
+            autocomplete="off"
+            spellcheck="false"
+            aria-label="Buscar escuela, dirección o teléfono"
+          >
+          <button class="search-clear" id="search-clear" type="button" aria-label="Borrar búsqueda" hidden>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+          </button>
+          <kbd class="search-shortcut" aria-hidden="true">/</kbd>
+        </div>
+      </header>
 
-    <p data-lang="es">Armé esta pequeña página web para compartirles algunos de ellos. Algunos de ellos no los he visto
-      en otros lados, y parte de esta info tampoco. ¡Espero les sea útil o entretenido!.</p>
-    <p data-lang="en" style="display:none;">I put together this little web page to share some of them with you. Some of
-      them I haven't seen elsewhere, and parts of this info either. I hope you find it useful or entertaining!</p>
+      <section class="filters" aria-label="Filtros del directorio">
+        <div class="filter filter--level">
+          <div class="filter__side">
+            <span class="filter__label">Nivel educativo</span>
+            <button class="text-button filter__clear" id="clear-filters" type="button">Limpiar filtros</button>
+          </div>
+          <div class="chip-row" id="level-filter" role="group" aria-label="Filtrar por nivel educativo">
+            <button class="chip is-active" type="button" data-level="Todos" aria-pressed="true">Todos</button>
+            <button class="chip" type="button" data-level="Inicial" aria-pressed="false">Inicial</button>
+            <button class="chip" type="button" data-level="Primaria" aria-pressed="false">Primaria</button>
+            <button class="chip" type="button" data-level="Secundaria" aria-pressed="false">Secundaria</button>
+            <button class="chip" type="button" data-level="Superior" aria-pressed="false">Superior</button>
+          </div>
+        </div>
 
-    <p><span class="cursor"></span></p>
+        <div class="filter filter--management">
+          <span class="filter__label">Gestión</span>
+          <div class="segment-control" id="management-filter" role="group" aria-label="Filtrar por tipo de gestión">
+            <button class="segment is-active" type="button" data-management="Todas" aria-pressed="true">Todas</button>
+            <button class="segment" type="button" data-management="Pública" aria-pressed="false">Públicas</button>
+            <button class="segment" type="button" data-management="Privada" aria-pressed="false">Privadas</button>
+          </div>
+        </div>
+
+        <div class="filter-grid">
+          <div class="filter filter--type">
+            <label class="filter__label" for="type-filter">Tipo</label>
+            <span class="select-wrap">
+              <select id="type-filter" class="select-input">
+                <option value="Todos">Todos los tipos</option>
+                <option value="especial">Educación Especial</option>
+                <option value="autogestionada">Escuela Autogestionada</option>
+                <option value="generativa">Escuela Generativa</option>
+                <option value="tecnica">Escuela Técnica</option>
+                <option value="adultos">Educación de Jóvenes y Adultos</option>
+                <option value="docente">Instituto de formación docente</option>
+                <option value="universidad">Universidades</option>
+                <option value="formacion">Formación profesional y oficios</option>
+                <option value="artistica">Escuela de Arte</option>
+              </select>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5"/></svg>
+            </span>
+          </div>
+
+          <div class="filter filter--type">
+            <label class="filter__label" for="orientation-filter">Orientación</label>
+            <span class="select-wrap">
+              <select id="orientation-filter" class="select-input">
+                <option value="Todas">Todas las orientaciones</option>
+                <option value="Ciencias naturales">Ciencias naturales</option>
+                <option value="Ciencias sociales y humanidades">Ciencias sociales y humanidades</option>
+                <option value="Economía y administración">Economía y administración</option>
+                <option value="Informática y programación">Informática y programación</option>
+                <option value="Turismo">Turismo</option>
+                <option value="Educación técnica">Educación técnica</option>
+                <option value="Agro y ambiente">Agro y ambiente</option>
+                <option value="Arte, diseño y comunicación">Arte, diseño y comunicación</option>
+                <option value="Educación física y deportes">Educación física y deportes</option>
+              </select>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5"/></svg>
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <div class="results-head">
+        <div>
+          <h2 class="results-title">Instituciones</h2>
+          <p class="results-count" id="results-count" aria-live="polite">Cargando escuelas…</p>
+        </div>
+        <span class="results-total" id="results-total"></span>
+      </div>
+
+      <div class="school-list" id="school-list" tabindex="-1">
+        <div class="skeleton" aria-hidden="true">
+          <div class="skeleton__icon"></div>
+          <div class="skeleton__lines">
+            <span></span><span></span><span></span>
+          </div>
+        </div>
+        <div class="skeleton" aria-hidden="true">
+          <div class="skeleton__icon"></div>
+          <div class="skeleton__lines">
+            <span></span><span></span><span></span>
+          </div>
+        </div>
+        <div class="skeleton" aria-hidden="true">
+          <div class="skeleton__icon"></div>
+          <div class="skeleton__lines">
+            <span></span><span></span><span></span>
+          </div>
+        </div>
+      </div>
+
+      <footer class="sidebar__footer">
+        <img class="sidebar__logo sidebar__logo--muni" src="logos/logo_muni.png" alt="Municipalidad de Villa Mercedes" width="487" height="55">
+      </footer>
+    </aside>
+
+    <button class="sidebar-handle" id="close-sidebar" type="button" aria-label="Abrir directorio" aria-controls="sidebar" aria-expanded="false" title="Abrir directorio">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14 6-6 6 6 6"/></svg>
+    </button>
+
+    <dialog class="credits-dialog" id="credits-dialog" aria-labelledby="credits-title">
+      <div class="credits-dialog__top">
+        <span class="credits-dialog__icon" aria-hidden="true">?</span>
+        <div class="credits-dialog__heading">
+          <p class="credits-dialog__eyebrow">Mapa educativo</p>
+          <h2 class="credits-dialog__title" id="credits-title">Fuentes y créditos</h2>
+        </div>
+        <button class="credits-dialog__close" id="close-credits" type="button" aria-label="Cerrar fuentes y créditos">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </div>
+
+      <div class="credits-dialog__body">
+        <dl class="credits-list">
+          <div class="credits-list__row">
+            <dt>Fuentes</dt>
+            <dd><a href="https://mapa.educacion.gob.ar/mapa-interactivo" target="_blank" rel="noopener noreferrer">Mapa Educativo Nacional</a> y sitios oficiales</dd>
+          </div>
+          <div class="credits-list__row">
+            <dt>Barrios</dt>
+            <dd><a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a> (ODbL)</dd>
+          </div>
+          <div class="credits-list__row">
+            <dt>Circuitos</dt>
+            <dd><a href="https://ulpgeo.maps.arcgis.com/apps/webappviewer/index.html?id=99ce6ec913cd44a3aace8481e0d52297" target="_blank" rel="noopener noreferrer">ULP Geo / Gobierno de San Luis</a></dd>
+          </div>
+          <div class="credits-list__row">
+            <dt>Datos electorales</dt>
+            <dd><a href="https://www.electoral.gob.ar/" target="_blank" rel="noopener noreferrer">Cámara Nacional Electoral</a> · <a href="https://www.datacp.ar/legislativas2025/datos-abiertos" target="_blank" rel="noopener noreferrer">Data CP</a></dd>
+          </div>
+          <div class="credits-list__row">
+            <dt>Barrios populares</dt>
+            <dd><a href="https://www.argentina.gob.ar/obras-publicas/sisu/renabap/mapa" target="_blank" rel="noopener noreferrer">RENABAP</a> · Subsecretaría de Integración Socio Urbana (CC BY 4.0)</dd>
+          </div>
+          <div class="credits-list__row">
+            <dt>Radios censales</dt>
+            <dd><a href="https://www.indec.gob.ar/indec/web/Nivel4-Tema-2-41-165" target="_blank" rel="noopener noreferrer">INDEC</a> · Censo Nacional 2022, resultados por radio (CC BY-SA 4.0)</dd>
+          </div>
+          <div class="credits-list__row">
+            <dt>Actualizado</dt>
+            <dd>2026</dd>
+          </div>
+        </dl>
+
+        <div class="credits-dev">
+          <p class="credits-dev__eyebrow">Desarrollado por</p>
+          <a class="credits-dev__name" href="mailto:eliasggs@gmail.com">Elias Gabriel Gonzalez Saez</a>
+          <p class="credits-dev__text">para la coordinación de relaciones educativas de Villa Mercedes.</p>
+          <a class="credits-dev__mail" href="mailto:eliasggs@gmail.com">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m4 7 8 6 8-6"/></svg>
+            eliasggs@gmail.com
+          </a>
+        </div>
+      </div>
+    </dialog>
+
+    <dialog class="circuit-settings-dialog" id="layer-settings-dialog" aria-labelledby="layer-settings-title">
+      <div class="circuit-settings__top">
+        <div>
+          <p class="circuit-settings__eyebrow">Capas del mapa</p>
+          <h2 class="circuit-settings__title" id="layer-settings-title">Ajustes de visualización</h2>
+        </div>
+        <button class="circuit-settings__close" id="close-layer-settings" type="button" aria-label="Cerrar ajustes de capas">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </div>
+
+      <div class="layer-settings__tabs" role="tablist" aria-label="Capa a configurar">
+        <button class="layer-settings__tab" id="layer-tab-barrios" type="button" role="tab" aria-selected="false" aria-controls="layer-panel-barrios" data-layer-tab="barrios">Barrios</button>
+        <button class="layer-settings__tab is-active" id="layer-tab-circuitos" type="button" role="tab" aria-selected="true" aria-controls="layer-panel-circuitos" data-layer-tab="circuitos">Circuitos</button>
+        <button class="layer-settings__tab" id="layer-tab-radios" type="button" role="tab" aria-selected="false" aria-controls="layer-panel-radios" data-layer-tab="radios">Radios</button>
+        <button class="layer-settings__tab" id="layer-tab-renabap" type="button" role="tab" aria-selected="false" aria-controls="layer-panel-renabap" data-layer-tab="renabap">Barrios populares</button>
+      </div>
+
+      <div class="circuit-settings__body">
+        <div class="layer-settings__panel" id="layer-panel-barrios" role="tabpanel" aria-labelledby="layer-tab-barrios" data-layer-panel="barrios" hidden>
+          <fieldset class="circuit-settings__group">
+            <legend>Visualización</legend>
+            <label class="circuit-settings__switch"><input type="checkbox" id="barrio-show-labels" checked><span>Mostrar nombres de barrios</span></label>
+            <label class="circuit-settings__range" for="barrio-fill-opacity">
+              <span>Intensidad del relleno</span>
+              <input type="range" id="barrio-fill-opacity" min="0" max="40" step="2" value="7">
+              <output id="barrio-fill-opacity-output" for="barrio-fill-opacity">7%</output>
+            </label>
+          </fieldset>
+          <p class="circuit-settings__hint">Los nombres aparecen según el nivel de zoom y el tipo de barrio. El relleno bajo deja leer las teselas y las demás capas.</p>
+        </div>
+
+        <div class="layer-settings__panel" id="layer-panel-circuitos" role="tabpanel" aria-labelledby="layer-tab-circuitos" data-layer-panel="circuitos">
+          <fieldset class="circuit-settings__group">
+            <legend>Dato del mapa</legend>
+            <div class="circuit-settings__metrics">
+              <label class="circuit-settings__metric"><input type="radio" name="circuit-metric" value="electores" checked><span>Electores</span></label>
+              <label class="circuit-settings__metric"><input type="radio" name="circuit-metric" value="participacion"><span>Participación</span></label>
+              <label class="circuit-settings__metric"><input type="radio" name="circuit-metric" value="votantes"><span>Votantes</span></label>
+              <label class="circuit-settings__metric"><input type="radio" name="circuit-metric" value="densidad"><span>Densidad electoral</span></label>
+              <label class="circuit-settings__metric"><input type="radio" name="circuit-metric" value="superficie"><span>Superficie</span></label>
+              <label class="circuit-settings__metric"><input type="radio" name="circuit-metric" value="escuelas"><span>Instituciones educativas</span></label>
+              <label class="circuit-settings__metric" data-requires="renabap"><input type="radio" name="circuit-metric" value="renabap_hogares" disabled><span>Hogares en barrios populares</span></label>
+              <label class="circuit-settings__metric" data-requires="renabap"><input type="radio" name="circuit-metric" value="renabap_barrios" disabled><span>Barrios populares</span></label>
+            </div>
+          </fieldset>
+
+          <fieldset class="circuit-settings__group">
+            <legend>Población (Censo 2022)</legend>
+            <div class="circuit-settings__metrics">
+              <label class="circuit-settings__metric" data-requires="radios"><input type="radio" name="circuit-metric" value="poblacion" disabled><span>Población</span></label>
+              <label class="circuit-settings__metric" data-requires="radios"><input type="radio" name="circuit-metric" value="densidad_poblacional" disabled><span>Densidad poblacional</span></label>
+              <label class="circuit-settings__metric" data-requires="radios"><input type="radio" name="circuit-metric" value="pct_65_mas" disabled><span>% 65 años y más</span></label>
+              <label class="circuit-settings__metric" data-requires="radios"><input type="radio" name="circuit-metric" value="pct_sin_cobertura_salud" disabled><span>% sin cobertura de salud</span></label>
+              <label class="circuit-settings__metric" data-requires="radios"><input type="radio" name="circuit-metric" value="pct_nbi" disabled><span>% hogares con NBI</span></label>
+              <label class="circuit-settings__metric" data-requires="radios"><input type="radio" name="circuit-metric" value="pct_sin_cloacas" disabled><span>% hogares sin cloacas</span></label>
+              <label class="circuit-settings__metric" data-requires="radios"><input type="radio" name="circuit-metric" value="electores_por_100" disabled><span>Electores por 100 hab.</span></label>
+              <label class="circuit-settings__metric" data-requires="radios"><input type="radio" name="circuit-metric" value="participacion_vap" disabled><span>Participación sobre VAP</span></label>
+            </div>
+          </fieldset>
+
+          <fieldset class="circuit-settings__group">
+            <legend>Visualización</legend>
+            <label class="circuit-settings__switch"><input type="checkbox" id="circuit-show-labels"><span>Mostrar número de circuito</span></label>
+            <label class="circuit-settings__switch"><input type="checkbox" id="circuit-show-values"><span>Mostrar el valor en la etiqueta</span></label>
+            <label class="circuit-settings__range" for="circuit-fill-opacity">
+              <span>Intensidad del relleno</span>
+              <input type="range" id="circuit-fill-opacity" min="20" max="80" step="5" value="55">
+              <output id="circuit-fill-opacity-output" for="circuit-fill-opacity">55%</output>
+            </label>
+          </fieldset>
+
+          <p class="circuit-settings__hint">La densidad usa la superficie del polígono. Las instituciones se cuentan desde el directorio educativo del mapa. Las métricas de barrios populares se habilitan al cargar RENABAP; las poblacionales, al cargar los radios censales.</p>
+        </div>
+
+        <div class="layer-settings__panel" id="layer-panel-radios" role="tabpanel" aria-labelledby="layer-tab-radios" data-layer-panel="radios" hidden>
+          <fieldset class="circuit-settings__group">
+            <legend>Dato del mapa</legend>
+            <div class="circuit-settings__metrics">
+              <label class="circuit-settings__metric"><input type="radio" name="radio-metric" value="poblacion" checked><span>Población</span></label>
+              <label class="circuit-settings__metric"><input type="radio" name="radio-metric" value="densidad"><span>Densidad</span></label>
+              <label class="circuit-settings__metric"><input type="radio" name="radio-metric" value="pct_65_mas"><span>% 65 años y más</span></label>
+              <label class="circuit-settings__metric"><input type="radio" name="radio-metric" value="pct_sin_cobertura_salud"><span>% sin cobertura de salud</span></label>
+              <label class="circuit-settings__metric"><input type="radio" name="radio-metric" value="pct_nbi"><span>% hogares con NBI</span></label>
+              <label class="circuit-settings__metric"><input type="radio" name="radio-metric" value="pct_sin_cloacas"><span>% sin cloacas</span></label>
+              <label class="circuit-settings__metric"><input type="radio" name="radio-metric" value="pct_sin_gas_red"><span>% sin gas de red</span></label>
+              <label class="circuit-settings__metric"><input type="radio" name="radio-metric" value="pct_clima_bajo"><span>% clima educativo bajo</span></label>
+            </div>
+          </fieldset>
+
+          <fieldset class="circuit-settings__group">
+            <legend>Visualización</legend>
+            <label class="circuit-settings__switch"><input type="checkbox" id="radio-show-labels"><span>Mostrar población en la etiqueta</span></label>
+            <label class="circuit-settings__switch"><input type="checkbox" id="radio-show-values"><span>Mostrar el dato elegido</span></label>
+            <label class="circuit-settings__range" for="radio-fill-opacity">
+              <span>Intensidad del relleno</span>
+              <input type="range" id="radio-fill-opacity" min="20" max="85" step="5" value="55">
+              <output id="radio-fill-opacity-output" for="radio-fill-opacity">55%</output>
+            </label>
+          </fieldset>
+
+          <p class="circuit-settings__hint">Los indicadores provienen del Censo 2022 por radio censal (INDEC). Las tasas usan como denominador la población o los hogares del radio. Los radios con menos de 50 habitantes se marcan como baja población. Al activar circuitos, las métricas poblacionales de los circuitos se calculan desde estos radios.</p>
+        </div>
+
+        <div class="layer-settings__panel" id="layer-panel-renabap" role="tabpanel" aria-labelledby="layer-tab-renabap" data-layer-panel="renabap" hidden>
+          <fieldset class="circuit-settings__group">
+            <legend>Visualización</legend>
+            <label class="circuit-settings__switch"><input type="checkbox" id="renabap-show-labels"><span>Mostrar nombre del barrio</span></label>
+            <label class="circuit-settings__switch"><input type="checkbox" id="renabap-show-values"><span>Mostrar hogares en la etiqueta</span></label>
+            <label class="circuit-settings__range" for="renabap-fill-opacity">
+              <span>Intensidad del relleno</span>
+              <input type="range" id="renabap-fill-opacity" min="10" max="70" step="5" value="35">
+              <output id="renabap-fill-opacity-output" for="renabap-fill-opacity">35%</output>
+            </label>
+          </fieldset>
+          <p class="circuit-settings__hint">Los hogares provienen del RENABAP (diciembre 2023). El GeoJSON oficial no publica viviendas: se muestran como «Sin dato». Los hogares por circuito se prorratean por área.</p>
+        </div>
+      </div>
+
+      <div class="circuit-settings__footer">
+        <button class="circuit-settings__button circuit-settings__button--ghost" id="reset-layer-settings" type="button">Restablecer</button>
+        <button class="circuit-settings__button" id="close-layer-settings-done" type="button">Listo</button>
+      </div>
+    </dialog>
+
+    <div class="sidebar-backdrop" id="sidebar-backdrop" hidden></div>
+
+    <main class="map-panel" aria-label="Mapa de escuelas de Villa Mercedes">
+      <div id="map" class="map-canvas"></div>
+
+      <div class="map-topbar">
+        <button class="map-menu-button" id="open-sidebar" type="button" aria-controls="sidebar" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+          <span class="map-menu-button__label">Instituciones visibles (<span class="map-menu-button__count" id="mobile-count">89</span>)</span>
+        </button>
+      </div>
+
+      <a class="map-logo" href="https://www.instagram.com/relaciones.educativas_muni/" target="_blank" rel="noopener noreferrer" aria-label="Coordinación de Relaciones Educativas en Instagram" title="Coordinación de Relaciones Educativas · Instagram">
+        <img src="logos/logo_rel_educ.png" alt="Coordinación de Relaciones Educativas" width="1774" height="887">
+      </a>
+
+      <div class="map-actions" aria-label="Controles del mapa">
+        <button class="map-action map-action--location" id="locate-me" type="button" aria-pressed="false" aria-label="Mostrar mi ubicación" title="Mostrar mi ubicación">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.8v3.1M12 18.1v3.1M2.8 12h3.1M18.1 12h3.1"/></svg>
+        </button>
+        <button class="map-action map-action--rutas" id="toggle-rutas" type="button" aria-expanded="false" aria-controls="rutas-panel" aria-label="Recorridos de colectivos" title="Recorridos de colectivos">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="3" width="14" height="14" rx="3"/><path d="M5 10h14M8.5 17v3M15.5 17v3"/><circle cx="8.7" cy="13.7" r=".8"/><circle cx="15.3" cy="13.7" r=".8"/></svg>
+        </button>
+        <button class="map-action map-action--layers" id="layers-toggle" type="button" aria-expanded="false" aria-controls="layers-panel" aria-label="Capas del mapa" title="Capas del mapa">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 3 7.5 12 12l9-4.5L12 3Z"/><path d="m3 12.5 9 4.5 9-4.5"/><path d="m3 17 9 4.5 9-4.5"/></svg>
+          <span class="map-action__badge" id="layers-badge" aria-hidden="true">1</span>
+        </button>
+        <button class="map-action" id="zoom-in" type="button" aria-label="Acercar mapa">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+        </button>
+        <button class="map-action" id="zoom-out" type="button" aria-label="Alejar mapa">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/></svg>
+        </button>
+        <button class="map-action map-action--reset" id="reset-view" type="button" aria-label="Ver todas las escuelas">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M20 15v5h-5M4 4l5.5 5.5M20 20l-5.5-5.5"/></svg>
+        </button>
+      </div>
+
+      <div class="layers-panel" id="layers-panel" role="group" aria-label="Capas del mapa" hidden>
+        <div class="layers-panel__top">
+          <div>
+            <p class="layers-panel__eyebrow">Mapa</p>
+            <h3 class="layers-panel__title">Capas</h3>
+          </div>
+          <button class="layers-panel__close" id="layers-close" type="button" aria-label="Cerrar capas">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+          </button>
+        </div>
+        <ul class="layers-panel__list">
+          <li class="layers-panel__item" data-layer-row="barrios">
+            <label class="layers-panel__switch">
+              <input type="checkbox" id="layer-barrios" checked>
+              <span class="layers-panel__text">
+                <strong>Barrios</strong>
+                <small id="layer-meta-barrios">Límites y nombres de OpenStreetMap</small>
+              </span>
+            </label>
+            <button class="layers-panel__settings" id="layer-settings-barrios" type="button" aria-label="Configurar la capa de barrios" title="Configurar barrios" aria-haspopup="dialog" aria-controls="layer-settings-dialog">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.7 1.7 0 0 0-1.88-.34 1.7 1.7 0 0 0-1 1.55V21a2 2 0 1 1-4 0v-.09a1.7 1.7 0 0 0-1.11-1.55 1.7 1.7 0 0 0-1.88.34l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.7 1.7 0 0 0 .34-1.88 1.7 1.7 0 0 0-1.55-1H3a2 2 0 1 1 0-4h.09A1.7 1.7 0 0 0 4.64 8a1.7 1.7 0 0 0-.34-1.88l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.7 1.7 0 0 0 9 3.63h.08A1.7 1.7 0 0 0 10.13 2.1V2a2 2 0 1 1 4 0v.09a1.7 1.7 0 0 0 1 1.55 1.7 1.7 0 0 0 1.88-.34l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.7 1.7 0 0 0 19.4 8v.08a1.7 1.7 0 0 0 1.55 1.05H21a2 2 0 1 1 0 4h-.09a1.7 1.7 0 0 0-1.51 1Z"/></svg>
+            </button>
+          </li>
+          <li class="layers-panel__item" data-layer-row="circuitos">
+            <label class="layers-panel__switch">
+              <input type="checkbox" id="layer-circuitos">
+              <span class="layers-panel__text">
+                <strong>Circuitos electorales</strong>
+                <small id="layer-meta-circuitos">22 circuitos · padrón y participación 2025</small>
+              </span>
+            </label>
+            <button class="layers-panel__settings" id="layer-settings-circuitos" type="button" aria-label="Configurar la capa de circuitos" title="Configurar circuitos" aria-haspopup="dialog" aria-controls="layer-settings-dialog">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.7 1.7 0 0 0-1.88-.34 1.7 1.7 0 0 0-1 1.55V21a2 2 0 1 1-4 0v-.09a1.7 1.7 0 0 0-1.11-1.55 1.7 1.7 0 0 0-1.88.34l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.7 1.7 0 0 0 .34-1.88 1.7 1.7 0 0 0-1.55-1H3a2 2 0 1 1 0-4h.09A1.7 1.7 0 0 0 4.64 8a1.7 1.7 0 0 0-.34-1.88l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.7 1.7 0 0 0 9 3.63h.08A1.7 1.7 0 0 0 10.13 2.1V2a2 2 0 1 1 4 0v.09a1.7 1.7 0 0 0 1 1.55 1.7 1.7 0 0 0 1.88-.34l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.7 1.7 0 0 0 19.4 8v.08a1.7 1.7 0 0 0 1.55 1.05H21a2 2 0 1 1 0 4h-.09a1.7 1.7 0 0 0-1.51 1Z"/></svg>
+            </button>
+          </li>
+          <li class="layers-panel__item" data-layer-row="radios">
+            <label class="layers-panel__switch">
+              <input type="checkbox" id="layer-radios">
+              <span class="layers-panel__text">
+                <strong>Radios censales</strong>
+                <small id="layer-meta-radios">Censo 2022 · población y carencias por radio</small>
+              </span>
+            </label>
+            <button class="layers-panel__settings" id="layer-settings-radios" type="button" aria-label="Configurar la capa de radios censales" title="Configurar radios censales" aria-haspopup="dialog" aria-controls="layer-settings-dialog">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.7 1.7 0 0 0-1.88-.34 1.7 1.7 0 0 0-1 1.55V21a2 2 0 1 1-4 0v-.09a1.7 1.7 0 0 0-1.11-1.55 1.7 1.7 0 0 0-1.88.34l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.7 1.7 0 0 0 .34-1.88 1.7 1.7 0 0 0-1.55-1H3a2 2 0 1 1 0-4h.09A1.7 1.7 0 0 0 4.64 8a1.7 1.7 0 0 0-.34-1.88l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.7 1.7 0 0 0 9 3.63h.08A1.7 1.7 0 0 0 10.13 2.1V2a2 2 0 1 1 4 0v.09a1.7 1.7 0 0 0 1 1.55 1.7 1.7 0 0 0 1.88-.34l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.7 1.7 0 0 0 19.4 8v.08a1.7 1.7 0 0 0 1.55 1.05H21a2 2 0 1 1 0 4h-.09a1.7 1.7 0 0 0-1.51 1Z"/></svg>
+            </button>
+          </li>
+          <li class="layers-panel__item" data-layer-row="renabap">
+            <label class="layers-panel__switch">
+              <input type="checkbox" id="layer-renabap">
+              <span class="layers-panel__text">
+                <strong>Barrios populares</strong>
+                <small id="layer-meta-renabap">RENABAP · hogares y barrios populares</small>
+              </span>
+            </label>
+            <button class="layers-panel__settings" id="layer-settings-renabap" type="button" aria-label="Configurar la capa de barrios populares" title="Configurar barrios populares" aria-haspopup="dialog" aria-controls="layer-settings-dialog">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.7 1.7 0 0 0-1.88-.34 1.7 1.7 0 0 0-1 1.55V21a2 2 0 1 1-4 0v-.09a1.7 1.7 0 0 0-1.11-1.55 1.7 1.7 0 0 0-1.88.34l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.7 1.7 0 0 0 .34-1.88 1.7 1.7 0 0 0-1.55-1H3a2 2 0 1 1 0-4h.09A1.7 1.7 0 0 0 4.64 8a1.7 1.7 0 0 0-.34-1.88l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.7 1.7 0 0 0 9 3.63h.08A1.7 1.7 0 0 0 10.13 2.1V2a2 2 0 1 1 4 0v.09a1.7 1.7 0 0 0 1 1.55 1.7 1.7 0 0 0 1.88-.34l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.7 1.7 0 0 0 19.4 8v.08a1.7 1.7 0 0 0 1.55 1.05H21a2 2 0 1 1 0 4h-.09a1.7 1.7 0 0 0-1.51 1Z"/></svg>
+            </button>
+          </li>
+        </ul>
+        <p class="layers-panel__hint">Activá las capas que quieras ver. El engranaje abre los ajustes de visualización de cada una.</p>
+      </div>
+
+      <div class="layers-panel rutas-panel" id="rutas-panel" role="group" aria-label="Recorridos de colectivos" hidden>
+        <div class="layers-panel__top">
+          <div>
+            <p class="layers-panel__eyebrow">Mapa</p>
+            <h3 class="layers-panel__title">Colectivos</h3>
+          </div>
+          <button class="layers-panel__close" id="rutas-close" type="button" aria-label="Cerrar recorridos de colectivos">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+          </button>
+        </div>
+        <ul class="layers-panel__list">
+          <li class="layers-panel__item">
+            <label class="layers-panel__switch">
+              <input type="checkbox" id="ruta-visible">
+              <span class="layers-panel__text">
+                <strong>Mostrar recorridos</strong>
+                <small id="rutas-meta">Líneas A, E y Este</small>
+              </span>
+            </label>
+          </li>
+        </ul>
+        <p class="rutas-panel__label" id="rutas-lineas-label">Líneas visibles</p>
+        <ul class="layers-panel__list" id="rutas-lineas" aria-labelledby="rutas-lineas-label"></ul>
+        <p class="layers-panel__hint">Elegí qué líneas querés ver en el mapa. Los recorridos se cargan la primera vez que activás la capa.</p>
+      </div>
+
+      <div class="map-legends" id="map-legends" hidden>
+        <div class="circuit-legend" id="circuit-legend" role="region" aria-label="Leyenda de circuitos electorales" hidden>
+          <p class="circuit-legend__eyebrow">Padrón electoral</p>
+          <h3 class="circuit-legend__title">Circuitos de Villa Mercedes</h3>
+          <p class="circuit-legend__note">22 circuitos · Padrón 2025 · Sección 3. Pedernera</p>
+          <p class="circuit-legend__metric" id="circuit-metric-label">Cantidad de electores</p>
+          <div class="circuit-legend__scale" id="circuit-scale" aria-hidden="true"></div>
+          <div class="circuit-legend__range">
+            <span id="circuit-range-min"></span>
+            <span id="circuit-range-max"></span>
+          </div>
+          <p class="circuit-legend__summary" id="circuit-summary"></p>
+          <p class="circuit-legend__source">Geometría: ULP Geo · Resultados: CNE</p>
+        </div>
+
+        <div class="circuit-legend radios-legend" id="radios-legend" role="region" aria-label="Leyenda de radios censales" hidden>
+          <p class="circuit-legend__eyebrow radios-legend__eyebrow">Censo 2022</p>
+          <h3 class="circuit-legend__title">Radios censales</h3>
+          <p class="circuit-legend__note" id="radios-legend-note">170 radios urbanos · Villa Mercedes y Villa Reynolds</p>
+          <p class="circuit-legend__metric" id="radios-metric-label">Población</p>
+          <div class="circuit-legend__scale" id="radios-scale" aria-hidden="true"></div>
+          <div class="circuit-legend__range">
+            <span id="radios-range-min"></span>
+            <span id="radios-range-max"></span>
+          </div>
+          <p class="circuit-legend__summary" id="radios-summary"></p>
+          <p class="circuit-legend__source">Fuente: INDEC · Censo 2022 · CC BY-SA 4.0</p>
+        </div>
+      </div>
+
+      <p class="map-toast" id="map-toast" role="status" aria-live="polite"></p>
+
+      <div class="legend" id="legend">
+        <button class="legend__toggle" id="legend-toggle" type="button" aria-expanded="false" aria-controls="legend-panel">
+          <span class="legend__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span>Referencias</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5"/></svg>
+        </button>
+        <div class="legend__panel" id="legend-panel" hidden>
+          <div class="legend__item"><span class="legend__emoji" style="--pin:#d99a2b">🧸</span>Inicial</div>
+          <div class="legend__item"><span class="legend__emoji" style="--pin:#37805d">🏫</span>Primaria</div>
+          <div class="legend__item"><span class="legend__emoji" style="--pin:#356e9e">🎓</span>Secundaria</div>
+          <div class="legend__item"><span class="legend__emoji" style="--pin:#7a62b8">💙</span>Especial</div>
+          <div class="legend__item"><span class="legend__emoji" style="--pin:#2f7d6b">🌿</span>Autogestionada</div>
+          <div class="legend__item"><span class="legend__emoji" style="--pin:#fec925">🎒</span>Generativa</div>
+          <div class="legend__item"><span class="legend__emoji" style="--pin:#c0653a">⚙️</span>Técnica</div>
+          <div class="legend__item"><span class="legend__emoji" style="--pin:#b45e6a">📚</span>Adultos</div>
+          <div class="legend__item"><span class="legend__emoji" style="--pin:#1f7a78">📖</span>Docente</div>
+          <div class="legend__item"><span class="legend__emoji" style="--pin:#5c4b8a">🏛️</span>Universidad</div>
+          <div class="legend__item"><span class="legend__emoji" style="--pin:#6b7d3c">🛠️</span>Oficios</div>
+          <div class="legend__item"><span class="legend__emoji" style="--pin:#a45f9a">🎭</span>Arte</div>
+        </div>
+      </div>
+
+      <div class="map-error" id="map-error" hidden>
+        <span class="map-error__icon" aria-hidden="true">🧭</span>
+        <h3>No pudimos cargar el mapa</h3>
+        <p>Revisá tu conexión a internet y volvé a intentarlo.</p>
+        <button type="button" onclick="location.reload()">Volver a intentar</button>
+      </div>
+    </main>
   </div>
 
-  <!-- MXW01 -->
-  <div class="window">
-    <div class="window-title" data-lang="es">Dentro de una MXW01</div>
-    <div class="window-title" data-lang="en" style="display:none;">Inside an MXW01</div>
-
-    <div class="project">
-      <p class="description" data-lang="es">🟡 Siempre quise jugar con una impresora térmica, y vi que estas están
-        bastante baratas. Hay proyectos y software open source para algunas, pero no para este modelo nuevo. Comparto
-        los principales chips que la hacen funcionar.</p>
-      <p class="description" data-lang="es">No hay mucho para ver: solo tres chips que manejan el funcionamiento de la
-        impresora.</p>
-
-      <ul data-lang="es" class="description">
-        <li><strong>Batería de litio 18650</strong> rotulada como 1200mAh.</li>
-        <li><strong>TP4056</strong>: Controlador de carga para la batería.</li>
-        <li><strong>SA8833</strong>: Doble inversor en puente H para controlar el motor.</li>
-        <li><strong>BP2A669</strong>: Microcontrolador misterioso que también maneja el Bluetooth.</li>
-      </ul>
-
-      <p class="description" data-lang="en" style="display:none;">🟡 I always wanted to play around with a thermal
-        printer, and I saw that these are pretty cheap. There are open-source projects and software for them, but not
-        for this new model. I'm sharing the main chips that make it work.</p>
-      <p class="description" data-lang="en" style="display:none;">There’s not much to see—just three chips running the
-        printer.</p>
-
-      <ul data-lang="en" style="display:none;" class="description">
-        <li><strong>18650 lithium battery</strong> labeled as 1200mAh.</li>
-        <li><strong>TP4056</strong>: Charging controller for the battery.</li>
-        <li><strong>SA8833</strong>: Dual H-bridge inverter to control the motor.</li>
-        <li><strong>BP2A669</strong>: A mysterious microcontroller that also handles Bluetooth.</li>
-      </ul>
-      <img src="resources\cat_printer_thumb.png" alt="MXW01 imprimiendo" class="thumb"><img src="resources\Chip1.png"
-        alt="Primer Chip" class="thumb"><img src="resources\Chip2.png" alt="Tercer Chip" class="thumb"><img
-        src="resources\Chip3.png" alt="Segundo Chip" class="thumb">
-    </div>
-  </div>
-
-  <!-- Traducción al español de soft impresora -->
-  <div class="window">
-    <div class="window-title" data-lang="es">Mapa interactivo municipal</div>
-    <div class="window-title" data-lang="en" style="display:none;">Municipal interactive Map</div>
-
-    <div class="project">
-      <p class="description" data-lang="es">🔵 Prueba de mapa para proyectos de relevamiento municipales.</p>
-      <p class="description" data-lang="en" style="display: none;">🔵 A test for interactive municipal maps.</p>
-      <img src="ruta/a/imagen2.jpg" alt="Entrar al Mapa">
-    </div>
-  </div>
-
-  <!-- Script de idioma -->
-  <script>
-    let currentLang = 'es';
-
-    function toggleLanguage() {
-      currentLang = currentLang === 'es' ? 'en' : 'es';
-
-      const allLangElems = document.querySelectorAll('[data-lang]');
-      allLangElems.forEach(el => {
-        if (el.dataset.lang === currentLang) {
-          el.style.display = '';
-        } else {
-          el.style.display = 'none';
-        }
-      });
-    }
-  </script>
-
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+  <script src="app.js"></script>
 </body>
-
 </html>
