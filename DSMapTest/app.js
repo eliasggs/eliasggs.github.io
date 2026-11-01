@@ -144,6 +144,20 @@
       colors: ["#e5f4fa", "#145a86"],
       decimals: 1,
       suffix: "%"
+    },
+    salud: {
+      label: "Establecimientos de salud",
+      short: "Salud",
+      colors: ["#e8f7f3", "#0f6b5c"],
+      decimals: 0,
+      suffix: ""
+    },
+    salud_publicos: {
+      label: "Establecimientos públicos de salud",
+      short: "Salud pública",
+      colors: ["#eef9f2", "#14532d"],
+      decimals: 0,
+      suffix: ""
     }
   };
   const CIRCUITO_METRICS_RADIOS = [
@@ -225,12 +239,36 @@
       suffix: "%"
     }
   };
+  const SALUD_URL = "./salud.geojson";
+  const SALUD_ATTRIBUTION =
+    'Salud: <a href="https://datos.salud.gob.ar/dataset/listado-establecimientos-de-salud-asentados-en-el-registro-federal-refes" target="_blank" rel="noopener noreferrer">REFES</a> · Ministerio de Salud (CC BY 4.0) · geocodificación OSM';
+  const SALUD_TYPES = {
+    hospital: { label: "Hospital / sanatorio", short: "Hospital", emoji: "🏥", color: "#b23a48" },
+    caps: { label: "CAPS / centro de salud", short: "CAPS", emoji: "➕", color: "#0f6b5c" },
+    consultorio: { label: "Consultorio / centro médico", short: "Consultorio", emoji: "🩺", color: "#356e9e" },
+    diagnostico: { label: "Laboratorio / diagnóstico", short: "Laboratorio", emoji: "🔬", color: "#6b4bb5" },
+    odontologia: { label: "Odontología", short: "Odontología", emoji: "🦷", color: "#1f7a78" },
+    rehabilitacion: { label: "Rehabilitación / terapias", short: "Rehabilitación", emoji: "♿", color: "#b06a1f" },
+    residencia: { label: "Residencia / cuidado", short: "Residencia", emoji: "🧓", color: "#8a5a8f" },
+    optica: { label: "Óptica", short: "Óptica", emoji: "👓", color: "#5c4b8a" },
+    otro: { label: "Otro servicio", short: "Otro", emoji: "✚", color: "#7a6a5a" }
+  };
+  const SALUD_TYPE_ORDER = [
+    "hospital",
+    "caps",
+    "consultorio",
+    "diagnostico",
+    "odontologia",
+    "rehabilitacion",
+    "residencia",
+    "optica",
+    "otro"
+  ];
   const RUTAS_SOURCES = [
     { url: "./ruta-a.geojson", linea: "A" },
     { url: "./ruta-e.geojson", linea: "E" },
     { url: "./ruta-este.geojson", linea: "ES" }
-  ];
-  const RUTA_COLOR_DEFAULT = "#F7683A";
+  ];  const RUTA_COLOR_DEFAULT = "#F7683A";
   const RUTA_LINE_COLORS = { A: "#F7683A", E: "#2E7D32", ES: "#1E88E5" };
   const RUTA_LINE_NAMES = { A: "Línea A", E: "Línea E", ES: "Línea Este" };
   const RUTA_LINE_SHORT = { A: "A", E: "E", ES: "Este" };
@@ -269,6 +307,21 @@
     radioLabels: false,
     radioLabelValues: false,
     radioFillOpacity: 0.55,
+    salud: false,
+    saludTypes: {
+      hospital: true,
+      caps: true,
+      consultorio: true,
+      diagnostico: true,
+      odontologia: true,
+      rehabilitacion: true,
+      residencia: true,
+      optica: true,
+      otro: true
+    },
+    saludOnlyPublic: false,
+    saludOnlyOfficial: false,
+    blendMode: "normal",
     settingsLayer: "circuitos"
   };
 
@@ -309,6 +362,13 @@
   let radiosMeta = null;
   let radiosAttributionAdded = false;
   let radioRanges = {};
+
+  let saludCluster = null;
+  let saludRequest = null;
+  let saludUnavailable = false;
+  let saludFeatures = [];
+  let saludMeta = null;
+  let saludAttributionAdded = false;
 
   let rutasLayer = null;
   let rutaGroups = {};
@@ -450,6 +510,7 @@
     syncRutasControls();
     mapReady = initMap();
     syncLayersPanel();
+    if (mapReady) applyBlendMode();
     loadData();
     if (mapReady) syncBarrios();
   }
@@ -489,18 +550,22 @@
     el.layerCircuitos = document.getElementById("layer-circuitos");
     el.layerRenabap = document.getElementById("layer-renabap");
     el.layerRadios = document.getElementById("layer-radios");
+    el.layerSalud = document.getElementById("layer-salud");
     el.layerMetaBarrios = document.getElementById("layer-meta-barrios");
     el.layerMetaCircuitos = document.getElementById("layer-meta-circuitos");
     el.layerMetaRenabap = document.getElementById("layer-meta-renabap");
     el.layerMetaRadios = document.getElementById("layer-meta-radios");
+    el.layerMetaSalud = document.getElementById("layer-meta-salud");
     el.layerBarriosRow = document.querySelector('[data-layer-row="barrios"]');
     el.layerCircuitosRow = document.querySelector('[data-layer-row="circuitos"]');
     el.layerRenabapRow = document.querySelector('[data-layer-row="renabap"]');
     el.layerRadiosRow = document.querySelector('[data-layer-row="radios"]');
+    el.layerSaludRow = document.querySelector('[data-layer-row="salud"]');
     el.layerSettingsBarrios = document.getElementById("layer-settings-barrios");
     el.layerSettingsCircuitos = document.getElementById("layer-settings-circuitos");
     el.layerSettingsRenabap = document.getElementById("layer-settings-renabap");
     el.layerSettingsRadios = document.getElementById("layer-settings-radios");
+    el.layerSettingsSalud = document.getElementById("layer-settings-salud");
     el.layerSettingsDialog = document.getElementById("layer-settings-dialog");
     el.closeLayerSettings = document.getElementById("close-layer-settings");
     el.closeLayerSettingsDone = document.getElementById("close-layer-settings-done");
@@ -524,6 +589,14 @@
     el.radioShowValues = document.getElementById("radio-show-values");
     el.radioFillOpacity = document.getElementById("radio-fill-opacity");
     el.radioFillOpacityOutput = document.getElementById("radio-fill-opacity-output");
+    el.saludTypeInputs = document.querySelectorAll("[data-salud-type]");
+    el.saludOnlyPublic = document.getElementById("salud-only-public");
+    el.saludOnlyOfficial = document.getElementById("salud-only-official");
+    el.saludFilterSummary = document.getElementById("salud-filter-summary");
+    el.saludLegend = document.getElementById("salud-legend");
+    el.saludLegendNote = document.getElementById("salud-legend-note");
+    el.saludLegendList = document.getElementById("salud-legend-list");
+    el.blendMode = document.getElementById("layer-blend-mode");
     el.mapLegends = document.getElementById("map-legends");
     el.circuitLegend = document.getElementById("circuit-legend");
     el.circuitMetricLabel = document.getElementById("circuit-metric-label");
@@ -589,6 +662,7 @@
       map.createPane("renabapLabelPane").style.zIndex = 357;
       map.getPane("renabapLabelPane").style.pointerEvents = "none";
       map.createPane("rutaPane").style.zIndex = 360;
+      map.createPane("saludPane").style.zIndex = 365;
       map.createPane("rutaBusPane").style.zIndex = 470;
       map.getPane("rutaBusPane").style.pointerEvents = "none";
       map.createPane("barrioLabelPane").style.zIndex = 450;
@@ -631,6 +705,7 @@
         if (el.mapLegends) el.mapLegends.classList.remove("is-obscured");
       });
 
+      applyBlendMode();
       return true;
     } catch (error) {
       console.error("No se pudo inicializar el mapa", error);
@@ -679,11 +754,16 @@
       el.layerRadios.checked = state.radios && !radiosUnavailable;
       el.layerRadios.disabled = radiosUnavailable;
     }
+    if (el.layerSalud) {
+      el.layerSalud.checked = state.salud && !saludUnavailable;
+      el.layerSalud.disabled = saludUnavailable;
+    }
     const active = [
       state.barrios && !barriosUnavailable,
       state.circuitos && !circuitosUnavailable,
       state.renabap && !renabapUnavailable,
-      state.radios && !radiosUnavailable
+      state.radios && !radiosUnavailable,
+      state.salud && !saludUnavailable
     ].filter(Boolean).length;
     if (el.layersBadge) {
       el.layersBadge.textContent = String(active);
@@ -702,6 +782,7 @@
     if (key === "circuitos") circuitosUnavailable = true;
     if (key === "renabap") renabapUnavailable = true;
     if (key === "radios") radiosUnavailable = true;
+    if (key === "salud") saludUnavailable = true;
     state[key] = false;
     updateLegends();
 
@@ -720,6 +801,7 @@
       setLayerSettingsTab(firstAvailableLayerTab());
     }
     syncLayersPanel();
+    syncLayerSettings();
   }
 
   function firstAvailableLayerTab() {
@@ -727,7 +809,8 @@
       ["barrios", barriosUnavailable],
       ["circuitos", circuitosUnavailable],
       ["radios", radiosUnavailable],
-      ["renabap", renabapUnavailable]
+      ["renabap", renabapUnavailable],
+      ["salud", saludUnavailable]
     ];
     const available = candidates.filter(function (item) { return !item[1]; });
     return available.length ? available[0][0] : "circuitos";
@@ -774,7 +857,7 @@
   }
 
   function setLayerSettingsTab(layer) {
-    const allowed = ["barrios", "circuitos", "radios", "renabap"];
+    const allowed = ["barrios", "circuitos", "radios", "renabap", "salud"];
     state.settingsLayer = allowed.indexOf(layer) === -1 ? "circuitos" : layer;
     syncLayerSettings();
   }
@@ -790,7 +873,8 @@
         (tab.dataset.layerTab === "barrios" && barriosUnavailable) ||
         (tab.dataset.layerTab === "circuitos" && circuitosUnavailable) ||
         (tab.dataset.layerTab === "radios" && radiosUnavailable) ||
-        (tab.dataset.layerTab === "renabap" && renabapUnavailable);
+        (tab.dataset.layerTab === "renabap" && renabapUnavailable) ||
+        (tab.dataset.layerTab === "salud" && saludUnavailable);
       tab.disabled = unavailable;
     });
     el.layerPanels.forEach(function (panel) {
@@ -807,17 +891,23 @@
 
     const renabapReady = renabapFeatures.length > 0;
     const radiosReady = radiosFeatures.length > 0;
+    const saludReady = saludFeatures.length > 0;
     if (!renabapReady && /^renabap_/.test(state.circuitoMetric)) {
       state.circuitoMetric = "electores";
     }
     if (!radiosReady && CIRCUITO_METRICS_RADIOS.indexOf(state.circuitoMetric) !== -1) {
       state.circuitoMetric = "electores";
     }
+    if (!saludReady && (state.circuitoMetric === "salud" || state.circuitoMetric === "salud_publicos")) {
+      state.circuitoMetric = "electores";
+    }
     el.circuitMetricRadios.forEach(function (radio) {
       radio.checked = radio.value === state.circuitoMetric;
       const required = radio.closest("[data-requires]");
       if (required) {
-        radio.disabled = required.dataset.requires === "radios" ? !radiosReady : !renabapReady;
+        const dependency = required.dataset.requires;
+        radio.disabled =
+          dependency === "radios" ? !radiosReady : dependency === "salud" ? !saludReady : !renabapReady;
       }
     });
     if (el.circuitShowLabels) el.circuitShowLabels.checked = state.circuitoLabels;
@@ -860,6 +950,13 @@
     if (el.radioFillOpacityOutput) {
       el.radioFillOpacityOutput.textContent = Math.round(state.radioFillOpacity * 100) + "%";
     }
+
+    el.saludTypeInputs.forEach(function (input) {
+      input.checked = state.saludTypes[input.dataset.saludType] !== false;
+    });
+    if (el.saludOnlyPublic) el.saludOnlyPublic.checked = state.saludOnlyPublic;
+    if (el.saludOnlyOfficial) el.saludOnlyOfficial.checked = state.saludOnlyOfficial;
+    updateSaludFilterSummary();
   }
 
   function openLayerSettings(layer) {
@@ -899,6 +996,13 @@
       state.radioLabelValues = false;
       state.radioFillOpacity = 0.55;
       applyRadioVisuals(true);
+    } else if (state.settingsLayer === "salud") {
+      SALUD_TYPE_ORDER.forEach(function (type) {
+        state.saludTypes[type] = true;
+      });
+      state.saludOnlyPublic = false;
+      state.saludOnlyOfficial = false;
+      refreshSaludMarkers();
     } else {
       state.circuitoMetric = "electores";
       state.circuitoLabels = false;
@@ -907,6 +1011,18 @@
       applyCircuitoVisuals(true);
     }
     syncLayerSettings();
+  }
+
+  /* Mezcla de capas -------------------------------------------------------- */
+
+  function applyBlendMode() {
+    if (el.blendMode) el.blendMode.value = state.blendMode;
+    if (!mapReady || !map) return;
+    const value = state.blendMode === "normal" ? "" : state.blendMode;
+    ["barrioPane", "radioPane", "renabapPane", "circuitoPane"].forEach(function (name) {
+      const pane = map.getPane(name);
+      if (pane) pane.style.mixBlendMode = value;
+    });
   }
 
   /* Barrios ---------------------------------------------------------------- */
@@ -1134,6 +1250,8 @@
     if (metric === "escuelas") return Number(props.instituciones);
     if (metric === "renabap_hogares") return Number(props.renabap_hogares);
     if (metric === "renabap_barrios") return Number(props.renabap_barrios);
+    if (metric === "salud") return Number(props.salud);
+    if (metric === "salud_publicos") return Number(props.salud_publicos);
     if (CIRCUITO_METRICS_RADIOS.indexOf(metric) !== -1) return Number(props[metric]);
     return Number(props.electores);
   }
@@ -1298,6 +1416,7 @@
         });
         buildCircuitoLabels();
         applyRenabapToCircuitos();
+        applySaludToCircuitos();
         applyRadiosToCircuitos();
         syncLayerSettings();
         return circuitosLayer;
@@ -1371,6 +1490,13 @@
       stats.push(["Hogares sin cloacas", formatPct(props.pct_sin_cloacas)]);
       stats.push(["Electores por 100 hab.", formatMetricNumber(props.electores_por_100, "electores_por_100")]);
       stats.push(["Participación sobre VAP", formatPct(props.participacion_vap)]);
+    }
+    if (Number.isFinite(Number(props.salud))) {
+      stats.push(["Establecimientos de salud", formatNumber(props.salud)]);
+      stats.push(["De ellos públicos", formatNumber(props.salud_publicos)]);
+      if (Number(props.salud) > 0 && Number(props.poblacion) > 0) {
+        stats.push(["Habitantes por establecimiento", formatNumber(Number(props.poblacion) / Number(props.salud))]);
+      }
     }
     const rows = stats.map(function (item) {
       return (
@@ -1467,6 +1593,16 @@
         el.circuitSummary.innerHTML =
           "<strong>" + formatNumber(total) + "</strong> " +
           (metric === "renabap_barrios" ? "barrios populares" : "hogares en barrios populares") +
+          " · " + count + " circuitos";
+      } else if (metric === "salud" || metric === "salud_publicos") {
+        let total = 0;
+        features.forEach(function (layer) {
+          const props = (layer.feature && layer.feature.properties) || {};
+          total += Number(props[metric]) || 0;
+        });
+        el.circuitSummary.innerHTML =
+          "<strong>" + formatNumber(total) + "</strong> " +
+          (metric === "salud" ? "establecimientos de salud" : "establecimientos públicos de salud") +
           " · " + count + " circuitos";
       } else if (CIRCUITO_METRICS_RADIOS.indexOf(metric) !== -1) {
         let total = 0;
@@ -1814,13 +1950,16 @@
   function updateLegends() {
     const circuitVisible = state.circuitos && !circuitosUnavailable && mapReady;
     const radiosVisible = state.radios && !radiosUnavailable && mapReady;
-    if (el.mapLegends) el.mapLegends.hidden = !(circuitVisible || radiosVisible);
+    const saludVisible = state.salud && !saludUnavailable && mapReady;
+    if (el.mapLegends) el.mapLegends.hidden = !(circuitVisible || radiosVisible || saludVisible);
     if (el.circuitLegend) el.circuitLegend.hidden = !circuitVisible;
     if (el.radiosLegend) el.radiosLegend.hidden = !radiosVisible;
-    if (!circuitVisible && !radiosVisible && el.mapLegends) {
+    if (el.saludLegend) el.saludLegend.hidden = !saludVisible;
+    if (!circuitVisible && !radiosVisible && !saludVisible && el.mapLegends) {
       el.mapLegends.classList.remove("is-obscured");
     }
     if (radiosVisible) updateRadiosPanel();
+    if (saludVisible) updateSaludLegend();
   }
 
   function syncRadios() {
@@ -2059,6 +2198,307 @@
       updateRenabapLabelsVisibility();
       const count = renabapFeatures.length;
       showMapToast(count + " barrios populares en el mapa.", 4000);
+    });
+  }
+
+  /* Establecimientos de salud (REFES) -------------------------------------- */
+
+  function saludTypeMeta(type) {
+    return SALUD_TYPES[type] || SALUD_TYPES.otro;
+  }
+
+  function saludMatchesFilters(feature) {
+    const props = feature.properties || {};
+    if (state.saludTypes[props.tipo] === false) return false;
+    if (state.saludOnlyPublic && props.sector !== "Público") return false;
+    if (state.saludOnlyOfficial && props.geo_precision !== "oficial") return false;
+    return true;
+  }
+
+  function filteredSaludFeatures() {
+    return saludFeatures.filter(saludMatchesFilters);
+  }
+
+  function saludIcon(feature) {
+    const meta = saludTypeMeta((feature.properties || {}).tipo);
+    return L.divIcon({
+      className: "salud-pin",
+      html:
+        '<span class="salud-pin__badge" style="--salud-color:' + escapeAttr(meta.color) + '">' +
+          '<span class="salud-pin__glyph" aria-hidden="true">' + meta.emoji + "</span>" +
+        "</span>",
+      iconSize: [28, 28],
+      iconAnchor: [14, 14],
+      popupAnchor: [0, -14]
+    });
+  }
+
+  function createSaludClusterIcon(cluster) {
+    const children = cluster.getAllChildMarkers();
+    const counts = {};
+    children.forEach(function (marker) {
+      const type = marker.options && marker.options.saludType;
+      if (type) counts[type] = (counts[type] || 0) + 1;
+    });
+    const dominant = Object.keys(counts).sort(function (a, b) {
+      return counts[b] - counts[a];
+    })[0];
+    const meta = dominant ? saludTypeMeta(dominant) : saludTypeMeta("otro");
+    return L.divIcon({
+      html:
+        '<div class="salud-cluster__inner" style="--salud-color:' + escapeAttr(meta.color) + '">' +
+          "<span>" + children.length + "</span>" +
+        "</div>",
+      className: "marker-cluster salud-cluster",
+      iconSize: L.point(42, 42)
+    });
+  }
+
+  function buildSaludMarker(feature) {
+    const props = feature.properties || {};
+    const coordinates = (feature.geometry && feature.geometry.coordinates) || [];
+    const lat = Number(coordinates[1]);
+    const lng = Number(coordinates[0]);
+    const meta = saludTypeMeta(props.tipo);
+    const marker = L.marker([lat, lng], {
+      pane: "saludPane",
+      icon: saludIcon(feature),
+      keyboard: true,
+      title: props.nombre || "Establecimiento de salud",
+      alt: (props.nombre || "Establecimiento") + " · " + meta.label,
+      saludType: props.tipo,
+      riseOnHover: true
+    });
+    marker.feature = feature;
+
+    marker.bindTooltip(escapeHTML(props.nombre || "Establecimiento de salud"), {
+      sticky: true,
+      direction: "top",
+      opacity: 1,
+      className: "salud-tooltip"
+    });
+
+    marker.bindPopup(function () {
+      return buildSaludPopup(feature);
+    }, {
+      maxWidth: 300,
+      minWidth: 250,
+      className: "salud-popup"
+    });
+
+    return marker;
+  }
+
+  function refreshSaludMarkers() {
+    if (!saludCluster) return;
+    saludCluster.clearLayers();
+    filteredSaludFeatures().forEach(function (feature) {
+      saludCluster.addLayer(buildSaludMarker(feature));
+    });
+    updateSaludFilterSummary();
+    updateSaludLegend();
+  }
+
+  function updateSaludFilterSummary() {
+    if (!el.saludFilterSummary) return;
+    if (!saludFeatures.length) {
+      el.saludFilterSummary.textContent = "Cargando establecimientos…";
+      return;
+    }
+    const visible = filteredSaludFeatures().length;
+    el.saludFilterSummary.textContent =
+      "Mostrando " + visible + " de " + saludFeatures.length + " establecimientos.";
+  }
+
+  function updateSaludLegend() {
+    if (!el.saludLegendList || !el.saludLegendNote) return;
+    const visible = filteredSaludFeatures();
+    const counts = {};
+    visible.forEach(function (feature) {
+      const type = feature.properties.tipo;
+      counts[type] = (counts[type] || 0) + 1;
+    });
+    const publicCount = visible.filter(function (feature) {
+      return feature.properties.sector === "Público";
+    }).length;
+    const approximate = visible.filter(function (feature) {
+      return feature.properties.geo_precision !== "oficial" && feature.properties.geo_precision !== "alta";
+    }).length;
+
+    el.saludLegendNote.textContent =
+      visible.length + " establecimientos · " + publicCount + " públicos" +
+      (approximate ? " · " + approximate + " aprox." : "");
+
+    el.saludLegendList.innerHTML = SALUD_TYPE_ORDER.filter(function (type) {
+      return counts[type];
+    }).map(function (type) {
+      const meta = saludTypeMeta(type);
+      return (
+        '<li class="salud-legend__item">' +
+          '<span class="salud-legend__dot" style="--salud-color:' + escapeAttr(meta.color) + '" aria-hidden="true"></span>' +
+          '<span class="salud-legend__label">' + escapeHTML(meta.short) + "</span>" +
+          '<span class="salud-legend__count">' + counts[type] + "</span>" +
+        "</li>"
+      );
+    }).join("");
+  }
+
+  function buildSaludPopup(feature) {
+    const props = feature.properties || {};
+    const meta = saludTypeMeta(props.tipo);
+    const coordinates = (feature.geometry && feature.geometry.coordinates) || [];
+    const lat = Number(coordinates[1]);
+    const lng = Number(coordinates[0]);
+    const circuits = Array.isArray(props.circuitos) ? props.circuitos : [];
+    const circuitText = circuits.length
+      ? circuits.map(function (item) {
+          return "<strong>" + escapeHTML(item.label || item.id) + "</strong>";
+        }).join(" · ")
+      : "Sin intersección con circuitos";
+    const precisionLabel = {
+      oficial: "Coordenada oficial REFES",
+      alta: "Geocodificación de alta precisión",
+      aproximada: "Ubicación aproximada",
+      baja: "Ubicación de baja precisión"
+    }[props.geo_precision] || "Precisión no informada";
+    const precisionClass = props.geo_precision === "aproximada" || props.geo_precision === "baja"
+      ? " salud-popup__precision--warn"
+      : "";
+    const directions = GOOGLE_MAPS_DIR + encodeURIComponent(lat + "," + lng);
+
+    return (
+      '<div class="popup popup--salud" style="--pin:' + escapeAttr(meta.color) + '">' +
+        '<div class="popup__top">' +
+          '<div class="popup__icon" aria-hidden="true">' + meta.emoji + "</div>" +
+          "<div>" +
+            '<p class="popup__type">' + escapeHTML(meta.label) + " · " + escapeHTML(props.sector || "Sin sector") + "</p>" +
+            '<h3 class="popup__name">' + escapeHTML(props.nombre || "Establecimiento de salud") + "</h3>" +
+          "</div>" +
+        "</div>" +
+        '<div class="popup__body">' +
+          '<dl class="circuito-popup__stats">' +
+            '<div class="circuito-popup__stat"><dt>Sector</dt><dd>' + escapeHTML(props.sector || "—") + "</dd></div>" +
+            '<div class="circuito-popup__stat"><dt>Financiamiento</dt><dd>' + escapeHTML(props.financiamiento || "—") + "</dd></div>" +
+            '<div class="circuito-popup__stat"><dt>Dirección</dt><dd>' + escapeHTML(props.domicilio || "Sin dato") + "</dd></div>" +
+            '<div class="circuito-popup__stat"><dt>Localidad</dt><dd>' + escapeHTML(props.localidad || "—") + "</dd></div>" +
+            '<div class="circuito-popup__stat"><dt>Circuito</dt><dd>' + circuitText + "</dd></div>" +
+          "</dl>" +
+          '<p class="salud-popup__precision' + precisionClass + '">' + escapeHTML(precisionLabel) + " · " + escapeHTML(props.geo_nota || "") + "</p>" +
+          '<a class="popup__button popup__button--ghost" href="' + escapeAttr(directions) + '" target="_blank" rel="noopener noreferrer">Cómo llegar</a>' +
+          '<p class="salud-popup__source">REFES · Ministerio de Salud de la Nación · datos 2026</p>' +
+        "</div>" +
+      "</div>"
+    );
+  }
+
+  function loadSalud() {
+    if (saludCluster) return Promise.resolve(saludCluster);
+    if (saludRequest) return saludRequest;
+
+    saludRequest = fetch(SALUD_URL, { cache: "no-store" })
+      .then(function (response) {
+        if (!response.ok) throw new Error("No se pudo leer salud.geojson (" + response.status + ")");
+        return response.json();
+      })
+      .then(function (data) {
+        const features = data && Array.isArray(data.features) ? data.features : [];
+        if (!features.length) throw new Error("salud.geojson no contiene establecimientos");
+        saludFeatures = features;
+        saludMeta = data.metadata || null;
+        if (el.layerMetaSalud && saludMeta && saludMeta.counts) {
+          el.layerMetaSalud.textContent =
+            features.length + " establecimientos · " +
+            (saludMeta.counts.by_sector["Público"] || 0) + " públicos";
+        }
+        if (typeof L.markerClusterGroup === "function") {
+          saludCluster = L.markerClusterGroup({
+            clusterPane: "saludPane",
+            showCoverageOnHover: false,
+            zoomToBoundsOnClick: true,
+            spiderfyOnMaxZoom: true,
+            removeOutsideVisibleBounds: true,
+            maxClusterRadius: 46,
+            disableClusteringAtZoom: 17,
+            iconCreateFunction: createSaludClusterIcon
+          });
+        } else {
+          saludCluster = L.layerGroup();
+        }
+        refreshSaludMarkers();
+        applySaludToCircuitos();
+        syncLayerSettings();
+        updateLegends();
+        return saludCluster;
+      })
+      .catch(function (error) {
+        console.error("No se pudieron cargar los establecimientos de salud", error);
+        saludRequest = null;
+        markLayerUnavailable("salud", "No se pudo cargar la capa de salud");
+        showMapToast("No pudimos cargar los establecimientos de salud.", 6000);
+        return null;
+      });
+
+    return saludRequest;
+  }
+
+  function applySaludToCircuitos() {
+    if (!circuitosLayer || !saludFeatures.length) return;
+    const totals = new Map();
+    saludFeatures.forEach(function (feature) {
+      (feature.properties.circuitos || []).forEach(function (item) {
+        const key = String(item.id);
+        const current = totals.get(key) || { total: 0, publicos: 0 };
+        current.total += 1;
+        if (feature.properties.sector === "Público") current.publicos += 1;
+        totals.set(key, current);
+      });
+    });
+
+    const features = [];
+    circuitosLayer.eachLayer(function (layer) {
+      const props = (layer.feature && layer.feature.properties) || {};
+      const total = totals.get(String(props.id));
+      props.salud = total ? total.total : 0;
+      props.salud_publicos = total ? total.publicos : 0;
+      features.push(layer.feature);
+    });
+    circuitoRanges = computeCircuitoRanges(features);
+    applyCircuitoVisuals(true);
+    syncLayerSettings();
+  }
+
+  function setSaludAttribution(active) {
+    if (!mapReady || !map || !map.attributionControl) return;
+    if (active && !saludAttributionAdded) {
+      map.attributionControl.addAttribution(SALUD_ATTRIBUTION);
+      saludAttributionAdded = true;
+    } else if (!active && saludAttributionAdded) {
+      map.attributionControl.removeAttribution(SALUD_ATTRIBUTION);
+      saludAttributionAdded = false;
+    }
+  }
+
+  function syncSalud() {
+    const visible = state.salud && !saludUnavailable && mapReady;
+    syncLayersPanel();
+    updateLegends();
+    if (!mapReady) return;
+
+    if (!visible) {
+      setSaludAttribution(false);
+      if (saludCluster && map.hasLayer(saludCluster)) map.removeLayer(saludCluster);
+      return;
+    }
+
+    loadSalud().then(function (layer) {
+      if (!layer || !state.salud) return;
+      refreshSaludMarkers();
+      if (!map.hasLayer(layer)) layer.addTo(map);
+      setSaludAttribution(true);
+      updateSaludLegend();
+      updateLegends();
+      const count = filteredSaludFeatures().length;
+      showMapToast(count + " establecimientos de salud en el mapa.", 4000);
     });
   }
 
@@ -3414,6 +3854,13 @@
       });
     }
 
+    if (el.layerSalud) {
+      el.layerSalud.addEventListener("change", function () {
+        state.salud = el.layerSalud.checked;
+        syncSalud();
+      });
+    }
+
     if (el.layerSettingsBarrios) {
       el.layerSettingsBarrios.addEventListener("click", function () { openLayerSettings("barrios"); });
     }
@@ -3428,6 +3875,10 @@
 
     if (el.layerSettingsRadios) {
       el.layerSettingsRadios.addEventListener("click", function () { openLayerSettings("radios"); });
+    }
+
+    if (el.layerSettingsSalud) {
+      el.layerSettingsSalud.addEventListener("click", function () { openLayerSettings("salud"); });
     }
 
     el.layerTabs.forEach(function (tab) {
@@ -3575,6 +4026,34 @@
           el.radioFillOpacityOutput.textContent = el.radioFillOpacity.value + "%";
         }
         if (radiosLayer) radiosLayer.setStyle(radioStyle);
+      });
+    }
+
+    el.saludTypeInputs.forEach(function (input) {
+      input.addEventListener("change", function () {
+        state.saludTypes[input.dataset.saludType] = input.checked;
+        refreshSaludMarkers();
+      });
+    });
+
+    if (el.saludOnlyPublic) {
+      el.saludOnlyPublic.addEventListener("change", function () {
+        state.saludOnlyPublic = el.saludOnlyPublic.checked;
+        refreshSaludMarkers();
+      });
+    }
+
+    if (el.saludOnlyOfficial) {
+      el.saludOnlyOfficial.addEventListener("change", function () {
+        state.saludOnlyOfficial = el.saludOnlyOfficial.checked;
+        refreshSaludMarkers();
+      });
+    }
+
+    if (el.blendMode) {
+      el.blendMode.addEventListener("change", function () {
+        state.blendMode = el.blendMode.value;
+        applyBlendMode();
       });
     }
 

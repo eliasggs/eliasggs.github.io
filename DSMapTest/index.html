@@ -203,6 +203,10 @@
             <dd><a href="https://www.indec.gob.ar/indec/web/Nivel4-Tema-2-41-165" target="_blank" rel="noopener noreferrer">INDEC</a> · Censo Nacional 2022, resultados por radio (CC BY-SA 4.0)</dd>
           </div>
           <div class="credits-list__row">
+            <dt>Salud</dt>
+            <dd><a href="https://datos.salud.gob.ar/dataset/listado-establecimientos-de-salud-asentados-en-el-registro-federal-refes" target="_blank" rel="noopener noreferrer">REFES</a> · Ministerio de Salud de la Nación (CC BY 4.0) · geocodificación <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a> (ODbL)</dd>
+          </div>
+          <div class="credits-list__row">
             <dt>Actualizado</dt>
             <dd>2026</dd>
           </div>
@@ -235,7 +239,8 @@
         <button class="layer-settings__tab" id="layer-tab-barrios" type="button" role="tab" aria-selected="false" aria-controls="layer-panel-barrios" data-layer-tab="barrios">Barrios</button>
         <button class="layer-settings__tab is-active" id="layer-tab-circuitos" type="button" role="tab" aria-selected="true" aria-controls="layer-panel-circuitos" data-layer-tab="circuitos">Circuitos</button>
         <button class="layer-settings__tab" id="layer-tab-radios" type="button" role="tab" aria-selected="false" aria-controls="layer-panel-radios" data-layer-tab="radios">Radios</button>
-        <button class="layer-settings__tab" id="layer-tab-renabap" type="button" role="tab" aria-selected="false" aria-controls="layer-panel-renabap" data-layer-tab="renabap">Barrios populares</button>
+        <button class="layer-settings__tab" id="layer-tab-renabap" type="button" role="tab" aria-selected="false" aria-controls="layer-panel-renabap" data-layer-tab="renabap">RENABAP</button>
+        <button class="layer-settings__tab" id="layer-tab-salud" type="button" role="tab" aria-selected="false" aria-controls="layer-panel-salud" data-layer-tab="salud">Salud</button>
       </div>
 
       <div class="circuit-settings__body">
@@ -282,6 +287,14 @@
           </fieldset>
 
           <fieldset class="circuit-settings__group">
+            <legend>Oferta de salud (REFES)</legend>
+            <div class="circuit-settings__metrics">
+              <label class="circuit-settings__metric" data-requires="salud"><input type="radio" name="circuit-metric" value="salud" disabled><span>Establecimientos de salud</span></label>
+              <label class="circuit-settings__metric" data-requires="salud"><input type="radio" name="circuit-metric" value="salud_publicos" disabled><span>Establecimientos públicos</span></label>
+            </div>
+          </fieldset>
+
+          <fieldset class="circuit-settings__group">
             <legend>Visualización</legend>
             <label class="circuit-settings__switch"><input type="checkbox" id="circuit-show-labels"><span>Mostrar número de circuito</span></label>
             <label class="circuit-settings__switch"><input type="checkbox" id="circuit-show-values"><span>Mostrar el valor en la etiqueta</span></label>
@@ -292,7 +305,7 @@
             </label>
           </fieldset>
 
-          <p class="circuit-settings__hint">La densidad usa la superficie del polígono. Las instituciones se cuentan desde el directorio educativo del mapa. Las métricas de barrios populares se habilitan al cargar RENABAP; las poblacionales, al cargar los radios censales.</p>
+          <p class="circuit-settings__hint">La densidad usa la superficie del polígono. Las instituciones se cuentan desde el directorio educativo del mapa. Las métricas de barrios populares se habilitan al cargar RENABAP; las poblacionales, al cargar los radios censales; la de salud, al cargar REFES.</p>
         </div>
 
         <div class="layer-settings__panel" id="layer-panel-radios" role="tabpanel" aria-labelledby="layer-tab-radios" data-layer-panel="radios" hidden>
@@ -336,6 +349,33 @@
             </label>
           </fieldset>
           <p class="circuit-settings__hint">Los hogares provienen del RENABAP (diciembre 2023). El GeoJSON oficial no publica viviendas: se muestran como «Sin dato». Los hogares por circuito se prorratean por área.</p>
+        </div>
+
+        <div class="layer-settings__panel" id="layer-panel-salud" role="tabpanel" aria-labelledby="layer-tab-salud" data-layer-panel="salud" hidden>
+          <fieldset class="circuit-settings__group">
+            <legend>Tipo de establecimiento</legend>
+            <div class="circuit-settings__metrics" id="salud-type-filters">
+              <label class="circuit-settings__metric"><input type="checkbox" data-salud-type="hospital" checked><span>Hospital</span></label>
+              <label class="circuit-settings__metric"><input type="checkbox" data-salud-type="caps" checked><span>CAPS / centro de salud</span></label>
+              <label class="circuit-settings__metric"><input type="checkbox" data-salud-type="consultorio" checked><span>Consultorio</span></label>
+              <label class="circuit-settings__metric"><input type="checkbox" data-salud-type="diagnostico" checked><span>Laboratorio</span></label>
+              <label class="circuit-settings__metric"><input type="checkbox" data-salud-type="odontologia" checked><span>Odontología</span></label>
+              <label class="circuit-settings__metric"><input type="checkbox" data-salud-type="rehabilitacion" checked><span>Rehabilitación</span></label>
+              <label class="circuit-settings__metric"><input type="checkbox" data-salud-type="residencia" checked><span>Residencia</span></label>
+              <label class="circuit-settings__metric"><input type="checkbox" data-salud-type="optica" checked><span>Óptica</span></label>
+              <label class="circuit-settings__metric"><input type="checkbox" data-salud-type="otro" checked><span>Otro</span></label>
+            </div>
+          </fieldset>
+
+          <fieldset class="circuit-settings__group">
+            <legend>Filtros</legend>
+            <label class="circuit-settings__switch"><input type="checkbox" id="salud-only-public"><span>Solo sector público</span></label>
+            <label class="circuit-settings__switch"><input type="checkbox" id="salud-only-official"><span>Solo puntos con coordenada oficial</span></label>
+          </fieldset>
+
+          <p class="circuit-settings__hint" id="salud-filter-summary" role="status">Cargando establecimientos…</p>
+          <p class="circuit-settings__hint">Los puntos con precisión «alta» provienen de OSM o de una dirección geocodificada; los «aproximados» se estimaron por dirección y no sirven para micro-localización. Los conteos por circuito usan todos los puntos publicados.</p>
+          <p class="circuit-settings__hint">Con circuitos y radios activos, el popup de cada circuito muestra habitantes por establecimiento de salud: sirve para comparar oferta territorial y priorizar dónde falta un CAPS.</p>
         </div>
       </div>
 
@@ -442,7 +482,36 @@
               <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.7 1.7 0 0 0-1.88-.34 1.7 1.7 0 0 0-1 1.55V21a2 2 0 1 1-4 0v-.09a1.7 1.7 0 0 0-1.11-1.55 1.7 1.7 0 0 0-1.88.34l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.7 1.7 0 0 0 .34-1.88 1.7 1.7 0 0 0-1.55-1H3a2 2 0 1 1 0-4h.09A1.7 1.7 0 0 0 4.64 8a1.7 1.7 0 0 0-.34-1.88l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.7 1.7 0 0 0 9 3.63h.08A1.7 1.7 0 0 0 10.13 2.1V2a2 2 0 1 1 4 0v.09a1.7 1.7 0 0 0 1 1.55 1.7 1.7 0 0 0 1.88-.34l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.7 1.7 0 0 0 19.4 8v.08a1.7 1.7 0 0 0 1.55 1.05H21a2 2 0 1 1 0 4h-.09a1.7 1.7 0 0 0-1.51 1Z"/></svg>
             </button>
           </li>
+          <li class="layers-panel__item" data-layer-row="salud">
+            <label class="layers-panel__switch">
+              <input type="checkbox" id="layer-salud">
+              <span class="layers-panel__text">
+                <strong>Establecimientos de salud</strong>
+                <small id="layer-meta-salud">REFES · hospitales, CAPS, consultorios y más</small>
+              </span>
+            </label>
+            <button class="layers-panel__settings" id="layer-settings-salud" type="button" aria-label="Configurar la capa de establecimientos de salud" title="Configurar establecimientos de salud" aria-haspopup="dialog" aria-controls="layer-settings-dialog">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.7 1.7 0 0 0-1.88-.34 1.7 1.7 0 0 0-1 1.55V21a2 2 0 1 1-4 0v-.09a1.7 1.7 0 0 0-1.11-1.55 1.7 1.7 0 0 0-1.88.34l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.7 1.7 0 0 0 .34-1.88 1.7 1.7 0 0 0-1.55-1H3a2 2 0 1 1 0-4h.09A1.7 1.7 0 0 0 4.64 8a1.7 1.7 0 0 0-.34-1.88l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.7 1.7 0 0 0 9 3.63h.08A1.7 1.7 0 0 0 10.13 2.1V2a2 2 0 1 1 4 0v.09a1.7 1.7 0 0 0 1 1.55 1.7 1.7 0 0 0 1.88-.34l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.7 1.7 0 0 0 19.4 8v.08a1.7 1.7 0 0 0 1.55 1.05H21a2 2 0 1 1 0 4h-.09a1.7 1.7 0 0 0-1.51 1Z"/></svg>
+            </button>
+          </li>
         </ul>
+
+        <div class="layers-panel__blend">
+          <label class="layers-panel__blend-label" for="layer-blend-mode">Mezcla de capas</label>
+          <span class="select-wrap select-wrap--compact">
+            <select id="layer-blend-mode" class="select-input" aria-describedby="layer-blend-hint">
+              <option value="normal">Normal</option>
+              <option value="multiply">Multiplicar</option>
+              <option value="darken">Oscurecer</option>
+              <option value="overlay">Superponer</option>
+              <option value="soft-light">Luz suave</option>
+              <option value="screen">Aclarar</option>
+            </select>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5"/></svg>
+          </span>
+          <p class="layers-panel__blend-hint" id="layer-blend-hint">Multiplicar resalta los cruces. Si activás muchas capas, bajá la intensidad de relleno de cada una para que el mapa no se sature. Se aplica a las capas de polígonos.</p>
+        </div>
+
         <p class="layers-panel__hint">Activá las capas que quieras ver. El engranaje abre los ajustes de visualización de cada una.</p>
       </div>
 
@@ -499,6 +568,14 @@
           </div>
           <p class="circuit-legend__summary" id="radios-summary"></p>
           <p class="circuit-legend__source">Fuente: INDEC · Censo 2022 · CC BY-SA 4.0</p>
+        </div>
+
+        <div class="circuit-legend salud-legend" id="salud-legend" role="region" aria-label="Leyenda de establecimientos de salud" hidden>
+          <p class="circuit-legend__eyebrow salud-legend__eyebrow">Oferta de salud</p>
+          <h3 class="circuit-legend__title">Establecimientos REFES</h3>
+          <p class="circuit-legend__note" id="salud-legend-note">86 establecimientos · 22 públicos</p>
+          <ul class="salud-legend__list" id="salud-legend-list"></ul>
+          <p class="circuit-legend__source">Fuente: REFES · Ministerio de Salud · CC BY 4.0</p>
         </div>
       </div>
 

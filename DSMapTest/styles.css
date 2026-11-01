@@ -1491,6 +1491,8 @@ body.sidebar-open .sidebar-handle:hover svg {
   right: 66px;
   bottom: 54px;
   width: min(304px, calc(100vw - 84px));
+  max-height: calc(100dvh - 130px);
+  overflow-y: auto;
   padding: 12px 13px 13px;
   border: 1px solid rgba(74, 38, 16, 0.12);
   border-radius: 16px;
@@ -2668,6 +2670,7 @@ body.sidebar-open .sidebar-handle:hover svg {
 .leaflet-container {
   font-family: var(--font-body);
   background: #f8edde;
+  isolation: isolate;
 }
 
 .leaflet-control-attribution {
@@ -3523,4 +3526,162 @@ body.sidebar-open .sidebar-handle:hover svg {
 .radio-popup .circuito-popup__stats {
   max-height: 320px;
   overflow-y: auto;
+}
+
+/* Establecimientos de salud (REFES) -------------------------------------- */
+
+.salud-pin {
+  border: 0;
+  background: none;
+}
+
+.salud-pin__badge {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border: 2px solid #fffdf9;
+  border-radius: 50%;
+  background: var(--salud-color, #0f6b5c);
+  color: #fff;
+  box-shadow: 0 3px 10px rgba(46, 26, 17, 0.3);
+  transition: transform 140ms ease, box-shadow 140ms ease;
+}
+
+.salud-pin:hover .salud-pin__badge,
+.salud-pin:focus .salud-pin__badge {
+  transform: scale(1.12);
+  box-shadow: 0 5px 14px rgba(46, 26, 17, 0.36);
+}
+
+.salud-pin__glyph {
+  font-size: 14px;
+  line-height: 1;
+}
+
+.salud-cluster .salud-cluster__inner {
+  background: var(--salud-color, #0f6b5c) !important;
+}
+
+.salud-tooltip {
+  border: none;
+  border-radius: 8px;
+  background: #0f4f46;
+  color: #f4fffb;
+  font-size: 10.5px;
+  font-weight: 650;
+  box-shadow: 0 4px 14px rgba(15, 79, 70, 0.28);
+}
+
+.salud-tooltip::before {
+  display: none;
+}
+
+.salud-popup__precision {
+  margin: 9px 0 0;
+  color: #5f7d76;
+  font-size: 9px;
+  line-height: 1.4;
+}
+
+.salud-popup__precision--warn {
+  padding: 5px 7px;
+  border: 1px solid #e6c9a8;
+  border-radius: 7px;
+  background: #fff8ec;
+  color: #8a5a1f;
+}
+
+.salud-popup__source {
+  margin: 7px 0 0;
+  color: #9b7e6c;
+  font-size: 8px;
+  line-height: 1.35;
+}
+
+.salud-popup .circuito-popup__stats {
+  grid-template-columns: 1fr;
+}
+
+.salud-popup .circuito-popup__stat dd {
+  text-align: right;
+}
+
+.salud-legend__eyebrow {
+  color: #0f6b5c;
+}
+
+.salud-legend__list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px 8px;
+  margin: 6px 0 8px;
+  padding: 0;
+  list-style: none;
+}
+
+.salud-legend__item {
+  display: grid;
+  grid-template-columns: 10px 1fr auto;
+  align-items: center;
+  gap: 6px;
+  color: #5d4030;
+  font-size: 9.5px;
+  font-weight: 600;
+}
+
+.salud-legend__dot {
+  width: 8px;
+  height: 8px;
+  border: 1.5px solid #fffdf9;
+  border-radius: 50%;
+  background: var(--salud-color, #0f6b5c);
+  box-shadow: 0 0 0 1px rgba(74, 38, 16, 0.15);
+}
+
+.salud-legend__count {
+  color: #0f6b5c;
+  font-weight: 800;
+}
+
+/* Mezcla de capas -------------------------------------------------------- */
+
+.layers-panel__blend {
+  margin: 0 12px 10px;
+  padding: 9px 10px;
+  border: 1px solid #ead9c7;
+  border-radius: 11px;
+  background: #fffaf4;
+}
+
+.layers-panel__blend-label {
+  display: block;
+  margin-bottom: 5px;
+  color: #84675a;
+  font-size: 8.5px;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.layers-panel__blend-hint {
+  margin: 6px 0 0;
+  color: #9b7e6c;
+  font-size: 8.5px;
+  line-height: 1.35;
+}
+
+.layers-panel__blend .select-wrap {
+  display: block;
+}
+
+.layers-panel__blend .select-input {
+  height: 29px;
+  background: #fffdf9;
+}
+
+@media (max-width: 700px) {
+  .salud-popup .circuito-popup__stats {
+    grid-template-columns: 1fr;
+  }
 }
