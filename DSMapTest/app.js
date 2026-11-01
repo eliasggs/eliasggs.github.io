@@ -250,7 +250,7 @@
     orientation: "Todas",
     selectedId: null,
     dataLoaded: false,
-    barrios: true,
+    barrios: false,
     barrioLabels: true,
     barrioFillOpacity: 0.07,
     rutas: false,
@@ -3361,7 +3361,7 @@
     if (el.rutaVisible) {
       el.rutaVisible.addEventListener("change", function () {
         state.rutas = el.rutaVisible.checked;
-        if (state.rutas && !rutaAlgunaLineaVisible()) {
+        if (state.rutas) {
           RUTAS_SOURCES.forEach(function (source) {
             state.rutaLineas[source.linea] = true;
           });
