@@ -187,6 +187,22 @@
             <dd><a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a> (ODbL)</dd>
           </div>
           <div class="credits-list__row">
+            <dt>Circuitos</dt>
+            <dd><a href="https://ulpgeo.maps.arcgis.com/apps/webappviewer/index.html?id=99ce6ec913cd44a3aace8481e0d52297" target="_blank" rel="noopener noreferrer">ULP Geo / Gobierno de San Luis</a></dd>
+          </div>
+          <div class="credits-list__row">
+            <dt>Datos electorales</dt>
+            <dd><a href="https://www.electoral.gob.ar/" target="_blank" rel="noopener noreferrer">Cámara Nacional Electoral</a> · <a href="https://www.datacp.ar/legislativas2025/datos-abiertos" target="_blank" rel="noopener noreferrer">Data CP</a></dd>
+          </div>
+          <div class="credits-list__row">
+            <dt>Barrios populares</dt>
+            <dd><a href="https://www.argentina.gob.ar/obras-publicas/sisu/renabap/mapa" target="_blank" rel="noopener noreferrer">RENABAP</a> · Subsecretaría de Integración Socio Urbana (CC BY 4.0)</dd>
+          </div>
+          <div class="credits-list__row">
+            <dt>Radios censales</dt>
+            <dd><a href="https://www.indec.gob.ar/indec/web/Nivel4-Tema-2-41-165" target="_blank" rel="noopener noreferrer">INDEC</a> · Censo Nacional 2022, resultados por radio (CC BY-SA 4.0)</dd>
+          </div>
+          <div class="credits-list__row">
             <dt>Actualizado</dt>
             <dd>2026</dd>
           </div>
@@ -201,6 +217,131 @@
             eliasggs@gmail.com
           </a>
         </div>
+      </div>
+    </dialog>
+
+    <dialog class="circuit-settings-dialog" id="layer-settings-dialog" aria-labelledby="layer-settings-title">
+      <div class="circuit-settings__top">
+        <div>
+          <p class="circuit-settings__eyebrow">Capas del mapa</p>
+          <h2 class="circuit-settings__title" id="layer-settings-title">Ajustes de visualización</h2>
+        </div>
+        <button class="circuit-settings__close" id="close-layer-settings" type="button" aria-label="Cerrar ajustes de capas">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </div>
+
+      <div class="layer-settings__tabs" role="tablist" aria-label="Capa a configurar">
+        <button class="layer-settings__tab" id="layer-tab-barrios" type="button" role="tab" aria-selected="false" aria-controls="layer-panel-barrios" data-layer-tab="barrios">Barrios</button>
+        <button class="layer-settings__tab is-active" id="layer-tab-circuitos" type="button" role="tab" aria-selected="true" aria-controls="layer-panel-circuitos" data-layer-tab="circuitos">Circuitos</button>
+        <button class="layer-settings__tab" id="layer-tab-radios" type="button" role="tab" aria-selected="false" aria-controls="layer-panel-radios" data-layer-tab="radios">Radios</button>
+        <button class="layer-settings__tab" id="layer-tab-renabap" type="button" role="tab" aria-selected="false" aria-controls="layer-panel-renabap" data-layer-tab="renabap">Barrios populares</button>
+      </div>
+
+      <div class="circuit-settings__body">
+        <div class="layer-settings__panel" id="layer-panel-barrios" role="tabpanel" aria-labelledby="layer-tab-barrios" data-layer-panel="barrios" hidden>
+          <fieldset class="circuit-settings__group">
+            <legend>Visualización</legend>
+            <label class="circuit-settings__switch"><input type="checkbox" id="barrio-show-labels" checked><span>Mostrar nombres de barrios</span></label>
+            <label class="circuit-settings__range" for="barrio-fill-opacity">
+              <span>Intensidad del relleno</span>
+              <input type="range" id="barrio-fill-opacity" min="0" max="40" step="2" value="7">
+              <output id="barrio-fill-opacity-output" for="barrio-fill-opacity">7%</output>
+            </label>
+          </fieldset>
+          <p class="circuit-settings__hint">Los nombres aparecen según el nivel de zoom y el tipo de barrio. El relleno bajo deja leer las teselas y las demás capas.</p>
+        </div>
+
+        <div class="layer-settings__panel" id="layer-panel-circuitos" role="tabpanel" aria-labelledby="layer-tab-circuitos" data-layer-panel="circuitos">
+          <fieldset class="circuit-settings__group">
+            <legend>Dato del mapa</legend>
+            <div class="circuit-settings__metrics">
+              <label class="circuit-settings__metric"><input type="radio" name="circuit-metric" value="electores" checked><span>Electores</span></label>
+              <label class="circuit-settings__metric"><input type="radio" name="circuit-metric" value="participacion"><span>Participación</span></label>
+              <label class="circuit-settings__metric"><input type="radio" name="circuit-metric" value="votantes"><span>Votantes</span></label>
+              <label class="circuit-settings__metric"><input type="radio" name="circuit-metric" value="densidad"><span>Densidad electoral</span></label>
+              <label class="circuit-settings__metric"><input type="radio" name="circuit-metric" value="superficie"><span>Superficie</span></label>
+              <label class="circuit-settings__metric"><input type="radio" name="circuit-metric" value="escuelas"><span>Instituciones educativas</span></label>
+              <label class="circuit-settings__metric" data-requires="renabap"><input type="radio" name="circuit-metric" value="renabap_hogares" disabled><span>Hogares en barrios populares</span></label>
+              <label class="circuit-settings__metric" data-requires="renabap"><input type="radio" name="circuit-metric" value="renabap_barrios" disabled><span>Barrios populares</span></label>
+            </div>
+          </fieldset>
+
+          <fieldset class="circuit-settings__group">
+            <legend>Población (Censo 2022)</legend>
+            <div class="circuit-settings__metrics">
+              <label class="circuit-settings__metric" data-requires="radios"><input type="radio" name="circuit-metric" value="poblacion" disabled><span>Población</span></label>
+              <label class="circuit-settings__metric" data-requires="radios"><input type="radio" name="circuit-metric" value="densidad_poblacional" disabled><span>Densidad poblacional</span></label>
+              <label class="circuit-settings__metric" data-requires="radios"><input type="radio" name="circuit-metric" value="pct_65_mas" disabled><span>% 65 años y más</span></label>
+              <label class="circuit-settings__metric" data-requires="radios"><input type="radio" name="circuit-metric" value="pct_sin_cobertura_salud" disabled><span>% sin cobertura de salud</span></label>
+              <label class="circuit-settings__metric" data-requires="radios"><input type="radio" name="circuit-metric" value="pct_nbi" disabled><span>% hogares con NBI</span></label>
+              <label class="circuit-settings__metric" data-requires="radios"><input type="radio" name="circuit-metric" value="pct_sin_cloacas" disabled><span>% hogares sin cloacas</span></label>
+              <label class="circuit-settings__metric" data-requires="radios"><input type="radio" name="circuit-metric" value="electores_por_100" disabled><span>Electores por 100 hab.</span></label>
+              <label class="circuit-settings__metric" data-requires="radios"><input type="radio" name="circuit-metric" value="participacion_vap" disabled><span>Participación sobre VAP</span></label>
+            </div>
+          </fieldset>
+
+          <fieldset class="circuit-settings__group">
+            <legend>Visualización</legend>
+            <label class="circuit-settings__switch"><input type="checkbox" id="circuit-show-labels"><span>Mostrar número de circuito</span></label>
+            <label class="circuit-settings__switch"><input type="checkbox" id="circuit-show-values"><span>Mostrar el valor en la etiqueta</span></label>
+            <label class="circuit-settings__range" for="circuit-fill-opacity">
+              <span>Intensidad del relleno</span>
+              <input type="range" id="circuit-fill-opacity" min="20" max="80" step="5" value="55">
+              <output id="circuit-fill-opacity-output" for="circuit-fill-opacity">55%</output>
+            </label>
+          </fieldset>
+
+          <p class="circuit-settings__hint">La densidad usa la superficie del polígono. Las instituciones se cuentan desde el directorio educativo del mapa. Las métricas de barrios populares se habilitan al cargar RENABAP; las poblacionales, al cargar los radios censales.</p>
+        </div>
+
+        <div class="layer-settings__panel" id="layer-panel-radios" role="tabpanel" aria-labelledby="layer-tab-radios" data-layer-panel="radios" hidden>
+          <fieldset class="circuit-settings__group">
+            <legend>Dato del mapa</legend>
+            <div class="circuit-settings__metrics">
+              <label class="circuit-settings__metric"><input type="radio" name="radio-metric" value="poblacion" checked><span>Población</span></label>
+              <label class="circuit-settings__metric"><input type="radio" name="radio-metric" value="densidad"><span>Densidad</span></label>
+              <label class="circuit-settings__metric"><input type="radio" name="radio-metric" value="pct_65_mas"><span>% 65 años y más</span></label>
+              <label class="circuit-settings__metric"><input type="radio" name="radio-metric" value="pct_sin_cobertura_salud"><span>% sin cobertura de salud</span></label>
+              <label class="circuit-settings__metric"><input type="radio" name="radio-metric" value="pct_nbi"><span>% hogares con NBI</span></label>
+              <label class="circuit-settings__metric"><input type="radio" name="radio-metric" value="pct_sin_cloacas"><span>% sin cloacas</span></label>
+              <label class="circuit-settings__metric"><input type="radio" name="radio-metric" value="pct_sin_gas_red"><span>% sin gas de red</span></label>
+              <label class="circuit-settings__metric"><input type="radio" name="radio-metric" value="pct_clima_bajo"><span>% clima educativo bajo</span></label>
+            </div>
+          </fieldset>
+
+          <fieldset class="circuit-settings__group">
+            <legend>Visualización</legend>
+            <label class="circuit-settings__switch"><input type="checkbox" id="radio-show-labels"><span>Mostrar población en la etiqueta</span></label>
+            <label class="circuit-settings__switch"><input type="checkbox" id="radio-show-values"><span>Mostrar el dato elegido</span></label>
+            <label class="circuit-settings__range" for="radio-fill-opacity">
+              <span>Intensidad del relleno</span>
+              <input type="range" id="radio-fill-opacity" min="20" max="85" step="5" value="55">
+              <output id="radio-fill-opacity-output" for="radio-fill-opacity">55%</output>
+            </label>
+          </fieldset>
+
+          <p class="circuit-settings__hint">Los indicadores provienen del Censo 2022 por radio censal (INDEC). Las tasas usan como denominador la población o los hogares del radio. Los radios con menos de 50 habitantes se marcan como baja población. Al activar circuitos, las métricas poblacionales de los circuitos se calculan desde estos radios.</p>
+        </div>
+
+        <div class="layer-settings__panel" id="layer-panel-renabap" role="tabpanel" aria-labelledby="layer-tab-renabap" data-layer-panel="renabap" hidden>
+          <fieldset class="circuit-settings__group">
+            <legend>Visualización</legend>
+            <label class="circuit-settings__switch"><input type="checkbox" id="renabap-show-labels"><span>Mostrar nombre del barrio</span></label>
+            <label class="circuit-settings__switch"><input type="checkbox" id="renabap-show-values"><span>Mostrar hogares en la etiqueta</span></label>
+            <label class="circuit-settings__range" for="renabap-fill-opacity">
+              <span>Intensidad del relleno</span>
+              <input type="range" id="renabap-fill-opacity" min="10" max="70" step="5" value="35">
+              <output id="renabap-fill-opacity-output" for="renabap-fill-opacity">35%</output>
+            </label>
+          </fieldset>
+          <p class="circuit-settings__hint">Los hogares provienen del RENABAP (diciembre 2023). El GeoJSON oficial no publica viviendas: se muestran como «Sin dato». Los hogares por circuito se prorratean por área.</p>
+        </div>
+      </div>
+
+      <div class="circuit-settings__footer">
+        <button class="circuit-settings__button circuit-settings__button--ghost" id="reset-layer-settings" type="button">Restablecer</button>
+        <button class="circuit-settings__button" id="close-layer-settings-done" type="button">Listo</button>
       </div>
     </dialog>
 
@@ -227,8 +368,9 @@
         <button class="map-action map-action--rutas" id="toggle-rutas" type="button" aria-pressed="false" aria-label="Mostrar recorridos de colectivos" title="Mostrar recorridos de colectivos">
           <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="3" width="14" height="14" rx="3"/><path d="M5 10h14M8.5 17v3M15.5 17v3"/><circle cx="8.7" cy="13.7" r=".8"/><circle cx="15.3" cy="13.7" r=".8"/></svg>
         </button>
-        <button class="map-action map-action--barrios" id="toggle-barrios" type="button" aria-pressed="true" aria-label="Ocultar barrios">
+        <button class="map-action map-action--layers" id="layers-toggle" type="button" aria-expanded="false" aria-controls="layers-panel" aria-label="Capas del mapa" title="Capas del mapa">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 3 7.5 12 12l9-4.5L12 3Z"/><path d="m3 12.5 9 4.5 9-4.5"/><path d="m3 17 9 4.5 9-4.5"/></svg>
+          <span class="map-action__badge" id="layers-badge" aria-hidden="true">1</span>
         </button>
         <button class="map-action" id="zoom-in" type="button" aria-label="Acercar mapa">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
@@ -239,6 +381,99 @@
         <button class="map-action map-action--reset" id="reset-view" type="button" aria-label="Ver todas las escuelas">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M20 15v5h-5M4 4l5.5 5.5M20 20l-5.5-5.5"/></svg>
         </button>
+      </div>
+
+      <div class="layers-panel" id="layers-panel" role="group" aria-label="Capas del mapa" hidden>
+        <div class="layers-panel__top">
+          <div>
+            <p class="layers-panel__eyebrow">Mapa</p>
+            <h3 class="layers-panel__title">Capas</h3>
+          </div>
+          <button class="layers-panel__close" id="layers-close" type="button" aria-label="Cerrar capas">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+          </button>
+        </div>
+        <ul class="layers-panel__list">
+          <li class="layers-panel__item" data-layer-row="barrios">
+            <label class="layers-panel__switch">
+              <input type="checkbox" id="layer-barrios" checked>
+              <span class="layers-panel__text">
+                <strong>Barrios</strong>
+                <small id="layer-meta-barrios">Límites y nombres de OpenStreetMap</small>
+              </span>
+            </label>
+            <button class="layers-panel__settings" id="layer-settings-barrios" type="button" aria-label="Configurar la capa de barrios" title="Configurar barrios" aria-haspopup="dialog" aria-controls="layer-settings-dialog">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.7 1.7 0 0 0-1.88-.34 1.7 1.7 0 0 0-1 1.55V21a2 2 0 1 1-4 0v-.09a1.7 1.7 0 0 0-1.11-1.55 1.7 1.7 0 0 0-1.88.34l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.7 1.7 0 0 0 .34-1.88 1.7 1.7 0 0 0-1.55-1H3a2 2 0 1 1 0-4h.09A1.7 1.7 0 0 0 4.64 8a1.7 1.7 0 0 0-.34-1.88l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.7 1.7 0 0 0 9 3.63h.08A1.7 1.7 0 0 0 10.13 2.1V2a2 2 0 1 1 4 0v.09a1.7 1.7 0 0 0 1 1.55 1.7 1.7 0 0 0 1.88-.34l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.7 1.7 0 0 0 19.4 8v.08a1.7 1.7 0 0 0 1.55 1.05H21a2 2 0 1 1 0 4h-.09a1.7 1.7 0 0 0-1.51 1Z"/></svg>
+            </button>
+          </li>
+          <li class="layers-panel__item" data-layer-row="circuitos">
+            <label class="layers-panel__switch">
+              <input type="checkbox" id="layer-circuitos">
+              <span class="layers-panel__text">
+                <strong>Circuitos electorales</strong>
+                <small id="layer-meta-circuitos">22 circuitos · padrón y participación 2025</small>
+              </span>
+            </label>
+            <button class="layers-panel__settings" id="layer-settings-circuitos" type="button" aria-label="Configurar la capa de circuitos" title="Configurar circuitos" aria-haspopup="dialog" aria-controls="layer-settings-dialog">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.7 1.7 0 0 0-1.88-.34 1.7 1.7 0 0 0-1 1.55V21a2 2 0 1 1-4 0v-.09a1.7 1.7 0 0 0-1.11-1.55 1.7 1.7 0 0 0-1.88.34l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.7 1.7 0 0 0 .34-1.88 1.7 1.7 0 0 0-1.55-1H3a2 2 0 1 1 0-4h.09A1.7 1.7 0 0 0 4.64 8a1.7 1.7 0 0 0-.34-1.88l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.7 1.7 0 0 0 9 3.63h.08A1.7 1.7 0 0 0 10.13 2.1V2a2 2 0 1 1 4 0v.09a1.7 1.7 0 0 0 1 1.55 1.7 1.7 0 0 0 1.88-.34l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.7 1.7 0 0 0 19.4 8v.08a1.7 1.7 0 0 0 1.55 1.05H21a2 2 0 1 1 0 4h-.09a1.7 1.7 0 0 0-1.51 1Z"/></svg>
+            </button>
+          </li>
+          <li class="layers-panel__item" data-layer-row="radios">
+            <label class="layers-panel__switch">
+              <input type="checkbox" id="layer-radios">
+              <span class="layers-panel__text">
+                <strong>Radios censales</strong>
+                <small id="layer-meta-radios">Censo 2022 · población y carencias por radio</small>
+              </span>
+            </label>
+            <button class="layers-panel__settings" id="layer-settings-radios" type="button" aria-label="Configurar la capa de radios censales" title="Configurar radios censales" aria-haspopup="dialog" aria-controls="layer-settings-dialog">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.7 1.7 0 0 0-1.88-.34 1.7 1.7 0 0 0-1 1.55V21a2 2 0 1 1-4 0v-.09a1.7 1.7 0 0 0-1.11-1.55 1.7 1.7 0 0 0-1.88.34l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.7 1.7 0 0 0 .34-1.88 1.7 1.7 0 0 0-1.55-1H3a2 2 0 1 1 0-4h.09A1.7 1.7 0 0 0 4.64 8a1.7 1.7 0 0 0-.34-1.88l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.7 1.7 0 0 0 9 3.63h.08A1.7 1.7 0 0 0 10.13 2.1V2a2 2 0 1 1 4 0v.09a1.7 1.7 0 0 0 1 1.55 1.7 1.7 0 0 0 1.88-.34l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.7 1.7 0 0 0 19.4 8v.08a1.7 1.7 0 0 0 1.55 1.05H21a2 2 0 1 1 0 4h-.09a1.7 1.7 0 0 0-1.51 1Z"/></svg>
+            </button>
+          </li>
+          <li class="layers-panel__item" data-layer-row="renabap">
+            <label class="layers-panel__switch">
+              <input type="checkbox" id="layer-renabap">
+              <span class="layers-panel__text">
+                <strong>Barrios populares</strong>
+                <small id="layer-meta-renabap">RENABAP · hogares y barrios populares</small>
+              </span>
+            </label>
+            <button class="layers-panel__settings" id="layer-settings-renabap" type="button" aria-label="Configurar la capa de barrios populares" title="Configurar barrios populares" aria-haspopup="dialog" aria-controls="layer-settings-dialog">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.7 1.7 0 0 0-1.88-.34 1.7 1.7 0 0 0-1 1.55V21a2 2 0 1 1-4 0v-.09a1.7 1.7 0 0 0-1.11-1.55 1.7 1.7 0 0 0-1.88.34l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.7 1.7 0 0 0 .34-1.88 1.7 1.7 0 0 0-1.55-1H3a2 2 0 1 1 0-4h.09A1.7 1.7 0 0 0 4.64 8a1.7 1.7 0 0 0-.34-1.88l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.7 1.7 0 0 0 9 3.63h.08A1.7 1.7 0 0 0 10.13 2.1V2a2 2 0 1 1 4 0v.09a1.7 1.7 0 0 0 1 1.55 1.7 1.7 0 0 0 1.88-.34l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.7 1.7 0 0 0 19.4 8v.08a1.7 1.7 0 0 0 1.55 1.05H21a2 2 0 1 1 0 4h-.09a1.7 1.7 0 0 0-1.51 1Z"/></svg>
+            </button>
+          </li>
+        </ul>
+        <p class="layers-panel__hint">Activá las capas que quieras ver. El engranaje abre los ajustes de visualización de cada una.</p>
+      </div>
+
+      <div class="map-legends" id="map-legends" hidden>
+        <div class="circuit-legend" id="circuit-legend" role="region" aria-label="Leyenda de circuitos electorales" hidden>
+          <p class="circuit-legend__eyebrow">Padrón electoral</p>
+          <h3 class="circuit-legend__title">Circuitos de Villa Mercedes</h3>
+          <p class="circuit-legend__note">22 circuitos · Padrón 2025 · Sección 3. Pedernera</p>
+          <p class="circuit-legend__metric" id="circuit-metric-label">Cantidad de electores</p>
+          <div class="circuit-legend__scale" id="circuit-scale" aria-hidden="true"></div>
+          <div class="circuit-legend__range">
+            <span id="circuit-range-min"></span>
+            <span id="circuit-range-max"></span>
+          </div>
+          <p class="circuit-legend__summary" id="circuit-summary"></p>
+          <p class="circuit-legend__source">Geometría: ULP Geo · Resultados: CNE</p>
+        </div>
+
+        <div class="circuit-legend radios-legend" id="radios-legend" role="region" aria-label="Leyenda de radios censales" hidden>
+          <p class="circuit-legend__eyebrow radios-legend__eyebrow">Censo 2022</p>
+          <h3 class="circuit-legend__title">Radios censales</h3>
+          <p class="circuit-legend__note" id="radios-legend-note">170 radios urbanos · Villa Mercedes y Villa Reynolds</p>
+          <p class="circuit-legend__metric" id="radios-metric-label">Población</p>
+          <div class="circuit-legend__scale" id="radios-scale" aria-hidden="true"></div>
+          <div class="circuit-legend__range">
+            <span id="radios-range-min"></span>
+            <span id="radios-range-max"></span>
+          </div>
+          <p class="circuit-legend__summary" id="radios-summary"></p>
+          <p class="circuit-legend__source">Fuente: INDEC · Censo 2022 · CC BY-SA 4.0</p>
+        </div>
       </div>
 
       <p class="map-toast" id="map-toast" role="status" aria-live="polite"></p>

@@ -31,8 +31,206 @@
   const OFFICIAL_RECORD = "https://mapa.educacion.gob.ar/legajo/";
   const BARRIOS_URL = "./barrios.geojson";
   const BARRIO_LEVEL_LABEL = { 9: "Barrio", 10: "Barrio", 11: "Complejo habitacional" };
-  const RUTAS_URL = "./rutas.json";
+  const CIRCUITOS_URL = "./circuitos.geojson";
+  const CIRCUITO_METRICS = {
+    electores: {
+      label: "Cantidad de electores",
+      short: "Electores",
+      colors: ["#eef4ff", "#1f4e8c"],
+      decimals: 0,
+      suffix: ""
+    },
+    participacion: {
+      label: "Participación",
+      short: "Participación",
+      colors: ["#e5f4fa", "#145a86"],
+      decimals: 1,
+      suffix: "%"
+    },
+    votantes: {
+      label: "Cantidad de votantes",
+      short: "Votantes",
+      colors: ["#f4f0ff", "#4b2d8f"],
+      decimals: 0,
+      suffix: ""
+    },
+    densidad: {
+      label: "Densidad electoral",
+      short: "Electores/km²",
+      colors: ["#fff1dc", "#a63d0b"],
+      decimals: 0,
+      suffix: " elect./km²"
+    },
+    superficie: {
+      label: "Superficie del circuito",
+      short: "Superficie",
+      colors: ["#eaf7ee", "#256b45"],
+      decimals: 1,
+      suffix: " km²"
+    },
+    escuelas: {
+      label: "Instituciones educativas",
+      short: "Instituciones",
+      colors: ["#fdf0f6", "#8a2b5c"],
+      decimals: 0,
+      suffix: ""
+    },
+    renabap_hogares: {
+      label: "Hogares en barrios populares",
+      short: "Hogares RENABAP",
+      colors: ["#fff1e6", "#a13a0c"],
+      decimals: 0,
+      suffix: ""
+    },
+    renabap_barrios: {
+      label: "Barrios populares",
+      short: "Barrios populares",
+      colors: ["#fdecec", "#9b2c2c"],
+      decimals: 0,
+      suffix: ""
+    },
+    poblacion: {
+      label: "Población del circuito",
+      short: "Población",
+      colors: ["#fff4e8", "#a63d0b"],
+      decimals: 0,
+      suffix: " hab."
+    },
+    densidad_poblacional: {
+      label: "Densidad poblacional",
+      short: "Hab./km²",
+      colors: ["#fdf6e3", "#8a5a00"],
+      decimals: 0,
+      suffix: " hab./km²"
+    },
+    pct_65_mas: {
+      label: "Población de 65 años y más",
+      short: "% 65+",
+      colors: ["#f4f0ff", "#4b2d8f"],
+      decimals: 1,
+      suffix: "%"
+    },
+    pct_sin_cobertura_salud: {
+      label: "Personas sin cobertura de salud",
+      short: "% sin cobertura",
+      colors: ["#fff0f0", "#a02c2c"],
+      decimals: 1,
+      suffix: "%"
+    },
+    pct_nbi: {
+      label: "Hogares con necesidades básicas insatisfechas",
+      short: "% NBI",
+      colors: ["#fff1e6", "#9b2c2c"],
+      decimals: 1,
+      suffix: "%"
+    },
+    pct_sin_cloacas: {
+      label: "Hogares sin cloacas",
+      short: "% sin cloacas",
+      colors: ["#eef7f2", "#1f6b45"],
+      decimals: 1,
+      suffix: "%"
+    },
+    electores_por_100: {
+      label: "Electores por 100 habitantes",
+      short: "Elect./100 hab.",
+      colors: ["#eef4ff", "#1f4e8c"],
+      decimals: 1,
+      suffix: ""
+    },
+    participacion_vap: {
+      label: "Participación sobre población en edad de votar",
+      short: "Participación/VAP",
+      colors: ["#e5f4fa", "#145a86"],
+      decimals: 1,
+      suffix: "%"
+    }
+  };
+  const CIRCUITO_METRICS_RADIOS = [
+    "poblacion",
+    "densidad_poblacional",
+    "pct_65_mas",
+    "pct_sin_cobertura_salud",
+    "pct_nbi",
+    "pct_sin_cloacas",
+    "electores_por_100",
+    "participacion_vap"
+  ];
+  const CIRCUITO_LABEL_ZOOM = 14;
+  const CIRCUITO_ATTRIBUTION =
+    'Circuitos: <a href="https://ulpgeo.maps.arcgis.com/apps/webappviewer/index.html?id=99ce6ec913cd44a3aace8481e0d52297" target="_blank" rel="noopener noreferrer">ULP Geo</a> · Padrón: <a href="https://www.electoral.gob.ar/" target="_blank" rel="noopener noreferrer">CNE</a>';
+  const RENABAP_URL = "./renabap.geojson";
+  const RENABAP_LABEL_ZOOM = 14;
+  const RENABAP_ATTRIBUTION =
+    'Barrios populares: <a href="https://www.argentina.gob.ar/obras-publicas/sisu/renabap/mapa" target="_blank" rel="noopener noreferrer">RENABAP</a> (SISU)';
+  const RADIOS_URL = "./radios.geojson";
+  const RADIOS_LABEL_ZOOM = 14.5;
+  const RADIOS_ATTRIBUTION =
+    'Radios censales: <a href="https://www.indec.gob.ar/indec/web/Nivel4-Tema-2-41-165" target="_blank" rel="noopener noreferrer">INDEC</a> · Censo 2022 (CC BY-SA 4.0)';
+  const RADIO_METRICS = {
+    poblacion: {
+      label: "Población",
+      short: "Población",
+      colors: ["#fff6ea", "#b8430a"],
+      decimals: 0,
+      suffix: " hab."
+    },
+    densidad: {
+      label: "Densidad poblacional",
+      short: "Hab./km²",
+      colors: ["#fdf6e3", "#8a5a00"],
+      decimals: 0,
+      suffix: " hab./km²"
+    },
+    pct_65_mas: {
+      label: "Población de 65 años y más",
+      short: "% 65+",
+      colors: ["#f4f0ff", "#4b2d8f"],
+      decimals: 1,
+      suffix: "%"
+    },
+    pct_sin_cobertura_salud: {
+      label: "Personas sin cobertura de salud",
+      short: "% sin cobertura",
+      colors: ["#fff0f0", "#a02c2c"],
+      decimals: 1,
+      suffix: "%"
+    },
+    pct_nbi: {
+      label: "Hogares con NBI",
+      short: "% NBI",
+      colors: ["#fff1e6", "#9b2c2c"],
+      decimals: 1,
+      suffix: "%"
+    },
+    pct_sin_cloacas: {
+      label: "Hogares sin cloacas",
+      short: "% sin cloacas",
+      colors: ["#eef7f2", "#1f6b45"],
+      decimals: 1,
+      suffix: "%"
+    },
+    pct_sin_gas_red: {
+      label: "Hogares sin gas de red",
+      short: "% sin gas de red",
+      colors: ["#eef4fb", "#245b8a"],
+      decimals: 1,
+      suffix: "%"
+    },
+    pct_clima_bajo: {
+      label: "Hogares con clima educativo bajo",
+      short: "% clima bajo",
+      colors: ["#fbf1e8", "#7a4a2a"],
+      decimals: 1,
+      suffix: "%"
+    }
+  };
+  const RUTAS_SOURCES = [
+    { url: "./ruta-a.geojson", linea: "A" },
+    { url: "./ruta-e.geojson", linea: "E" }
+  ];
   const RUTA_COLOR_DEFAULT = "#F7683A";
+  const RUTA_LINE_COLORS = { A: "#F7683A", E: "#2E7D32" };
   const LOCATION_ZOOM = 16;
   const LOCATION_TIMEOUT = 12000;
   const PIN_DROP_MS = 620;
@@ -49,8 +247,25 @@
     orientation: "Todas",
     selectedId: null,
     dataLoaded: false,
-    barrios: false,
-    rutas: false
+    barrios: true,
+    barrioLabels: true,
+    barrioFillOpacity: 0.07,
+    rutas: false,
+    circuitos: false,
+    circuitoMetric: "electores",
+    circuitoLabels: false,
+    circuitoLabelValues: false,
+    circuitoFillOpacity: 0.55,
+    renabap: false,
+    renabapLabels: false,
+    renabapLabelValues: false,
+    renabapFillOpacity: 0.35,
+    radios: false,
+    radioMetric: "poblacion",
+    radioLabels: false,
+    radioLabelValues: false,
+    radioFillOpacity: 0.55,
+    settingsLayer: "circuitos"
   };
 
   let map = null;
@@ -66,10 +281,36 @@
   const barrioCounts = new Map();
   const barrioFeatures = new Map();
 
+  let circuitosLayer = null;
+  let circuitosRequest = null;
+  let circuitosUnavailable = false;
+  let circuitosMeta = null;
+  let circuitoRanges = {};
+  let circuitoAttributionAdded = false;
+  let circuitoLabelGroup = null;
+
+  let renabapLayer = null;
+  let renabapLabelGroup = null;
+  let renabapRequest = null;
+  let renabapUnavailable = false;
+  let renabapFeatures = [];
+  let renabapMeta = null;
+  let renabapAttributionAdded = false;
+
+  let radiosLayer = null;
+  let radiosLabelGroup = null;
+  let radiosRequest = null;
+  let radiosUnavailable = false;
+  let radiosFeatures = [];
+  let radiosMeta = null;
+  let radiosAttributionAdded = false;
+  let radioRanges = {};
+
   let rutasLayer = null;
   let rutasRequest = null;
   let rutasUnavailable = false;
   let rutasCount = 0;
+  let rutasFaltantes = [];
   let rutaAnimations = [];
   let rutaFrame = null;
   let rutaLastTs = 0;
@@ -201,6 +442,7 @@
     cacheElements();
     bindEvents();
     mapReady = initMap();
+    syncLayersPanel();
     loadData();
     if (mapReady) syncBarrios();
   }
@@ -226,8 +468,64 @@
     el.resetView = document.getElementById("reset-view");
     el.locateMe = document.getElementById("locate-me");
     el.mapToast = document.getElementById("map-toast");
-    el.barriosToggle = document.getElementById("toggle-barrios");
     el.rutasToggle = document.getElementById("toggle-rutas");
+    el.layersToggle = document.getElementById("layers-toggle");
+    el.layersPanel = document.getElementById("layers-panel");
+    el.layersClose = document.getElementById("layers-close");
+    el.layersBadge = document.getElementById("layers-badge");
+    el.layerBarrios = document.getElementById("layer-barrios");
+    el.layerCircuitos = document.getElementById("layer-circuitos");
+    el.layerRenabap = document.getElementById("layer-renabap");
+    el.layerRadios = document.getElementById("layer-radios");
+    el.layerMetaBarrios = document.getElementById("layer-meta-barrios");
+    el.layerMetaCircuitos = document.getElementById("layer-meta-circuitos");
+    el.layerMetaRenabap = document.getElementById("layer-meta-renabap");
+    el.layerMetaRadios = document.getElementById("layer-meta-radios");
+    el.layerBarriosRow = document.querySelector('[data-layer-row="barrios"]');
+    el.layerCircuitosRow = document.querySelector('[data-layer-row="circuitos"]');
+    el.layerRenabapRow = document.querySelector('[data-layer-row="renabap"]');
+    el.layerRadiosRow = document.querySelector('[data-layer-row="radios"]');
+    el.layerSettingsBarrios = document.getElementById("layer-settings-barrios");
+    el.layerSettingsCircuitos = document.getElementById("layer-settings-circuitos");
+    el.layerSettingsRenabap = document.getElementById("layer-settings-renabap");
+    el.layerSettingsRadios = document.getElementById("layer-settings-radios");
+    el.layerSettingsDialog = document.getElementById("layer-settings-dialog");
+    el.closeLayerSettings = document.getElementById("close-layer-settings");
+    el.closeLayerSettingsDone = document.getElementById("close-layer-settings-done");
+    el.resetLayerSettings = document.getElementById("reset-layer-settings");
+    el.layerTabs = document.querySelectorAll("[data-layer-tab]");
+    el.layerPanels = document.querySelectorAll("[data-layer-panel]");
+    el.barrioShowLabels = document.getElementById("barrio-show-labels");
+    el.barrioFillOpacity = document.getElementById("barrio-fill-opacity");
+    el.barrioFillOpacityOutput = document.getElementById("barrio-fill-opacity-output");
+    el.circuitMetricRadios = document.querySelectorAll('input[name="circuit-metric"]');
+    el.circuitShowLabels = document.getElementById("circuit-show-labels");
+    el.circuitShowValues = document.getElementById("circuit-show-values");
+    el.circuitFillOpacity = document.getElementById("circuit-fill-opacity");
+    el.circuitFillOpacityOutput = document.getElementById("circuit-fill-opacity-output");
+    el.renabapShowLabels = document.getElementById("renabap-show-labels");
+    el.renabapShowValues = document.getElementById("renabap-show-values");
+    el.renabapFillOpacity = document.getElementById("renabap-fill-opacity");
+    el.renabapFillOpacityOutput = document.getElementById("renabap-fill-opacity-output");
+    el.radioMetricRadios = document.querySelectorAll('input[name="radio-metric"]');
+    el.radioShowLabels = document.getElementById("radio-show-labels");
+    el.radioShowValues = document.getElementById("radio-show-values");
+    el.radioFillOpacity = document.getElementById("radio-fill-opacity");
+    el.radioFillOpacityOutput = document.getElementById("radio-fill-opacity-output");
+    el.mapLegends = document.getElementById("map-legends");
+    el.circuitLegend = document.getElementById("circuit-legend");
+    el.circuitMetricLabel = document.getElementById("circuit-metric-label");
+    el.circuitScale = document.getElementById("circuit-scale");
+    el.circuitRangeMin = document.getElementById("circuit-range-min");
+    el.circuitRangeMax = document.getElementById("circuit-range-max");
+    el.circuitSummary = document.getElementById("circuit-summary");
+    el.radiosLegend = document.getElementById("radios-legend");
+    el.radiosLegendNote = document.getElementById("radios-legend-note");
+    el.radiosMetricLabel = document.getElementById("radios-metric-label");
+    el.radiosScale = document.getElementById("radios-scale");
+    el.radiosRangeMin = document.getElementById("radios-range-min");
+    el.radiosRangeMax = document.getElementById("radios-range-max");
+    el.radiosSummary = document.getElementById("radios-summary");
     el.legend = document.getElementById("legend");
     el.legendToggle = document.getElementById("legend-toggle");
     el.legendPanel = document.getElementById("legend-panel");
@@ -269,6 +567,15 @@
       map.setView([-33.6797, -65.4616], 13);
 
       map.createPane("barrioPane").style.zIndex = 350;
+      map.createPane("radioPane").style.zIndex = 351;
+      map.createPane("renabapPane").style.zIndex = 352;
+      map.createPane("radioLabelPane").style.zIndex = 354;
+      map.getPane("radioLabelPane").style.pointerEvents = "none";
+      map.createPane("circuitoPane").style.zIndex = 355;
+      map.createPane("circuitoLabelPane").style.zIndex = 356;
+      map.getPane("circuitoLabelPane").style.pointerEvents = "none";
+      map.createPane("renabapLabelPane").style.zIndex = 357;
+      map.getPane("renabapLabelPane").style.pointerEvents = "none";
       map.createPane("rutaPane").style.zIndex = 360;
       map.createPane("rutaBusPane").style.zIndex = 470;
       map.getPane("rutaBusPane").style.pointerEvents = "none";
@@ -295,6 +602,18 @@
       map.on("zoomend", updateMarkerSelection);
       map.on("resize", updateMarkerSelection);
       map.on("zoomend", updateBarrioZoom);
+      map.on("zoomend", updateBarrioLabelsVisibility);
+      map.on("zoomend", updateCircuitLabelsVisibility);
+      map.on("zoomend", updateRenabapLabelsVisibility);
+      map.on("zoomend", updateRadioLabelsVisibility);
+      map.on("click", function () { closeLayersPanel(false); });
+      map.on("popupopen", function () {
+        if (el.mapLegends) el.mapLegends.classList.add("is-obscured");
+        closeLayersPanel(false);
+      });
+      map.on("popupclose", function () {
+        if (el.mapLegends) el.mapLegends.classList.remove("is-obscured");
+      });
 
       return true;
     } catch (error) {
@@ -325,6 +644,233 @@
     });
   }
 
+  /* Capas y ajustes --------------------------------------------------------- */
+
+  function syncLayersPanel() {
+    if (el.layerBarrios) {
+      el.layerBarrios.checked = state.barrios && !barriosUnavailable;
+      el.layerBarrios.disabled = barriosUnavailable;
+    }
+    if (el.layerCircuitos) {
+      el.layerCircuitos.checked = state.circuitos && !circuitosUnavailable;
+      el.layerCircuitos.disabled = circuitosUnavailable;
+    }
+    if (el.layerRenabap) {
+      el.layerRenabap.checked = state.renabap && !renabapUnavailable;
+      el.layerRenabap.disabled = renabapUnavailable;
+    }
+    if (el.layerRadios) {
+      el.layerRadios.checked = state.radios && !radiosUnavailable;
+      el.layerRadios.disabled = radiosUnavailable;
+    }
+    const active = [
+      state.barrios && !barriosUnavailable,
+      state.circuitos && !circuitosUnavailable,
+      state.renabap && !renabapUnavailable,
+      state.radios && !radiosUnavailable
+    ].filter(Boolean).length;
+    if (el.layersBadge) {
+      el.layersBadge.textContent = String(active);
+      el.layersBadge.hidden = active === 0;
+    }
+    if (el.layersToggle) {
+      el.layersToggle.setAttribute(
+        "aria-label",
+        active ? "Capas del mapa (" + active + " activas)" : "Capas del mapa"
+      );
+    }
+  }
+
+  function markLayerUnavailable(key, message) {
+    if (key === "barrios") barriosUnavailable = true;
+    if (key === "circuitos") circuitosUnavailable = true;
+    if (key === "renabap") renabapUnavailable = true;
+    if (key === "radios") radiosUnavailable = true;
+    state[key] = false;
+    updateLegends();
+
+    const row = el["layer" + key.charAt(0).toUpperCase() + key.slice(1) + "Row"];
+    const checkbox = el["layer" + key.charAt(0).toUpperCase() + key.slice(1)];
+    const gear = el["layerSettings" + key.charAt(0).toUpperCase() + key.slice(1)];
+    const meta = el["layerMeta" + key.charAt(0).toUpperCase() + key.slice(1)];
+    if (row) row.classList.add("is-unavailable");
+    if (meta) meta.textContent = message;
+    if (checkbox) {
+      checkbox.checked = false;
+      checkbox.disabled = true;
+    }
+    if (gear) gear.disabled = true;
+    if (state.settingsLayer === key) {
+      setLayerSettingsTab(firstAvailableLayerTab());
+    }
+    syncLayersPanel();
+  }
+
+  function firstAvailableLayerTab() {
+    const candidates = [
+      ["barrios", barriosUnavailable],
+      ["circuitos", circuitosUnavailable],
+      ["radios", radiosUnavailable],
+      ["renabap", renabapUnavailable]
+    ];
+    const available = candidates.filter(function (item) { return !item[1]; });
+    return available.length ? available[0][0] : "circuitos";
+  }
+
+  function openLayersPanel() {
+    if (!el.layersPanel || !el.layersToggle) return;
+    el.layersPanel.hidden = false;
+    el.layersToggle.setAttribute("aria-expanded", "true");
+  }
+
+  function closeLayersPanel(returnFocus) {
+    if (!el.layersPanel || el.layersPanel.hidden) return;
+    el.layersPanel.hidden = true;
+    if (el.layersToggle) el.layersToggle.setAttribute("aria-expanded", "false");
+    if (returnFocus && el.layersToggle) el.layersToggle.focus({ preventScroll: true });
+  }
+
+  function toggleLayersPanel() {
+    if (!el.layersPanel) return;
+    if (el.layersPanel.hidden) openLayersPanel();
+    else closeLayersPanel(true);
+  }
+
+  function setLayerSettingsTab(layer) {
+    const allowed = ["barrios", "circuitos", "radios", "renabap"];
+    state.settingsLayer = allowed.indexOf(layer) === -1 ? "circuitos" : layer;
+    syncLayerSettings();
+  }
+
+  function syncLayerSettings() {
+    const current = state.settingsLayer;
+    el.layerTabs.forEach(function (tab) {
+      const active = tab.dataset.layerTab === current;
+      tab.classList.toggle("is-active", active);
+      tab.setAttribute("aria-selected", active ? "true" : "false");
+      tab.tabIndex = active ? 0 : -1;
+      const unavailable =
+        (tab.dataset.layerTab === "barrios" && barriosUnavailable) ||
+        (tab.dataset.layerTab === "circuitos" && circuitosUnavailable) ||
+        (tab.dataset.layerTab === "radios" && radiosUnavailable) ||
+        (tab.dataset.layerTab === "renabap" && renabapUnavailable);
+      tab.disabled = unavailable;
+    });
+    el.layerPanels.forEach(function (panel) {
+      panel.hidden = panel.dataset.layerPanel !== current;
+    });
+
+    if (el.barrioShowLabels) el.barrioShowLabels.checked = state.barrioLabels;
+    if (el.barrioFillOpacity) {
+      el.barrioFillOpacity.value = String(Math.round(state.barrioFillOpacity * 100));
+    }
+    if (el.barrioFillOpacityOutput) {
+      el.barrioFillOpacityOutput.textContent = Math.round(state.barrioFillOpacity * 100) + "%";
+    }
+
+    const renabapReady = renabapFeatures.length > 0;
+    const radiosReady = radiosFeatures.length > 0;
+    if (!renabapReady && /^renabap_/.test(state.circuitoMetric)) {
+      state.circuitoMetric = "electores";
+    }
+    if (!radiosReady && CIRCUITO_METRICS_RADIOS.indexOf(state.circuitoMetric) !== -1) {
+      state.circuitoMetric = "electores";
+    }
+    el.circuitMetricRadios.forEach(function (radio) {
+      radio.checked = radio.value === state.circuitoMetric;
+      const required = radio.closest("[data-requires]");
+      if (required) {
+        radio.disabled = required.dataset.requires === "radios" ? !radiosReady : !renabapReady;
+      }
+    });
+    if (el.circuitShowLabels) el.circuitShowLabels.checked = state.circuitoLabels;
+    if (el.circuitShowValues) {
+      el.circuitShowValues.checked = state.circuitoLabelValues;
+      el.circuitShowValues.disabled = !state.circuitoLabels;
+    }
+    if (el.circuitFillOpacity) {
+      el.circuitFillOpacity.value = String(Math.round(state.circuitoFillOpacity * 100));
+    }
+    if (el.circuitFillOpacityOutput) {
+      el.circuitFillOpacityOutput.textContent = Math.round(state.circuitoFillOpacity * 100) + "%";
+    }
+
+    if (el.renabapShowLabels) el.renabapShowLabels.checked = state.renabapLabels;
+    if (el.renabapShowValues) {
+      el.renabapShowValues.checked = state.renabapLabelValues;
+      el.renabapShowValues.disabled = !state.renabapLabels;
+    }
+    if (el.renabapFillOpacity) {
+      el.renabapFillOpacity.value = String(Math.round(state.renabapFillOpacity * 100));
+    }
+    if (el.renabapFillOpacityOutput) {
+      el.renabapFillOpacityOutput.textContent = Math.round(state.renabapFillOpacity * 100) + "%";
+    }
+
+    if (el.radioMetricRadios) {
+      el.radioMetricRadios.forEach(function (radio) {
+        radio.checked = radio.value === state.radioMetric;
+      });
+    }
+    if (el.radioShowLabels) el.radioShowLabels.checked = state.radioLabels;
+    if (el.radioShowValues) {
+      el.radioShowValues.checked = state.radioLabelValues;
+      el.radioShowValues.disabled = !state.radioLabels;
+    }
+    if (el.radioFillOpacity) {
+      el.radioFillOpacity.value = String(Math.round(state.radioFillOpacity * 100));
+    }
+    if (el.radioFillOpacityOutput) {
+      el.radioFillOpacityOutput.textContent = Math.round(state.radioFillOpacity * 100) + "%";
+    }
+  }
+
+  function openLayerSettings(layer) {
+    if (!el.layerSettingsDialog) return;
+    setLayerSettingsTab(layer);
+    closeLayersPanel(false);
+    if (typeof el.layerSettingsDialog.showModal === "function") {
+      el.layerSettingsDialog.showModal();
+    } else {
+      el.layerSettingsDialog.setAttribute("open", "");
+    }
+  }
+
+  function closeLayerSettings() {
+    if (!el.layerSettingsDialog) return;
+    if (typeof el.layerSettingsDialog.close === "function" && el.layerSettingsDialog.open) {
+      el.layerSettingsDialog.close();
+    } else {
+      el.layerSettingsDialog.removeAttribute("open");
+    }
+  }
+
+  function resetLayerSettings() {
+    if (state.settingsLayer === "barrios") {
+      state.barrioLabels = true;
+      state.barrioFillOpacity = 0.07;
+      applyBarrioVisuals();
+    } else if (state.settingsLayer === "renabap") {
+      state.renabapLabels = false;
+      state.renabapLabelValues = false;
+      state.renabapFillOpacity = 0.35;
+      applyRenabapVisuals(true);
+    } else if (state.settingsLayer === "radios") {
+      state.radioMetric = "poblacion";
+      state.radioLabels = false;
+      state.radioLabelValues = false;
+      state.radioFillOpacity = 0.55;
+      applyRadioVisuals(true);
+    } else {
+      state.circuitoMetric = "electores";
+      state.circuitoLabels = false;
+      state.circuitoLabelValues = false;
+      state.circuitoFillOpacity = 0.55;
+      applyCircuitoVisuals(true);
+    }
+    syncLayerSettings();
+  }
+
   /* Barrios ---------------------------------------------------------------- */
 
   function barrioStyle(feature) {
@@ -336,8 +882,13 @@
       weight: 1.2,
       opacity: 0.55,
       fillColor: color,
-      fillOpacity: 0.07
+      fillOpacity: state.barrioFillOpacity
     };
+  }
+
+  function applyBarrioVisuals() {
+    if (barriosLayer) barriosLayer.setStyle(barrioStyle);
+    updateBarrioLabelsVisibility();
   }
 
   function loadBarrios() {
@@ -361,11 +912,8 @@
       .catch(function (error) {
         console.error("No se pudieron cargar los barrios", error);
         barriosRequest = null;
-        barriosUnavailable = true;
-        if (el.barriosToggle) {
-          el.barriosToggle.hidden = true;
-          el.barriosToggle.setAttribute("aria-pressed", "false");
-        }
+        markLayerUnavailable("barrios", "No se pudo cargar la capa de barrios");
+        showMapToast("No pudimos cargar los barrios.", 6000);
         return null;
       });
 
@@ -482,10 +1030,7 @@
 
   function syncBarrios() {
     const visible = state.barrios && !barriosUnavailable && mapReady;
-    if (el.barriosToggle) {
-      el.barriosToggle.setAttribute("aria-pressed", visible ? "true" : "false");
-      el.barriosToggle.setAttribute("aria-label", visible ? "Ocultar barrios" : "Mostrar barrios");
-    }
+    syncLayersPanel();
     if (!mapReady) return;
 
     if (!visible) {
@@ -497,15 +1042,16 @@
     loadBarrios().then(function (layer) {
       if (!layer || !state.barrios) return;
       if (!map.hasLayer(layer)) layer.addTo(map);
-      if (barrioLabelGroup && !map.hasLayer(barrioLabelGroup)) barrioLabelGroup.addTo(map);
       updateBarrioZoom();
+      updateBarrioLabelsVisibility();
     });
   }
 
-  function toggleBarrios() {
-    if (barriosUnavailable) return;
-    state.barrios = !state.barrios;
-    syncBarrios();
+  function updateBarrioLabelsVisibility() {
+    if (!mapReady || !barrioLabelGroup) return;
+    const show = state.barrios && state.barrioLabels && map.getZoom() >= 13;
+    if (show && !map.hasLayer(barrioLabelGroup)) barrioLabelGroup.addTo(map);
+    else if (!show && map.hasLayer(barrioLabelGroup)) map.removeLayer(barrioLabelGroup);
   }
 
   function updateBarrioZoom() {
@@ -515,14 +1061,1021 @@
     map.getContainer().setAttribute("data-barrio-zoom", bucket);
   }
 
+  /* Circuitos electorales --------------------------------------------------- */
+
+  function formatNumber(value) {
+    const number = Number(value);
+    return Number.isFinite(number)
+      ? number.toLocaleString("es-AR", { maximumFractionDigits: 0 })
+      : "—";
+  }
+
+  function formatPct(value) {
+    const number = Number(value);
+    return Number.isFinite(number)
+      ? number.toLocaleString("es-AR", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + "%"
+      : "—";
+  }
+
+  function formatHectares(value) {
+    const number = Number(value);
+    return Number.isFinite(number)
+      ? number.toLocaleString("es-AR", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + " ha"
+      : "—";
+  }
+
+  function circuitoMetricConfig() {
+    return CIRCUITO_METRICS[state.circuitoMetric] || CIRCUITO_METRICS.electores;
+  }
+
+  function circuitoMetricValue(props, metric) {
+    if (metric === "participacion") return Number(props.participacion);
+    if (metric === "votantes") return Number(props.votantes);
+    if (metric === "densidad") return Number(props.densidad_electoral);
+    if (metric === "superficie") return Number(props.area_km2);
+    if (metric === "escuelas") return Number(props.instituciones);
+    if (metric === "renabap_hogares") return Number(props.renabap_hogares);
+    if (metric === "renabap_barrios") return Number(props.renabap_barrios);
+    if (CIRCUITO_METRICS_RADIOS.indexOf(metric) !== -1) return Number(props[metric]);
+    return Number(props.electores);
+  }
+
+  function formatMetricNumber(value, metric) {
+    const number = Number(value);
+    if (!Number.isFinite(number)) return "—";
+    const config = CIRCUITO_METRICS[metric] || CIRCUITO_METRICS.electores;
+    return (
+      number.toLocaleString("es-AR", {
+        minimumFractionDigits: config.decimals,
+        maximumFractionDigits: config.decimals
+      }) + config.suffix
+    );
+  }
+
+  function countSchoolsInGeometry(geometry) {
+    if (!geometry || !state.schools.length) return 0;
+    return state.schools.filter(function (school) {
+      return school.lat != null && school.lng != null && isPointInFeature(school.lat, school.lng, geometry);
+    }).length;
+  }
+
+  function computeCircuitoRanges(features) {
+    const values = {};
+    Object.keys(CIRCUITO_METRICS).forEach(function (metric) {
+      values[metric] = [];
+    });
+    (features || []).forEach(function (feature) {
+      const props = feature.properties || {};
+      Object.keys(values).forEach(function (metric) {
+        const value = circuitoMetricValue(props, metric);
+        if (Number.isFinite(value)) values[metric].push(value);
+      });
+    });
+    const ranges = {};
+    Object.keys(values).forEach(function (metric) {
+      const list = values[metric];
+      ranges[metric] = list.length
+        ? [Math.min.apply(null, list), Math.max.apply(null, list)]
+        : [0, 0];
+    });
+    return ranges;
+  }
+
+  function hexToRgb(value) {
+    const hex = String(value || "").replace("#", "");
+    const full = hex.length === 3
+      ? hex.split("").map(function (char) { return char + char; }).join("")
+      : hex;
+    return {
+      r: parseInt(full.slice(0, 2), 16),
+      g: parseInt(full.slice(2, 4), 16),
+      b: parseInt(full.slice(4, 6), 16)
+    };
+  }
+
+  function mixHexColor(from, to, ratio) {
+    const t = Math.max(0, Math.min(1, ratio));
+    const a = hexToRgb(from);
+    const b = hexToRgb(to);
+    return (
+      "rgb(" +
+      Math.round(a.r + (b.r - a.r) * t) + "," +
+      Math.round(a.g + (b.g - a.g) * t) + "," +
+      Math.round(a.b + (b.b - a.b) * t) +
+      ")"
+    );
+  }
+
+  function circuitoColor(props) {
+    const metric = state.circuitoMetric;
+    const config = CIRCUITO_METRICS[metric] || CIRCUITO_METRICS.electores;
+    const range = circuitoRanges[metric] || [0, 0];
+    const value = circuitoMetricValue(props, metric);
+    const span = range[1] - range[0];
+    const ratio = span > 0 ? (value - range[0]) / span : 0.5;
+    return mixHexColor(config.colors[0], config.colors[1], ratio);
+  }
+
+  function circuitoStyle(feature) {
+    return {
+      pane: "circuitoPane",
+      color: "#4b2d8f",
+      weight: 1.2,
+      opacity: 0.58,
+      fillColor: circuitoColor(feature.properties || {}),
+      fillOpacity: state.circuitoFillOpacity
+    };
+  }
+
+  function circuitoLabel(props) {
+    return (
+      (props.label || "Circuito") + " · " +
+      circuitoMetricConfig().short + " " +
+      formatMetricNumber(circuitoMetricValue(props, state.circuitoMetric), state.circuitoMetric)
+    );
+  }
+
+  function buildCircuitoLabels() {
+    if (!circuitosLayer || !mapReady) return;
+    if (circuitoLabelGroup && map.hasLayer(circuitoLabelGroup)) map.removeLayer(circuitoLabelGroup);
+    circuitoLabelGroup = L.layerGroup();
+
+    circuitosLayer.eachLayer(function (layer) {
+      const props = (layer.feature && layer.feature.properties) || {};
+      const text =
+        (props.circuito || props.id || "") +
+        (state.circuitoLabelValues
+          ? " · " + formatMetricNumber(circuitoMetricValue(props, state.circuitoMetric), state.circuitoMetric)
+          : "");
+      const marker = L.marker(layer.getBounds().getCenter(), {
+        pane: "circuitoLabelPane",
+        interactive: false,
+        keyboard: false,
+        icon: L.divIcon({
+          className: "circuit-label",
+          html: '<span class="circuit-label__text">' + escapeHTML(text) + "</span>",
+          iconSize: [0, 0],
+          iconAnchor: [0, 0]
+        })
+      });
+      marker.feature = layer.feature;
+      circuitoLabelGroup.addLayer(marker);
+    });
+
+    updateCircuitLabelsVisibility();
+  }
+
+  function updateCircuitLabelsVisibility() {
+    if (!mapReady || !circuitoLabelGroup) return;
+    const show =
+      state.circuitos &&
+      state.circuitoLabels &&
+      map.getZoom() >= CIRCUITO_LABEL_ZOOM;
+    if (show && !map.hasLayer(circuitoLabelGroup)) circuitoLabelGroup.addTo(map);
+    else if (!show && map.hasLayer(circuitoLabelGroup)) map.removeLayer(circuitoLabelGroup);
+  }
+
+  function loadCircuitos() {
+    if (circuitosLayer) return Promise.resolve(circuitosLayer);
+    if (circuitosRequest) return circuitosRequest;
+
+    circuitosRequest = fetch(CIRCUITOS_URL, { cache: "no-store" })
+      .then(function (response) {
+        if (!response.ok) throw new Error("No se pudo leer circuitos.geojson (" + response.status + ")");
+        return response.json();
+      })
+      .then(function (data) {
+        const features = data && Array.isArray(data.features) ? data.features : [];
+        if (!features.length) throw new Error("circuitos.geojson no contiene circuitos");
+        circuitosMeta = data.metadata || null;
+        features.forEach(function (feature) {
+          const props = feature.properties || {};
+          props.instituciones = countSchoolsInGeometry(feature.geometry);
+        });
+        circuitoRanges = computeCircuitoRanges(features);
+        circuitosLayer = L.geoJSON(data, {
+          pane: "circuitoPane",
+          style: circuitoStyle,
+          onEachFeature: bindCircuitoFeature
+        });
+        buildCircuitoLabels();
+        applyRenabapToCircuitos();
+        applyRadiosToCircuitos();
+        syncLayerSettings();
+        return circuitosLayer;
+      })
+      .catch(function (error) {
+        console.error("No se pudieron cargar los circuitos electorales", error);
+        circuitosRequest = null;
+        markLayerUnavailable("circuitos", "No se pudo cargar la capa de circuitos");
+        if (el.circuitLegend) el.circuitLegend.hidden = true;
+        if (state.settingsLayer === "circuitos") closeLayerSettings();
+        showMapToast("No pudimos cargar los circuitos electorales.", 6000);
+        return null;
+      });
+
+    return circuitosRequest;
+  }
+
+  function bindCircuitoFeature(feature, layer) {
+    const props = feature.properties || {};
+    layer.bindTooltip(function () {
+      return escapeHTML(circuitoLabel(props));
+    }, {
+      sticky: true,
+      direction: "top",
+      opacity: 1,
+      className: "circuit-tooltip"
+    });
+
+    layer.bindPopup(function () {
+      return buildCircuitoPopup(props);
+    }, {
+      maxWidth: 300,
+      minWidth: 272,
+      className: "circuit-popup"
+    });
+
+    layer.on("mouseover", function () {
+      layer.setStyle({ weight: 2.6, opacity: 1, fillOpacity: 0.7 });
+      if (layer.bringToFront) layer.bringToFront();
+    });
+    layer.on("mouseout", function () {
+      layer.setStyle(circuitoStyle(feature));
+    });
+  }
+
+  function buildCircuitoPopup(props) {
+    const stats = [
+      ["Electores", formatNumber(props.electores)],
+      ["Votantes", formatNumber(props.votantes)],
+      ["Participación", formatPct(props.participacion)],
+      ["Superficie", formatMetricNumber(props.area_km2, "superficie")],
+      ["Densidad electoral", formatMetricNumber(props.densidad_electoral, "densidad")],
+      ["Instituciones", formatNumber(props.instituciones)]
+    ];
+    if (Number.isFinite(Number(props.renabap_hogares))) {
+      stats.push(["Barrios populares", formatNumber(props.renabap_barrios)]);
+      stats.push(["Hogares en barrios populares", formatNumber(props.renabap_hogares)]);
+      if (Number.isFinite(Number(props.hogares)) && Number(props.hogares) > 0) {
+        stats.push([
+          "RENABAP sobre hogares del circuito",
+          formatPct((Number(props.renabap_hogares) / Number(props.hogares)) * 100)
+        ]);
+      }
+    }
+    if (Number.isFinite(Number(props.poblacion))) {
+      stats.push(["Población (Censo 2022)", formatNumber(props.poblacion)]);
+      stats.push(["Densidad poblacional", formatMetricNumber(props.densidad_poblacional, "densidad_poblacional")]);
+      stats.push(["65 años y más", formatPct(props.pct_65_mas)]);
+      stats.push(["Sin cobertura de salud", formatPct(props.pct_sin_cobertura_salud)]);
+      stats.push(["Hogares con NBI", formatPct(props.pct_nbi)]);
+      stats.push(["Hogares sin cloacas", formatPct(props.pct_sin_cloacas)]);
+      stats.push(["Electores por 100 hab.", formatMetricNumber(props.electores_por_100, "electores_por_100")]);
+      stats.push(["Participación sobre VAP", formatPct(props.participacion_vap)]);
+    }
+    const rows = stats.map(function (item) {
+      return (
+        '<div class="circuito-popup__stat">' +
+          "<dt>" + escapeHTML(item[0]) + "</dt>" +
+          "<dd>" + escapeHTML(item[1]) + "</dd>" +
+        "</div>"
+      );
+    }).join("");
+
+    return (
+      '<div class="popup popup--circuito" style="--pin:#1f4e8c">' +
+        '<div class="popup__top">' +
+          '<div class="popup__icon" aria-hidden="true">📊</div>' +
+          "<div>" +
+            '<p class="popup__type">Villa Mercedes · Sección 3. Pedernera</p>' +
+            '<h3 class="popup__name">' + escapeHTML(props.label || "Circuito") + "</h3>" +
+          "</div>" +
+        "</div>" +
+        '<div class="popup__body">' +
+          '<dl class="circuito-popup__stats">' + rows + "</dl>" +
+          '<p class="circuito-popup__note">La densidad usa la superficie del polígono. Las instituciones se cuentan desde el directorio educativo.</p>' +
+          '<p class="circuito-popup__source">Padrón y resultados: CNE · Geometría: ULP Geo</p>' +
+        "</div>" +
+      "</div>"
+    );
+  }
+
+  function setCircuitoAttribution(active) {
+    if (!mapReady || !map || !map.attributionControl) return;
+    if (active && !circuitoAttributionAdded) {
+      map.attributionControl.addAttribution(CIRCUITO_ATTRIBUTION);
+      circuitoAttributionAdded = true;
+    } else if (!active && circuitoAttributionAdded) {
+      map.attributionControl.removeAttribution(CIRCUITO_ATTRIBUTION);
+      circuitoAttributionAdded = false;
+    }
+  }
+
+  function refreshCircuitoInstituciones() {
+    if (!circuitosLayer) return;
+    const features = [];
+    circuitosLayer.eachLayer(function (layer) {
+      const props = (layer.feature && layer.feature.properties) || {};
+      props.instituciones = countSchoolsInGeometry(layer.feature.geometry);
+      features.push(layer.feature);
+    });
+    circuitoRanges = computeCircuitoRanges(features);
+    circuitosLayer.setStyle(circuitoStyle);
+    buildCircuitoLabels();
+    updateCircuitoPanel();
+  }
+
+  function updateCircuitoPanel() {
+    if (!circuitosMeta) return;
+    const metric = state.circuitoMetric;
+    const config = CIRCUITO_METRICS[metric] || CIRCUITO_METRICS.electores;
+    const range = circuitoRanges[metric] || [0, 0];
+    const features = (circuitosLayer && circuitosLayer.getLayers) ? circuitosLayer.getLayers() : [];
+    const citywide = circuitosMeta.citywide || {};
+    let electores = 0;
+    let votantes = 0;
+
+    features.forEach(function (layer) {
+      const props = (layer.feature && layer.feature.properties) || {};
+      electores += Number(props.electores) || 0;
+      votantes += Number(props.votantes) || 0;
+    });
+    if (!features.length) {
+      electores = Number(citywide.electores) || 0;
+      votantes = Number(citywide.votantes) || 0;
+    }
+    const count = features.length || Number(circuitosMeta.circuit_count) || 0;
+    const participation = electores > 0 ? (votantes / electores) * 100 : 0;
+
+    if (el.circuitMetricLabel) el.circuitMetricLabel.textContent = config.label;
+    if (el.circuitScale) {
+      el.circuitScale.style.background =
+        "linear-gradient(90deg, " + config.colors[0] + ", " + config.colors[1] + ")";
+    }
+    if (el.circuitRangeMin) el.circuitRangeMin.textContent = formatMetricNumber(range[0], metric);
+    if (el.circuitRangeMax) el.circuitRangeMax.textContent = formatMetricNumber(range[1], metric);
+    if (el.circuitSummary) {
+      if (/^renabap_/.test(metric)) {
+        let total = 0;
+        if (metric === "renabap_barrios") {
+          total = renabapFeatures.length;
+        } else {
+          features.forEach(function (layer) {
+            const props = (layer.feature && layer.feature.properties) || {};
+            total += Number(circuitoMetricValue(props, metric)) || 0;
+          });
+        }
+        el.circuitSummary.innerHTML =
+          "<strong>" + formatNumber(total) + "</strong> " +
+          (metric === "renabap_barrios" ? "barrios populares" : "hogares en barrios populares") +
+          " · " + count + " circuitos";
+      } else if (CIRCUITO_METRICS_RADIOS.indexOf(metric) !== -1) {
+        let total = 0;
+        features.forEach(function (layer) {
+          const props = (layer.feature && layer.feature.properties) || {};
+          total += Number(props.poblacion) || 0;
+        });
+        el.circuitSummary.innerHTML =
+          "<strong>" + formatNumber(total) + "</strong> habitantes (Censo 2022) · " +
+          count + " circuitos";
+      } else {
+        el.circuitSummary.innerHTML =
+          "<strong>" + count + " circuitos</strong> · " +
+          formatNumber(electores) + " electores · " +
+          formatPct(participation) + " de participación";
+      }
+    }
+  }
+
+  function applyCircuitoVisuals(rebuildLabels) {
+    if (circuitosLayer) circuitosLayer.setStyle(circuitoStyle);
+    if (rebuildLabels) buildCircuitoLabels();
+    updateCircuitoPanel();
+  }
+
+  function syncCircuitos() {
+    const visible = state.circuitos && !circuitosUnavailable && mapReady;
+    syncLayersPanel();
+    updateLegends();
+    if (!mapReady) return;
+
+    if (!visible) {
+      setCircuitoAttribution(false);
+      if (circuitosLayer && map.hasLayer(circuitosLayer)) map.removeLayer(circuitosLayer);
+      if (circuitoLabelGroup && map.hasLayer(circuitoLabelGroup)) map.removeLayer(circuitoLabelGroup);
+      return;
+    }
+
+    loadCircuitos().then(function (layer) {
+      if (!layer || !state.circuitos) return;
+      if (!map.hasLayer(layer)) layer.addTo(map);
+      setCircuitoAttribution(true);
+      updateCircuitLabelsVisibility();
+      updateCircuitoPanel();
+      const count = layer.getLayers ? layer.getLayers().length : 0;
+      showMapToast(count + " circuitos electorales en el mapa.", 4000);
+    });
+  }
+
+  /* Radios censales (Censo 2022) ------------------------------------------- */
+
+  function radioMetricConfig() {
+    return RADIO_METRICS[state.radioMetric] || RADIO_METRICS.poblacion;
+  }
+
+  function radioMetricValue(props, metric) {
+    return props[metric] == null ? NaN : Number(props[metric]);
+  }
+
+  function formatRadioMetric(value, metric) {
+    const number = Number(value);
+    if (!Number.isFinite(number)) return "—";
+    const config = RADIO_METRICS[metric] || RADIO_METRICS.poblacion;
+    return (
+      number.toLocaleString("es-AR", {
+        minimumFractionDigits: config.decimals,
+        maximumFractionDigits: config.decimals
+      }) + config.suffix
+    );
+  }
+
+  function computeRadioRanges(features) {
+    const values = {};
+    Object.keys(RADIO_METRICS).forEach(function (metric) {
+      values[metric] = [];
+    });
+    (features || []).forEach(function (feature) {
+      const props = feature.properties || {};
+      Object.keys(values).forEach(function (metric) {
+        const value = radioMetricValue(props, metric);
+        if (Number.isFinite(value)) values[metric].push(value);
+      });
+    });
+    const ranges = {};
+    Object.keys(values).forEach(function (metric) {
+      const list = values[metric];
+      ranges[metric] = list.length
+        ? [Math.min.apply(null, list), Math.max.apply(null, list)]
+        : [0, 0];
+    });
+    return ranges;
+  }
+
+  function radioColor(props) {
+    const metric = state.radioMetric;
+    const config = RADIO_METRICS[metric] || RADIO_METRICS.poblacion;
+    const range = radioRanges[metric] || [0, 0];
+    const value = radioMetricValue(props, metric);
+    const span = range[1] - range[0];
+    const ratio = span > 0 ? (value - range[0]) / span : 0.5;
+    return mixHexColor(config.colors[0], config.colors[1], ratio);
+  }
+
+  function radioStyle(feature) {
+    const props = feature.properties || {};
+    return {
+      pane: "radioPane",
+      color: props.baja_poblacion ? "#8a7060" : "#7a4a2a",
+      weight: 0.7,
+      opacity: 0.45,
+      dashArray: props.baja_poblacion ? "3 2" : null,
+      fillColor: radioColor(props),
+      fillOpacity: state.radioFillOpacity
+    };
+  }
+
+  function applyRadioVisuals(rebuildLabels) {
+    if (radiosLayer) radiosLayer.setStyle(radioStyle);
+    if (rebuildLabels) {
+      if (radiosLabelGroup && mapReady && map.hasLayer(radiosLabelGroup)) {
+        map.removeLayer(radiosLabelGroup);
+      }
+      radiosLabelGroup = L.layerGroup(buildRadioLabels());
+    }
+    updateRadioLabelsVisibility();
+    updateRadiosPanel();
+  }
+
+  function loadRadios() {
+    if (radiosLayer) return Promise.resolve(radiosLayer);
+    if (radiosRequest) return radiosRequest;
+
+    radiosRequest = fetch(RADIOS_URL, { cache: "no-store" })
+      .then(function (response) {
+        if (!response.ok) throw new Error("No se pudo leer radios.geojson (" + response.status + ")");
+        return response.json();
+      })
+      .then(function (data) {
+        const features = data && Array.isArray(data.features) ? data.features : [];
+        if (!features.length) throw new Error("radios.geojson no contiene radios censales");
+        radiosFeatures = features;
+        radiosMeta = data.metadata || null;
+        radioRanges = computeRadioRanges(features);
+        radiosLayer = L.geoJSON(data, {
+          pane: "radioPane",
+          style: radioStyle,
+          onEachFeature: bindRadioFeature
+        });
+        radiosLabelGroup = L.layerGroup(buildRadioLabels());
+        applyRadiosToCircuitos();
+        syncLayerSettings();
+        updateLegends();
+        return radiosLayer;
+      })
+      .catch(function (error) {
+        console.error("No se pudieron cargar los radios censales", error);
+        radiosRequest = null;
+        markLayerUnavailable("radios", "No se pudo cargar la capa de radios censales");
+        showMapToast("No pudimos cargar los radios censales.", 6000);
+        return null;
+      });
+
+    return radiosRequest;
+  }
+
+  function buildRadioLabels() {
+    return radiosFeatures
+      .map(function (feature) {
+        const props = feature.properties || {};
+        if (!props.label) return null;
+        const text =
+          "R " + props.slug +
+          (state.radioLabelValues
+            ? " · " + formatRadioMetric(radioMetricValue(props, state.radioMetric), state.radioMetric)
+            : "");
+        return L.marker(props.label, {
+          pane: "radioLabelPane",
+          interactive: false,
+          keyboard: false,
+          icon: L.divIcon({
+            className: "radio-label",
+            html: '<span class="radio-label__text">' + escapeHTML(text) + "</span>",
+            iconSize: [0, 0],
+            iconAnchor: [0, 0]
+          })
+        });
+      })
+      .filter(Boolean);
+  }
+
+  function updateRadioLabelsVisibility() {
+    if (!mapReady || !radiosLabelGroup) return;
+    const show = state.radios && state.radioLabels && map.getZoom() >= RADIOS_LABEL_ZOOM;
+    if (show && !map.hasLayer(radiosLabelGroup)) radiosLabelGroup.addTo(map);
+    else if (!show && map.hasLayer(radiosLabelGroup)) map.removeLayer(radiosLabelGroup);
+  }
+
+  function bindRadioFeature(feature, layer) {
+    const props = feature.properties || {};
+    layer.bindTooltip(function () {
+      return escapeHTML(
+        "Radio " + props.slug + " · " + formatNumber(props.poblacion) + " hab."
+      );
+    }, {
+      sticky: true,
+      direction: "top",
+      opacity: 1,
+      className: "radio-tooltip"
+    });
+
+    layer.bindPopup(function () {
+      return buildRadioPopup(props);
+    }, {
+      maxWidth: 310,
+      minWidth: 270,
+      className: "radio-popup"
+    });
+
+    layer.on("mouseover", function () {
+      layer.setStyle({ weight: 2, opacity: 1, fillOpacity: Math.min(0.85, state.radioFillOpacity + 0.15) });
+      if (layer.bringToFront) layer.bringToFront();
+    });
+    layer.on("mouseout", function () {
+      layer.setStyle(radioStyle(feature));
+    });
+  }
+
+  function radioStatRows(props) {
+    return [
+      ["Población", formatNumber(props.poblacion)],
+      ["Hogares", formatNumber(props.hogares)],
+      ["Viviendas", formatNumber(props.viviendas)],
+      ["Superficie", formatMetricNumber(props.area_km2, "superficie")],
+      ["Densidad", formatRadioMetric(props.densidad, "densidad")],
+      ["0–14 años", formatNumber(props.p0_14)],
+      ["15–64 años", formatNumber(props.p15_64)],
+      ["65 años y más", formatNumber(props.p65_mas) + " · " + formatPct(props.pct_65_mas)],
+      ["Sin cobertura de salud", formatNumber(props.sin_cobertura_salud) + " · " + formatPct(props.pct_sin_cobertura_salud)],
+      ["Hogares con NBI", formatNumber(props.nbi_hogares) + " · " + formatPct(props.pct_nbi)],
+      ["Hogares sin cloacas", formatNumber(props.sin_cloacas) + " · " + formatPct(props.pct_sin_cloacas)],
+      ["Hogares sin gas de red", formatNumber(props.sin_gas_red) + " · " + formatPct(props.pct_sin_gas_red)],
+      ["Hogares sin agua de red", formatNumber(props.sin_agua_red) + " · " + formatPct(props.pct_sin_agua_red)],
+      ["Clima educativo bajo", formatNumber(props.clima_bajo) + " · " + formatPct(props.pct_clima_bajo)]
+    ].map(function (item) {
+      return (
+        '<div class="circuito-popup__stat">' +
+          "<dt>" + escapeHTML(item[0]) + "</dt>" +
+          "<dd>" + escapeHTML(item[1]) + "</dd>" +
+        "</div>"
+      );
+    }).join("");
+  }
+
+  function buildRadioPopup(props) {
+    const circuitos = Array.isArray(props.circuitos) ? props.circuitos : [];
+    const circuitText = circuitos.length
+      ? circuitos
+          .map(function (item) {
+            const ratio = Math.round((Number(item.ratio) || 0) * 100);
+            return "<strong>" + escapeHTML(item.label || item.id) + "</strong> (" + ratio + " %)";
+          })
+          .join(" · ")
+      : "Sin intersección con circuitos";
+    const baja = props.baja_poblacion
+      ? '<p class="radio-popup__note">Radio con menos de 50 habitantes: los porcentajes son poco robustos.</p>'
+      : "";
+
+    return (
+      '<div class="popup popup--radio" style="--pin:#b8430a">' +
+        '<div class="popup__top">' +
+          '<div class="popup__icon" aria-hidden="true">👥</div>' +
+          "<div>" +
+            '<p class="popup__type">' + escapeHTML(props.localidad || "Villa Mercedes") + " · Radio " + escapeHTML(props.slug) + "</p>" +
+            '<h3 class="popup__name">Radio censal ' + escapeHTML(props.codigo) + "</h3>" +
+          "</div>" +
+        "</div>" +
+        '<div class="popup__body">' +
+          '<dl class="circuito-popup__stats">' + radioStatRows(props) + "</dl>" +
+          baja +
+          '<p class="renabap-popup__circuitos">' + circuitText + "</p>" +
+          '<p class="radio-popup__note">Los porcentajes usan la población o los hogares del radio como denominador. El clima educativo bajo agrupa los hogares con clima bajo y muy bajo.</p>' +
+          '<p class="radio-popup__source">INDEC · Censo Nacional 2022 · resultados por radio</p>' +
+        "</div>" +
+      "</div>"
+    );
+  }
+
+  function applyRadiosToCircuitos() {
+    if (!circuitosLayer || !radiosMeta || !radiosMeta.circuitos) return;
+    const summary = radiosMeta.circuitos;
+    const features = [];
+    circuitosLayer.eachLayer(function (layer) {
+      const props = (layer.feature && layer.feature.properties) || {};
+      const values = summary[String(props.id)];
+      if (values) {
+        CIRCUITO_METRICS_RADIOS.forEach(function (metric) {
+          if (!(metric in props) && values[metric] != null) props[metric] = values[metric];
+        });
+        props.poblacion = values.poblacion;
+        props.hogares = values.hogares;
+      }
+      features.push(layer.feature);
+    });
+    circuitoRanges = computeCircuitoRanges(features);
+    applyCircuitoVisuals(true);
+    syncLayerSettings();
+  }
+
+  function setRadiosAttribution(active) {
+    if (!mapReady || !map || !map.attributionControl) return;
+    if (active && !radiosAttributionAdded) {
+      map.attributionControl.addAttribution(RADIOS_ATTRIBUTION);
+      radiosAttributionAdded = true;
+    } else if (!active && radiosAttributionAdded) {
+      map.attributionControl.removeAttribution(RADIOS_ATTRIBUTION);
+      radiosAttributionAdded = false;
+    }
+  }
+
+  function updateRadiosPanel() {
+    if (!radiosMeta) return;
+    const metric = state.radioMetric;
+    const config = RADIO_METRICS[metric] || RADIO_METRICS.poblacion;
+    const range = radioRanges[metric] || [0, 0];
+    const coverage = radiosMeta.coverage || {};
+
+    if (el.radiosMetricLabel) el.radiosMetricLabel.textContent = config.label;
+    if (el.radiosScale) {
+      el.radiosScale.style.background =
+        "linear-gradient(90deg, " + config.colors[0] + ", " + config.colors[1] + ")";
+    }
+    if (el.radiosRangeMin) el.radiosRangeMin.textContent = formatRadioMetric(range[0], metric);
+    if (el.radiosRangeMax) el.radiosRangeMax.textContent = formatRadioMetric(range[1], metric);
+    if (el.radiosLegendNote) {
+      el.radiosLegendNote.textContent =
+        formatNumber(coverage.radios_urbano_mixto || radiosFeatures.length) + " radios urbanos · Villa Mercedes y Villa Reynolds";
+    }
+    if (el.radiosSummary) {
+      el.radiosSummary.innerHTML =
+        "<strong>" + formatNumber(coverage.poblacion) + "</strong> habitantes · " +
+        formatNumber(coverage.hogares) + " hogares";
+    }
+  }
+
+  function updateLegends() {
+    const circuitVisible = state.circuitos && !circuitosUnavailable && mapReady;
+    const radiosVisible = state.radios && !radiosUnavailable && mapReady;
+    if (el.mapLegends) el.mapLegends.hidden = !(circuitVisible || radiosVisible);
+    if (el.circuitLegend) el.circuitLegend.hidden = !circuitVisible;
+    if (el.radiosLegend) el.radiosLegend.hidden = !radiosVisible;
+    if (!circuitVisible && !radiosVisible && el.mapLegends) {
+      el.mapLegends.classList.remove("is-obscured");
+    }
+    if (radiosVisible) updateRadiosPanel();
+  }
+
+  function syncRadios() {
+    const visible = state.radios && !radiosUnavailable && mapReady;
+    syncLayersPanel();
+    updateLegends();
+    if (!mapReady) return;
+
+    if (!visible) {
+      setRadiosAttribution(false);
+      if (radiosLayer && map.hasLayer(radiosLayer)) map.removeLayer(radiosLayer);
+      if (radiosLabelGroup && map.hasLayer(radiosLabelGroup)) map.removeLayer(radiosLabelGroup);
+      return;
+    }
+
+    loadRadios().then(function (layer) {
+      if (!layer || !state.radios) return;
+      if (!map.hasLayer(layer)) layer.addTo(map);
+      setRadiosAttribution(true);
+      updateRadioLabelsVisibility();
+      updateRadiosPanel();
+      updateLegends();
+      const count = radiosFeatures.length;
+      showMapToast(count + " radios censales en el mapa.", 4000);
+    });
+  }
+
+  /* Barrios populares (RENABAP) -------------------------------------------- */
+
+  function renabapStyle(feature) {
+    return {
+      pane: "renabapPane",
+      color: "#8f3410",
+      weight: 1.6,
+      opacity: 0.85,
+      dashArray: "5 3",
+      fillColor: "#b8430a",
+      fillOpacity: state.renabapFillOpacity
+    };
+  }
+
+  function applyRenabapVisuals(rebuildLabels) {
+    if (renabapLayer) renabapLayer.setStyle(renabapStyle);
+    if (rebuildLabels) {
+      if (renabapLabelGroup && mapReady && map.hasLayer(renabapLabelGroup)) {
+        map.removeLayer(renabapLabelGroup);
+      }
+      renabapLabelGroup = L.layerGroup(buildRenabapLabels());
+    }
+    updateRenabapLabelsVisibility();
+  }
+
+  function loadRenabap() {
+    if (renabapLayer) return Promise.resolve(renabapLayer);
+    if (renabapRequest) return renabapRequest;
+
+    renabapRequest = fetch(RENABAP_URL, { cache: "no-store" })
+      .then(function (response) {
+        if (!response.ok) throw new Error("No se pudo leer renabap.geojson (" + response.status + ")");
+        return response.json();
+      })
+      .then(function (data) {
+        const features = data && Array.isArray(data.features) ? data.features : [];
+        if (!features.length) throw new Error("renabap.geojson no contiene barrios populares");
+        renabapFeatures = features;
+        renabapMeta = data.metadata || null;
+        renabapLayer = L.geoJSON(data, {
+          pane: "renabapPane",
+          style: renabapStyle,
+          onEachFeature: bindRenabapFeature
+        });
+        renabapLabelGroup = L.layerGroup(buildRenabapLabels());
+        applyRenabapToCircuitos();
+        syncLayerSettings();
+        return renabapLayer;
+      })
+      .catch(function (error) {
+        console.error("No se pudieron cargar los barrios populares", error);
+        renabapRequest = null;
+        markLayerUnavailable("renabap", "No se pudo cargar la capa de barrios populares");
+        showMapToast("No pudimos cargar los barrios populares.", 6000);
+        return null;
+      });
+
+    return renabapRequest;
+  }
+
+  function buildRenabapLabels() {
+    return renabapFeatures
+      .map(function (feature) {
+        const props = feature.properties || {};
+        if (!props.label || !props.nombre) return null;
+        const text =
+          props.nombre +
+          (state.renabapLabelValues ? " · " + formatNumber(props.hogares) + " hog." : "");
+        return L.marker(props.label, {
+          pane: "renabapLabelPane",
+          interactive: false,
+          keyboard: false,
+          icon: L.divIcon({
+            className: "renabap-label",
+            html: '<span class="renabap-label__text">' + escapeHTML(text) + "</span>",
+            iconSize: [0, 0],
+            iconAnchor: [0, 0]
+          })
+        });
+      })
+      .filter(Boolean);
+  }
+
+  function updateRenabapLabelsVisibility() {
+    if (!mapReady || !renabapLabelGroup) return;
+    const show = state.renabap && state.renabapLabels && map.getZoom() >= RENABAP_LABEL_ZOOM;
+    if (show && !map.hasLayer(renabapLabelGroup)) renabapLabelGroup.addTo(map);
+    else if (!show && map.hasLayer(renabapLabelGroup)) map.removeLayer(renabapLabelGroup);
+  }
+
+  function bindRenabapFeature(feature, layer) {
+    const props = feature.properties || {};
+    layer.bindTooltip(escapeHTML(props.nombre || "Barrio popular"), {
+      sticky: true,
+      direction: "top",
+      opacity: 1,
+      className: "renabap-tooltip"
+    });
+
+    layer.bindPopup(function () {
+      return buildRenabapPopup(props);
+    }, {
+      maxWidth: 300,
+      minWidth: 250,
+      className: "renabap-popup"
+    });
+
+    layer.on("mouseover", function () {
+      layer.setStyle({ weight: 2.4, opacity: 1, fillOpacity: Math.min(0.75, state.renabapFillOpacity + 0.18) });
+      if (layer.bringToFront) layer.bringToFront();
+    });
+    layer.on("mouseout", function () {
+      layer.setStyle(renabapStyle(feature));
+    });
+  }
+
+  function buildRenabapPopup(props) {
+    const circuitos = Array.isArray(props.circuitos) ? props.circuitos : [];
+    const circuitText = circuitos.length
+      ? circuitos
+          .map(function (item) {
+            const ratio = Math.round((Number(item.ratio) || 0) * 100);
+            return (
+              "<strong>" + escapeHTML(item.label || item.id) + "</strong> (" +
+              ratio + " % · " + formatNumber(item.hogares) + " hog.)"
+            );
+          })
+          .join(" · ")
+      : "Sin intersección con circuitos";
+    const viviendas = props.viviendas == null ? "Sin dato" : formatNumber(props.viviendas);
+
+    return (
+      '<div class="popup popup--renabap" style="--pin:#b8430a">' +
+        '<div class="popup__top">' +
+          '<div class="popup__icon" aria-hidden="true">🏘️</div>' +
+          "<div>" +
+            '<p class="popup__type">Barrio popular · RENABAP</p>' +
+            '<h3 class="popup__name">' + escapeHTML(props.nombre || "Barrio popular") + "</h3>" +
+          "</div>" +
+        "</div>" +
+        '<div class="popup__body">' +
+          '<dl class="circuito-popup__stats">' +
+            '<div class="circuito-popup__stat"><dt>Hogares</dt><dd>' + formatNumber(props.hogares) + "</dd></div>" +
+            '<div class="circuito-popup__stat"><dt>Viviendas</dt><dd>' + escapeHTML(viviendas) + "</dd></div>" +
+            '<div class="circuito-popup__stat"><dt>Superficie</dt><dd>' + escapeHTML(formatHectares(props.area_ha)) + "</dd></div>" +
+          "</dl>" +
+          '<p class="renabap-popup__circuitos">' + circuitText + "</p>" +
+          '<p class="renabap-popup__note">Hogares: familias registradas en el RENABAP. El GeoJSON oficial no publica viviendas; se muestran como «Sin dato».</p>' +
+          '<p class="renabap-popup__source">RENABAP · SISU · datos de diciembre de 2023</p>' +
+        "</div>" +
+      "</div>"
+    );
+  }
+
+  function applyRenabapToCircuitos() {
+    if (!circuitosLayer || !renabapFeatures.length) return;
+    const totals = new Map();
+    renabapFeatures.forEach(function (feature) {
+      const props = feature.properties || {};
+      (props.circuitos || []).forEach(function (item) {
+        const key = String(item.id);
+        const current = totals.get(key) || { barrios: 0, hogares: 0 };
+        current.hogares += Number(item.hogares) || 0;
+        if ((Number(item.ratio) || 0) >= 0.01) current.barrios += 1;
+        totals.set(key, current);
+      });
+    });
+
+    const features = [];
+    circuitosLayer.eachLayer(function (layer) {
+      const props = (layer.feature && layer.feature.properties) || {};
+      const total = totals.get(String(props.id));
+      props.renabap_barrios = total ? total.barrios : 0;
+      props.renabap_hogares = total ? Math.round(total.hogares) : 0;
+      features.push(layer.feature);
+    });
+    circuitoRanges = computeCircuitoRanges(features);
+    applyCircuitoVisuals(true);
+    syncLayerSettings();
+  }
+
+  function setRenabapAttribution(active) {
+    if (!mapReady || !map || !map.attributionControl) return;
+    if (active && !renabapAttributionAdded) {
+      map.attributionControl.addAttribution(RENABAP_ATTRIBUTION);
+      renabapAttributionAdded = true;
+    } else if (!active && renabapAttributionAdded) {
+      map.attributionControl.removeAttribution(RENABAP_ATTRIBUTION);
+      renabapAttributionAdded = false;
+    }
+  }
+
+  function syncRenabap() {
+    const visible = state.renabap && !renabapUnavailable && mapReady;
+    syncLayersPanel();
+    if (!mapReady) return;
+
+    if (!visible) {
+      setRenabapAttribution(false);
+      if (renabapLayer && map.hasLayer(renabapLayer)) map.removeLayer(renabapLayer);
+      if (renabapLabelGroup && map.hasLayer(renabapLabelGroup)) map.removeLayer(renabapLabelGroup);
+      return;
+    }
+
+    loadRenabap().then(function (layer) {
+      if (!layer || !state.renabap) return;
+      if (!map.hasLayer(layer)) layer.addTo(map);
+      setRenabapAttribution(true);
+      updateRenabapLabelsVisibility();
+      const count = renabapFeatures.length;
+      showMapToast(count + " barrios populares en el mapa.", 4000);
+    });
+  }
+
   /* Recorridos de colectivos ------------------------------------------------ */
 
-  function normalizeRutas(data) {
-    const source = data && Array.isArray(data.rutas) ? data.rutas : [];
-    return source
+  function rutaEntries(data) {
+    if (!data || typeof data !== "object") return [];
+    if (Array.isArray(data.features)) {
+      return data.features
+        .filter(function (feature) {
+          return feature && feature.type === "Feature";
+        })
+        .map(function (feature) {
+          return Object.assign({}, feature.properties || {}, {
+            geometry: feature.geometry || null
+          });
+        });
+    }
+    return Array.isArray(data.rutas) ? data.rutas : [];
+  }
+
+  function rutaRecorrido(ruta) {
+    if (!ruta) return [];
+    if (Array.isArray(ruta.recorrido)) return ruta.recorrido;
+    const geometry = ruta.geometry;
+    if (!geometry) return [];
+    if (geometry.type === "LineString") {
+      return Array.isArray(geometry.coordinates) ? geometry.coordinates : [];
+    }
+    if (geometry.type === "MultiLineString" && Array.isArray(geometry.coordinates)) {
+      return geometry.coordinates.reduce(function (all, line) {
+        return all.concat(Array.isArray(line) ? line : []);
+      }, []);
+    }
+    return [];
+  }
+
+  function rutaLinea(ruta, source) {
+    const explicit = ruta && ruta.linea != null ? String(ruta.linea).trim().toUpperCase() : "";
+    if (explicit) return explicit.slice(0, 2);
+
+    const idMatch = /^linea-([a-z0-9])/i.exec(String((ruta && ruta.id) || ""));
+    if (idMatch) return idMatch[1].toUpperCase();
+
+    const nameMatch = /l[ií]nea\s+([a-z0-9])/i.exec(String((ruta && ruta.nombre) || ""));
+    if (nameMatch) return nameMatch[1].toUpperCase();
+
+    return source && source.linea ? String(source.linea).toUpperCase() : "";
+  }
+
+  function normalizeRutas(data, source) {
+    return rutaEntries(data)
       .map(function (ruta, index) {
-        // rutas.json guarda [lng, lat]; Leaflet espera [lat, lng].
-        const puntos = (Array.isArray(ruta.recorrido) ? ruta.recorrido : [])
+        // Los archivos de recorridos guardan [lng, lat]; Leaflet espera [lat, lng].
+        const puntos = rutaRecorrido(ruta)
           .map(function (par) {
             if (!Array.isArray(par) || par.length < 2) return null;
             const lng = Number(par[0]);
@@ -530,12 +2083,14 @@
             return Number.isFinite(lat) && Number.isFinite(lng) ? [lat, lng] : null;
           })
           .filter(Boolean);
+        const linea = rutaLinea(ruta, source);
         const color =
           typeof ruta.color === "string" && /^#[0-9a-f]{3}([0-9a-f]{3})?$/i.test(ruta.color)
             ? ruta.color
-            : RUTA_COLOR_DEFAULT;
+            : RUTA_LINE_COLORS[linea] || RUTA_COLOR_DEFAULT;
         return Object.assign({}, ruta, {
           id: String(ruta.id || "ruta-" + index),
+          linea: linea,
           nombre: String(ruta.nombre || "Recorrido " + (index + 1)),
           tipo: ruta.tipo ? String(ruta.tipo) : "urbano",
           empresa: ruta.empresa ? String(ruta.empresa) : "",
@@ -559,17 +2114,45 @@
     };
   }
 
+  function loadRutaSource(source) {
+    return fetch(source.url, { cache: "no-store" })
+      .then(function (response) {
+        if (!response.ok) {
+          throw new Error("No se pudo leer " + source.url.replace(/^\.\//, "") + " (" + response.status + ")");
+        }
+        return response.json();
+      })
+      .then(function (data) {
+        return normalizeRutas(data, source);
+      });
+  }
+
   function loadRutas() {
     if (rutasLayer) return Promise.resolve(rutasLayer);
     if (rutasRequest) return rutasRequest;
 
-    rutasRequest = fetch(RUTAS_URL, { cache: "no-store" })
-      .then(function (response) {
-        if (!response.ok) throw new Error("No se pudo leer rutas.json (" + response.status + ")");
-        return response.json();
+    rutasRequest = Promise.all(
+      RUTAS_SOURCES.map(function (source) {
+        return loadRutaSource(source)
+          .then(function (rutas) {
+            return { source: source, rutas: rutas };
+          })
+          .catch(function (error) {
+            console.error("No se pudo cargar el recorrido de la línea " + source.linea, error);
+            return { source: source, rutas: null };
+          });
       })
-      .then(function (data) {
-        const rutas = normalizeRutas(data);
+    )
+      .then(function (results) {
+        rutasFaltantes = results
+          .filter(function (result) { return result.rutas === null; })
+          .map(function (result) { return result.source.linea; });
+        const rutas = results.reduce(function (all, result) {
+          return result.rutas ? all.concat(result.rutas) : all;
+        }, []);
+
+        if (!rutas.length) throw new Error("No se pudo leer ningún recorrido de colectivos");
+
         const layer = L.layerGroup();
 
         rutas.forEach(function (ruta) {
@@ -632,7 +2215,7 @@
     return (
       '<div class="popup popup--ruta">' +
         '<div class="popup__top" style="--pin:' + escapeAttr(ruta.color) + '">' +
-          '<span class="popup__icon" aria-hidden="true">🚌</span>' +
+          '<span class="popup__icon popup__icon--ruta" aria-hidden="true">' + escapeHTML(ruta.linea || "•") + "</span>" +
           '<div>' +
             '<p class="popup__type">' + escapeHTML(tipo) + "</p>" +
             '<h3 class="popup__name">' + escapeHTML(ruta.nombre) + "</h3>" +
@@ -657,8 +2240,8 @@
     );
   }
 
-  /* Un colectivo recorre cada línea en el orden del arreglo `recorrido`, con
-     la rotación del ícono indicando el sentido de avance. */
+  /* Un colectivo recorre cada línea en el orden de sus coordenadas, con la
+     letra de la línea (A/E) identificando el servicio. */
 
   function buildRutaAnimations(rutas, layer) {
     return rutas
@@ -692,8 +2275,7 @@
           total: total,
           duration: duration,
           marker: marker,
-          elapsed: 0,
-          lookahead: Math.max(10, Math.min(28, total * 0.004))
+          elapsed: 0
         };
       })
       .filter(Boolean);
@@ -704,14 +2286,11 @@
       className: "ruta-bus-icon",
       html:
         '<span class="ruta-bus" style="--bus-color:' + escapeAttr(ruta.color) + '">' +
-          '<svg viewBox="0 0 24 24" aria-hidden="true">' +
-            '<rect x="7" y="2.4" width="10" height="19.2" rx="3" fill="currentColor" stroke="none"/>' +
-            '<path d="M12 4.4 9.7 7.1h4.6L12 4.4Z" fill="#fffdf9" stroke="none"/>' +
-            '<path d="M9 17.7h6" stroke="#fffdf9" stroke-width="1.3" stroke-linecap="round"/>' +
-          "</svg>" +
+          '<span class="ruta-bus__pulse" aria-hidden="true"></span>' +
+          '<span class="ruta-bus__letter">' + escapeHTML(ruta.linea || "•") + "</span>" +
         "</span>",
-      iconSize: [26, 26],
-      iconAnchor: [13, 13]
+      iconSize: [30, 30],
+      iconAnchor: [15, 15]
     });
   }
 
@@ -725,16 +2304,6 @@
       Math.sin(dLat / 2) * Math.sin(dLat / 2) +
       Math.cos(lat1) * Math.cos(lat2) * Math.sin(dLng / 2) * Math.sin(dLng / 2);
     return 2 * earthRadius * Math.asin(Math.min(1, Math.sqrt(h)));
-  }
-
-  function bearingBetween(a, b) {
-    const lat1 = (a.lat * Math.PI) / 180;
-    const lat2 = (b.lat * Math.PI) / 180;
-    const dLng = ((b.lng - a.lng) * Math.PI) / 180;
-    const y = Math.sin(dLng) * Math.cos(lat2);
-    const x = Math.cos(lat1) * Math.sin(lat2) - Math.sin(lat1) * Math.cos(lat2) * Math.cos(dLng);
-    if (x === 0 && y === 0) return 0;
-    return ((Math.atan2(y, x) * 180) / Math.PI + 360) % 360;
   }
 
   function pointAtDistance(anim, distance) {
@@ -761,30 +2330,10 @@
     };
   }
 
-  function rutaBearing(anim, distance) {
-    const clamped = Math.max(0, Math.min(distance, anim.total));
-    const ahead = Math.min(clamped + anim.lookahead, anim.total);
-    if (ahead > clamped + 0.01) {
-      return bearingBetween(pointAtDistance(anim, clamped), pointAtDistance(anim, ahead));
-    }
-    const behind = Math.max(0, clamped - anim.lookahead);
-    if (clamped > behind + 0.01) {
-      return bearingBetween(pointAtDistance(anim, behind), pointAtDistance(anim, clamped));
-    }
-    return 0;
-  }
-
   function applyRutaPose(anim, progress) {
     const distance = progress * anim.total;
     const pose = pointAtDistance(anim, distance);
     anim.marker.setLatLng([pose.lat, pose.lng]);
-
-    const element = anim.marker.getElement();
-    if (!element) return;
-    const bus = element.querySelector(".ruta-bus");
-    if (bus) {
-      bus.style.transform = "rotate(" + rutaBearing(anim, distance).toFixed(1) + "deg)";
-    }
   }
 
   function stepRutaBuses(timestamp) {
@@ -820,6 +2369,15 @@
     rutaLastTs = 0;
   }
 
+  function rutaLineas() {
+    const lineas = [];
+    rutaAnimations.forEach(function (anim) {
+      const linea = anim.ruta.linea;
+      if (linea && lineas.indexOf(linea) === -1) lineas.push(linea);
+    });
+    return lineas.sort();
+  }
+
   function syncRutas() {
     const visible = state.rutas && !rutasUnavailable && mapReady;
     if (el.rutasToggle) {
@@ -842,11 +2400,17 @@
       startRutaBuses();
       if (rutasCount === 0) {
         showMapToast("Todavía no hay recorridos de colectivos cargados.", 5000);
-      } else if (rutasCount === 1) {
-        showMapToast("1 recorrido de colectivo en el mapa.", 4000);
-      } else {
-        showMapToast(rutasCount + " recorridos de colectivos en el mapa.", 4000);
+        return;
       }
+      const lineas = rutaLineas();
+      const sufijo = lineas.length
+        ? " (" + (lineas.length === 1 ? "línea " : "líneas ") + lineas.join(" y ") + ")"
+        : "";
+      const recorridos = rutasCount === 1 ? "1 recorrido de colectivo" : rutasCount + " recorridos de colectivos";
+      const faltante = rutasFaltantes.length
+        ? " No pudimos cargar la línea " + rutasFaltantes.join(" ni la ") + "."
+        : "";
+      showMapToast(recorridos + sufijo + " en el mapa." + faltante, faltante ? 6500 : 4000);
     });
   }
 
@@ -1093,6 +2657,7 @@
       state.filtered = schools;
       state.dataLoaded = true;
       barrioCounts.clear();
+      refreshCircuitoInstituciones();
 
       if (el.resultsTotal) el.resultsTotal.textContent = schools.length + " en total";
       if (el.mobileCount) el.mobileCount.textContent = String(schools.length);
@@ -1523,7 +3088,7 @@
 
   function showMapError() {
     if (el.mapError) el.mapError.hidden = false;
-    document.querySelectorAll(".map-actions, .legend").forEach(function (node) {
+    document.querySelectorAll(".map-actions, .legend, .circuit-legend").forEach(function (node) {
       node.hidden = true;
     });
   }
@@ -1635,12 +3200,211 @@
       if (map) map.closePopup();
     });
 
-    if (el.barriosToggle) {
-      el.barriosToggle.addEventListener("click", toggleBarrios);
+    if (el.layersToggle) {
+      el.layersToggle.addEventListener("click", function (event) {
+        event.stopPropagation();
+        toggleLayersPanel();
+      });
+    }
+
+    if (el.layersClose) {
+      el.layersClose.addEventListener("click", function () { closeLayersPanel(true); });
     }
 
     if (el.rutasToggle) {
       el.rutasToggle.addEventListener("click", toggleRutas);
+    }
+
+    if (el.layerBarrios) {
+      el.layerBarrios.addEventListener("change", function () {
+        state.barrios = el.layerBarrios.checked;
+        syncBarrios();
+      });
+    }
+
+    if (el.layerCircuitos) {
+      el.layerCircuitos.addEventListener("change", function () {
+        state.circuitos = el.layerCircuitos.checked;
+        syncCircuitos();
+      });
+    }
+
+    if (el.layerRenabap) {
+      el.layerRenabap.addEventListener("change", function () {
+        state.renabap = el.layerRenabap.checked;
+        syncRenabap();
+      });
+    }
+
+    if (el.layerRadios) {
+      el.layerRadios.addEventListener("change", function () {
+        state.radios = el.layerRadios.checked;
+        syncRadios();
+      });
+    }
+
+    if (el.layerSettingsBarrios) {
+      el.layerSettingsBarrios.addEventListener("click", function () { openLayerSettings("barrios"); });
+    }
+
+    if (el.layerSettingsCircuitos) {
+      el.layerSettingsCircuitos.addEventListener("click", function () { openLayerSettings("circuitos"); });
+    }
+
+    if (el.layerSettingsRenabap) {
+      el.layerSettingsRenabap.addEventListener("click", function () { openLayerSettings("renabap"); });
+    }
+
+    if (el.layerSettingsRadios) {
+      el.layerSettingsRadios.addEventListener("click", function () { openLayerSettings("radios"); });
+    }
+
+    el.layerTabs.forEach(function (tab) {
+      tab.addEventListener("click", function () {
+        setLayerSettingsTab(tab.dataset.layerTab);
+      });
+      tab.addEventListener("keydown", function (event) {
+        if (event.key !== "ArrowRight" && event.key !== "ArrowLeft") return;
+        event.preventDefault();
+        const tabs = Array.prototype.filter.call(el.layerTabs, function (item) {
+          return !item.disabled;
+        });
+        if (!tabs.length) return;
+        const current = tabs.indexOf(tab);
+        const offset = event.key === "ArrowRight" ? 1 : -1;
+        const next = tabs[(current + offset + tabs.length) % tabs.length];
+        setLayerSettingsTab(next.dataset.layerTab);
+        next.focus();
+      });
+    });
+
+    if (el.closeLayerSettings) {
+      el.closeLayerSettings.addEventListener("click", closeLayerSettings);
+    }
+
+    if (el.closeLayerSettingsDone) {
+      el.closeLayerSettingsDone.addEventListener("click", closeLayerSettings);
+    }
+
+    if (el.resetLayerSettings) {
+      el.resetLayerSettings.addEventListener("click", resetLayerSettings);
+    }
+
+    if (el.layerSettingsDialog) {
+      el.layerSettingsDialog.addEventListener("click", function (event) {
+        if (event.target === el.layerSettingsDialog) closeLayerSettings();
+      });
+      el.layerSettingsDialog.addEventListener("close", function () {
+        if (el.layersToggle) el.layersToggle.focus({ preventScroll: true });
+      });
+    }
+
+    if (el.barrioShowLabels) {
+      el.barrioShowLabels.addEventListener("change", function () {
+        state.barrioLabels = el.barrioShowLabels.checked;
+        applyBarrioVisuals();
+      });
+    }
+
+    if (el.barrioFillOpacity) {
+      el.barrioFillOpacity.addEventListener("input", function () {
+        state.barrioFillOpacity = Number(el.barrioFillOpacity.value) / 100;
+        if (el.barrioFillOpacityOutput) {
+          el.barrioFillOpacityOutput.textContent = el.barrioFillOpacity.value + "%";
+        }
+        applyBarrioVisuals();
+      });
+    }
+
+    el.circuitMetricRadios.forEach(function (radio) {
+      radio.addEventListener("change", function () {
+        if (!radio.checked) return;
+        state.circuitoMetric = radio.value;
+        applyCircuitoVisuals(true);
+      });
+    });
+
+    if (el.circuitShowLabels) {
+      el.circuitShowLabels.addEventListener("change", function () {
+        state.circuitoLabels = el.circuitShowLabels.checked;
+        if (el.circuitShowValues) el.circuitShowValues.disabled = !state.circuitoLabels;
+        buildCircuitoLabels();
+      });
+    }
+
+    if (el.circuitShowValues) {
+      el.circuitShowValues.addEventListener("change", function () {
+        state.circuitoLabelValues = el.circuitShowValues.checked;
+        buildCircuitoLabels();
+      });
+    }
+
+    if (el.circuitFillOpacity) {
+      el.circuitFillOpacity.addEventListener("input", function () {
+        state.circuitoFillOpacity = Number(el.circuitFillOpacity.value) / 100;
+        if (el.circuitFillOpacityOutput) {
+          el.circuitFillOpacityOutput.textContent = el.circuitFillOpacity.value + "%";
+        }
+        if (circuitosLayer) circuitosLayer.setStyle(circuitoStyle);
+      });
+    }
+
+    if (el.renabapShowLabels) {
+      el.renabapShowLabels.addEventListener("change", function () {
+        state.renabapLabels = el.renabapShowLabels.checked;
+        if (el.renabapShowValues) el.renabapShowValues.disabled = !state.renabapLabels;
+        updateRenabapLabelsVisibility();
+      });
+    }
+
+    if (el.renabapShowValues) {
+      el.renabapShowValues.addEventListener("change", function () {
+        state.renabapLabelValues = el.renabapShowValues.checked;
+        applyRenabapVisuals(true);
+      });
+    }
+
+    if (el.renabapFillOpacity) {
+      el.renabapFillOpacity.addEventListener("input", function () {
+        state.renabapFillOpacity = Number(el.renabapFillOpacity.value) / 100;
+        if (el.renabapFillOpacityOutput) {
+          el.renabapFillOpacityOutput.textContent = el.renabapFillOpacity.value + "%";
+        }
+        if (renabapLayer) renabapLayer.setStyle(renabapStyle);
+      });
+    }
+
+    el.radioMetricRadios.forEach(function (radio) {
+      radio.addEventListener("change", function () {
+        if (!radio.checked) return;
+        state.radioMetric = radio.value;
+        applyRadioVisuals(true);
+      });
+    });
+
+    if (el.radioShowLabels) {
+      el.radioShowLabels.addEventListener("change", function () {
+        state.radioLabels = el.radioShowLabels.checked;
+        if (el.radioShowValues) el.radioShowValues.disabled = !state.radioLabels;
+        updateRadioLabelsVisibility();
+      });
+    }
+
+    if (el.radioShowValues) {
+      el.radioShowValues.addEventListener("change", function () {
+        state.radioLabelValues = el.radioShowValues.checked;
+        applyRadioVisuals(true);
+      });
+    }
+
+    if (el.radioFillOpacity) {
+      el.radioFillOpacity.addEventListener("input", function () {
+        state.radioFillOpacity = Number(el.radioFillOpacity.value) / 100;
+        if (el.radioFillOpacityOutput) {
+          el.radioFillOpacityOutput.textContent = el.radioFillOpacity.value + "%";
+        }
+        if (radiosLayer) radiosLayer.setStyle(radioStyle);
+      });
     }
 
     if (el.locateMe) {
@@ -1653,8 +3417,16 @@
       el.legendPanel.hidden = expanded;
     });
 
+    document.addEventListener("click", function (event) {
+      if (!el.layersPanel || el.layersPanel.hidden) return;
+      if (el.layersPanel.contains(event.target)) return;
+      if (el.layersToggle && el.layersToggle.contains(event.target)) return;
+      closeLayersPanel(false);
+    });
+
     document.addEventListener("keydown", function (event) {
       if (el.creditsDialog && el.creditsDialog.open) return;
+      if (el.layerSettingsDialog && el.layerSettingsDialog.open) return;
 
       const tag = event.target && event.target.tagName;
       const isTyping = tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT" || (event.target && event.target.isContentEditable);
@@ -1666,7 +3438,9 @@
       }
 
       if (event.key === "Escape") {
-        if (el.sidebar.classList.contains("is-open") && mobileMedia.matches) {
+        if (el.layersPanel && !el.layersPanel.hidden) {
+          closeLayersPanel(true);
+        } else if (el.sidebar.classList.contains("is-open") && mobileMedia.matches) {
           closeSidebar(true);
         } else if (!el.legendPanel.hidden) {
           el.legendPanel.hidden = true;
