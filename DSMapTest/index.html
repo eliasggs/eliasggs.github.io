@@ -184,7 +184,7 @@
           </div>
           <div class="credits-list__row">
             <dt>Barrios</dt>
-            <dd><a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a> (ODbL)</dd>
+            <dd><a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a> (ODbL) · indicadores derivados de <a href="https://www.indec.gob.ar/indec/web/Nivel4-Tema-2-41-165" target="_blank" rel="noopener noreferrer">INDEC</a> (CC BY-SA 4.0) y <a href="https://datos.salud.gob.ar/dataset/listado-establecimientos-de-salud-asentados-en-el-registro-federal-refes" target="_blank" rel="noopener noreferrer">REFES</a> (CC BY 4.0)</dd>
           </div>
           <div class="credits-list__row">
             <dt>Circuitos</dt>
@@ -246,15 +246,33 @@
       <div class="circuit-settings__body">
         <div class="layer-settings__panel" id="layer-panel-barrios" role="tabpanel" aria-labelledby="layer-tab-barrios" data-layer-panel="barrios" hidden>
           <fieldset class="circuit-settings__group">
+            <legend>Dato del mapa</legend>
+            <div class="circuit-settings__metrics">
+              <label class="circuit-settings__metric"><input type="radio" name="barrio-metric" value="" checked><span>Sin coropleta (solo límites)</span></label>
+              <label class="circuit-settings__metric"><input type="radio" name="barrio-metric" value="pct_sin_agua_red"><span>% sin agua de red</span></label>
+              <label class="circuit-settings__metric"><input type="radio" name="barrio-metric" value="pct_sin_cloacas"><span>% sin cloacas</span></label>
+              <label class="circuit-settings__metric"><input type="radio" name="barrio-metric" value="pct_sin_gas_red"><span>% sin gas de red</span></label>
+              <label class="circuit-settings__metric"><input type="radio" name="barrio-metric" value="pct_nbi"><span>% hogares con NBI</span></label>
+              <label class="circuit-settings__metric"><input type="radio" name="barrio-metric" value="pct_hacinamiento"><span>% hogares con hacinamiento</span></label>
+              <label class="circuit-settings__metric"><input type="radio" name="barrio-metric" value="pct_materiales_deficitarios"><span>% hogares con materiales deficitarios</span></label>
+              <label class="circuit-settings__metric"><input type="radio" name="barrio-metric" value="pct_clima_bajo"><span>% clima educativo bajo</span></label>
+              <label class="circuit-settings__metric"><input type="radio" name="barrio-metric" value="pct_ipm_convergente"><span>% privación material convergente</span></label>
+              <label class="circuit-settings__metric"><input type="radio" name="barrio-metric" value="pct_0_14"><span>% población 0 a 14</span></label>
+              <label class="circuit-settings__metric"><input type="radio" name="barrio-metric" value="pct_65_mas"><span>% población 65 y más</span></label>
+              <label class="circuit-settings__metric"><input type="radio" name="barrio-metric" value="pct_sin_cobertura_salud"><span>% sin cobertura de salud</span></label>
+            </div>
+          </fieldset>
+
+          <fieldset class="circuit-settings__group">
             <legend>Visualización</legend>
             <label class="circuit-settings__switch"><input type="checkbox" id="barrio-show-labels" checked><span>Mostrar nombres de barrios</span></label>
             <label class="circuit-settings__range" for="barrio-fill-opacity">
               <span>Intensidad del relleno</span>
-              <input type="range" id="barrio-fill-opacity" min="0" max="40" step="2" value="7">
+              <input type="range" id="barrio-fill-opacity" min="0" max="85" step="5" value="7">
               <output id="barrio-fill-opacity-output" for="barrio-fill-opacity">7%</output>
             </label>
           </fieldset>
-          <p class="circuit-settings__hint">Los nombres aparecen según el nivel de zoom y el tipo de barrio. El relleno bajo deja leer las teselas y las demás capas.</p>
+          <p class="circuit-settings__hint">Los nombres aparecen según el nivel de zoom y el tipo de barrio. Al elegir un dato, el relleno sube a 55% para que el color se lea y la leyenda muestra el margen de la estimación (pp y % sobre el valor). Las tasas del Censo 2022 se estiman por prorrateo areal de los radios censales; los barrios sin cobertura suficiente quedan en gris y con borde punteado. Al tocar un barrio, el popup muestra los indicadores completos con su margen, el conteo de establecimientos de salud, las distancias al equipamiento más cercano y los circuitos y barrios populares vinculados.</p>
         </div>
 
         <div class="layer-settings__panel" id="layer-panel-circuitos" role="tabpanel" aria-labelledby="layer-tab-circuitos" data-layer-panel="circuitos">
@@ -273,16 +291,38 @@
           </fieldset>
 
           <fieldset class="circuit-settings__group">
-            <legend>Población (Censo 2022)</legend>
+            <legend>Población y carencias (Censo 2022)</legend>
             <div class="circuit-settings__metrics">
               <label class="circuit-settings__metric" data-requires="radios"><input type="radio" name="circuit-metric" value="poblacion" disabled><span>Población</span></label>
               <label class="circuit-settings__metric" data-requires="radios"><input type="radio" name="circuit-metric" value="densidad_poblacional" disabled><span>Densidad poblacional</span></label>
+              <label class="circuit-settings__metric" data-requires="radios"><input type="radio" name="circuit-metric" value="pct_0_14" disabled><span>% población 0–14</span></label>
               <label class="circuit-settings__metric" data-requires="radios"><input type="radio" name="circuit-metric" value="pct_65_mas" disabled><span>% 65 años y más</span></label>
               <label class="circuit-settings__metric" data-requires="radios"><input type="radio" name="circuit-metric" value="pct_sin_cobertura_salud" disabled><span>% sin cobertura de salud</span></label>
               <label class="circuit-settings__metric" data-requires="radios"><input type="radio" name="circuit-metric" value="pct_nbi" disabled><span>% hogares con NBI</span></label>
               <label class="circuit-settings__metric" data-requires="radios"><input type="radio" name="circuit-metric" value="pct_sin_cloacas" disabled><span>% hogares sin cloacas</span></label>
+              <label class="circuit-settings__metric" data-requires="radios"><input type="radio" name="circuit-metric" value="pct_sin_agua_red" disabled><span>% hogares sin agua de red</span></label>
+              <label class="circuit-settings__metric" data-requires="radios"><input type="radio" name="circuit-metric" value="pct_sin_gas_red" disabled><span>% hogares sin gas de red</span></label>
+              <label class="circuit-settings__metric" data-requires="radios"><input type="radio" name="circuit-metric" value="pct_materiales_deficitarios" disabled><span>% hogares con materiales deficitarios</span></label>
+              <label class="circuit-settings__metric" data-requires="radios"><input type="radio" name="circuit-metric" value="pct_clima_bajo" disabled><span>% hogares con clima educativo bajo</span></label>
+              <label class="circuit-settings__metric" data-requires="radios"><input type="radio" name="circuit-metric" value="pct_ipm_convergente" disabled><span>% hogares con privación material convergente</span></label>
               <label class="circuit-settings__metric" data-requires="radios"><input type="radio" name="circuit-metric" value="electores_por_100" disabled><span>Electores por 100 hab.</span></label>
               <label class="circuit-settings__metric" data-requires="radios"><input type="radio" name="circuit-metric" value="participacion_vap" disabled><span>Participación sobre VAP</span></label>
+            </div>
+          </fieldset>
+
+          <fieldset class="circuit-settings__group">
+            <legend>Accesibilidad (grilla 15°)</legend>
+            <div class="circuit-settings__metrics">
+              <label class="circuit-settings__metric" data-requires="radios"><input type="radio" name="circuit-metric" value="dist_salud_m" disabled><span>Distancia a salud</span></label>
+              <label class="circuit-settings__metric" data-requires="radios"><input type="radio" name="circuit-metric" value="dist_salud_publica_m" disabled><span>Distancia a salud pública</span></label>
+              <label class="circuit-settings__metric" data-requires="radios"><input type="radio" name="circuit-metric" value="dist_educacion_inicial_m" disabled><span>Distancia a inicial</span></label>
+              <label class="circuit-settings__metric" data-requires="radios"><input type="radio" name="circuit-metric" value="dist_educacion_primaria_m" disabled><span>Distancia a primaria</span></label>
+              <label class="circuit-settings__metric" data-requires="radios"><input type="radio" name="circuit-metric" value="dist_educacion_secundaria_m" disabled><span>Distancia a secundaria</span></label>
+              <label class="circuit-settings__metric" data-requires="radios"><input type="radio" name="circuit-metric" value="dist_educacion_superior_m" disabled><span>Distancia a superior</span></label>
+              <label class="circuit-settings__metric" data-requires="radios"><input type="radio" name="circuit-metric" value="pct_poblacion_sin_salud_1000" disabled><span>% población sin salud a 1.000 m</span></label>
+              <label class="circuit-settings__metric" data-requires="radios"><input type="radio" name="circuit-metric" value="pct_poblacion_sin_salud_2000" disabled><span>% población sin salud a 2.000 m</span></label>
+              <label class="circuit-settings__metric" data-requires="radios"><input type="radio" name="circuit-metric" value="pct_poblacion_sin_educacion_primaria_1000" disabled><span>% población sin primaria a 1.000 m</span></label>
+              <label class="circuit-settings__metric" data-requires="radios"><input type="radio" name="circuit-metric" value="pct_poblacion_sin_educacion_secundaria_1000" disabled><span>% población sin secundaria a 1.000 m</span></label>
             </div>
           </fieldset>
 
@@ -305,7 +345,7 @@
             </label>
           </fieldset>
 
-          <p class="circuit-settings__hint">La densidad usa la superficie del polígono. Las instituciones se cuentan desde el directorio educativo del mapa. Las métricas de barrios populares se habilitan al cargar RENABAP; las poblacionales, al cargar los radios censales; la de salud, al cargar REFES.</p>
+          <p class="circuit-settings__hint">La densidad usa la superficie del polígono. Las instituciones se cuentan desde el directorio educativo del mapa. Las métricas de barrios populares se habilitan al cargar RENABAP; las poblacionales, de carencias y de accesibilidad, al cargar los radios censales; la de salud, al cargar REFES. Las distancias son Manhattan en la grilla urbana rotada 15°: estiman el recorrido por calles, no un ruteo real.</p>
         </div>
 
         <div class="layer-settings__panel" id="layer-panel-radios" role="tabpanel" aria-labelledby="layer-tab-radios" data-layer-panel="radios" hidden>
@@ -318,8 +358,24 @@
               <label class="circuit-settings__metric"><input type="radio" name="radio-metric" value="pct_sin_cobertura_salud"><span>% sin cobertura de salud</span></label>
               <label class="circuit-settings__metric"><input type="radio" name="radio-metric" value="pct_nbi"><span>% hogares con NBI</span></label>
               <label class="circuit-settings__metric"><input type="radio" name="radio-metric" value="pct_sin_cloacas"><span>% sin cloacas</span></label>
+              <label class="circuit-settings__metric"><input type="radio" name="radio-metric" value="pct_sin_agua_red"><span>% sin agua de red</span></label>
+              <label class="circuit-settings__metric"><input type="radio" name="radio-metric" value="pct_hacinamiento"><span>% hogares con hacinamiento</span></label>
+              <label class="circuit-settings__metric"><input type="radio" name="radio-metric" value="pct_materiales_deficitarios"><span>% hogares con materiales deficitarios</span></label>
               <label class="circuit-settings__metric"><input type="radio" name="radio-metric" value="pct_sin_gas_red"><span>% sin gas de red</span></label>
               <label class="circuit-settings__metric"><input type="radio" name="radio-metric" value="pct_clima_bajo"><span>% clima educativo bajo</span></label>
+              <label class="circuit-settings__metric"><input type="radio" name="radio-metric" value="pct_ipm_convergente"><span>% privación material convergente</span></label>
+            </div>
+          </fieldset>
+
+          <fieldset class="circuit-settings__group">
+            <legend>Accesibilidad (grilla 15°)</legend>
+            <div class="circuit-settings__metrics">
+              <label class="circuit-settings__metric"><input type="radio" name="radio-metric" value="dist_salud_m"><span>Distancia a salud</span></label>
+              <label class="circuit-settings__metric"><input type="radio" name="radio-metric" value="dist_salud_publica_m"><span>Distancia a salud pública</span></label>
+              <label class="circuit-settings__metric"><input type="radio" name="radio-metric" value="dist_educacion_inicial_m"><span>Distancia a inicial</span></label>
+              <label class="circuit-settings__metric"><input type="radio" name="radio-metric" value="dist_educacion_primaria_m"><span>Distancia a primaria</span></label>
+              <label class="circuit-settings__metric"><input type="radio" name="radio-metric" value="dist_educacion_secundaria_m"><span>Distancia a secundaria</span></label>
+              <label class="circuit-settings__metric"><input type="radio" name="radio-metric" value="dist_educacion_superior_m"><span>Distancia a superior</span></label>
             </div>
           </fieldset>
 
@@ -334,7 +390,7 @@
             </label>
           </fieldset>
 
-          <p class="circuit-settings__hint">Los indicadores provienen del Censo 2022 por radio censal (INDEC). Las tasas usan como denominador la población o los hogares del radio. Los radios con menos de 50 habitantes se marcan como baja población. Al activar circuitos, las métricas poblacionales de los circuitos se calculan desde estos radios.</p>
+          <p class="circuit-settings__hint">Los indicadores provienen del Censo 2022 por radio censal (INDEC). Las tasas usan como denominador la población o los hogares del radio. Los radios con menos de 50 habitantes se marcan como baja población. El hacinamiento se toma del indicador NBI del hogar, no del umbral de más de 3 personas por cuarto. La privación material convergente es la categoría 4 del IPMH del INDEC (recursos corrientes y patrimoniales a la vez). Las distancias de accesibilidad son Manhattan en la grilla rotada 15°: estiman el recorrido por calles, no un ruteo real. Al activar circuitos, las métricas poblacionales de los circuitos se calculan desde estos radios.</p>
         </div>
 
         <div class="layer-settings__panel" id="layer-panel-renabap" role="tabpanel" aria-labelledby="layer-tab-renabap" data-layer-panel="renabap" hidden>
@@ -439,7 +495,7 @@
               <input type="checkbox" id="layer-barrios">
               <span class="layers-panel__text">
                 <strong>Barrios</strong>
-                <small id="layer-meta-barrios">Límites y nombres de OpenStreetMap</small>
+                <small id="layer-meta-barrios">Límites de OpenStreetMap · indicadores del Censo 2022</small>
               </span>
             </label>
             <button class="layers-panel__settings" id="layer-settings-barrios" type="button" aria-label="Configurar la capa de barrios" title="Configurar barrios" aria-haspopup="dialog" aria-controls="layer-settings-dialog">
@@ -553,7 +609,11 @@
             <span id="circuit-range-max"></span>
           </div>
           <p class="circuit-legend__summary" id="circuit-summary"></p>
-          <p class="circuit-legend__source">Geometría: ULP Geo · Resultados: CNE</p>
+          <div class="circuit-legend__ranking" id="circuit-ranking" hidden>
+            <p class="circuit-legend__ranking-title" id="circuit-ranking-title">Circuitos con mayor déficit</p>
+            <ol class="circuit-legend__ranking-list" id="circuit-ranking-list"></ol>
+          </div>
+          <p class="circuit-legend__source" id="circuit-legend-source">Geometría: ULP Geo · Resultados: CNE</p>
         </div>
 
         <div class="circuit-legend radios-legend" id="radios-legend" role="region" aria-label="Leyenda de radios censales" hidden>
@@ -568,6 +628,22 @@
           </div>
           <p class="circuit-legend__summary" id="radios-summary"></p>
           <p class="circuit-legend__source">Fuente: INDEC · Censo 2022 · CC BY-SA 4.0</p>
+        </div>
+
+        <div class="circuit-legend barrio-legend" id="barrio-legend" role="region" aria-label="Leyenda de barrios" hidden>
+          <p class="circuit-legend__eyebrow barrio-legend__eyebrow">Censo 2022 · estimación por radios</p>
+          <h3 class="circuit-legend__title">Barrios</h3>
+          <p class="circuit-legend__note" id="barrio-legend-note">112 barrios · Villa Mercedes y Villa Reynolds</p>
+          <p class="circuit-legend__metric" id="barrio-legend-metric">Sin cloacas</p>
+          <div class="circuit-legend__scale" id="barrio-legend-scale" aria-hidden="true"></div>
+          <div class="circuit-legend__range">
+            <span id="barrio-legend-min"></span>
+            <span class="barrio-legend__median" id="barrio-legend-median"></span>
+            <span id="barrio-legend-max"></span>
+          </div>
+          <p class="circuit-legend__summary" id="barrio-legend-summary"></p>
+          <p class="barrio-legend__error" id="barrio-legend-error"></p>
+          <p class="circuit-legend__source">INDEC · Censo 2022 · Geometría: OpenStreetMap</p>
         </div>
 
         <div class="circuit-legend salud-legend" id="salud-legend" role="region" aria-label="Leyenda de establecimientos de salud" hidden>

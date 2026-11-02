@@ -31,6 +31,96 @@
   const OFFICIAL_RECORD = "https://mapa.educacion.gob.ar/legajo/";
   const BARRIOS_URL = "./barrios.geojson";
   const BARRIO_LEVEL_LABEL = { 9: "Barrio", 10: "Barrio", 11: "Complejo habitacional" };
+  const BARRIO_HOUSEHOLD_METRICS = [
+    ["pct_sin_agua_red", "Sin agua de red"],
+    ["pct_sin_cloacas", "Sin cloacas"],
+    ["pct_sin_gas_red", "Sin gas de red"],
+    ["pct_nbi", "Hogares con NBI"],
+    ["pct_hacinamiento", "Hacinamiento (NBI)"],
+    ["pct_materiales_deficitarios", "Materiales deficitarios"],
+    ["pct_clima_bajo", "Clima educativo bajo"],
+    ["pct_ipm_convergente", "Privación convergente"]
+  ];
+  const BARRIO_POPULATION_METRICS = [
+    ["pct_0_14", "Población 0–14"],
+    ["pct_65_mas", "Población 65+"],
+    ["pct_sin_cobertura_salud", "Sin cobertura de salud"]
+  ];
+  const BARRIO_EDUCATION_METRICS = [
+    ["dist_educacion_inicial_m", "inicial"],
+    ["dist_educacion_primaria_m", "primaria"],
+    ["dist_educacion_secundaria_m", "secundaria"],
+    ["dist_educacion_superior_m", "superior"]
+  ];
+  // Coropleta por barrio: solo tasas, porque son las únicas con margen propio.
+  const BARRIO_METRICS = {
+    pct_sin_agua_red: {
+      label: "Hogares sin agua de red",
+      colors: ["#fdf2e4", "#a63d12"],
+      decimals: 1,
+      suffix: "%"
+    },
+    pct_sin_cloacas: {
+      label: "Hogares sin cloacas",
+      colors: ["#fdf2e4", "#a63d12"],
+      decimals: 1,
+      suffix: "%"
+    },
+    pct_sin_gas_red: {
+      label: "Hogares sin gas de red",
+      colors: ["#fdf2e4", "#a63d12"],
+      decimals: 1,
+      suffix: "%"
+    },
+    pct_nbi: {
+      label: "Hogares con NBI",
+      colors: ["#fdf2e4", "#a63d12"],
+      decimals: 1,
+      suffix: "%"
+    },
+    pct_hacinamiento: {
+      label: "Hogares con hacinamiento (NBI)",
+      colors: ["#fdf2e4", "#a63d12"],
+      decimals: 1,
+      suffix: "%"
+    },
+    pct_materiales_deficitarios: {
+      label: "Hogares con materiales deficitarios",
+      colors: ["#fdf2e4", "#a63d12"],
+      decimals: 1,
+      suffix: "%"
+    },
+    pct_clima_bajo: {
+      label: "Hogares con clima educativo bajo",
+      colors: ["#fdf2e4", "#a63d12"],
+      decimals: 1,
+      suffix: "%"
+    },
+    pct_ipm_convergente: {
+      label: "Hogares con privación material convergente",
+      colors: ["#fdf2e4", "#a63d12"],
+      decimals: 1,
+      suffix: "%"
+    },
+    pct_0_14: {
+      label: "Población de 0 a 14 años",
+      colors: ["#eef6fb", "#1f5f8b"],
+      decimals: 1,
+      suffix: "%"
+    },
+    pct_65_mas: {
+      label: "Población de 65 años y más",
+      colors: ["#eef6fb", "#1f5f8b"],
+      decimals: 1,
+      suffix: "%"
+    },
+    pct_sin_cobertura_salud: {
+      label: "Población sin cobertura de salud",
+      colors: ["#f4eefc", "#5b3a8f"],
+      decimals: 1,
+      suffix: "%"
+    }
+  };
   const CIRCUITOS_URL = "./circuitos.geojson";
   const CIRCUITO_METRICS = {
     electores: {
@@ -131,6 +221,118 @@
       decimals: 1,
       suffix: "%"
     },
+    pct_0_14: {
+      label: "Población de 0 a 14 años",
+      short: "% 0–14",
+      colors: ["#eaf7f6", "#0f6b63"],
+      decimals: 1,
+      suffix: "%"
+    },
+    pct_sin_agua_red: {
+      label: "Hogares sin agua de red",
+      short: "% sin agua",
+      colors: ["#eef6fb", "#1f5f8b"],
+      decimals: 1,
+      suffix: "%"
+    },
+    pct_sin_gas_red: {
+      label: "Hogares sin gas de red",
+      short: "% sin gas",
+      colors: ["#eef4fb", "#245b8a"],
+      decimals: 1,
+      suffix: "%"
+    },
+    pct_materiales_deficitarios: {
+      label: "Hogares con materiales deficitarios",
+      short: "% materiales",
+      colors: ["#fbf1e8", "#7a4a2a"],
+      decimals: 1,
+      suffix: "%"
+    },
+    pct_clima_bajo: {
+      label: "Hogares con clima educativo bajo",
+      short: "% clima bajo",
+      colors: ["#f6f4e8", "#5f5a1f"],
+      decimals: 1,
+      suffix: "%"
+    },
+    pct_ipm_convergente: {
+      label: "Hogares con privación material convergente",
+      short: "% privación convergente",
+      colors: ["#fdecec", "#8a2b2b"],
+      decimals: 1,
+      suffix: "%"
+    },
+    dist_salud_m: {
+      label: "Distancia media a salud",
+      short: "Dist. salud",
+      colors: ["#eef6fb", "#1f5f8b"],
+      decimals: 0,
+      suffix: " m"
+    },
+    dist_salud_publica_m: {
+      label: "Distancia media a salud pública",
+      short: "Dist. salud pública",
+      colors: ["#e8f3fb", "#145a86"],
+      decimals: 0,
+      suffix: " m"
+    },
+    dist_educacion_inicial_m: {
+      label: "Distancia media a nivel inicial",
+      short: "Dist. inicial",
+      colors: ["#eef9f2", "#1f6b45"],
+      decimals: 0,
+      suffix: " m"
+    },
+    dist_educacion_primaria_m: {
+      label: "Distancia media a primaria",
+      short: "Dist. primaria",
+      colors: ["#eaf7f6", "#0f6b63"],
+      decimals: 0,
+      suffix: " m"
+    },
+    dist_educacion_secundaria_m: {
+      label: "Distancia media a secundaria",
+      short: "Dist. secundaria",
+      colors: ["#f4f0ff", "#4b2d8f"],
+      decimals: 0,
+      suffix: " m"
+    },
+    dist_educacion_superior_m: {
+      label: "Distancia media a nivel superior",
+      short: "Dist. superior",
+      colors: ["#f0ecfa", "#3f2a75"],
+      decimals: 0,
+      suffix: " m"
+    },
+    pct_poblacion_sin_salud_1000: {
+      label: "Población sin salud a 1.000 m",
+      short: "% sin salud",
+      colors: ["#fff0f0", "#a02c2c"],
+      decimals: 1,
+      suffix: "%"
+    },
+    pct_poblacion_sin_salud_2000: {
+      label: "Población sin salud a 2.000 m",
+      short: "% sin salud 2 km",
+      colors: ["#fde8e8", "#8a1f1f"],
+      decimals: 1,
+      suffix: "%"
+    },
+    pct_poblacion_sin_educacion_primaria_1000: {
+      label: "Población sin primaria a 1.000 m",
+      short: "% sin primaria",
+      colors: ["#fff3e6", "#9b4a0c"],
+      decimals: 1,
+      suffix: "%"
+    },
+    pct_poblacion_sin_educacion_secundaria_1000: {
+      label: "Población sin secundaria a 1.000 m",
+      short: "% sin secundaria",
+      colors: ["#fbe9e7", "#8a3a2b"],
+      decimals: 1,
+      suffix: "%"
+    },
     electores_por_100: {
       label: "Electores por 100 habitantes",
       short: "Elect./100 hab.",
@@ -163,12 +365,40 @@
   const CIRCUITO_METRICS_RADIOS = [
     "poblacion",
     "densidad_poblacional",
+    "pct_0_14",
     "pct_65_mas",
     "pct_sin_cobertura_salud",
     "pct_nbi",
     "pct_sin_cloacas",
+    "pct_sin_agua_red",
+    "pct_sin_gas_red",
+    "pct_materiales_deficitarios",
+    "pct_clima_bajo",
+    "pct_ipm_convergente",
+    "dist_salud_m",
+    "dist_salud_publica_m",
+    "dist_educacion_inicial_m",
+    "dist_educacion_primaria_m",
+    "dist_educacion_secundaria_m",
+    "dist_educacion_superior_m",
+    "pct_poblacion_sin_salud_1000",
+    "pct_poblacion_sin_salud_2000",
+    "pct_poblacion_sin_educacion_primaria_1000",
+    "pct_poblacion_sin_educacion_secundaria_1000",
     "electores_por_100",
     "participacion_vap"
+  ];
+  const ACCESSIBILITY_METRICS = [
+    "dist_salud_m",
+    "dist_salud_publica_m",
+    "dist_educacion_inicial_m",
+    "dist_educacion_primaria_m",
+    "dist_educacion_secundaria_m",
+    "dist_educacion_superior_m",
+    "pct_poblacion_sin_salud_1000",
+    "pct_poblacion_sin_salud_2000",
+    "pct_poblacion_sin_educacion_primaria_1000",
+    "pct_poblacion_sin_educacion_secundaria_1000"
   ];
   const CIRCUITO_LABEL_ZOOM = 14;
   const CIRCUITO_ATTRIBUTION =
@@ -224,6 +454,27 @@
       decimals: 1,
       suffix: "%"
     },
+    pct_sin_agua_red: {
+      label: "Hogares sin agua de red",
+      short: "% sin agua",
+      colors: ["#eef6fb", "#1f5f8b"],
+      decimals: 1,
+      suffix: "%"
+    },
+    pct_hacinamiento: {
+      label: "Hogares con hacinamiento (NBI)",
+      short: "% hacinamiento",
+      colors: ["#fff3e6", "#9b4a0c"],
+      decimals: 1,
+      suffix: "%"
+    },
+    pct_materiales_deficitarios: {
+      label: "Hogares con materiales deficitarios",
+      short: "% materiales",
+      colors: ["#fbf1e8", "#7a4a2a"],
+      decimals: 1,
+      suffix: "%"
+    },
     pct_sin_gas_red: {
       label: "Hogares sin gas de red",
       short: "% sin gas de red",
@@ -237,6 +488,55 @@
       colors: ["#fbf1e8", "#7a4a2a"],
       decimals: 1,
       suffix: "%"
+    },
+    pct_ipm_convergente: {
+      label: "Hogares con privación material convergente",
+      short: "% privación convergente",
+      colors: ["#fdecec", "#8a2b2b"],
+      decimals: 1,
+      suffix: "%"
+    },
+    dist_salud_m: {
+      label: "Distancia a salud",
+      short: "Dist. salud",
+      colors: ["#eef6fb", "#1f5f8b"],
+      decimals: 0,
+      suffix: " m"
+    },
+    dist_salud_publica_m: {
+      label: "Distancia a salud pública",
+      short: "Dist. salud pública",
+      colors: ["#e8f3fb", "#145a86"],
+      decimals: 0,
+      suffix: " m"
+    },
+    dist_educacion_inicial_m: {
+      label: "Distancia a nivel inicial",
+      short: "Dist. inicial",
+      colors: ["#eef9f2", "#1f6b45"],
+      decimals: 0,
+      suffix: " m"
+    },
+    dist_educacion_primaria_m: {
+      label: "Distancia a primaria",
+      short: "Dist. primaria",
+      colors: ["#eaf7f6", "#0f6b63"],
+      decimals: 0,
+      suffix: " m"
+    },
+    dist_educacion_secundaria_m: {
+      label: "Distancia a secundaria",
+      short: "Dist. secundaria",
+      colors: ["#f4f0ff", "#4b2d8f"],
+      decimals: 0,
+      suffix: " m"
+    },
+    dist_educacion_superior_m: {
+      label: "Distancia a nivel superior",
+      short: "Dist. superior",
+      colors: ["#f0ecfa", "#3f2a75"],
+      decimals: 0,
+      suffix: " m"
     }
   };
   const SALUD_URL = "./salud.geojson";
@@ -290,6 +590,7 @@
     dataLoaded: false,
     barrios: false,
     barrioLabels: true,
+    barrioMetric: "",
     barrioFillOpacity: 0.07,
     rutas: false,
     rutaLineas: { A: true, E: true, ES: true },
@@ -337,6 +638,8 @@
   let barriosUnavailable = false;
   const barrioCounts = new Map();
   const barrioFeatures = new Map();
+  let barriosFeatures = [];
+  let barrioRanges = {};
 
   let circuitosLayer = null;
   let circuitosRequest = null;
@@ -573,8 +876,18 @@
     el.layerTabs = document.querySelectorAll("[data-layer-tab]");
     el.layerPanels = document.querySelectorAll("[data-layer-panel]");
     el.barrioShowLabels = document.getElementById("barrio-show-labels");
+    el.barrioMetricRadios = document.querySelectorAll('input[name="barrio-metric"]');
     el.barrioFillOpacity = document.getElementById("barrio-fill-opacity");
     el.barrioFillOpacityOutput = document.getElementById("barrio-fill-opacity-output");
+    el.barrioLegend = document.getElementById("barrio-legend");
+    el.barrioLegendNote = document.getElementById("barrio-legend-note");
+    el.barrioLegendMetric = document.getElementById("barrio-legend-metric");
+    el.barrioLegendScale = document.getElementById("barrio-legend-scale");
+    el.barrioLegendMin = document.getElementById("barrio-legend-min");
+    el.barrioLegendMedian = document.getElementById("barrio-legend-median");
+    el.barrioLegendMax = document.getElementById("barrio-legend-max");
+    el.barrioLegendSummary = document.getElementById("barrio-legend-summary");
+    el.barrioLegendError = document.getElementById("barrio-legend-error");
     el.circuitMetricRadios = document.querySelectorAll('input[name="circuit-metric"]');
     el.circuitShowLabels = document.getElementById("circuit-show-labels");
     el.circuitShowValues = document.getElementById("circuit-show-values");
@@ -600,6 +913,10 @@
     el.mapLegends = document.getElementById("map-legends");
     el.circuitLegend = document.getElementById("circuit-legend");
     el.circuitMetricLabel = document.getElementById("circuit-metric-label");
+    el.circuitLegendSource = document.getElementById("circuit-legend-source");
+    el.circuitRanking = document.getElementById("circuit-ranking");
+    el.circuitRankingTitle = document.getElementById("circuit-ranking-title");
+    el.circuitRankingList = document.getElementById("circuit-ranking-list");
     el.circuitScale = document.getElementById("circuit-scale");
     el.circuitRangeMin = document.getElementById("circuit-range-min");
     el.circuitRangeMax = document.getElementById("circuit-range-max");
@@ -692,9 +1009,10 @@
       map.on("zoomend", updateCircuitLabelsVisibility);
       map.on("zoomend", updateRenabapLabelsVisibility);
       map.on("zoomend", updateRadioLabelsVisibility);
-      map.on("click", function () {
+      map.on("click", function (event) {
         closeLayersPanel(false);
         closeRutasPanel(false);
+        openOverlayPopup(event.latlng);
       });
       map.on("popupopen", function () {
         if (el.mapLegends) el.mapLegends.classList.add("is-obscured");
@@ -706,6 +1024,7 @@
       });
 
       applyBlendMode();
+      bindOverlayPopupTabs();
       return true;
     } catch (error) {
       console.error("No se pudo inicializar el mapa", error);
@@ -882,12 +1201,7 @@
     });
 
     if (el.barrioShowLabels) el.barrioShowLabels.checked = state.barrioLabels;
-    if (el.barrioFillOpacity) {
-      el.barrioFillOpacity.value = String(Math.round(state.barrioFillOpacity * 100));
-    }
-    if (el.barrioFillOpacityOutput) {
-      el.barrioFillOpacityOutput.textContent = Math.round(state.barrioFillOpacity * 100) + "%";
-    }
+    syncBarrioControls();
 
     const renabapReady = renabapFeatures.length > 0;
     const radiosReady = radiosFeatures.length > 0;
@@ -983,8 +1297,11 @@
   function resetLayerSettings() {
     if (state.settingsLayer === "barrios") {
       state.barrioLabels = true;
+      state.barrioMetric = "";
       state.barrioFillOpacity = 0.07;
+      syncBarrioControls();
       applyBarrioVisuals();
+      updateLegends();
     } else if (state.settingsLayer === "renabap") {
       state.renabapLabels = false;
       state.renabapLabelValues = false;
@@ -1027,10 +1344,22 @@
 
   /* Barrios ---------------------------------------------------------------- */
 
+  function barrioColor(props) {
+    const config = BARRIO_METRICS[state.barrioMetric];
+    if (!config) return null;
+    const value = Number(props[state.barrioMetric]);
+    if (!Number.isFinite(value)) return "#d7d1c9";
+    const range = barrioRanges[state.barrioMetric] || [0, 0];
+    const span = range[1] - range[0];
+    const ratio = span > 0 ? (value - range[0]) / span : 0.5;
+    return mixHexColor(config.colors[0], config.colors[1], ratio);
+  }
+
   function barrioStyle(feature) {
     const level = Number(feature.properties.level) || 9;
     const color = level >= 11 ? "#8a5a8f" : level === 10 ? "#b98a2e" : "#1f7a78";
-    return {
+    const metric = state.barrioMetric;
+    const style = {
       pane: "barrioPane",
       color: color,
       weight: 1.2,
@@ -1038,11 +1367,206 @@
       fillColor: color,
       fillOpacity: state.barrioFillOpacity
     };
+    if (metric) {
+      const value = feature.properties[metric];
+      style.fillColor = barrioColor(feature.properties);
+      if (value == null) {
+        style.dashArray = "3 3";
+        style.weight = 1.4;
+      }
+    }
+    return style;
+  }
+
+  function barrioHighlightStyle(feature) {
+    const style = barrioStyle(feature);
+    const base = Number(style.fillOpacity) || 0;
+    return {
+      weight: 2,
+      opacity: 0.85,
+      fillOpacity: state.barrioMetric ? Math.min(0.9, base + 0.12) : 0.16
+    };
+  }
+
+  function barrioTooltipContent(props) {
+    const name = escapeHTML(props.name);
+    const metric = state.barrioMetric;
+    if (!metric || !BARRIO_METRICS[metric]) return name;
+    const value = props[metric];
+    if (value == null) return name + " · sin dato";
+    const margen = props[metric + "_margen_pp"];
+    const detail =
+      margen == null
+        ? " · 1 radio"
+        : " · ± " + formatPp(margen) + " pp";
+    return name + " · " + formatPct(value) + detail;
+  }
+
+  function computeBarrioRanges(features) {
+    const ranges = {};
+    Object.keys(BARRIO_METRICS).forEach(function (metric) {
+      const values = (features || [])
+        .map(function (feature) {
+          const value = Number(feature.properties && feature.properties[metric]);
+          return Number.isFinite(value) ? value : null;
+        })
+        .filter(function (value) {
+          return value !== null;
+        });
+      ranges[metric] = values.length
+        ? [Math.min.apply(null, values), Math.max.apply(null, values)]
+        : [0, 0];
+    });
+    return ranges;
   }
 
   function applyBarrioVisuals() {
-    if (barriosLayer) barriosLayer.setStyle(barrioStyle);
+    if (barriosLayer) {
+      barriosLayer.setStyle(barrioStyle);
+      barriosLayer.eachLayer(function (layer) {
+        if (layer.feature && layer.setTooltipContent) {
+          layer.setTooltipContent(barrioTooltipContent(layer.feature.properties || {}));
+        }
+      });
+    }
     updateBarrioLabelsVisibility();
+    updateBarrioLegend();
+  }
+
+  function quantileOf(values, q) {
+    const sorted = values.slice().sort(function (a, b) { return a - b; });
+    if (!sorted.length) return null;
+    const position = (sorted.length - 1) * q;
+    const low = Math.floor(position);
+    const high = Math.ceil(position);
+    return sorted[low] + (sorted[high] - sorted[low]) * (position - low);
+  }
+
+  function medianOf(values) {
+    return quantileOf(values, 0.5);
+  }
+
+  function barrioMarginStats(metric) {
+    const marginsPp = [];
+    const relativePct = [];
+    let withMargin = 0;
+    let inherited = 0;
+    let missing = 0;
+
+    barriosFeatures.forEach(function (feature) {
+      const props = (feature && feature.properties) || {};
+      const value = Number(props[metric]);
+      if (props[metric] == null || !Number.isFinite(value)) {
+        missing += 1;
+        return;
+      }
+      const margen = props[metric + "_margen_pp"];
+      if (margen == null || !Number.isFinite(Number(margen))) {
+        inherited += 1;
+        return;
+      }
+      withMargin += 1;
+      marginsPp.push(Number(margen));
+      if (value > 0) relativePct.push((Number(margen) / value) * 100);
+    });
+
+    return {
+      withMargin: withMargin,
+      inherited: inherited,
+      missing: missing,
+      ppMedian: medianOf(marginsPp),
+      ppP90: quantileOf(marginsPp, 0.9),
+      relMedian: medianOf(relativePct)
+    };
+  }
+
+  function updateBarrioLegend() {
+    const metric = state.barrioMetric;
+    const config = BARRIO_METRICS[metric];
+    if (!config || !barriosFeatures.length) return;
+    const range = barrioRanges[metric] || [0, 0];
+    const stats = barrioMarginStats(metric);
+
+    if (el.barrioLegendNote) {
+      el.barrioLegendNote.textContent =
+        barriosFeatures.length + " barrios · Villa Mercedes y Villa Reynolds";
+    }
+    if (el.barrioLegendMetric) el.barrioLegendMetric.textContent = config.label;
+    if (el.barrioLegendScale) {
+      el.barrioLegendScale.style.background =
+        "linear-gradient(90deg, " + config.colors[0] + ", " + config.colors[1] + ")";
+    }
+    if (el.barrioLegendMin) el.barrioLegendMin.textContent = formatPct(range[0]);
+    if (el.barrioLegendMax) el.barrioLegendMax.textContent = formatPct(range[1]);
+    if (el.barrioLegendMedian) {
+      const values = barriosFeatures
+        .map(function (feature) {
+          const value = Number(feature.properties && feature.properties[metric]);
+          return feature.properties && feature.properties[metric] != null && Number.isFinite(value)
+            ? value
+            : null;
+        })
+        .filter(function (value) {
+          return value !== null;
+        });
+      const median = medianOf(values);
+      el.barrioLegendMedian.textContent = median == null ? "" : "mediana " + formatPct(median);
+    }
+    if (el.barrioLegendSummary) {
+      el.barrioLegendSummary.textContent =
+        stats.withMargin + " con margen · " +
+        stats.inherited + " del radio · " +
+        stats.missing + " sin dato";
+    }
+    if (el.barrioLegendError) {
+      if (stats.withMargin > 0 && stats.ppMedian != null) {
+        let html =
+          '<span class="barrio-legend__error-label">Error mediano</span><br>' +
+          "<strong>± " + formatPp(stats.ppMedian) + " pp</strong>";
+        if (stats.relMedian != null) {
+          html += " (± " + formatPct(stats.relMedian) + " del valor)";
+        }
+        if (stats.ppP90 != null) {
+          html +=
+            '<br><span class="barrio-legend__error-p90">p90 ± ' +
+            formatPp(stats.ppP90) + " pp</span>";
+        }
+        el.barrioLegendError.innerHTML = html;
+      } else {
+        el.barrioLegendError.textContent =
+          "Sin margen propio: los barrios con dato heredan el valor de un único radio censal.";
+      }
+    }
+  }
+
+  function syncBarrioControls() {
+    if (el.barrioMetricRadios) {
+      el.barrioMetricRadios.forEach(function (radio) {
+        radio.checked = radio.value === state.barrioMetric;
+      });
+    }
+    if (el.barrioFillOpacity) {
+      el.barrioFillOpacity.value = String(Math.round(state.barrioFillOpacity * 100));
+    }
+    if (el.barrioFillOpacityOutput) {
+      el.barrioFillOpacityOutput.textContent = Math.round(state.barrioFillOpacity * 100) + "%";
+    }
+  }
+
+  function setBarrioMetric(metric) {
+    const previous = state.barrioMetric;
+    state.barrioMetric = BARRIO_METRICS[metric] ? metric : "";
+    // El relleno de la coropleta necesita cuerpo; al volver a solo límites se
+    // restituye el valor bajo para no tapar las teselas.
+    if (state.barrioMetric && !previous && state.barrioFillOpacity < 0.3) {
+      state.barrioFillOpacity = 0.55;
+    }
+    if (!state.barrioMetric && previous && state.barrioFillOpacity > 0.4) {
+      state.barrioFillOpacity = 0.07;
+    }
+    syncBarrioControls();
+    applyBarrioVisuals();
+    updateLegends();
   }
 
   function loadBarrios() {
@@ -1055,6 +1579,8 @@
         return response.json();
       })
       .then(function (data) {
+        barriosFeatures = (data && data.features) || [];
+        barrioRanges = computeBarrioRanges(barriosFeatures);
         barriosLayer = L.geoJSON(data, {
           pane: "barrioPane",
           style: barrioStyle,
@@ -1101,24 +1627,15 @@
     if (!props.name) return;
     if (props.osm) barrioFeatures.set(props.osm, feature);
 
-    layer.bindTooltip(escapeHTML(props.name), {
+    layer.bindTooltip(barrioTooltipContent(props), {
       sticky: true,
       direction: "top",
       opacity: 1,
       className: "barrio-tooltip"
     });
 
-    layer.bindPopup(function () {
-      return buildBarrioPopup(props);
-    }, {
-      maxWidth: 262,
-      minWidth: 210,
-      className: "barrio-popup",
-      closeButton: true
-    });
-
     layer.on("mouseover", function () {
-      layer.setStyle({ weight: 2, opacity: 0.85, fillOpacity: 0.16 });
+      layer.setStyle(barrioHighlightStyle(feature));
     });
     layer.on("mouseout", function () {
       layer.setStyle(barrioStyle(feature));
@@ -1140,8 +1657,115 @@
         '<h3 class="popup__name">' + escapeHTML(props.name) + "</h3>" +
         '<p class="barrio-popup__count" aria-live="polite">' + countLabel + "</p>" +
         (props.alt ? '<p class="barrio-popup__alias">También conocido como «' + escapeHTML(props.alt) + "»</p>" : "") +
+        barrioSummaryBlock(props) +
+        barrioEducationLine(props) +
+        barrioMetricBlock("Hogares", BARRIO_HOUSEHOLD_METRICS, props) +
+        barrioMetricBlock("Población", BARRIO_POPULATION_METRICS, props) +
+        barrioRenabapLine(props) +
+        '<p class="circuito-popup__note">' + barrioMetricNote(props) + "</p>" +
+        '<p class="circuito-popup__source">OpenStreetMap (ODbL) · INDEC, Censo 2022 · REFES 2026</p>' +
       "</div>"
     );
+  }
+
+  function barrioStat(label, html) {
+    if (html == null || html === "") return "";
+    return (
+      '<div class="circuito-popup__stat">' +
+        "<dt>" + escapeHTML(label) + "</dt>" +
+        "<dd>" + html + "</dd>" +
+      "</div>"
+    );
+  }
+
+  function barrioSummaryBlock(props) {
+    const area = Number(props.area_km2);
+    const salud = Number(props.salud);
+    const saludPublica = Number(props.salud_publicos);
+    const circuitId = props.circuito_id ? String(props.circuito_id) : "";
+    const cuota = Number(props.cuota_circuito);
+    const circuitHtml = circuitId
+      ? escapeHTML(circuitId) +
+        (Number.isFinite(cuota) && cuota > 0
+          ? ' <span class="barrio-popup__band">' + Math.round(cuota * 100) + " %</span>"
+          : "")
+      : "";
+    const rows =
+      barrioStat("Superficie", Number.isFinite(area) ? escapeHTML(formatHectares(area * 100)) : "") +
+      barrioStat("Circuito", circuitHtml) +
+      barrioStat("Establecimientos de salud", Number.isFinite(salud) ? formatNumber(salud) : "") +
+      barrioStat("Establecimientos públicos", Number.isFinite(saludPublica) ? formatNumber(saludPublica) : "") +
+      barrioStat("Dist. salud", numberOrNull(props.dist_salud_m, "dist_salud_m")) +
+      barrioStat("Dist. salud pública", numberOrNull(props.dist_salud_publica_m, "dist_salud_publica_m"));
+    return rows ? '<dl class="circuito-popup__stats">' + rows + "</dl>" : "";
+  }
+
+  function numberOrNull(value, metric) {
+    if (value == null || !Number.isFinite(Number(value))) return "";
+    return escapeHTML(formatRadioMetric(value, metric));
+  }
+
+  function barrioEducationLine(props) {
+    const parts = BARRIO_EDUCATION_METRICS.map(function (item) {
+      if (props[item[0]] == null || !Number.isFinite(Number(props[item[0]]))) return null;
+      return item[1] + " " + formatRadioMetric(props[item[0]], item[0]);
+    }).filter(Boolean);
+    if (!parts.length) return "";
+    return '<p class="barrio-popup__line">Educación más cercana: ' + escapeHTML(parts.join(" · ")) + "</p>";
+  }
+
+  function barrioMetricBlock(title, metrics, props) {
+    const rows = metrics
+      .map(function (item) {
+        return barrioRateStat(props, item[0], item[1]);
+      })
+      .join("");
+    if (!rows) return "";
+    const note =
+      props.metodo === "heredado"
+        ? '<span class="barrio-popup__subtitle-note">del radio censal</span>'
+        : "";
+    return (
+      '<p class="barrio-popup__subtitle">' + escapeHTML(title) + note + "</p>" +
+      '<dl class="circuito-popup__stats">' + rows + "</dl>"
+    );
+  }
+
+  function barrioRateStat(props, key, label) {
+    if (props[key] == null || !Number.isFinite(Number(props[key]))) return "";
+    let detail = formatPct(props[key]);
+    const margen = props[key + "_margen_pp"];
+    if (margen != null && Number.isFinite(Number(margen))) {
+      detail += ' <span class="barrio-popup__band">± ' + formatPp(margen) + " pp</span>";
+    }
+    return (
+      '<div class="circuito-popup__stat">' +
+        "<dt>" + escapeHTML(label) + "</dt>" +
+        "<dd>" + detail + "</dd>" +
+      "</div>"
+    );
+  }
+
+  function barrioRenabapLine(props) {
+    const barrios = Number(props.renabap_barrios);
+    if (!Number.isFinite(barrios) || barrios <= 0) return "";
+    const contencion = Math.round(Number(props.renabap_contencion || 0) * 100);
+    const hogares = Number(props.renabap_hogares);
+    const nombre = barrios === 1 ? "un barrio popular RENABAP" : barrios + " barrios populares RENABAP";
+    const texto = Number.isFinite(hogares)
+      ? "Incluye " + nombre + ": " + formatNumber(hogares) + " hogares (" + contencion + " % del área contenida)."
+      : "Incluye " + nombre + " (" + contencion + " % del área contenida). Los hogares no se prorratean.";
+    return '<p class="barrio-popup__renabap">' + escapeHTML(texto) + "</p>";
+  }
+
+  function barrioMetricNote(props) {
+    if (props.metodo === "heredado") {
+      return "El barrio está contenido en un único radio censal: los porcentajes son los del radio y no tienen margen propio. Las distancias son Manhattan en la grilla rotada 15°, desde el punto representativo del barrio.";
+    }
+    if (props.metodo === "areal") {
+      return "Los porcentajes son estimaciones por radio censal; el ± es la cota entre los radios que cortan el barrio. Las distancias son Manhattan en la grilla rotada 15°, desde el punto representativo del barrio: estiman el recorrido por calles, no un ruteo real.";
+    }
+    return "Sin datos censales: el barrio queda fuera de los radios publicados o está cubierto en menos del 95% de su área. Las distancias son Manhattan en la grilla rotada 15°.";
   }
 
   function countSchoolsInBarrio(osmId) {
@@ -1157,8 +1781,16 @@
 
   function isPointInFeature(lat, lng, geometry) {
     if (!geometry) return false;
+    if (geometry.type === "GeometryCollection") {
+      const geometries = Array.isArray(geometry.geometries) ? geometry.geometries : [];
+      return geometries.some(function (child) {
+        return isPointInFeature(lat, lng, child);
+      });
+    }
     const polygons = geometry.type === "Polygon" ? [geometry.coordinates] : geometry.coordinates;
+    if (!Array.isArray(polygons)) return false;
     return polygons.some(function (polygon) {
+      if (!Array.isArray(polygon) || !polygon.length) return false;
       const ring = polygon[0];
       const inside = isPointInRing(lng, lat, ring);
       if (!inside) return false;
@@ -1185,6 +1817,7 @@
   function syncBarrios() {
     const visible = state.barrios && !barriosUnavailable && mapReady;
     syncLayersPanel();
+    updateLegends();
     if (!mapReady) return;
 
     if (!visible) {
@@ -1198,6 +1831,7 @@
       if (!map.hasLayer(layer)) layer.addTo(map);
       updateBarrioZoom();
       updateBarrioLabelsVisibility();
+      updateLegends();
     });
   }
 
@@ -1228,6 +1862,13 @@
     const number = Number(value);
     return Number.isFinite(number)
       ? number.toLocaleString("es-AR", { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + "%"
+      : "—";
+  }
+
+  function formatPp(value) {
+    const number = Number(value);
+    return Number.isFinite(number)
+      ? number.toLocaleString("es-AR", { minimumFractionDigits: 1, maximumFractionDigits: 1 })
       : "—";
   }
 
@@ -1445,14 +2086,6 @@
       className: "circuit-tooltip"
     });
 
-    layer.bindPopup(function () {
-      return buildCircuitoPopup(props);
-    }, {
-      maxWidth: 300,
-      minWidth: 272,
-      className: "circuit-popup"
-    });
-
     layer.on("mouseover", function () {
       layer.setStyle({ weight: 2.6, opacity: 1, fillOpacity: 0.7 });
       if (layer.bringToFront) layer.bringToFront();
@@ -1483,11 +2116,29 @@
     }
     if (Number.isFinite(Number(props.poblacion))) {
       stats.push(["Población (Censo 2022)", formatNumber(props.poblacion)]);
+      stats.push(["Población 0–14", formatPct(props.pct_0_14)]);
       stats.push(["Densidad poblacional", formatMetricNumber(props.densidad_poblacional, "densidad_poblacional")]);
       stats.push(["65 años y más", formatPct(props.pct_65_mas)]);
       stats.push(["Sin cobertura de salud", formatPct(props.pct_sin_cobertura_salud)]);
       stats.push(["Hogares con NBI", formatPct(props.pct_nbi)]);
       stats.push(["Hogares sin cloacas", formatPct(props.pct_sin_cloacas)]);
+      stats.push(["Hogares sin agua de red", formatPct(props.pct_sin_agua_red)]);
+      stats.push(["Hogares sin gas de red", formatPct(props.pct_sin_gas_red)]);
+      stats.push(["Hogares con materiales deficitarios", formatPct(props.pct_materiales_deficitarios)]);
+      stats.push(["Hogares con clima educativo bajo", formatPct(props.pct_clima_bajo)]);
+      stats.push(["Hogares con privación convergente", formatPct(props.pct_ipm_convergente)]);
+      stats.push(["Distancia media a salud", formatMetricNumber(props.dist_salud_m, "dist_salud_m")]);
+      stats.push(["Población sin salud a 1.000 m", formatPct(props.pct_poblacion_sin_salud_1000)]);
+      stats.push(["Distancia media a primaria", formatMetricNumber(props.dist_educacion_primaria_m, "dist_educacion_primaria_m")]);
+      stats.push(["Población sin primaria a 1.000 m", formatPct(props.pct_poblacion_sin_educacion_primaria_1000)]);
+      stats.push(["Distancia media a secundaria", formatMetricNumber(props.dist_educacion_secundaria_m, "dist_educacion_secundaria_m")]);
+      stats.push(["Población sin secundaria a 1.000 m", formatPct(props.pct_poblacion_sin_educacion_secundaria_1000)]);
+      if (Number(props.instituciones) > 0) {
+        stats.push([
+          "Habitantes por institución educativa",
+          formatNumber(Number(props.poblacion) / Number(props.instituciones))
+        ]);
+      }
       stats.push(["Electores por 100 hab.", formatMetricNumber(props.electores_por_100, "electores_por_100")]);
       stats.push(["Participación sobre VAP", formatPct(props.participacion_vap)]);
     }
@@ -1550,6 +2201,43 @@
     updateCircuitoPanel();
   }
 
+  function updateCircuitoRanking(features, metric) {
+    if (!el.circuitRanking) return;
+    const isAccessibility = ACCESSIBILITY_METRICS.indexOf(metric) !== -1;
+    el.circuitRanking.hidden = !isAccessibility;
+    if (!isAccessibility || !el.circuitRankingList) return;
+
+    const ranked = features
+      .map(function (layer) {
+        const props = (layer.feature && layer.feature.properties) || {};
+        return {
+          label: props.label || props.id || "Circuito",
+          value: circuitoMetricValue(props, metric)
+        };
+      })
+      .filter(function (item) {
+        return Number.isFinite(item.value);
+      })
+      .sort(function (a, b) {
+        return b.value - a.value;
+      })
+      .slice(0, 5);
+
+    if (!ranked.length) {
+      el.circuitRankingList.innerHTML = "<li><span>Sin datos</span></li>";
+      return;
+    }
+
+    el.circuitRankingList.innerHTML = ranked
+      .map(function (item, index) {
+        return (
+          "<li><span>" + (index + 1) + ". " + escapeHTML(item.label) + "</span>" +
+          "<strong>" + escapeHTML(formatMetricNumber(item.value, metric)) + "</strong></li>"
+        );
+      })
+      .join("");
+  }
+
   function updateCircuitoPanel() {
     if (!circuitosMeta) return;
     const metric = state.circuitoMetric;
@@ -1573,6 +2261,19 @@
     const participation = electores > 0 ? (votantes / electores) * 100 : 0;
 
     if (el.circuitMetricLabel) el.circuitMetricLabel.textContent = config.label;
+    if (el.circuitLegendSource) {
+      if (ACCESSIBILITY_METRICS.indexOf(metric) !== -1) {
+        el.circuitLegendSource.textContent = "Distancias: grilla 15° · Escuelas: padrón · Salud: REFES";
+      } else if (CIRCUITO_METRICS_RADIOS.indexOf(metric) !== -1) {
+        el.circuitLegendSource.textContent = "Población: INDEC · Censo 2022 · Geometría: ULP Geo";
+      } else if (/^renabap_/.test(metric)) {
+        el.circuitLegendSource.textContent = "RENABAP · SISU · Geometría: ULP Geo";
+      } else if (metric === "salud" || metric === "salud_publicos") {
+        el.circuitLegendSource.textContent = "REFES · Ministerio de Salud · Geometría: ULP Geo";
+      } else {
+        el.circuitLegendSource.textContent = "Geometría: ULP Geo · Resultados: CNE";
+      }
+    }
     if (el.circuitScale) {
       el.circuitScale.style.background =
         "linear-gradient(90deg, " + config.colors[0] + ", " + config.colors[1] + ")";
@@ -1604,6 +2305,9 @@
           "<strong>" + formatNumber(total) + "</strong> " +
           (metric === "salud" ? "establecimientos de salud" : "establecimientos públicos de salud") +
           " · " + count + " circuitos";
+      } else if (ACCESSIBILITY_METRICS.indexOf(metric) !== -1) {
+        el.circuitSummary.innerHTML =
+          "<strong>" + count + " circuitos</strong> · distancias Manhattan en grilla de 15°";
       } else if (CIRCUITO_METRICS_RADIOS.indexOf(metric) !== -1) {
         let total = 0;
         features.forEach(function (layer) {
@@ -1620,6 +2324,7 @@
           formatPct(participation) + " de participación";
       }
     }
+    updateCircuitoRanking(features, metric);
   }
 
   function applyCircuitoVisuals(rebuildLabels) {
@@ -1813,14 +2518,6 @@
       className: "radio-tooltip"
     });
 
-    layer.bindPopup(function () {
-      return buildRadioPopup(props);
-    }, {
-      maxWidth: 310,
-      minWidth: 270,
-      className: "radio-popup"
-    });
-
     layer.on("mouseover", function () {
       layer.setStyle({ weight: 2, opacity: 1, fillOpacity: Math.min(0.85, state.radioFillOpacity + 0.15) });
       if (layer.bringToFront) layer.bringToFront();
@@ -1845,7 +2542,16 @@
       ["Hogares sin cloacas", formatNumber(props.sin_cloacas) + " · " + formatPct(props.pct_sin_cloacas)],
       ["Hogares sin gas de red", formatNumber(props.sin_gas_red) + " · " + formatPct(props.pct_sin_gas_red)],
       ["Hogares sin agua de red", formatNumber(props.sin_agua_red) + " · " + formatPct(props.pct_sin_agua_red)],
-      ["Clima educativo bajo", formatNumber(props.clima_bajo) + " · " + formatPct(props.pct_clima_bajo)]
+      ["Hogares con hacinamiento (NBI)", formatNumber(props.hacinamiento_hogares) + " · " + formatPct(props.pct_hacinamiento)],
+      ["Hogares con materiales deficitarios", formatNumber(props.materiales_deficitarios) + " · " + formatPct(props.pct_materiales_deficitarios)],
+      ["Hogares con privación convergente", formatNumber(props.ipm_convergente) + " · " + formatPct(props.pct_ipm_convergente)],
+      ["Clima educativo bajo", formatNumber(props.clima_bajo) + " · " + formatPct(props.pct_clima_bajo)],
+      ["Distancia a salud", formatRadioMetric(props.dist_salud_m, "dist_salud_m")],
+      ["Distancia a salud pública", formatRadioMetric(props.dist_salud_publica_m, "dist_salud_publica_m")],
+      ["Distancia a inicial", formatRadioMetric(props.dist_educacion_inicial_m, "dist_educacion_inicial_m")],
+      ["Distancia a primaria", formatRadioMetric(props.dist_educacion_primaria_m, "dist_educacion_primaria_m")],
+      ["Distancia a secundaria", formatRadioMetric(props.dist_educacion_secundaria_m, "dist_educacion_secundaria_m")],
+      ["Distancia a superior", formatRadioMetric(props.dist_educacion_superior_m, "dist_educacion_superior_m")]
     ].map(function (item) {
       return (
         '<div class="circuito-popup__stat">' +
@@ -1883,7 +2589,7 @@
           '<dl class="circuito-popup__stats">' + radioStatRows(props) + "</dl>" +
           baja +
           '<p class="renabap-popup__circuitos">' + circuitText + "</p>" +
-          '<p class="radio-popup__note">Los porcentajes usan la población o los hogares del radio como denominador. El clima educativo bajo agrupa los hogares con clima bajo y muy bajo.</p>' +
+          '<p class="radio-popup__note">Los porcentajes usan la población o los hogares del radio como denominador. El clima educativo bajo agrupa los hogares con clima bajo y muy bajo. El hacinamiento usa el indicador NBI del hogar (no el umbral de más de 3 personas por cuarto). Las distancias son Manhattan en la grilla rotada 15°: estiman el recorrido por calles, no un ruteo real.</p>' +
           '<p class="radio-popup__source">INDEC · Censo Nacional 2022 · resultados por radio</p>' +
         "</div>" +
       "</div>"
@@ -1951,15 +2657,21 @@
     const circuitVisible = state.circuitos && !circuitosUnavailable && mapReady;
     const radiosVisible = state.radios && !radiosUnavailable && mapReady;
     const saludVisible = state.salud && !saludUnavailable && mapReady;
-    if (el.mapLegends) el.mapLegends.hidden = !(circuitVisible || radiosVisible || saludVisible);
+    const barriosVisible =
+      state.barrios && !barriosUnavailable && mapReady && Boolean(BARRIO_METRICS[state.barrioMetric]);
+    if (el.mapLegends) {
+      el.mapLegends.hidden = !(circuitVisible || radiosVisible || saludVisible || barriosVisible);
+    }
     if (el.circuitLegend) el.circuitLegend.hidden = !circuitVisible;
     if (el.radiosLegend) el.radiosLegend.hidden = !radiosVisible;
     if (el.saludLegend) el.saludLegend.hidden = !saludVisible;
-    if (!circuitVisible && !radiosVisible && !saludVisible && el.mapLegends) {
+    if (el.barrioLegend) el.barrioLegend.hidden = !barriosVisible;
+    if (!circuitVisible && !radiosVisible && !saludVisible && !barriosVisible && el.mapLegends) {
       el.mapLegends.classList.remove("is-obscured");
     }
     if (radiosVisible) updateRadiosPanel();
     if (saludVisible) updateSaludLegend();
+    if (barriosVisible) updateBarrioLegend();
   }
 
   function syncRadios() {
@@ -2086,14 +2798,6 @@
       className: "renabap-tooltip"
     });
 
-    layer.bindPopup(function () {
-      return buildRenabapPopup(props);
-    }, {
-      maxWidth: 300,
-      minWidth: 250,
-      className: "renabap-popup"
-    });
-
     layer.on("mouseover", function () {
       layer.setStyle({ weight: 2.4, opacity: 1, fillOpacity: Math.min(0.75, state.renabapFillOpacity + 0.18) });
       if (layer.bringToFront) layer.bringToFront();
@@ -2116,6 +2820,19 @@
           })
           .join(" · ")
       : "Sin intersección con circuitos";
+    const servicios = props.servicios_radio;
+    const serviciosHtml = servicios
+      ? '<p class="renabap-popup__circuitos"><strong>Servicios del radio (estimación por área)</strong></p>' +
+        '<dl class="circuito-popup__stats">' +
+          '<div class="circuito-popup__stat"><dt>Sin agua de red</dt><dd>' + formatPct(servicios.pct_sin_agua_red) + "</dd></div>" +
+          '<div class="circuito-popup__stat"><dt>Sin cloacas</dt><dd>' + formatPct(servicios.pct_sin_cloacas) + "</dd></div>" +
+          '<div class="circuito-popup__stat"><dt>Sin gas de red</dt><dd>' + formatPct(servicios.pct_sin_gas_red) + "</dd></div>" +
+          '<div class="circuito-popup__stat"><dt>Hogares con privación convergente</dt><dd>' + formatPct(servicios.pct_ipm_convergente) + "</dd></div>" +
+        "</dl>" +
+        '<p class="renabap-popup__note">Promedio ponderado por área de intersección con ' +
+          formatNumber(servicios.radios) + " radio" + (Number(servicios.radios) === 1 ? "" : "s") +
+          " (cobertura " + formatPct(Number(servicios.cobertura) * 100) + "). Es una estimación ecológica: no es el servicio de cada vivienda.</p>"
+      : "";
     const viviendas = props.viviendas == null ? "Sin dato" : formatNumber(props.viviendas);
 
     return (
@@ -2134,6 +2851,7 @@
             '<div class="circuito-popup__stat"><dt>Superficie</dt><dd>' + escapeHTML(formatHectares(props.area_ha)) + "</dd></div>" +
           "</dl>" +
           '<p class="renabap-popup__circuitos">' + circuitText + "</p>" +
+          serviciosHtml +
           '<p class="renabap-popup__note">Hogares: familias registradas en el RENABAP. El GeoJSON oficial no publica viviendas; se muestran como «Sin dato».</p>' +
           '<p class="renabap-popup__source">RENABAP · SISU · datos de diciembre de 2023</p>' +
         "</div>" +
@@ -2502,6 +3220,180 @@
     });
   }
 
+  /* Popup combinado por capas ------------------------------------------------ */
+
+  const OVERLAY_POPUP_ORDER = [
+    { key: "circuitos", label: "Circuito" },
+    { key: "renabap", label: "RENABAP" },
+    { key: "radios", label: "Radio" },
+    { key: "barrios", label: "Barrio" }
+  ];
+
+  function overlayPopupFeature(key, latlng) {
+    let group = null;
+    let unavailable = false;
+    let active = false;
+
+    if (key === "circuitos") {
+      group = circuitosLayer;
+      unavailable = circuitosUnavailable;
+      active = state.circuitos;
+    } else if (key === "renabap") {
+      group = renabapLayer;
+      unavailable = renabapUnavailable;
+      active = state.renabap;
+    } else if (key === "radios") {
+      group = radiosLayer;
+      unavailable = radiosUnavailable;
+      active = state.radios;
+    } else if (key === "barrios") {
+      group = barriosLayer;
+      unavailable = barriosUnavailable;
+      active = state.barrios;
+    }
+
+    if (!active || unavailable || !group || !map.hasLayer(group)) return null;
+
+    let match = null;
+    let matchLevel = -Infinity;
+    group.eachLayer(function (layer) {
+      const feature = layer.feature;
+      if (!feature || !isPointInFeature(latlng.lat, latlng.lng, feature.geometry)) return;
+      if (key !== "barrios") {
+        if (!match) match = feature;
+        return;
+      }
+      const level = Number(feature.properties && feature.properties.level) || 9;
+      if (level > matchLevel) {
+        matchLevel = level;
+        match = feature;
+      }
+    });
+    return match;
+  }
+
+  function overlayPopupHit(key, latlng) {
+    const feature = overlayPopupFeature(key, latlng);
+    if (!feature) return null;
+    const props = feature.properties || {};
+    let html = "";
+    let label = "";
+
+    if (key === "circuitos") {
+      label = "Circuito";
+      html = buildCircuitoPopup(props);
+    } else if (key === "renabap") {
+      label = "RENABAP";
+      html = buildRenabapPopup(props);
+    } else if (key === "radios") {
+      label = "Radio";
+      html = buildRadioPopup(props);
+    } else if (key === "barrios") {
+      label = "Barrio";
+      html = buildBarrioPopup(props);
+    }
+
+    return html ? { key: key, label: label, html: html } : null;
+  }
+
+  function buildOverlayPopup(hits) {
+    const multi = hits.length > 1;
+    const tabs = multi
+      ? '<div class="overlay-popup__tabs" role="tablist" aria-label="Capas en este punto">' +
+          hits.map(function (hit, index) {
+            const selected = index === 0;
+            return (
+              '<button type="button" class="overlay-popup__tab' + (selected ? " is-active" : "") + '"' +
+                ' role="tab" id="overlay-tab-' + hit.key + '" data-overlay-tab="' + hit.key + '"' +
+                ' aria-controls="overlay-panel-' + hit.key + '"' +
+                ' aria-selected="' + (selected ? "true" : "false") + '"' +
+                ' tabindex="' + (selected ? "0" : "-1") + '">' +
+                escapeHTML(hit.label) +
+              "</button>"
+            );
+          }).join("") +
+        "</div>"
+      : "";
+
+    const panels = hits.map(function (hit, index) {
+      return (
+        '<div class="overlay-popup__panel"' +
+          ' id="overlay-panel-' + hit.key + '"' +
+          (multi ? ' role="tabpanel" aria-labelledby="overlay-tab-' + hit.key + '"' : "") +
+          ' data-overlay-panel="' + hit.key + '"' +
+          ' tabindex="0"' +
+          (index === 0 ? "" : " hidden") + ">" +
+          hit.html +
+        "</div>"
+      );
+    }).join("");
+
+    return '<div class="overlay-popup">' + tabs + panels + "</div>";
+  }
+
+  function selectOverlayTab(root, key) {
+    root.querySelectorAll("[data-overlay-tab]").forEach(function (tab) {
+      const selected = tab.dataset.overlayTab === key;
+      tab.classList.toggle("is-active", selected);
+      tab.setAttribute("aria-selected", selected ? "true" : "false");
+      tab.tabIndex = selected ? 0 : -1;
+    });
+    root.querySelectorAll("[data-overlay-panel]").forEach(function (panel) {
+      panel.hidden = panel.dataset.overlayPanel !== key;
+    });
+  }
+
+  function openOverlayPopup(latlng) {
+    if (!mapReady || !map) return;
+    const hits = [];
+    OVERLAY_POPUP_ORDER.forEach(function (item) {
+      const hit = overlayPopupHit(item.key, latlng);
+      if (hit) hits.push(hit);
+    });
+    if (!hits.length) return;
+
+    const html = buildOverlayPopup(hits);
+    L.popup({
+      className: "overlay-popup-wrapper",
+      maxWidth: 340,
+      minWidth: hits.length > 1 ? 320 : 300,
+      autoPanPadding: [24, 24]
+    })
+      .setLatLng(latlng)
+      .setContent(html)
+      .openOn(map);
+  }
+
+  function bindOverlayPopupTabs() {
+    const container = map.getContainer();
+
+    container.addEventListener("click", function (event) {
+      const button = event.target.closest("[data-overlay-tab]");
+      if (!button) return;
+      const root = button.closest(".overlay-popup");
+      if (!root) return;
+      selectOverlayTab(root, button.dataset.overlayTab);
+    });
+
+    container.addEventListener("keydown", function (event) {
+      const button = event.target.closest("[data-overlay-tab]");
+      if (!button) return;
+      if (event.key !== "ArrowLeft" && event.key !== "ArrowRight" && event.key !== "Home" && event.key !== "End") return;
+      const root = button.closest(".overlay-popup");
+      if (!root) return;
+      const tabs = Array.prototype.slice.call(root.querySelectorAll("[data-overlay-tab]"));
+      if (tabs.length < 2) return;
+      let index = tabs.indexOf(button);
+      if (event.key === "ArrowLeft") index = (index - 1 + tabs.length) % tabs.length;
+      else if (event.key === "ArrowRight") index = (index + 1) % tabs.length;
+      else if (event.key === "Home") index = 0;
+      else index = tabs.length - 1;
+      event.preventDefault();
+      selectOverlayTab(root, tabs[index].dataset.overlayTab);
+      tabs[index].focus();
+    });
+  }
+
   /* Recorridos de colectivos ------------------------------------------------ */
 
   function rutaEntries(data) {
@@ -2735,7 +3627,9 @@
             interactive: false
           }).addTo(group);
 
-          const polilinea = L.polyline(ruta.puntos, rutaStyle(ruta)).addTo(group);
+          const polilinea = L.polyline(ruta.puntos, Object.assign({}, rutaStyle(ruta), {
+            bubblingMouseEvents: false
+          })).addTo(group);
           polilinea.bindTooltip(escapeHTML(ruta.nombre), {
             sticky: true,
             direction: "top",
@@ -3918,6 +4812,15 @@
       });
       el.layerSettingsDialog.addEventListener("close", function () {
         if (el.layersToggle) el.layersToggle.focus({ preventScroll: true });
+      });
+    }
+
+    if (el.barrioMetricRadios) {
+      el.barrioMetricRadios.forEach(function (radio) {
+        radio.addEventListener("change", function () {
+          if (!radio.checked) return;
+          setBarrioMetric(radio.value);
+        });
       });
     }
 
